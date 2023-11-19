@@ -1,0 +1,29 @@
+//
+//  Images.swift
+//  FuckCounter
+//
+//  Created by Alex on 19.11.2023.
+//
+
+import SwiftUI
+
+struct Images {
+    
+    static let logo = Image("logo")
+    static let redState = Image("redState")
+    static let orangeState = Image("orangeState")
+    static let greenState = Image("greenState")
+    static let settings = Image("settings")
+    static let filter = Image("filter")
+    static let cup = Image("cup")
+    static let unchecked = Image("unchecked")
+    static let checked = Image("checked")
+    static let notifications = Image("notifications")
+    static let support = Image("support")
+    static let invite = Image("invite")
+    static let rate = Image("rate")
+    static let logout = Image("logout")
+    static let chev = Image("chev")
+    static let crown = Image("crown")
+    static let congratsBG = Image("congratsBG")
+}

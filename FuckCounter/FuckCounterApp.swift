@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct FuckCounterApp: App {
+    
+    @State private var isShowHome: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isShowHome {
+                HomeView()
+            } else {
+                SplashView()
+                    .onFirstAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            isShowHome = true
+                        }
+                    }
+            }
         }
     }
 }
