@@ -19,6 +19,12 @@ struct FuckCounterApp: App {
             } else {
                 SplashView()
                     .onFirstAppear {
+                        
+                        UIFont.familyNames.forEach({ familyName in
+                            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+                            print(familyName, fontNames)
+                        })
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             isShowHome = true
                         }
