@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HomeToolbarItemsModifiers: ViewModifier {
-    
-    enum HomeEvent {
-        case settings, filter, cup
-    }
-    
+        
     private let onHomeEvent: ((HomeEvent) -> Void)?
     
     init(onHomeEvent: ((HomeEvent) -> Void)?) {
@@ -30,7 +26,7 @@ struct HomeToolbarItemsModifiers: ViewModifier {
                             .frame(width: 22, height: 22)
                     })
                     Button(action: {
-                        onHomeEvent?(.filter)
+                        onHomeEvent?(.filters)
                     }, label: {
                         Images.filter
                             .frame(width: 22, height: 22)
@@ -39,7 +35,7 @@ struct HomeToolbarItemsModifiers: ViewModifier {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        onHomeEvent?(.cup)
+                        onHomeEvent?(.leaders)
                     }, label: {
                         Images.cup
                             .frame(width: 22, height: 22)

@@ -12,6 +12,11 @@
 		1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */; };
 		1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877B2B0A7AE80020C4AB /* SplashView.swift */; };
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
+		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
+		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
+		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
+		1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A25A2B20C55300FE2918 /* LeadersView.swift */; };
+		1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A25C2B210A5800FE2918 /* NavBarModifiers.swift */; };
 		1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65972B0A46470011F18B /* FuckCounterApp.swift */; };
 		1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65992B0A46470011F18B /* HomeView.swift */; };
 		1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9D659B2B0A46490011F18B /* Assets.xcassets */; };
@@ -27,6 +32,11 @@
 		1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbarItemsModifiers.swift; sourceTree = "<group>"; };
 		1F21877B2B0A7AE80020C4AB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
+		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1F62A25A2B20C55300FE2918 /* LeadersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersView.swift; sourceTree = "<group>"; };
+		1F62A25C2B210A5800FE2918 /* NavBarModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarModifiers.swift; sourceTree = "<group>"; };
 		1F9D65942B0A46470011F18B /* FuckCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9D65972B0A46470011F18B /* FuckCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuckCounterApp.swift; sourceTree = "<group>"; };
 		1F9D65992B0A46470011F18B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -54,6 +64,7 @@
 				1F2187752B0A70EF0020C4AB /* GradientModifiers.swift */,
 				1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */,
 				1F21877D2B0A8E430020C4AB /* FirstAppear.swift */,
+				1F62A25C2B210A5800FE2918 /* NavBarModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -63,6 +74,9 @@
 			children = (
 				1F9D65992B0A46470011F18B /* HomeView.swift */,
 				1F21877B2B0A7AE80020C4AB /* SplashView.swift */,
+				1F62A2542B209A1400FE2918 /* FiltersView.swift */,
+				1F62A2582B20C51900FE2918 /* SettingsView.swift */,
+				1F62A25A2B20C55300FE2918 /* LeadersView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -111,6 +125,7 @@
 				1FDA1A362B0A56A2009E3EAC /* Colors.swift */,
 				1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */,
 				1F2187722B0A6C9B0020C4AB /* Images.swift */,
+				1F62A2562B20AB4600FE2918 /* Enums.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -186,15 +201,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */,
+				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
 				1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */,
 				1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
+				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
+				1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
+				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,4 +26,5 @@ struct Images {
     static let chev = Image("chev")
     static let crown = Image("crown")
     static let congratsBG = Image("congratsBG")
+    static let chevronLeft = Image("chevronLeft")
 }
