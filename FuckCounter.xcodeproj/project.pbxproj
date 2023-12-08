@@ -35,6 +35,10 @@
 		1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44532B220A9500513401 /* RegularTextView.swift */; };
 		1FBE44562B220BAB00513401 /* MediumTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44552B220BAB00513401 /* MediumTextView.swift */; };
 		1FBE44592B2276F300513401 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44582B2276F300513401 /* HomeViewModel.swift */; };
+		1FBE445E2B23525400513401 /* WordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE445D2B23525300513401 /* WordsModel.swift */; };
+		1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44602B23540500513401 /* FiltersViewModel.swift */; };
+		1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */; };
+		1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -71,6 +75,10 @@
 		1FBE44532B220A9500513401 /* RegularTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTextView.swift; sourceTree = "<group>"; };
 		1FBE44552B220BAB00513401 /* MediumTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTextView.swift; sourceTree = "<group>"; };
 		1FBE44582B2276F300513401 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1FBE445D2B23525300513401 /* WordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsModel.swift; sourceTree = "<group>"; };
+		1FBE44602B23540500513401 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
+		1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsetsKey.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -101,9 +109,9 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1FBE445F2B2353F200513401 /* Filters */,
 				1FBE44572B2276D600513401 /* Home */,
 				1F21877B2B0A7AE80020C4AB /* SplashView.swift */,
-				1F62A2542B209A1400FE2918 /* FiltersView.swift */,
 				1F62A2582B20C51900FE2918 /* SettingsView.swift */,
 				1F62A25A2B20C55300FE2918 /* LeadersView.swift */,
 			);
@@ -180,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				1F62A2672B211EAC00FE2918 /* Info.plist */,
+				1FBE445C2B23523B00513401 /* Models */,
 				1F62A25E2B211C9700FE2918 /* Resources */,
 				1F62A2682B211EFF00FE2918 /* UIComponents */,
 				1F21877A2B0A7AD60020C4AB /* Flows */,
@@ -209,15 +218,42 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		1FBE445C2B23523B00513401 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FBE445D2B23525300513401 /* WordsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1FBE445F2B2353F200513401 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				1F62A2542B209A1400FE2918 /* FiltersView.swift */,
+				1FBE44602B23540500513401 /* FiltersViewModel.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		1FBE44642B23B41D00513401 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		1FDA1A352B0A5691009E3EAC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1FBE44642B23B41D00513401 /* Environment */,
 				1F2187742B0A70D90020C4AB /* ViewModifiers */,
 				1FDA1A362B0A56A2009E3EAC /* Colors.swift */,
 				1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */,
 				1F2187722B0A6C9B0020C4AB /* Images.swift */,
 				1F62A2562B20AB4600FE2918 /* Enums.swift */,
 				1F62A2742B2120BB00FE2918 /* FontStyle.swift */,
+				1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -310,16 +346,20 @@
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
+				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
 				1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */,
 				1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */,
+				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
+				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 				1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
+				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
 				1FBE44562B220BAB00513401 /* MediumTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
