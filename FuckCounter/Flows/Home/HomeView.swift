@@ -33,7 +33,7 @@ struct HomeView: View {
                     .padding(.bottom, 90)
                 
                 
-                MediumTextView(style: .sfPro, title: "Maybe it’s time to read 🎩 Sheakspear?")
+                MediumTextView(style: .sfPro, title: homeViewModel.level.result)
                     .padding(.bottom, 55)
             })
             .navigationDestination(isPresented: isPushToView, destination: {
@@ -48,6 +48,9 @@ struct HomeView: View {
                     EmptyView()
                 }
             })
+            .onFirstAppear {
+                homeViewModel.checkCounter()
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(onHomeEvent: { homeEvent in
@@ -59,13 +62,13 @@ struct HomeView: View {
     
     private func prepareCounterWordsView() -> some View {
         VStack(alignment: .center, spacing: -10) {
-            BoldTextView(style: .sfPro, title: "0", size: 108)
+            BoldTextView(style: .sfPro, title: "\($homeViewModel.counter.wrappedValue)", size: 108)
             MediumTextView(style: .sfPro, title: "Bad words today", size: 17)
         }
     }
     
     private func prepareStatusImageView() -> some View {
-        Images.greenState
+        homeViewModel.level.icon
             .frame(width: 32, height: 41)
     }
     
