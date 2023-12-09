@@ -10,6 +10,7 @@ import SwiftUI
 struct FiltersView: View {
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
+    @Environment(\.dismiss) var dismiss
     @StateObject var filtersViewModel = FiltersViewModel()
     private let navTitle: String?
     
@@ -19,28 +20,84 @@ struct FiltersView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 0, content: {
-                List {
-                    Section("Bad words".uppercased()) {
-                        ForEach(filtersViewModel.list, id: \.id) { element in
-                            MediumTextView(style: .gilroy, title: element.name, size: 17)
-                                .listRowBackground(Colors._6D6D7A.opacity(0.3))
-                        }
-                    }
-                    .listRowSeparatorTint(.red)
-                    .font(Font.custom("Gilroy-Medium", size: 13))
-                    .foregroundStyle(.white)
-                    .padding(.top, 24)
-                    .padding(.bottom, 8)
+            VStack {
+                ScrollView {
+                    listView()
                 }
-                .padding(.top, safeAreaInsets.top + 20)
                 
-                .scrollContentBackground(.hidden)
-            })
+                Button {
+                    dismiss()
+                } label: {
+                    ZStack {
+                        Colors._FFDD64
+                        SemiboldTextView(style: .gilroy, title: "Allow filters", size: 17, color: .black)
+                    }
+                    .cornerRadius(14)
+                }
+                .frame(height: 52)
+                .padding(.top, 16)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 37)
+            }
+            .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: .green))
             .modifier(NavBarModifiers(title: navTitle))
             .ignoresSafeArea()
+        }
+    }
+    
+    
+    private func listView() -> some View {
+        Section {
+            LazyVStack(alignment: .leading, spacing: 0) {
+                ForEach(filtersViewModel.list, id: \.id) { element in
+                    filterRow(element)
+                        .onTapGesture {
+                            
+                        }
+                }
+            }
+            .background(Colors._6D6D7A.opacity(0.3))
+            .cornerRadius(24)
+        } header: {
+            HStack(content: {
+                MediumTextView(style: .gilroy, title: "Bad words".uppercased(), size: 13)
+                    .padding(.leading, 16)
+                    .padding(.bottom, 8)
+                
+                Spacer()
+            })
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, safeAreaInsets.top + 64)
+    }
+    
+    private func filterRow(_ model: WordsModel) -> some View {
+        ZStack {
+            VStack {
+                HStack {
+                    MediumTextView(style: .gilroy, title: model.name, size: 17)
+                        .frame(height: 22)
+                    
+                    Spacer()
+                    
+                    checkmarkIconView(model)
+                        .frame(width: 24, height: 24)
+                }
+                .padding(.all, 16)
+                Rectangle()
+                    .fill(Colors._6D6D7A.opacity(0.18))
+                    .frame(height: 1)
+            }
+        }
+    }
+    
+    @ViewBuilder private func checkmarkIconView(_ model: WordsModel) -> some View {
+        if model.id == 1 {
+            Images.checked
+        } else {
+            Images.unchecked
         }
     }
 }
