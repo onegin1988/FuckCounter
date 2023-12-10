@@ -48,3 +48,15 @@ enum Level: String {
         }
     }
 }
+
+enum LeadersTimeType: Int {
+    case daily = 0, weekly, yearly
+    
+    var title: String {
+        switch self {
+        case .daily: return "Daily"
+        case .weekly: return "Weekly"
+        case .yearly: return "Yearly"
+        }
+    }
+}

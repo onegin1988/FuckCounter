@@ -54,7 +54,7 @@ struct FiltersView: View {
                 ForEach(filtersViewModel.list, id: \.id) { element in
                     filterRow(element)
                         .onTapGesture {
-                            
+                            filtersViewModel.wordsModel = element
                         }
                 }
             }
@@ -94,7 +94,7 @@ struct FiltersView: View {
     }
     
     @ViewBuilder private func checkmarkIconView(_ model: WordsModel) -> some View {
-        if model.id == 1 {
+        if model.id == filtersViewModel.wordsModel.id {
             Images.checked
         } else {
             Images.unchecked

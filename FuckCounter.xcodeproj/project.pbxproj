@@ -39,6 +39,8 @@
 		1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44602B23540500513401 /* FiltersViewModel.swift */; };
 		1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */; };
 		1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */; };
+		1FBE44692B25DFA900513401 /* LeadersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44682B25DFA900513401 /* LeadersViewModel.swift */; };
+		1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE446A2B25F5A900513401 /* UserModel.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -79,6 +81,8 @@
 		1FBE44602B23540500513401 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsetsKey.swift; sourceTree = "<group>"; };
+		1FBE44682B25DFA900513401 /* LeadersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersViewModel.swift; sourceTree = "<group>"; };
+		1FBE446A2B25F5A900513401 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -109,11 +113,11 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1FBE44672B24B8AB00513401 /* Leaders */,
 				1FBE445F2B2353F200513401 /* Filters */,
 				1FBE44572B2276D600513401 /* Home */,
 				1F21877B2B0A7AE80020C4AB /* SplashView.swift */,
 				1F62A2582B20C51900FE2918 /* SettingsView.swift */,
-				1F62A25A2B20C55300FE2918 /* LeadersView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -222,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				1FBE445D2B23525300513401 /* WordsModel.swift */,
+				1FBE446A2B25F5A900513401 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +246,15 @@
 				1FBE44652B23B42A00513401 /* SafeAreaInsetsKey.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		1FBE44672B24B8AB00513401 /* Leaders */ = {
+			isa = PBXGroup;
+			children = (
+				1F62A25A2B20C55300FE2918 /* LeadersView.swift */,
+				1FBE44682B25DFA900513401 /* LeadersViewModel.swift */,
+			);
+			path = Leaders;
 			sourceTree = "<group>";
 		};
 		1FDA1A352B0A5691009E3EAC /* Helpers */ = {
@@ -351,9 +365,11 @@
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
 				1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */,
+				1FBE44692B25DFA900513401 /* LeadersViewModel.swift in Sources */,
 				1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */,
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
+				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
