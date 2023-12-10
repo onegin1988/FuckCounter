@@ -97,7 +97,6 @@ private extension LeadersView {
     }
     
     // MARK: - SectionView
-    
     struct SectionView: View {
         var body: some View {
             ZStack {

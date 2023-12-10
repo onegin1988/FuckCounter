@@ -19,4 +19,6 @@ struct Colors {
     static let _8ABA3C = Color("8ABA3C")
     static let _6D6D7A = Color("6D6D7A")
     static let _FFDD64 = Color("FFDD64")
+    static let _386AFF = Color("386AFF")
+    static let _EDEDED = Color("EDEDED")
 }
