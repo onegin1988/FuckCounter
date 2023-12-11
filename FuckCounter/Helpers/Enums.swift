@@ -60,3 +60,27 @@ enum LeadersTimeType: Int {
         }
     }
 }
+
+enum SettingsItem: Int, CaseIterable, Hashable {
+    case notifications = 0, support, invite, rate, logout
+    
+    var title: String {
+        switch self {
+        case .notifications: return "Enable notifications"
+        case .support: return "Support Fuck Counter"
+        case .invite: return "Invite Friends"
+        case .rate: return "Rate App"
+        case .logout: return "Log out"
+        }
+    }
+    
+    var icon: Image {
+        switch self {
+        case .notifications: return Images.notifications
+        case .support: return Images.support
+        case .invite: return Images.invite
+        case .rate: return Images.rate
+        case .logout: return Images.logout
+        }
+    }
+}

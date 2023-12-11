@@ -34,7 +34,7 @@ struct AppsListRow: View {
     }
     
     private func appImageView() -> some View {
-        Rectangle()
+        Image(appsModel.imageName)
             .cornerRadius(10)
             .frame(width: 48, height: 48)
     }
@@ -64,7 +64,7 @@ struct AppsListRow: View {
 }
 
 #Preview {
-    AppsListRow(appsModel: AppsModel(name: "Test", description: "Test description"), onGet: nil)
+    AppsListRow(appsModel: AppsModel(name: "Test", description: "Test description", imageName: "yoga88Icon"), onGet: nil)
         .padding(.horizontal, 16)
         .frame(height: 72)
 }
