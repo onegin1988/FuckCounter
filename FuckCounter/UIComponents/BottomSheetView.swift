@@ -10,7 +10,7 @@ import SwiftUI
 fileprivate enum Constants {
     static let radius: CGFloat = 16
     static let snapRatio: CGFloat = 0.25
-    static let minHeightRatio: CGFloat = 0.3
+    static let minHeightRatio: CGFloat = 0//0.3
 }
 
 struct BottomSheetView<Content: View>: View {
@@ -61,7 +61,7 @@ struct BottomSheetView<Content: View>: View {
 }
 
 #Preview {
-    BottomSheetView(isOpen: .constant(true), maxHeight: 375) {
+    BottomSheetView(isOpen: .constant(false), maxHeight: 375) {
         CongratsView()
     }
     .ignoresSafeArea()

@@ -12,6 +12,7 @@ struct HomeView: View {
     @StateObject var homeViewModel = HomeViewModel()
     
     @State private var homeEvent: HomeEvent?
+    @State private var isOpenCongrats: Bool = false
     
     private var isPushToView: Binding<Bool> {
         Binding(get: { homeEvent != nil }, set: { _ in homeEvent = nil } )
@@ -19,23 +20,29 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(content: {
-                Spacer()
-                Spacer()
-                prepareCounterWordsView()
+            ZStack {
+                VStack(content: {
+                    Spacer()
+                    Spacer()
+                    prepareCounterWordsView()
+                    
+                    prepareStatusImageView()
+                        .padding(.top, 30)
+                    
+                    Spacer()
+                    
+                    prepareProgressView()
+                        .padding(.bottom, 90)
+                    
+                    
+                    MediumTextView(style: .sfPro, title: homeViewModel.level.result)
+                        .padding(.bottom, 55)
+                })
                 
-                prepareStatusImageView()
-                    .padding(.top, 30)
-                
-                Spacer()
-                
-                prepareProgressView()
-                    .padding(.bottom, 90)
-                
-                
-                MediumTextView(style: .sfPro, title: homeViewModel.level.result)
-                    .padding(.bottom, 55)
-            })
+                BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) {
+                    CongratsView()
+                }
+            }
             .navigationDestination(isPresented: isPushToView, destination: {
                 switch homeEvent {
                 case .settings:
@@ -50,6 +57,11 @@ struct HomeView: View {
             })
             .onFirstAppear {
                 homeViewModel.checkCounter()
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    isOpenCongrats = true
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
