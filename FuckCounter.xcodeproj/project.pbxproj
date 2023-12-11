@@ -45,6 +45,8 @@
 		1FBE44702B2651EC00513401 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE446F2B2651EC00513401 /* SettingsViewModel.swift */; };
 		1FBE44742B2656D200513401 /* AppsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44732B2656D200513401 /* AppsListRow.swift */; };
 		1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44752B27033C00513401 /* SettingsListRow.swift */; };
+		1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44772B27378200513401 /* BottomSheetView.swift */; };
+		1FBE447A2B27582600513401 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44792B27582600513401 /* CongratsView.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -91,6 +93,8 @@
 		1FBE446F2B2651EC00513401 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1FBE44732B2656D200513401 /* AppsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsListRow.swift; sourceTree = "<group>"; };
 		1FBE44752B27033C00513401 /* SettingsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListRow.swift; sourceTree = "<group>"; };
+		1FBE44772B27378200513401 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		1FBE44792B27582600513401 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				1FBE445F2B2353F200513401 /* Filters */,
 				1FBE44572B2276D600513401 /* Home */,
 				1F21877B2B0A7AE80020C4AB /* SplashView.swift */,
+				1FBE44792B27582600513401 /* CongratsView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 				1FBE44512B220A3E00513401 /* SemiboldTextView.swift */,
 				1FBE44532B220A9500513401 /* RegularTextView.swift */,
 				1FBE44552B220BAB00513401 /* MediumTextView.swift */,
+				1FBE44772B27378200513401 /* BottomSheetView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -386,7 +392,9 @@
 				1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */,
 				1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */,
 				1FBE446E2B26517000513401 /* AppsModel.swift in Sources */,
+				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
+				1FBE447A2B27582600513401 /* CongratsView.swift in Sources */,
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
