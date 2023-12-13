@@ -21,8 +21,15 @@ struct SettingsView: View {
         NavigationStack {
             ScrollView(content: {
                 AppsListView(apps: settingsViewModel.apps)
-                SettingsListView(isToggle: $settingsViewModel.isNotify)
-                    .padding(.top, 48)
+                SettingsListView(isToggle: $settingsViewModel.isNotify) { settingsItem in
+                    switch settingsItem {
+                    case .invite:
+                        settingsViewModel.showSheet = true
+                    default:
+                        break
+                    }
+                }
+                .padding(.top, 48)
             })
             .padding(.top, safeAreaInsets.top + 64)
             .modifier(NavBarModifiers(title: navTitle))
@@ -30,6 +37,7 @@ struct SettingsView: View {
             .modifier(GradientModifiers(style: .green))
             .ignoresSafeArea()
         }
+        .sheetShare(showSheet: $settingsViewModel.showSheet, items: ["Wow, It’s my Fuck counter result"])
     }
 }
 
@@ -61,13 +69,19 @@ private extension SettingsView {
     struct SettingsListView: View {
         
         @Binding var isToggle: Bool
+        private let onSettingsItem: ((SettingsItem) -> Void)?
+        
+        init(isToggle: Binding<Bool>, onSettingsItem: ((SettingsItem) -> Void)?) {
+            self._isToggle = isToggle
+            self.onSettingsItem = onSettingsItem
+        }
         
         var body: some View {
             Section {
                 LazyVStack(alignment: .leading, spacing: 8) {
                     ForEach(SettingsItem.allCases, id: \.self) { element in
                         SettingsListRow(item: element, isToggle: $isToggle) {
-                            
+                            onSettingsItem?(element)
                         }
                     }
                 }
