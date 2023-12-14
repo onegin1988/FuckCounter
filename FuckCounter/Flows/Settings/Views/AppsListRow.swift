@@ -64,7 +64,7 @@ struct AppsListRow: View {
 }
 
 #Preview {
-    AppsListRow(appsModel: AppsModel(name: "Test", description: "Test description", imageName: "yoga88Icon"), onGet: nil)
+    AppsListRow(appsModel: AppsModel(name: "Test", description: "Test description", imageName: "yoga88Icon", url: ""), onGet: nil)
         .padding(.horizontal, 16)
         .frame(height: 72)
 }

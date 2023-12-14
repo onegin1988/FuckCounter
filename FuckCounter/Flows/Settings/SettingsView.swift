@@ -46,10 +46,26 @@ struct SettingsView: View {
 
 private extension SettingsView {
     
+    enum SettingsError: LocalizedError {
+        
+        case custom(String)
+        
+        var errorMessage: String? {
+            switch self {
+            case .custom(let message): return message
+            }
+        }
+    }
+    
     // MARK: - AppsListView
     struct AppsListView: View {
         
         private let apps: [AppsModel]
+        @Environment(\.openURL) var openURL
+        @State private var error: SettingsError?
+        private var isShowingError: Binding<Bool> {
+            Binding { error != nil } set: { _ in error = nil }
+        }
         
         init(apps: [AppsModel]) {
             self.apps = apps
@@ -60,11 +76,22 @@ private extension SettingsView {
                 LazyVStack(alignment: .leading, spacing: 8) {
                     ForEach(apps, id: \.id) { element in
                         AppsListRow(appsModel: element) {
-                            
+                            guard let url = URL(string: element.url) else {
+                                error = .custom("URL is not valid")
+                                return
+                            }
+                            openURL(url)
                         }
                     }
                 }
                 .padding(.horizontal, 16)
+            }
+            .alert(isPresented: isShowingError, error: error) { _ in
+                // Nothing
+            } message: { error in
+                if let message = error.errorMessage {
+                    Text(message)
+                }
             }
         }
     }
