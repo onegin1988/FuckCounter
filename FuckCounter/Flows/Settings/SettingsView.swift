@@ -11,6 +11,7 @@ struct SettingsView: View {
     
     @StateObject var settingsViewModel = SettingsViewModel()
     @Environment(\.safeAreaInsets) var safeAreaInsets
+    
     private let navTitle: String?
     
     init(navTitle: String?) {
@@ -25,6 +26,8 @@ struct SettingsView: View {
                     switch settingsItem {
                     case .invite:
                         settingsViewModel.showSheet = true
+                    case .rate:
+                        ReviewApp.requestReview()
                     default:
                         break
                     }

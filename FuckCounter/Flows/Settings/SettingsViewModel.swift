@@ -16,6 +16,7 @@ class SettingsViewModel: ObservableObject {
     init() {
         self.isNotify = true
         self.showSheet = false
+        
         self.apps = [
             AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon"),
             AppsModel(name: "Yoga 88", description: "Learn your body and relax your mind", imageName: "yoga88Icon")
