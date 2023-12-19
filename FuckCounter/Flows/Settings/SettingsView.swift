@@ -62,10 +62,7 @@ private extension SettingsView {
         
         private let apps: [AppsModel]
         @Environment(\.openURL) var openURL
-        @State private var error: SettingsError?
-        private var isShowingError: Binding<Bool> {
-            Binding { error != nil } set: { _ in error = nil }
-        }
+        @State private var errorMessage: String?
         
         init(apps: [AppsModel]) {
             self.apps = apps
@@ -76,8 +73,8 @@ private extension SettingsView {
                 LazyVStack(alignment: .leading, spacing: 8) {
                     ForEach(apps, id: \.id) { element in
                         AppsListRow(appsModel: element) {
-                            guard let url = URL(string: element.url) else {
-                                error = .custom("URL is not valid")
+                            guard let url = URL(string: element.url), let _ = try? Data(contentsOf: url) else {
+                                errorMessage = SettingsError.custom("URL is not valid").errorMessage
                                 return
                             }
                             openURL(url)
@@ -86,13 +83,7 @@ private extension SettingsView {
                 }
                 .padding(.horizontal, 16)
             }
-            .alert(isPresented: isShowingError, error: error) { _ in
-                // Nothing
-            } message: { error in
-                if let message = error.errorMessage {
-                    Text(message)
-                }
-            }
+            .alertError(errorMessage: $errorMessage)
         }
     }
     

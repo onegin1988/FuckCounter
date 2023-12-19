@@ -18,7 +18,8 @@ class SettingsViewModel: ObservableObject {
         self.showSheet = false
         
         self.apps = [
-            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "itms-apps://itunes.apple.com/app/id6466431666"),
+//            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "itms-apps://itunes.apple.com/app/id6466431666"),
+            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "/itunes.apple.com/app/id6466431666"),
             AppsModel(name: "Yoga 88", description: "Learn your body and relax your mind", imageName: "yoga88Icon", url: "itms-apps://itunes.apple.com/app/id")
         ]
     }

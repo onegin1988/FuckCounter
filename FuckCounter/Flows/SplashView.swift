@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @EnvironmentObject var speechService: SpeechService
+    
     var body: some View {
         VStack {
             Images.logo
