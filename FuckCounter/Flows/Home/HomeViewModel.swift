@@ -11,10 +11,12 @@ class HomeViewModel: ObservableObject {
     
     @Published var level: Level
     @Published var counter: Int
+    @Published var isPlay: Bool
     
     init() {
         self.level = .green
         self.counter = 0
+        self.isPlay = false
     }
     
     // Test
@@ -33,5 +35,12 @@ class HomeViewModel: ObservableObject {
                 self.level = .green
             }
         }
+    }
+    
+    var isPlayState: (String, Image, CGFloat) {
+        if isPlay {
+            return ("Stop", Images.stop, 120)
+        }
+        return ("Play", Images.play, 256)
     }
 }

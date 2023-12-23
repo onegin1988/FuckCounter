@@ -32,11 +32,18 @@ struct HomeView: View {
                     Spacer()
                     
                     prepareProgressView()
-                        .padding(.bottom, 90)
-                    
+                                        
+                    ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true) {
+                        withAnimation {
+                            homeViewModel.isPlay.toggle()
+                        }
+                    }
+                    .frame(width: homeViewModel.isPlayState.2, height: 56)
+                    .padding(.bottom, 52)
+                    .padding(.top, 20)
                     
                     MediumTextView(style: .sfPro, title: homeViewModel.level.result)
-                        .padding(.bottom, 55)
+                        .padding(.bottom, 95)
                 })
                 
                 BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) {
@@ -57,11 +64,6 @@ struct HomeView: View {
             })
             .onFirstAppear {
                 homeViewModel.checkCounter()
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    isOpenCongrats = true
-                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))

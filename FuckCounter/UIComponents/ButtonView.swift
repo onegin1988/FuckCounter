@@ -12,11 +12,16 @@ struct ButtonView: View {
     private let title: String
     private let image: Image?
     private let useBG: Bool
+    private let onTap: (() -> Void)?
     
-    init(title: String, image: Image? = nil, useBG: Bool = true) {
+    init(title: String, 
+         image: Image? = nil,
+         useBG: Bool = true,
+         onTap: (() -> Void)? = nil) {
         self.title = title
         self.image = image
         self.useBG = useBG
+        self.onTap = onTap
     }
     
     var body: some View {
@@ -31,12 +36,10 @@ struct ButtonView: View {
                 }
                 .padding(EdgeInsets(top: 15, leading: 16, bottom: 15, trailing: 16))
             }
-//            .background(
-//                RoundedRectangle(cornerRadius: 2)
-//                    .fill(useBG ? Colors._FFDD64 : .clear)
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            )
         })
+        .onTapGesture {
+            onTap?()
+        }
     }
     
     @ViewBuilder private func setupIconView() -> some View {
