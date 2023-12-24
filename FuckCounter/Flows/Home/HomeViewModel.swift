@@ -12,11 +12,13 @@ class HomeViewModel: ObservableObject {
     @Published var level: Level
     @Published var counter: Int
     @Published var isPlay: Bool
+    @Published var timeSlice: String
     
     init() {
         self.level = .green
         self.counter = 0
         self.isPlay = false
+        self.timeSlice = ""
     }
     
     // Test

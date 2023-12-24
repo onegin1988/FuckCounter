@@ -28,6 +28,8 @@
 		1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2742B2120BB00FE2918 /* FontStyle.swift */; };
 		1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2762B2122BE00FE2918 /* BoldTextView.swift */; };
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
+		1F9933F92B385247005C223F /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F82B385247005C223F /* DailyModel.swift */; };
+		1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933FA2B3870A9005C223F /* DailyService.swift */; };
 		1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65972B0A46470011F18B /* FuckCounterApp.swift */; };
 		1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65992B0A46470011F18B /* HomeView.swift */; };
 		1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9D659B2B0A46490011F18B /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		1F62A2742B2120BB00FE2918 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		1F62A2762B2122BE00FE2918 /* BoldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextView.swift; sourceTree = "<group>"; };
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		1F9933F82B385247005C223F /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
+		1F9933FA2B3870A9005C223F /* DailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyService.swift; sourceTree = "<group>"; };
 		1F9D65942B0A46470011F18B /* FuckCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9D65972B0A46470011F18B /* FuckCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuckCounterApp.swift; sourceTree = "<group>"; };
 		1F9D65992B0A46470011F18B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				1FBA82372B2CFD420032BEA9 /* SpeechService.swift */,
+				1F9933FA2B3870A9005C223F /* DailyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				1FBE445D2B23525300513401 /* WordsModel.swift */,
 				1FBE446A2B25F5A900513401 /* UserModel.swift */,
 				1FBE446D2B26517000513401 /* AppsModel.swift */,
+				1F9933F82B385247005C223F /* DailyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -447,12 +453,14 @@
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
 				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
+				1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
 				1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 				1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */,
+				1F9933F92B385247005C223F /* DailyModel.swift in Sources */,
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,

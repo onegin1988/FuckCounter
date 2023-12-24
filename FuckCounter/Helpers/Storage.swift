@@ -40,4 +40,6 @@ struct AppData {
     @Storage(key: "lastVersionPromptedForReviewKey", defaultValue: (Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String) ?? "")
     static var lastVersionPromptedForReviewKey: String
     
+    @Storage(key: "dailyKey", defaultValue: nil)
+    static var dailyKey: DailyModel?
 }

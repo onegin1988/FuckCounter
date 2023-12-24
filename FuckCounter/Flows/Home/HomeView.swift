@@ -14,6 +14,8 @@ struct HomeView: View {
     @State private var homeEvent: HomeEvent?
     @State private var isOpenCongrats: Bool = false
     
+    @EnvironmentObject var dailyService: DailyService
+    
     private var isPushToView: Binding<Bool> {
         Binding(get: { homeEvent != nil }, set: { _ in homeEvent = nil } )
     }
@@ -65,6 +67,9 @@ struct HomeView: View {
             .onFirstAppear {
                 homeViewModel.checkCounter()
             }
+            .onReceive(dailyService.$timeSlice, perform: { _ in
+                homeViewModel.timeSlice = dailyService.timeSliceResult
+            })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(onHomeEvent: { homeEvent in
@@ -88,16 +93,25 @@ struct HomeView: View {
     
     private func prepareProgressView() -> some View {
         VStack(alignment: .center, spacing: 8, content: {
-            ProgressView(value: 20, total: 100)
+            ProgressView(value: Float(dailyService.timeSlice), total: Float(dailyService.totalSlice))
                 .frame(width: 150)
                 .tint(.white)
                 .background(.white.opacity(0.3))
 
-            BoldTextView(style: .sfPro, title: "2h", size: 15)
+            BoldTextView(style: .sfPro, title: homeViewModel.timeSlice, size: 15)
         })
     }
 }
 
 #Preview {
     HomeView()
+}
+
+extension Double {
+  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute, .second, .nanosecond]
+    formatter.unitsStyle = style
+    return formatter.string(from: self) ?? ""
+  }
 }

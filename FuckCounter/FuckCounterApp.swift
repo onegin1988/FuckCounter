@@ -14,19 +14,16 @@ struct FuckCounterApp: App {
     @State private var isShowHome: Bool = false
     @State private var errorMessage: String?
     @StateObject var speechService = SpeechService()
+    @StateObject var dailyService = DailyService()
     @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
         WindowGroup {
             if isShowHome {
                 HomeView()
+                    .environmentObject(dailyService)
             } else {
                 SplashView()
-                    .onChange(of: scenePhase) { newPhase in
-                        if newPhase == .active {
-                            requestSpeechAuthorization()
-                        }
-                    }
                     .alertError(errorMessage: $errorMessage, useButtons: ("Settings", {
                         showSettings()
                     }))
@@ -34,6 +31,12 @@ struct FuckCounterApp: App {
                         setupSettings()
                     }
                     .environmentObject(speechService)
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                requestSpeechAuthorization()
+                dailyService.calculateDates()
             }
         }
     }
@@ -76,4 +79,6 @@ struct FuckCounterApp: App {
             }
         }
     }
+    
+    
 }
