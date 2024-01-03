@@ -26,6 +26,9 @@ class DailyService: ObservableObject {
     }
     
     func calculateTimeIntervals() {
+        guard let times = AppData.dailyKey?.times else { return }
+        
+        let www = times.reduce(0, {$1.endDate.timeIntervalSince($1.startDate)})
         
     }
     

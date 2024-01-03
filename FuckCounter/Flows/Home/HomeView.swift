@@ -35,7 +35,7 @@ struct HomeView: View {
                     
                     prepareProgressView()
                                         
-                    ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true) {
+                    ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
                         withAnimation {
                             homeViewModel.isPlay.toggle()
                         }
@@ -72,7 +72,7 @@ struct HomeView: View {
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
-            .modifier(HomeToolbarItemsModifiers(onHomeEvent: { homeEvent in
+            .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
                 self.homeEvent = homeEvent
             }))
             .ignoresSafeArea()
