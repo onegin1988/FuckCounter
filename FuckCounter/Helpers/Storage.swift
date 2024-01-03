@@ -42,4 +42,7 @@ struct AppData {
     
     @Storage(key: "dailyKey", defaultValue: nil)
     static var dailyKey: DailyModel?
+    
+    @Storage(key: "selectedWordsModel", defaultValue: WordsModel(id: 1, name: "Fuck"))
+    static var selectedWordsModel: WordsModel
 }

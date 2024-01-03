@@ -13,12 +13,16 @@ class HomeViewModel: ObservableObject {
     @Published var counter: Int
     @Published var isPlay: Bool
     @Published var timeSlice: String
+    @Published var isShowAppPush: Bool
+    private var countForAppPush: Int
     
     init() {
         self.level = .green
         self.counter = 0
         self.isPlay = false
         self.timeSlice = ""
+        self.countForAppPush = 0
+        self.isShowAppPush = false
     }
     
     // Test
@@ -36,6 +40,22 @@ class HomeViewModel: ObservableObject {
             default:
                 self.level = .green
             }
+        }
+    }
+    
+    func updateCountForAppPush() {
+        countForAppPush += 1
+        if countForAppPush >= 5 {
+            withAnimation {
+                isShowAppPush = true
+            }
+        }
+    }
+    
+    func resetCountForAppPush() {
+        countForAppPush = 0
+        withAnimation {
+            isShowAppPush = false
         }
     }
     

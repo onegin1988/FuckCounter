@@ -7,14 +7,24 @@
 
 import SwiftUI
 
+enum AppHardPushEvent {
+    case dismiss
+}
+
 struct AppHardPushView: View {
+    
+    private let event: ((AppHardPushEvent) -> Void)?
+    
+    init(event: ((AppHardPushEvent) -> Void)?) {
+        self.event = event
+    }
     
     var body: some View {
         ZStack {
             Color.black
                 .opacity(0.4)
             
-            ContainerAppHardPushView()
+            ContainerAppHardPushView(event: event)
                 .background(
                     RoundedRectangle(cornerRadius: 24)
                         .fill(.white)
@@ -30,15 +40,25 @@ extension AppHardPushView {
     
     struct ContainerAppHardPushView: View {
         
+        private let event: ((AppHardPushEvent) -> Void)?
+        
+        init(event: ((AppHardPushEvent) -> Void)?) {
+            self.event = event
+        }
+        
         var body: some View {
             ZStack {
                 VStack {
                     topHorizontalContainer()
                     descriptionAppView()
-                    ButtonView(title: "Get App")
+                    ButtonView(title: "Get App") {
+                        event?(.dismiss)
+                    }
                         .frame(height: 52)
                         .padding(.top, 32)
-                    ButtonView(title: "Later", useBG: false)
+                    ButtonView(title: "Later", useBG: false) {
+                        event?(.dismiss)
+                    }
                         .frame(height: 52)
                 }
             }
@@ -73,5 +93,7 @@ extension AppHardPushView {
 }
 
 #Preview {
-    AppHardPushView()
+    AppHardPushView { _ in
+        
+    }
 }

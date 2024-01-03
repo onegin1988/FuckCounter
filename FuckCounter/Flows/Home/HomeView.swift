@@ -15,6 +15,7 @@ struct HomeView: View {
     @State private var isOpenCongrats: Bool = false
     
     @EnvironmentObject var dailyService: DailyService
+    @Environment(\.scenePhase) var scenePhase
     
     private var isPushToView: Binding<Bool> {
         Binding(get: { homeEvent != nil }, set: { _ in homeEvent = nil } )
@@ -77,6 +78,21 @@ struct HomeView: View {
             }))
             .ignoresSafeArea()
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                homeViewModel.updateCountForAppPush()
+            }
+        }
+        .overlay(content: {
+            if homeViewModel.isShowAppPush {
+                AppHardPushView { event in
+                    switch event {
+                    case .dismiss:
+                        homeViewModel.resetCountForAppPush()
+                    }
+                }
+            }
+        })
     }
     
     private func prepareCounterWordsView() -> some View {

@@ -13,7 +13,7 @@ class FiltersViewModel: ObservableObject {
     @Published var list: [WordsModel]
     
     init() {
-        self.wordsModel = WordsModel(id: 1, name: "Fuck")
+        self.wordsModel = AppData.selectedWordsModel
         self.list = [
             WordsModel(id: 1, name: "Fuck"),
             WordsModel(id: 2, name: "Bitch"),

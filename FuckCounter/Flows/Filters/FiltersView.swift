@@ -26,6 +26,7 @@ struct FiltersView: View {
                 }
                 
                 Button {
+                    AppData.selectedWordsModel = filtersViewModel.wordsModel
                     dismiss()
                 } label: {
                     ZStack {
