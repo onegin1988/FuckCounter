@@ -37,6 +37,8 @@ struct FuckCounterApp: App {
             if newPhase == .active {
                 requestSpeechAuthorization()
                 dailyService.calculateDates()
+            } else if newPhase == .inactive {
+                dailyService.updateTimeInterval()
             }
         }
     }

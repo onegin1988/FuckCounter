@@ -19,17 +19,38 @@ class DailyService: ObservableObject {
     }
     
     func calculateDates() {
-        AppData.dailyKey?.updateDate = Date()
+        if Date() > (AppData.dailyKey?.endDate ?? Date()) {
+            AppData.dailyKey = DailyModel()
+        }
         
-        guard let updateDate = AppData.dailyKey?.updateDate, let startDate = AppData.dailyKey?.startDate else { return }
-        timeSlice = Int(updateDate.timeIntervalSince(startDate))
+        appendTimeInterval()
+        
+        calculateTimeIntervals()
+    }
+    
+    func appendTimeInterval() {
+        AppData.dailyKey?.times.append(TimeModel())
+    }
+    
+    func updateTimeInterval() {
+        guard let lastTime = AppData.dailyKey?.times.last,
+              let index = AppData.dailyKey?.times.firstIndex(where: {$0.id == lastTime.id}) else { return }
+        
+        if !lastTime.isUpdate {
+            AppData.dailyKey?.times[index].endDate = Date()
+            AppData.dailyKey?.times[index].isUpdate = true
+        }
     }
     
     func calculateTimeIntervals() {
         guard let times = AppData.dailyKey?.times else { return }
+        var count = 0
         
-        let www = times.reduce(0, {$1.endDate.timeIntervalSince($1.startDate)})
+        for time in times where time.isUpdate == true {
+            count += Int(time.endDate.timeIntervalSince(time.startDate))
+        }
         
+        timeSlice = count
     }
     
     var totalSlice: Int {
@@ -62,9 +83,11 @@ class DailyService: ObservableObject {
     }
     
     var timeSliceResult: String {
-        if days > 0 {  return "\(days)d" }
+//        if days > 0 {  return "\(days)d" }
+        if hours > 0 && minutes > 0 { return "\(hours):\(minutes)h" }
         if hours > 0 { return "\(hours)h" }
-        if minutes > 0 { return "\(minutes)m" }
-        return "\(seconds)s"
+        
+        if minutes > 0 { return "\(minutes)min" }
+        return "\(seconds)sec"
     }
 }
