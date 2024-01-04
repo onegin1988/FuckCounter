@@ -25,22 +25,22 @@ class HomeViewModel: ObservableObject {
         self.isShowAppPush = false
     }
     
-    // Test
-    func checkCounter() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.counter += 6
-            
-            switch self.counter {
-            case 0...5:
-                self.level = .green
-            case 6...15:
-                self.level = .orange
-            case 16...:
-                self.level = .red
-            default:
-                self.level = .green
-            }
+    func checkLevel() {
+        switch self.counter {
+        case 0...5:
+            self.level = .green
+        case 6...15:
+            self.level = .orange
+        case 16...:
+            self.level = .red
+        default:
+            self.level = .green
         }
+    }
+    
+    func resetCounter() {
+        counter = 0
+        checkLevel()
     }
     
     func updateCountForAppPush() {

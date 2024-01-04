@@ -32,14 +32,16 @@ enum SpeechServiceError: LocalizedError {
 class SpeechService: ObservableObject {
     
     let audioEngine = AVAudioEngine()
-    let speechRecognizer = SFSpeechRecognizer()
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     @Published var isRecording: Bool
     @Published var error: Error?
+    @Published var isSameWord: Bool
     
     init() {
         self.isRecording = false
+        self.isSameWord = false
     }
     
     func requestSpeechAuthorization() async -> SFSpeechRecognizerAuthorizationStatus {
@@ -54,7 +56,7 @@ class SpeechService: ObservableObject {
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+        node.installTap(onBus: 0, bufferSize: 2048, format: recordingFormat) { buffer, _ in
             self.request.append(buffer)
         }
         
@@ -62,6 +64,7 @@ class SpeechService: ObservableObject {
         
         do {
             try audioEngine.start()
+            isRecording = true
         } catch {
             self.error = SpeechServiceError.audioEngineError
             return
@@ -69,24 +72,46 @@ class SpeechService: ObservableObject {
 
         guard let myRecognizer = SFSpeechRecognizer() else {
             self.error = SpeechServiceError.speechRecognitionError
+            self.isRecording = false
             return
         }
 
         if !myRecognizer.isAvailable {
             self.error = SpeechServiceError.speechAvailableError
+            self.isRecording = false
             return
         }
 
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let error = error {
                 self.error = error
+                self.isRecording = false
+                return
+            }
+            
+            if !self.isRecording {
                 return
             }
             
             guard let result = result else { return }
             
             let bestString = result.bestTranscription.formattedString
-            debugPrint(bestString)
+            
+            let clean = bestString.filter{ $0.isLetter || $0.isWhitespace }
+            
+            if let lastIndex = clean.lastIndex(of: " "), 
+                let index = clean.index(lastIndex, offsetBy: 1, limitedBy: clean.index(before: clean.endIndex)) {
+                let lastWord = clean[index...]
+                
+                debugPrint(lastWord)
+                if lastWord.lowercased() == AppData.selectedWordsModel.name.lowercased() {
+                    self.isSameWord = true
+                }
+            } else {
+                if bestString.lowercased() == AppData.selectedWordsModel.name.lowercased() {
+                    self.isSameWord = true
+                }
+            }
         })
     }
     
@@ -97,5 +122,7 @@ class SpeechService: ObservableObject {
         request.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
+        isRecording = false
+        isSameWord = false
     }
 }

@@ -15,6 +15,7 @@ struct HomeView: View {
     @State private var isOpenCongrats: Bool = false
     
     @EnvironmentObject var dailyService: DailyService
+    @EnvironmentObject var speechService: SpeechService
     @Environment(\.scenePhase) var scenePhase
     
     private var isPushToView: Binding<Bool> {
@@ -38,7 +39,12 @@ struct HomeView: View {
                                         
                     ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
                         withAnimation {
-                            homeViewModel.isPlay.toggle()
+                            if homeViewModel.isPlay {
+                                speechService.cancelRecording()
+                                isOpenCongrats = true
+                            } else {
+                                speechService.recordAndRecognizeSpeech()
+                            }
                         }
                     }
                     .frame(width: homeViewModel.isPlayState.2, height: 56)
@@ -49,8 +55,14 @@ struct HomeView: View {
                         .padding(.bottom, 95)
                 })
                 
-                BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) {
-                    CongratsView()
+                BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) { isOpen in
+                    if !isOpen {
+                        homeViewModel.resetCounter()
+                    }
+                } content: {
+                    if isOpenCongrats {
+                        CongratsView(title: "Congrats, Your Result is:", subTitle: "\(homeViewModel.counter) bad words")
+                    }
                 }
             }
             .navigationDestination(isPresented: isPushToView, destination: {
@@ -65,11 +77,17 @@ struct HomeView: View {
                     EmptyView()
                 }
             })
-            .onFirstAppear {
-                homeViewModel.checkCounter()
-            }
             .onReceive(dailyService.$timeSlice, perform: { _ in
                 homeViewModel.timeSlice = dailyService.timeSliceResult
+            })
+            .onReceive(speechService.$isRecording, perform: { isRecording in
+                homeViewModel.isPlay = speechService.isRecording
+            })
+            .onReceive(speechService.$isSameWord, perform: { isSameWord in
+                if isSameWord {
+                    homeViewModel.counter += 1
+                    homeViewModel.checkLevel()
+                }
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))

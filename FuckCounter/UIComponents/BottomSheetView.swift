@@ -19,6 +19,7 @@ struct BottomSheetView<Content: View>: View {
     
     let maxHeight: CGFloat
     let minHeight: CGFloat
+    let bottomSheetHandler: ((Bool) -> Void)?
     let content: Content
     
     @GestureState private var translation: CGFloat = 0
@@ -27,9 +28,10 @@ struct BottomSheetView<Content: View>: View {
         isOpen ? 0 : maxHeight - minHeight
     }
     
-    init(isOpen: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
+    init(isOpen: Binding<Bool>, maxHeight: CGFloat, bottomSheetHandler: ((Bool) -> Void)? = nil, @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
         self.maxHeight = maxHeight
+        self.bottomSheetHandler = bottomSheetHandler
         self.content = content()
         self._isOpen = isOpen
     }
@@ -54,6 +56,7 @@ struct BottomSheetView<Content: View>: View {
                         return
                     }
                     self.isOpen = value.translation.height < 0
+                    bottomSheetHandler?(self.isOpen)
                 }
             )
         }
@@ -62,7 +65,7 @@ struct BottomSheetView<Content: View>: View {
 
 #Preview {
     BottomSheetView(isOpen: .constant(false), maxHeight: 375) {
-        CongratsView()
+        CongratsView(title: "", subTitle: "")
     }
     .ignoresSafeArea()
 }

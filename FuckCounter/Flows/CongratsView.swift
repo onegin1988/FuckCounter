@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct CongratsView: View {
+    
+    private let title: String
+    private let subTitle: String
+    
+    init(title: String, subTitle: String) {
+        self.title = title
+        self.subTitle = subTitle
+    }
+    
     var body: some View {
         ZStack(alignment: .top, content: {
             Colors._2B1011
@@ -54,7 +63,7 @@ struct CongratsView: View {
         VStack(alignment: .center, spacing: 16) {
             MediumTextView(
                 style: .sfPro,
-                title: "Congrat’s, you’re King of\nBad Words today!",
+                title: title,//"Congrat’s, you’re King of\nBad Words today!",
                 size: 21,
                 color: Color(red: 0.949, green: 0.949, blue: 0.949)
             )
@@ -62,7 +71,7 @@ struct CongratsView: View {
             
             BoldTextView(
                 style: .sfPro,
-                title: "14,254",
+                title: subTitle,//"14,254",
                 size: 19,
                 color: Color(red: 0.704, green: 0.704, blue: 0.704)
             )
@@ -71,5 +80,5 @@ struct CongratsView: View {
 }
 
 #Preview {
-    CongratsView()
+    CongratsView(title: "", subTitle: "")
 }

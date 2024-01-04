@@ -22,6 +22,7 @@ struct FuckCounterApp: App {
             if isShowHome {
                 HomeView()
                     .environmentObject(dailyService)
+                    .environmentObject(speechService)
             } else {
                 SplashView()
                     .alertError(errorMessage: $errorMessage, useButtons: ("Settings", {
