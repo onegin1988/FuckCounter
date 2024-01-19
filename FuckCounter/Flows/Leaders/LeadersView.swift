@@ -81,7 +81,7 @@ private extension LeadersView {
         
         var body: some View {
             ZStack {
-                BoldTextView(style: .gilroy, title: title, size: 13, color: isSelected ? .white : .white.opacity(0.5))
+                BoldTextView(style: .lato, title: title, size: 13, color: isSelected ? .white : .white.opacity(0.5))
                     .frame(height: 20)
                     .padding(.bottom, 4)
                     .overlay(alignment: .bottom) {
@@ -132,20 +132,20 @@ private extension LeadersView {
         var body: some View {
             ZStack {
                 HStack(alignment: .center, spacing: 6, content: {
-                    BoldTextView(style: .gilroy, title: "\(index)", size: 13)
+                    BoldTextView(style: .lato, title: "\(index)", size: 13)
                     
                     Circle()
                         .frame(width: 40, height: 40)
                         .padding(.leading, 8)
                     
-                    RegularTextView(style: .gilroy, title: userModel.name, size: 15)
+                    RegularTextView(style: .lato, title: userModel.name, size: 17)
                         .padding(.leading, 2)
                     
                     Spacer()
                     
-                    BoldTextView(style: .gilroy, title: "\(userModel.winCount)", size: 13)
+                    BoldTextView(style: .lato, title: "\(userModel.winCount)", size: 15)
                     
-                    BoldTextView(style: .gilroy, title: "\(userModel.points)", size: 13)
+                    BoldTextView(style: .lato, title: "\(userModel.points)", size: 15)
                         .frame(width: 70, alignment: .trailing)
                 })
             }

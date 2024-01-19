@@ -15,12 +15,13 @@ protocol FontType {
 }
 
 enum FontStyle: FontType {
-    case gilroy, sfPro
+    case gilroy, sfPro, lato
     
     func semibold(size: CGFloat) -> Font {
         switch self {
         case .gilroy: return .custom("Gilroy-SemiBold", size: size)
         case .sfPro: return .custom("SFProDisplay-Semibold", size: size)
+        default: return .custom("Gilroy-SemiBold", size: size)
         }
     }
 
@@ -28,6 +29,7 @@ enum FontStyle: FontType {
         switch self {
         case .gilroy: return .custom("Gilroy-Bold", size: size)
         case .sfPro: return .custom("SFProDisplay-Bold", size: size)
+        case .lato: return .custom("Lato-Bold", size: size)
         }
     }
     
@@ -35,6 +37,7 @@ enum FontStyle: FontType {
         switch self {
         case .gilroy: return .custom("Gilroy-Regular", size: size)
         case .sfPro: return .custom("SFProDisplay-Regular", size: size)
+        case .lato: return .custom("Lato-Regular", size: size)
         }
     }
         
@@ -42,6 +45,7 @@ enum FontStyle: FontType {
         switch self {
         case .gilroy: return .custom("Gilroy-Medium", size: size)
         case .sfPro: return .custom("SFProDisplay-Medium", size: size)
+        default: return .custom("Gilroy-Medium", size: size)
         }
     }
 }

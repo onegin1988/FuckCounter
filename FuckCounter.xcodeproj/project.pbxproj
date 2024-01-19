@@ -12,6 +12,8 @@
 		1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */; };
 		1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877B2B0A7AE80020C4AB /* SplashView.swift */; };
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
+		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
+		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -67,6 +69,8 @@
 		1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbarItemsModifiers.swift; sourceTree = "<group>"; };
 		1F21877B2B0A7AE80020C4AB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
+		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -155,6 +159,15 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
+		1F39C08D2B5B1CC200A00420 /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */,
+				1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 		1F62A25F2B211C9F00FE2918 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1F39C08D2B5B1CC200A00420 /* Lato */,
 				1F62A2692B211F7100FE2918 /* Gilroy */,
 				1F62A2602B211CA800FE2918 /* SFPro */,
 			);
@@ -414,8 +428,10 @@
 				1F9D659F2B0A46490011F18B /* Preview Assets.xcassets in Resources */,
 				1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */,
 				1F62A26B2B211F9200FE2918 /* Gilroy-Bold.ttf in Resources */,
+				1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */,
 				1F62A2662B211E3700FE2918 /* SFProDisplay-Regular.ttf in Resources */,
 				1F62A2622B211DED00FE2918 /* SFProDisplay-Bold.ttf in Resources */,
+				1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */,
 				1F62A2642B211E0500FE2918 /* SFProDisplay-Medium.ttf in Resources */,
 				1F62A2732B211FCA00FE2918 /* SFProDisplay-Semibold.ttf in Resources */,
 			);
@@ -601,7 +617,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -640,7 +656,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
