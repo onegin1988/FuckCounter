@@ -45,4 +45,18 @@ struct AppData {
     
     @Storage(key: "selectedWordsModel", defaultValue: WordsModel(id: 1, name: "Fuck"))
     static var selectedWordsModel: WordsModel
+    
+    @Storage(key: "selectedLanguageModel", defaultValue: checkLanguage())
+    static var selectedLanguageModel: LanguageModel
+    
+    static func checkLanguage() -> LanguageModel {
+        switch Locale.preferredLanguages[0].prefix(2) {
+        case "en": return LanguageModel(id: 1, name: "English", languageCode: "en")
+        case "de": return LanguageModel(id: 2, name: "Deutch", languageCode: "de")
+        case "fr": return LanguageModel(id: 3, name: "France", languageCode: "fr")
+        case "uk": return LanguageModel(id: 4, name: "Ukrainian", languageCode: "uk")
+        case "ru": return LanguageModel(id: 5, name: "Russian", languageCode: "ru")
+        default: return LanguageModel(id: 1, name: "English", languageCode: "en")
+        }
+    }
 }

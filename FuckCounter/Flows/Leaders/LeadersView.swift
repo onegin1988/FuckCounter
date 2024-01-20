@@ -13,7 +13,7 @@ struct LeadersView: View {
     @Environment(\.safeAreaInsets) var safeAreaInsets
     private let navTitle: String?
     
-    init(navTitle: String?) {
+    init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
     
@@ -27,7 +27,8 @@ struct LeadersView: View {
             .padding(.top, safeAreaInsets.top + 64)
             .modifier(NavBarModifiers(title: navTitle))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .modifier(GradientModifiers(style: .green))
+            .modifier(GradientModifiers(style: .red,
+                                        useBlackOpacity: true))
             .ignoresSafeArea()
         }
     }

@@ -1,44 +1,29 @@
 //
-//  FiltersView.swift
+//  LanguagesView.swift
 //  FuckCounter
 //
-//  Created by Alex on 06.12.2023.
+//  Created by Alex on 20.01.2024.
 //
 
 import SwiftUI
 
-struct FiltersView: View {
+struct LanguagesView: View {
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     @Environment(\.dismiss) var dismiss
-    @StateObject var filtersViewModel = FiltersViewModel()
+    @StateObject var languagesViewModel = LanguagesViewModel()
     private let navTitle: String?
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
-                    listView()
+                    makeLanguagesListView()
                 }
-                
-                Button {
-                    AppData.selectedWordsModel = filtersViewModel.wordsModel
-                    dismiss()
-                } label: {
-                    ZStack {
-                        Colors._FFDD64
-                        SemiboldTextView(style: .gilroy, title: "Allow filters", size: 17, color: .black)
-                    }
-                    .cornerRadius(14)
-                }
-                .frame(height: 52)
-                .padding(.top, 16)
-                .padding(.horizontal, 16)
-                .padding(.bottom, 37)
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -49,16 +34,15 @@ struct FiltersView: View {
         }
     }
     
-    
-    private func listView() -> some View {
+    private func makeLanguagesListView() -> some View {
         Section {
             LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(filtersViewModel.list, id: \.id) { element in
+                ForEach(languagesViewModel.list, id: \.id) { element in
                     ListItemRowView(title: element.name,
-                                    isChecked: element.id == filtersViewModel.wordsModel.id)
-                    .onTapGesture {
-                        filtersViewModel.wordsModel = element
-                    }
+                                    isChecked: element.id == languagesViewModel.languageModel.id)
+                        .onTapGesture {
+                            languagesViewModel.languageModel = element
+                        }
                 }
             }
             .background(
@@ -69,7 +53,7 @@ struct FiltersView: View {
             )
             .cornerRadius(24)
         } header: {
-            SectionHeaderView(title: "Bad words")
+            SectionHeaderView(title: "Language".uppercased())
         }
         .padding(.horizontal, 16)
         .padding(.top, safeAreaInsets.top + 64)
@@ -77,5 +61,5 @@ struct FiltersView: View {
 }
 
 #Preview {
-    FiltersView(navTitle: "Test")
+    LanguagesView()
 }

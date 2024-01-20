@@ -11,10 +11,9 @@ struct SettingsView: View {
     
     @StateObject var settingsViewModel = SettingsViewModel()
     @Environment(\.safeAreaInsets) var safeAreaInsets
-    
     private let navTitle: String?
     
-    init(navTitle: String?) {
+    init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
     

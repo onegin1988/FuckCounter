@@ -14,6 +14,11 @@
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
+		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
+		1F39C0962B5C25BB00A00420 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */; };
+		1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0972B5C419500A00420 /* LanguageModel.swift */; };
+		1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */; };
+		1F39C09C2B5C565500A00420 /* ListItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09B2B5C565500A00420 /* ListItemRowView.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -71,6 +76,11 @@
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
+		1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		1F39C0972B5C419500A00420 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewModel.swift; sourceTree = "<group>"; };
+		1F39C09B2B5C565500A00420 /* ListItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemRowView.swift; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -148,6 +158,7 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1F39C0922B5C1A8800A00420 /* Languages */,
 				1FA6E5222B3239CE0009DB9D /* AppHardPush */,
 				1FBE446C2B26500700513401 /* Settings */,
 				1FBE44672B24B8AB00513401 /* Leaders */,
@@ -166,6 +177,15 @@
 				1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		1F39C0922B5C1A8800A00420 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				1F39C0932B5C1AA100A00420 /* LanguagesView.swift */,
+				1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */,
+			);
+			path = Languages;
 			sourceTree = "<group>";
 		};
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
@@ -207,6 +227,8 @@
 				1FBE44772B27378200513401 /* BottomSheetView.swift */,
 				1FBA822E2B2A508D0032BEA9 /* ShareView.swift */,
 				1F9933F62B370BC8005C223F /* ButtonView.swift */,
+				1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */,
+				1F39C09B2B5C565500A00420 /* ListItemRowView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -297,6 +319,7 @@
 				1FBE446A2B25F5A900513401 /* UserModel.swift */,
 				1FBE446D2B26517000513401 /* AppsModel.swift */,
 				1F9933F82B385247005C223F /* DailyModel.swift */,
+				1F39C0972B5C419500A00420 /* LanguageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -468,22 +491,27 @@
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
+				1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */,
 				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
 				1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
 				1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
+				1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 				1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */,
+				1F39C09C2B5C565500A00420 /* ListItemRowView.swift in Sources */,
 				1F9933F92B385247005C223F /* DailyModel.swift in Sources */,
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,
+				1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
 				1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */,
 				1FBE44562B220BAB00513401 /* MediumTextView.swift in Sources */,
 				1FBE44742B2656D200513401 /* AppsListRow.swift in Sources */,
+				1F39C0962B5C25BB00A00420 /* SectionHeaderView.swift in Sources */,
 				1FBE44702B2651EC00513401 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
