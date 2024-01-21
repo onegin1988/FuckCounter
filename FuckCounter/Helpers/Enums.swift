@@ -19,6 +19,16 @@ enum HomeEvent: String, Hashable {
     }
 }
 
+enum FiltersEvent: String, Hashable {
+    case languages
+    
+    var title: String {
+        switch self {
+        case .languages: return "Languages"
+        }
+    }
+}
+
 enum Level: String {
     case green
     case orange

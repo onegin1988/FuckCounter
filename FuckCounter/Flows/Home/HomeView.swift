@@ -71,6 +71,7 @@ struct HomeView: View {
                     SettingsView(navTitle: homeEvent?.title)
                 case .filters:
                     FiltersView(navTitle: homeEvent?.title)
+                        .environmentObject(speechService)
                 case .leaders:
                     LeadersView(navTitle: homeEvent?.title)
                 case nil:

@@ -9,10 +9,27 @@ import SwiftUI
 
 struct FiltersView: View {
     
+    struct FiltersConstants {
+        static let listItemHeight: CGFloat = 64
+        static let sectionRadius: CGFloat = 24
+        static let buttonHeight: CGFloat = 52
+        static let padding: CGFloat = 16
+    }
+    
     @Environment(\.safeAreaInsets) var safeAreaInsets
     @Environment(\.dismiss) var dismiss
+    
+    @EnvironmentObject var speechService: SpeechService
+    
     @StateObject var filtersViewModel = FiltersViewModel()
+    
+    @State private var filtersEvent: FiltersEvent?
+    
     private let navTitle: String?
+    
+    private var isPushToView: Binding<Bool> {
+        Binding(get: { filtersEvent != nil }, set: { _ in filtersEvent = nil } )
+    }
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
@@ -25,20 +42,22 @@ struct FiltersView: View {
                     listView()
                 }
                 
-                Button {
+                ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
                     AppData.selectedWordsModel = filtersViewModel.wordsModel
+                    AppData.selectedLanguageModel = filtersViewModel.languageModel
+                    
+                    speechService.updateSpeechLocale()
+                    
                     dismiss()
-                } label: {
-                    ZStack {
-                        Colors._FFDD64
-                        SemiboldTextView(style: .gilroy, title: "Allow filters", size: 17, color: .black)
-                    }
-                    .cornerRadius(14)
                 }
-                .frame(height: 52)
-                .padding(.top, 16)
-                .padding(.horizontal, 16)
-                .padding(.bottom, 37)
+                .frame(height: FiltersConstants.buttonHeight)
+                .padding(
+                    EdgeInsets(
+                        top: FiltersConstants.padding,
+                        leading: FiltersConstants.padding,
+                        bottom: 37,
+                        trailing: FiltersConstants.padding)
+                )
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,32 +66,78 @@ struct FiltersView: View {
             .modifier(NavBarModifiers(title: navTitle))
             .ignoresSafeArea()
         }
+        .navigationDestination(isPresented: isPushToView, destination: {
+            switch filtersEvent {
+            case .languages:
+                LanguagesView(navTitle: filtersEvent?.title)
+                    .environmentObject(filtersViewModel)
+            case nil:
+                EmptyView()
+            }
+        })
     }
     
-    
     private func listView() -> some View {
+        LazyVStack(spacing: 0, content: {
+            setupWordsSectionView()
+            Spacer(minLength: 44)
+            setupLanguageSectionView()
+        })
+        .padding(.horizontal, 16)
+        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
+    }
+    
+    private func setupWordsSectionView() -> some View {
         Section {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(filtersViewModel.list, id: \.id) { element in
-                    ListItemRowView(title: element.name,
-                                    isChecked: element.id == filtersViewModel.wordsModel.id)
-                    .onTapGesture {
-                        filtersViewModel.wordsModel = element
+            VStack {
+                ForEach(Array(filtersViewModel.list.enumerated()), id: \.offset) { index, element in
+                    if element.isCustom {
+                        ListItemArrowView(title: element.name)
+                            .frame(height: FiltersConstants.listItemHeight)
+                            .onTapGesture {
+//                                filtersEvent = .languages
+                            }
+                    } else {
+                        ListItemCheckView(title: element.name,
+                                          isChecked: element.id == filtersViewModel.wordsModel.id)
+                        .frame(height: FiltersConstants.listItemHeight)
+                        .padding(.top, index == 0 ? 10 : 0)
+                        .onTapGesture {
+                            filtersViewModel.wordsModel = element
+                        }
                     }
                 }
             }
             .background(
-                ZStack {
-                    Colors._6D6D7A.opacity(0.3)
-                    Color.black.opacity(0.2)
-                }
+                Color.black.opacity(0.2)
             )
-            .cornerRadius(24)
+            .cornerRadius(FiltersConstants.sectionRadius)
         } header: {
-            SectionHeaderView(title: "Bad words")
+            setupHeaderView("Bad words")
         }
-        .padding(.horizontal, 16)
-        .padding(.top, safeAreaInsets.top + 64)
+    }
+        
+    private func setupLanguageSectionView() -> some View {
+        Section {
+            ListItemArrowView(title: filtersViewModel.languageModel.name)
+                .frame(height: FiltersConstants.listItemHeight)
+                .padding(.top, 5)
+                .background(
+                    Color.black.opacity(0.2)
+                )
+                .cornerRadius(FiltersConstants.sectionRadius)
+                .onTapGesture {
+                    filtersEvent = .languages
+                }
+        } header: {
+            setupHeaderView("Language")
+        }
+    }
+    
+    private func setupHeaderView(_ title: String) -> some View {
+        SectionHeaderView(title: title)
+            .frame(height: 18)
+            .padding(.bottom, 8)
     }
 }
 

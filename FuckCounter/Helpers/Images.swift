@@ -32,4 +32,5 @@ struct Images {
     static let crown_2 = Image("crown_2")
     static let play = Image("play")
     static let stop = Image("stop")
+    static let chevronRight = Image("chevronRight")
 }

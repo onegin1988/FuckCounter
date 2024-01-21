@@ -30,7 +30,7 @@ struct FuckCounterApp: App {
                     }))
                     .onFirstAppear {
                         setupSettings()
-                        debugPrint(Locale.preferredLanguages[0].prefix(2))
+                        debugPrint(Locale.preferredLanguages[0])
                     }
                     .environmentObject(speechService)
             }

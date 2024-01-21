@@ -18,7 +18,8 @@
 		1F39C0962B5C25BB00A00420 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */; };
 		1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0972B5C419500A00420 /* LanguageModel.swift */; };
 		1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */; };
-		1F39C09C2B5C565500A00420 /* ListItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09B2B5C565500A00420 /* ListItemRowView.swift */; };
+		1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */; };
+		1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -80,7 +81,8 @@
 		1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		1F39C0972B5C419500A00420 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewModel.swift; sourceTree = "<group>"; };
-		1F39C09B2B5C565500A00420 /* ListItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemRowView.swift; sourceTree = "<group>"; };
+		1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCheckView.swift; sourceTree = "<group>"; };
+		1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemArrowView.swift; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -228,7 +230,8 @@
 				1FBA822E2B2A508D0032BEA9 /* ShareView.swift */,
 				1F9933F62B370BC8005C223F /* ButtonView.swift */,
 				1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */,
-				1F39C09B2B5C565500A00420 /* ListItemRowView.swift */,
+				1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */,
+				1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
+				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
@@ -501,7 +505,7 @@
 				1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 				1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */,
-				1F39C09C2B5C565500A00420 /* ListItemRowView.swift in Sources */,
+				1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */,
 				1F9933F92B385247005C223F /* DailyModel.swift in Sources */,
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,

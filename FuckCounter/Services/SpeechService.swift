@@ -32,7 +32,7 @@ enum SpeechServiceError: LocalizedError {
 class SpeechService: ObservableObject {
     
     let audioEngine = AVAudioEngine()
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     @Published var isRecording: Bool
@@ -42,6 +42,10 @@ class SpeechService: ObservableObject {
     init() {
         self.isRecording = false
         self.isSameWord = false
+    }
+    
+    func updateSpeechLocale() {
+        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
     }
     
     func requestSpeechAuthorization() async -> SFSpeechRecognizerAuthorizationStatus {

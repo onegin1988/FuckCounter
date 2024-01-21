@@ -30,8 +30,7 @@ struct NavBarModifiers: ViewModifier {
                 
                 ToolbarItem(placement: .principal) {
                     if let title = title {
-                        Text(title)
-                            .foregroundStyle(.white)
+                        SemiboldTextView(style: .gilroy, title: title, size: 17)
                     }
                 }
             }

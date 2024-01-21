@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListItemRowView: View {
+struct ListItemCheckView: View {
     
     private let title: String
     private let isChecked: Bool
@@ -49,5 +49,5 @@ struct ListItemRowView: View {
 }
 
 #Preview {
-    ListItemRowView(title: "Test", isChecked: true)
+    ListItemCheckView(title: "Test", isChecked: true)
 }
