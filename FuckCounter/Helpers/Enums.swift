@@ -21,10 +21,12 @@ enum HomeEvent: String, Hashable {
 
 enum FiltersEvent: String, Hashable {
     case languages
+    case customWord
     
     var title: String {
         switch self {
         case .languages: return "Languages"
+        case .customWord: return "Custom Word"
         }
     }
 }

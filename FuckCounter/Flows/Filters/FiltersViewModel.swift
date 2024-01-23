@@ -12,10 +12,12 @@ class FiltersViewModel: ObservableObject {
     @Published var wordsModel: WordsModel
     @Published var languageModel: LanguageModel
     @Published var list: [WordsModel]
+    @Published var customWord: String
     
     init() {
         self.wordsModel = AppData.selectedWordsModel
         self.languageModel = AppData.selectedLanguageModel
+        self.customWord = ""
         self.list = [
             WordsModel(id: 1, name: "Fuck"),
             WordsModel(id: 2, name: "Bitch"),

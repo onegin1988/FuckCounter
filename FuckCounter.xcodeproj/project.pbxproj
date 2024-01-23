@@ -12,6 +12,7 @@
 		1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */; };
 		1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877B2B0A7AE80020C4AB /* SplashView.swift */; };
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
+		1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
@@ -20,6 +21,7 @@
 		1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */; };
 		1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */; };
 		1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */; };
+		1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0A02B6067C500A00420 /* CustomWordView.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -75,6 +77,7 @@
 		1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbarItemsModifiers.swift; sourceTree = "<group>"; };
 		1F21877B2B0A7AE80020C4AB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
+		1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPublishers.swift; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewModel.swift; sourceTree = "<group>"; };
 		1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCheckView.swift; sourceTree = "<group>"; };
 		1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemArrowView.swift; sourceTree = "<group>"; };
+		1F39C0A02B6067C500A00420 /* CustomWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordView.swift; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1F39C09F2B6067B400A00420 /* CustomWord */,
 				1F39C0922B5C1A8800A00420 /* Languages */,
 				1FA6E5222B3239CE0009DB9D /* AppHardPush */,
 				1FBE446C2B26500700513401 /* Settings */,
@@ -170,6 +175,14 @@
 				1FBE44792B27582600513401 /* CongratsView.swift */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		1F3304B52B606F5B00F4D5B9 /* Publishers */ = {
+			isa = PBXGroup;
+			children = (
+				1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */,
+			);
+			path = Publishers;
 			sourceTree = "<group>";
 		};
 		1F39C08D2B5B1CC200A00420 /* Lato */ = {
@@ -188,6 +201,14 @@
 				1F39C0992B5C52EE00A00420 /* LanguagesViewModel.swift */,
 			);
 			path = Languages;
+			sourceTree = "<group>";
+		};
+		1F39C09F2B6067B400A00420 /* CustomWord */ = {
+			isa = PBXGroup;
+			children = (
+				1F39C0A02B6067C500A00420 /* CustomWordView.swift */,
+			);
+			path = CustomWord;
 			sourceTree = "<group>";
 		};
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
@@ -375,6 +396,7 @@
 		1FDA1A352B0A5691009E3EAC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1F3304B52B606F5B00F4D5B9 /* Publishers */,
 				1FBE44642B23B41D00513401 /* Environment */,
 				1F2187742B0A70D90020C4AB /* ViewModifiers */,
 				1FDA1A362B0A56A2009E3EAC /* Colors.swift */,
@@ -471,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */,
+				1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */,
 				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
 				1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */,
@@ -510,6 +533,7 @@
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,
 				1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */,
+				1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
 				1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */,

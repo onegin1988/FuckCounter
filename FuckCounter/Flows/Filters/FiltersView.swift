@@ -71,6 +71,9 @@ struct FiltersView: View {
             case .languages:
                 LanguagesView(navTitle: filtersEvent?.title)
                     .environmentObject(filtersViewModel)
+            case .customWord:
+                CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersEvent?.title)
+                    .environmentObject(filtersViewModel)
             case nil:
                 EmptyView()
             }
@@ -95,7 +98,7 @@ struct FiltersView: View {
                         ListItemArrowView(title: element.name)
                             .frame(height: FiltersConstants.listItemHeight)
                             .onTapGesture {
-//                                filtersEvent = .languages
+                                filtersEvent = .customWord
                             }
                     } else {
                         ListItemCheckView(title: element.name,
