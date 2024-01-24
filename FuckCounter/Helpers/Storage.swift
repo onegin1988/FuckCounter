@@ -46,6 +46,9 @@ struct AppData {
     @Storage(key: "selectedWordsModel", defaultValue: WordsModel(id: 1, name: "Fuck"))
     static var selectedWordsModel: WordsModel
     
+    @Storage(key: "customWord", defaultValue: "")
+    static var customWord: String
+    
     @Storage(key: "selectedLanguageModel", defaultValue: checkLanguage())
     static var selectedLanguageModel: LanguageModel
     

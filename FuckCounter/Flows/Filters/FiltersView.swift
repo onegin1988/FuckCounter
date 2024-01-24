@@ -45,6 +45,7 @@ struct FiltersView: View {
                 ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
                     AppData.selectedWordsModel = filtersViewModel.wordsModel
                     AppData.selectedLanguageModel = filtersViewModel.languageModel
+                    AppData.customWord = filtersViewModel.customWord
                     
                     speechService.updateSpeechLocale()
                     
@@ -58,6 +59,9 @@ struct FiltersView: View {
                         bottom: 37,
                         trailing: FiltersConstants.padding)
                 )
+            }
+            .onAppear {
+                filtersViewModel.updateBadWordsList()
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -95,7 +99,7 @@ struct FiltersView: View {
             VStack {
                 ForEach(Array(filtersViewModel.list.enumerated()), id: \.offset) { index, element in
                     if element.isCustom {
-                        ListItemArrowView(title: element.name)
+                        ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
                             .frame(height: FiltersConstants.listItemHeight)
                             .onTapGesture {
                                 filtersEvent = .customWord

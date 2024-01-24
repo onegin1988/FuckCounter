@@ -13,6 +13,7 @@
 		1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877B2B0A7AE80020C4AB /* SplashView.swift */; };
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
 		1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */; };
+		1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
@@ -78,6 +79,7 @@
 		1F21877B2B0A7AE80020C4AB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPublishers.swift; sourceTree = "<group>"; };
+		1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordViewModel.swift; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				1F39C0A02B6067C500A00420 /* CustomWordView.swift */,
+				1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */,
 			);
 			path = CustomWord;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
+				1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */,
 				1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
 				1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */,

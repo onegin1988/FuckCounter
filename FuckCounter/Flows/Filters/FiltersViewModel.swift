@@ -17,12 +17,16 @@ class FiltersViewModel: ObservableObject {
     init() {
         self.wordsModel = AppData.selectedWordsModel
         self.languageModel = AppData.selectedLanguageModel
-        self.customWord = ""
+        self.customWord = AppData.customWord
+        self.list = []
+    }
+    
+    func updateBadWordsList() {
         self.list = [
             WordsModel(id: 1, name: "Fuck"),
             WordsModel(id: 2, name: "Bitch"),
             WordsModel(id: 3, name: "Freak"),
-            WordsModel(id: 4, name: "Custom", isCustom: true)
+            WordsModel(id: 4, name: customWord.isEmpty ? "Custom" : customWord, isCustom: customWord.isEmpty)
         ]
     }
 }
