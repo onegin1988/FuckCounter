@@ -23,12 +23,11 @@ struct FiltersView: View {
     
     @StateObject var filtersViewModel = FiltersViewModel()
     
-    @State private var filtersEvent: FiltersEvent?
-    
     private let navTitle: String?
     
     private var isPushToView: Binding<Bool> {
-        Binding(get: { filtersEvent != nil }, set: { _ in filtersEvent = nil } )
+        Binding(get: { filtersViewModel.filtersEvent != nil },
+                set: { _ in filtersViewModel.filtersEvent = nil } )
     }
     
     init(navTitle: String? = nil) {
@@ -71,12 +70,12 @@ struct FiltersView: View {
             .ignoresSafeArea()
         }
         .navigationDestination(isPresented: isPushToView, destination: {
-            switch filtersEvent {
+            switch filtersViewModel.filtersEvent {
             case .languages:
-                LanguagesView(navTitle: filtersEvent?.title)
+                LanguagesView(navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
             case .customWord:
-                CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersEvent?.title)
+                CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
             case nil:
                 EmptyView()
@@ -102,7 +101,7 @@ struct FiltersView: View {
                         ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
                             .frame(height: FiltersConstants.listItemHeight)
                             .onTapGesture {
-                                filtersEvent = .customWord
+                                filtersViewModel.filtersEvent = .customWord
                             }
                     } else {
                         ListItemCheckView(title: element.name,
@@ -134,7 +133,7 @@ struct FiltersView: View {
                 )
                 .cornerRadius(FiltersConstants.sectionRadius)
                 .onTapGesture {
-                    filtersEvent = .languages
+                    filtersViewModel.filtersEvent = .languages
                 }
         } header: {
             setupHeaderView("Language")

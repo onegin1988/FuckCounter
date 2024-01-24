@@ -31,6 +31,10 @@ enum FiltersEvent: String, Hashable {
     }
 }
 
+enum SettingsEvent: String, Hashable {
+    case login
+}
+
 enum Level: String {
     case green
     case orange

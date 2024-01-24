@@ -11,7 +11,6 @@ struct HomeView: View {
     
     @StateObject var homeViewModel = HomeViewModel()
     
-    @State private var homeEvent: HomeEvent?
     @State private var isOpenCongrats: Bool = false
     
     @EnvironmentObject var dailyService: DailyService
@@ -19,7 +18,8 @@ struct HomeView: View {
     @Environment(\.scenePhase) var scenePhase
     
     private var isPushToView: Binding<Bool> {
-        Binding(get: { homeEvent != nil }, set: { _ in homeEvent = nil } )
+        Binding(get: { homeViewModel.homeEvent != nil },
+                set: { _ in homeViewModel.homeEvent = nil } )
     }
     
     var body: some View {
@@ -66,14 +66,14 @@ struct HomeView: View {
                 }
             }
             .navigationDestination(isPresented: isPushToView, destination: {
-                switch homeEvent {
+                switch homeViewModel.homeEvent {
                 case .settings:
-                    SettingsView(navTitle: homeEvent?.title)
+                    SettingsView(navTitle: homeViewModel.homeEvent?.title)
                 case .filters:
-                    FiltersView(navTitle: homeEvent?.title)
+                    FiltersView(navTitle: homeViewModel.homeEvent?.title)
                         .environmentObject(speechService)
                 case .leaders:
-                    LeadersView(navTitle: homeEvent?.title)
+                    LeadersView(navTitle: homeViewModel.homeEvent?.title)
                 case nil:
                     EmptyView()
                 }
@@ -93,7 +93,7 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
-                self.homeEvent = homeEvent
+                self.homeViewModel.homeEvent = homeEvent
             }))
             .ignoresSafeArea()
         }

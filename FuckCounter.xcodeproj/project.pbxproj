@@ -14,6 +14,8 @@
 		1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21877D2B0A8E430020C4AB /* FirstAppear.swift */; };
 		1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */; };
 		1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */; };
+		1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */; };
+		1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
@@ -80,6 +82,8 @@
 		1F21877D2B0A8E430020C4AB /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPublishers.swift; sourceTree = "<group>"; };
 		1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordViewModel.swift; sourceTree = "<group>"; };
+		1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeymourOne-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1F3304BA2B61C09200F4D5B9 /* Login */,
 				1F39C09F2B6067B400A00420 /* CustomWord */,
 				1F39C0922B5C1A8800A00420 /* Languages */,
 				1FA6E5222B3239CE0009DB9D /* AppHardPush */,
@@ -185,6 +190,22 @@
 				1F3304B62B606F7900F4D5B9 /* KeyboardPublishers.swift */,
 			);
 			path = Publishers;
+			sourceTree = "<group>";
+		};
+		1F3304BA2B61C09200F4D5B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1F3304BD2B61CBAB00F4D5B9 /* SeymourOne */ = {
+			isa = PBXGroup;
+			children = (
+				1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */,
+			);
+			path = SeymourOne;
 			sourceTree = "<group>";
 		};
 		1F39C08D2B5B1CC200A00420 /* Lato */ = {
@@ -225,6 +246,7 @@
 		1F62A25F2B211C9F00FE2918 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1F3304BD2B61CBAB00F4D5B9 /* SeymourOne */,
 				1F39C08D2B5B1CC200A00420 /* Lato */,
 				1F62A2692B211F7100FE2918 /* Gilroy */,
 				1F62A2602B211CA800FE2918 /* SFPro */,
@@ -475,6 +497,7 @@
 				1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */,
 				1F62A26F2B211FA800FE2918 /* Gilroy-Regular.ttf in Resources */,
 				1F62A26D2B211F9F00FE2918 /* Gilroy-Medium.ttf in Resources */,
+				1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */,
 				1F62A2712B211FB500FE2918 /* Gilroy-SemiBold.ttf in Resources */,
 				1F9D659F2B0A46490011F18B /* Preview Assets.xcassets in Resources */,
 				1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */,
@@ -522,6 +545,7 @@
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
 				1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */,
+				1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */,
 				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
 				1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,

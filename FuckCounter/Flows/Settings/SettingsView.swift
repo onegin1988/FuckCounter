@@ -10,8 +10,15 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject var settingsViewModel = SettingsViewModel()
+    
     @Environment(\.safeAreaInsets) var safeAreaInsets
+    
     private let navTitle: String?
+    
+    var isPushToView: Binding<Bool> {
+        Binding(get: { settingsViewModel.settingsEvent != nil },
+                set: { _ in settingsViewModel.settingsEvent = nil } )
+    }
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
@@ -27,6 +34,8 @@ struct SettingsView: View {
                         settingsViewModel.showSheet = true
                     case .rate:
                         ReviewApp.requestReview()
+                    case .logout:
+                        settingsViewModel.settingsEvent = .login
                     default:
                         break
                     }
@@ -39,6 +48,14 @@ struct SettingsView: View {
             .modifier(GradientModifiers(style: .green))
             .ignoresSafeArea()
         }
+        .navigationDestination(isPresented: isPushToView, destination: {
+            switch settingsViewModel.settingsEvent {
+            case .login:
+                LoginView()
+            case .none:
+                EmptyView()
+            }
+        })
         .sheetShare(showSheet: $settingsViewModel.showSheet, items: ["Wow, It’s my Fuck counter result"])
     }
 }

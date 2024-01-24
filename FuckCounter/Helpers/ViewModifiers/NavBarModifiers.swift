@@ -12,7 +12,7 @@ struct NavBarModifiers: ViewModifier {
     let title: String?
     @Environment(\.dismiss) var dismiss
     
-    init(title: String?) {
+    init(title: String? = nil) {
         self.title = title
     }
     

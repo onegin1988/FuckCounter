@@ -13,6 +13,8 @@ class SettingsViewModel: ObservableObject {
     @Published var isNotify: Bool
     @Published var showSheet: Bool
     
+    @Published var settingsEvent: SettingsEvent?
+        
     init() {
         self.isNotify = true
         self.showSheet = false

@@ -14,6 +14,8 @@ class HomeViewModel: ObservableObject {
     @Published var isPlay: Bool
     @Published var timeSlice: String
     @Published var isShowAppPush: Bool
+    @Published var homeEvent: HomeEvent?
+    
     private var countForAppPush: Int
     
     init() {
