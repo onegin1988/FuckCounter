@@ -9,20 +9,32 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
     
-    @Published var apps: [AppsModel]
+//    @Published var apps: [AppsModel]
     @Published var isNotify: Bool
     @Published var showSheet: Bool
+    @Published private(set) var settingsItems: [SettingsItem]
     
     @Published var settingsEvent: SettingsEvent?
-        
+    @Published var isAuthenticated: Bool
+    
     init() {
         self.isNotify = true
         self.showSheet = false
+        self.settingsItems = []
+        self.isAuthenticated = AppData.isAuthenticated
         
-        self.apps = [
-//            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "itms-apps://itunes.apple.com/app/id6466431666"),
-            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "/itunes.apple.com/app/id6466431666"),
-            AppsModel(name: "Yoga 88", description: "Learn your body and relax your mind", imageName: "yoga88Icon", url: "itms-apps://itunes.apple.com/app/id")
-        ]
+//        self.apps = [
+////            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "itms-apps://itunes.apple.com/app/id6466431666"),
+//            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "/itunes.apple.com/app/id6466431666"),
+//            AppsModel(name: "Yoga 88", description: "Learn your body and relax your mind", imageName: "yoga88Icon", url: "itms-apps://itunes.apple.com/app/id")
+//        ]
+    }
+    
+    func updateSettingsItems() {
+        if isAuthenticated {
+            settingsItems = SettingsItem.allCases
+        } else {
+            settingsItems = SettingsItem.allCases.filter({ $0 != .logout })
+        }
     }
 }

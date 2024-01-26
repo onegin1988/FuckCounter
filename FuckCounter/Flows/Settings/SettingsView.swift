@@ -27,25 +27,29 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ScrollView(content: {
-                AppsListView(apps: settingsViewModel.apps)
-                SettingsListView(isToggle: $settingsViewModel.isNotify) { settingsItem in
+//                AppsListView(apps: settingsViewModel.apps)
+                SettingsListView(settingsItems: settingsViewModel.settingsItems,
+                                 isToggle: $settingsViewModel.isNotify) { settingsItem in
                     switch settingsItem {
                     case .invite:
                         settingsViewModel.showSheet = true
                     case .rate:
                         ReviewApp.requestReview()
-                    case .logout:
+                    case .createAccount:
                         settingsViewModel.settingsEvent = .login
                     default:
                         break
                     }
                 }
-                .padding(.top, 48)
+            })
+            .onReceive(settingsViewModel.$isAuthenticated, perform: { _ in
+                settingsViewModel.updateSettingsItems()
             })
             .padding(.top, safeAreaInsets.top + 64)
             .modifier(NavBarModifiers(title: navTitle))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .modifier(GradientModifiers(style: .green))
+            .modifier(GradientModifiers(style: .red,
+                                        useBlackOpacity: true))
             .ignoresSafeArea()
         }
         .navigationDestination(isPresented: isPushToView, destination: {
@@ -105,10 +109,14 @@ private extension SettingsView {
     
     struct SettingsListView: View {
         
+        private let settingsItems: [SettingsItem]
         @Binding var isToggle: Bool
         private let onSettingsItem: ((SettingsItem) -> Void)?
         
-        init(isToggle: Binding<Bool>, onSettingsItem: ((SettingsItem) -> Void)?) {
+        init(settingsItems: [SettingsItem], 
+             isToggle: Binding<Bool>,
+             onSettingsItem: ((SettingsItem) -> Void)?) {
+            self.settingsItems = settingsItems
             self._isToggle = isToggle
             self.onSettingsItem = onSettingsItem
         }
@@ -116,7 +124,7 @@ private extension SettingsView {
         var body: some View {
             Section {
                 LazyVStack(alignment: .leading, spacing: 8) {
-                    ForEach(SettingsItem.allCases, id: \.self) { element in
+                    ForEach(settingsItems, id: \.self) { element in
                         SettingsListRow(item: element, isToggle: $isToggle) {
                             onSettingsItem?(element)
                         }

@@ -12,14 +12,17 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationStack {
-                VStack(alignment: .center) {
+        NavigationStack {
+            ZStack {
+                VStack {
                     setupLogoImageView()
                     setupTitleView()
                         .padding(EdgeInsets(top: 8, leading: 0, bottom: 12, trailing: 0))
                     setupDescriptionView()
+                    setupFacebookButton()
+                        .padding(.top, 56)
                 }
+                .offset(y: 56)
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -31,10 +34,10 @@ struct LoginView: View {
     
     @ViewBuilder
     private func setupLogoImageView() -> some View {
-        Images.redState
+        Images.loginLogo
             .resizable()
             .scaledToFit()
-            .frame(width: 56, height: 56)
+            .frame(width: 80, height: 80)
     }
     
     @ViewBuilder
@@ -52,6 +55,26 @@ struct LoginView: View {
                        size: 15,
                        color: .white)
             .multilineTextAlignment(.center)
+    }
+    
+    @ViewBuilder
+    private func setupFacebookButton() -> some View {
+        Button {
+            
+        } label: {
+            ZStack {
+                MediumTextView(style: .sfPro,
+                               title: "Sign In with facebook".uppercased(),
+                               size: 13)
+                .padding(.horizontal, 32)
+                .kerning(1)
+            }
+            .frame(width: 312, height: 56)
+            .background {
+                Capsule()
+                    .fill(Colors._0766FF)
+            }
+        }
     }
 }
 

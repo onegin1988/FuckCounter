@@ -49,6 +49,9 @@ struct AppData {
     @Storage(key: "customWord", defaultValue: "")
     static var customWord: String
     
+    @Storage(key: "isAuthenticated", defaultValue: false)
+    static var isAuthenticated: Bool
+    
     @Storage(key: "selectedLanguageModel", defaultValue: checkLanguage())
     static var selectedLanguageModel: LanguageModel
     

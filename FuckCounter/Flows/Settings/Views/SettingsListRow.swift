@@ -33,9 +33,11 @@ struct SettingsListRow: View {
                 if item == .notifications {
                     Toggle(isOn: $isToggle, label: {})
                         .tint(Colors._FFCF69)
-                } else if item != .logout {
-                    Images.chev
-                        .frame(width: 32, height: 32)
+                } else {
+                    if item.useChevron {
+                        Images.chev
+                            .frame(width: 32, height: 32)
+                    }
                 }
             }
             .padding(.horizontal, 16)
