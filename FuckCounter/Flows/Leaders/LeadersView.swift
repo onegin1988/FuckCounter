@@ -10,8 +10,15 @@ import SwiftUI
 struct LeadersView: View {
     
     @StateObject var leadersViewModel = LeadersViewModel()
+    
     @Environment(\.safeAreaInsets) var safeAreaInsets
+    
     private let navTitle: String?
+    
+    var isPushToView: Binding<Bool> {
+        Binding(get: { leadersViewModel.leadersEvent != nil },
+                set: { _ in leadersViewModel.leadersEvent = nil } )
+    }
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
@@ -19,17 +26,58 @@ struct LeadersView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(content: {
-                segmentView()
-                SectionView()
-                listView()
-            })
-            .padding(.top, safeAreaInsets.top + 64)
+            ZStack {
+                if leadersViewModel.isAuthenticated {
+                    if leadersViewModel.users.isEmpty {
+                        makeAddFriendsPlaceholderView()
+                            .frame(width: 220)
+                    } else {
+                        makeLeadersListView()
+                    }
+                } else {
+                    makeLoginPlaceholderView()
+                        .frame(width: 220)
+                }
+            }
             .modifier(NavBarModifiers(title: navTitle))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: .red,
                                         useBlackOpacity: true))
             .ignoresSafeArea()
+        }
+        .navigationDestination(isPresented: isPushToView, destination: {
+            switch leadersViewModel.leadersEvent {
+            case .login:
+                LoginView()
+            case .none:
+                EmptyView()
+            }
+        })
+    }
+    
+    @ViewBuilder
+    private func makeLeadersListView() -> some View {
+        VStack {
+            segmentView()
+            SectionView()
+            listView()
+        }
+        .padding(.top, safeAreaInsets.top + 64)
+    }
+    
+    @ViewBuilder
+    private func makeLoginPlaceholderView() -> some View {
+        LeadersPlaceholderView(title: "Here you can see your friend’s\nstatistic. Add friends to see it",
+                               actionTitle: "Login") {
+            leadersViewModel.leadersEvent = .login
+        }
+    }
+    
+    @ViewBuilder
+    private func makeAddFriendsPlaceholderView() -> some View {
+        LeadersPlaceholderView(title: "Here you can see your friend’s\nstatistic. Add friends to see it",
+                               actionTitle: "Add friends") {
+            
         }
     }
     

@@ -63,11 +63,18 @@ struct LoginView: View {
             
         } label: {
             ZStack {
-                MediumTextView(style: .sfPro,
-                               title: "Sign In with facebook".uppercased(),
-                               size: 13)
+                HStack(spacing: 8) {
+                    Images.facebookWhite
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                    
+                    MediumTextView(style: .sfPro,
+                                   title: "Sign In with facebook".uppercased(),
+                                   size: 13)
+                    .kerning(1)
+                }
                 .padding(.horizontal, 32)
-                .kerning(1)
             }
             .frame(width: 312, height: 56)
             .background {

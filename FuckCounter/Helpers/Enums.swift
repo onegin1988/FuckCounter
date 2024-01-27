@@ -35,6 +35,10 @@ enum SettingsEvent: String, Hashable {
     case login
 }
 
+enum LeadersEvent: String, Hashable {
+    case login
+}
+
 enum Level: String {
     case green
     case orange
@@ -78,13 +82,13 @@ enum LeadersTimeType: Int {
 }
 
 enum SettingsItem: Int, CaseIterable, Hashable {
-    case createAccount = 0, notifications, support, invite, rate, logout
+    case createAccount = 0, notifications, invite, rate, terms, logout
     
     var title: String {
         switch self {
         case .createAccount: return "Create account with Facebook"
         case .notifications: return "Enable notifications"
-        case .support: return "Support Fuck Counter"
+        case .terms: return "Terms of Conditions"
         case .invite: return "Invite Friends"
         case .rate: return "Rate App"
         case .logout: return "Log out"
@@ -95,7 +99,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
         switch self {
         case .createAccount: return Images.facebookBlue
         case .notifications: return Images.notifications
-        case .support: return Images.support
+        case .terms: return Images.support
         case .invite: return Images.invite
         case .rate: return Images.rate
         case .logout: return Images.logout
