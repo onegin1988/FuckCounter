@@ -7,15 +7,28 @@
 
 import AVFAudio
 import SwiftUI
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
 
 @main
 struct FuckCounterApp: App {
     
     @State private var isShowHome: Bool = false
     @State private var errorMessage: String?
+    
     @StateObject var speechService = SpeechService()
     @StateObject var dailyService = DailyService()
+    
     @Environment(\.scenePhase) var scenePhase
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {

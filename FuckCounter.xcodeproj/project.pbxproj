@@ -50,6 +50,7 @@
 		1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */; };
 		1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6E5232B323A070009DB9D /* AppHardPushView.swift */; };
 		1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD635F2B64FB9100DDBE13 /* LeadersPlaceholderView.swift */; };
+		1FAD63622B65178E00DDBE13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */; };
 		1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA822E2B2A508D0032BEA9 /* ShareView.swift */; };
 		1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */; };
 		1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82322B2B12EF0032BEA9 /* Storage.swift */; };
@@ -73,6 +74,7 @@
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
+		329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,7 @@
 		1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrorModifiers.swift; sourceTree = "<group>"; };
 		1FA6E5232B323A070009DB9D /* AppHardPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHardPushView.swift; sourceTree = "<group>"; };
 		1FAD635F2B64FB9100DDBE13 /* LeadersPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersPlaceholderView.swift; sourceTree = "<group>"; };
+		1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FBA822E2B2A508D0032BEA9 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApp.swift; sourceTree = "<group>"; };
 		1FBA82322B2B12EF0032BEA9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -144,6 +147,9 @@
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
+		64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.release.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.release.xcconfig"; sourceTree = "<group>"; };
+		6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.debug.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +307,8 @@
 			children = (
 				1F9D65962B0A46470011F18B /* FuckCounter */,
 				1F9D65952B0A46470011F18B /* Products */,
+				4477416C5C869614EB89EA3F /* Pods */,
+				F42A036701465CE3D84BB16D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -315,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				1F62A2672B211EAC00FE2918 /* Info.plist */,
+				1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */,
 				1FBE445C2B23523B00513401 /* Models */,
 				1F62A25E2B211C9700FE2918 /* Resources */,
 				1FBA82362B2CFD2A0032BEA9 /* Services */,
@@ -447,6 +457,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		4477416C5C869614EB89EA3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */,
+				64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F42A036701465CE3D84BB16D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,9 +481,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F9D65A22B0A46490011F18B /* Build configuration list for PBXNativeTarget "FuckCounter" */;
 			buildPhases = (
+				1A2824492CBB713111170C7A /* [CP] Check Pods Manifest.lock */,
 				1F9D65902B0A46470011F18B /* Sources */,
 				1F9D65912B0A46470011F18B /* Frameworks */,
 				1F9D65922B0A46470011F18B /* Resources */,
+				91B8BC0BB633B6DD8E6FA0C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -507,6 +536,7 @@
 			files = (
 				1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */,
 				1F62A26F2B211FA800FE2918 /* Gilroy-Regular.ttf in Resources */,
+				1FAD63622B65178E00DDBE13 /* GoogleService-Info.plist in Resources */,
 				1F62A26D2B211F9F00FE2918 /* Gilroy-Medium.ttf in Resources */,
 				1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */,
 				1F62A2712B211FB500FE2918 /* Gilroy-SemiBold.ttf in Resources */,
@@ -523,6 +553,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A2824492CBB713111170C7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuckCounter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91B8BC0BB633B6DD8E6FA0C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuckCounter/Pods-FuckCounter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuckCounter/Pods-FuckCounter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FuckCounter/Pods-FuckCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F9D65902B0A46470011F18B /* Sources */ = {
@@ -708,6 +780,7 @@
 		};
 		1F9D65A32B0A46490011F18B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -718,6 +791,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuckCounter/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To use commands, we need to access the microphone.";
@@ -747,6 +821,7 @@
 		};
 		1F9D65A42B0A46490011F18B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -757,6 +832,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuckCounter/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To use commands, we need to access the microphone.";
