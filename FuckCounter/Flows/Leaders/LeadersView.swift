@@ -45,6 +45,7 @@ struct LeadersView: View {
                                         useBlackOpacity: true))
             .ignoresSafeArea()
         }
+        .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .navigationDestination(isPresented: isPushToView, destination: {
             switch leadersViewModel.leadersEvent {
             case .login:
@@ -77,7 +78,7 @@ struct LeadersView: View {
     private func makeAddFriendsPlaceholderView() -> some View {
         LeadersPlaceholderView(title: "Here you can see your friend’s\nstatistic. Add friends to see it",
                                actionTitle: "Add friends") {
-            
+            leadersViewModel.showAddUserSheet = true
         }
     }
     
