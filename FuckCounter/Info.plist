@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SeymourOne-Regular.ttf</string>
-		<string>Lato-Regular.ttf</string>
-		<string>Lato-Bold.ttf</string>
-		<string>Gilroy-Bold.ttf</string>
-		<string>Gilroy-Medium.ttf</string>
-		<string>Gilroy-Regular.ttf</string>
-		<string>Gilroy-SemiBold.ttf</string>
-		<string>SFProDisplay-Semibold.ttf</string>
-		<string>SFProDisplay-Bold.ttf</string>
-		<string>SFProDisplay-Regular.ttf</string>
-		<string>SFProDisplay-Medium.ttf</string>
-	</array>
-</dict>
+    <dict>
+        <key>NSAppTransportSecurity</key>
+        <dict/>
+        <key>Allow Arbitrary Loads</key>
+        <true/>
+        <key>UIAppFonts</key>
+        <array>
+            <string>SeymourOne-Regular.ttf</string>
+            <string>Lato-Regular.ttf</string>
+            <string>Lato-Bold.ttf</string>
+            <string>Gilroy-Bold.ttf</string>
+            <string>Gilroy-Medium.ttf</string>
+            <string>Gilroy-Regular.ttf</string>
+            <string>Gilroy-SemiBold.ttf</string>
+            <string>SFProDisplay-Semibold.ttf</string>
+            <string>SFProDisplay-Bold.ttf</string>
+            <string>SFProDisplay-Regular.ttf</string>
+            <string>SFProDisplay-Medium.ttf</string>
+        </array>
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>fb2476229235889570</string>
+                </array>
+            </dict>
+        </array>
+        <key>FacebookAppID</key>
+        <string>2476229235889570</string>
+        <key>FacebookDisplayName</key>
+        <string>FuckCounter</string>
+        <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>fbapi</string>
+            <string>fb-messenger-api</string>
+            <string>fbauth2</string>
+            <string>fbshareextension</string>
+        </array>
+    </dict>
 </plist>

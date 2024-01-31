@@ -1,4 +1,20 @@
 PODS:
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FBSDKCoreKit (5.15.1):
+    - FBSDKCoreKit/Basics (= 5.15.1)
+    - FBSDKCoreKit/Core (= 5.15.1)
+  - FBSDKCoreKit/Basics (5.15.1)
+  - FBSDKCoreKit/Core (5.15.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.15.1):
+    - FBSDKLoginKit/Login (= 5.15.1)
+  - FBSDKLoginKit/Login (5.15.1):
+    - FBSDKCoreKit (~> 5.0)
   - FirebaseAppCheckInterop (10.20.0)
   - FirebaseAuth (10.19.0):
     - FirebaseAppCheckInterop (~> 10.17)
@@ -33,10 +49,16 @@ PODS:
   - RecaptchaInterop (100.0.0)
 
 DEPENDENCIES:
+  - FacebookCore
+  - FacebookLogin
   - FirebaseAuth
 
 SPEC REPOS:
   trunk:
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - FirebaseAppCheckInterop
     - FirebaseAuth
     - FirebaseCore
@@ -47,6 +69,10 @@ SPEC REPOS:
     - RecaptchaInterop
 
 SPEC CHECKSUMS:
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
+  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   FirebaseAppCheckInterop: e81bdb1cdb82f8e0cef353ba5018a8402682032c
   FirebaseAuth: 2492acdcd1245d841fabdf58a050d6aa07dfce3f
   FirebaseCore: dc5c7badf99d47613c52b2e3a57a64cd187f8554
@@ -56,6 +82,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: caa188c09efbfbc4c00535261ec9bb7d36c16dc8
+PODFILE CHECKSUM: 19d6fa1cee631f7b0aa8cb044d3d5adb22876855
 
 COCOAPODS: 1.13.0

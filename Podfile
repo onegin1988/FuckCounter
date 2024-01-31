@@ -7,6 +7,8 @@ target 'FuckCounter' do
   use_frameworks!
 
   pod 'FirebaseAuth'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
 end
 
