@@ -8,13 +8,15 @@
 import SwiftUI
 import FacebookCore
 import FacebookLogin
+import FirebaseAuth
 
 class FacebookService: ObservableObject {
         
     let facebookLoginManager = LoginManager()
     @Published var facebookLoginModel: FacebookLoginModel?
     @Published var isAuth = false
-    @Published var error = ""
+    @Published var isAuthProcess = false
+    @Published var error: String?
     
     init() {
         self.isAuth = AccessToken.isCurrentAccessTokenActive
@@ -29,15 +31,24 @@ class FacebookService: ObservableObject {
     @MainActor func logIn() async {
         do {
             if !isAuth {
+                isAuthProcess = true
+                
                 isAuth = try await authFb()
                 facebookLoginModel = try await loadProfile()
                 AppData.facebookLoginModel = facebookLoginModel
+                
+                isAuthProcess = false
             } else {
+                isAuthProcess = true
+                
                 facebookLoginModel = try await loadProfile()
                 AppData.facebookLoginModel = facebookLoginModel
+                
+                isAuthProcess = false
             }
         } catch let error {
             isAuth = false
+            isAuthProcess = false
             self.error = error.localizedDescription
         }
     }
@@ -47,8 +58,18 @@ class FacebookService: ObservableObject {
             DispatchQueue.main.async {
                 self.facebookLoginManager.logIn(permissions: [.publicProfile], viewController: nil) { loginResult in
                     switch loginResult {
-                    case .success:
-                        continuation.resume(returning: true)
+                    case .success(_, _, let token):
+                        if !token.isExpired {
+                            self.firebaseAuth(token.tokenString) { errorAuth in
+                                if let errorAuth = errorAuth {
+                                    continuation.resume(throwing: errorAuth)
+                                    return
+                                }
+                                continuation.resume(returning: true)
+                            }
+                        } else {
+                            continuation.resume(returning: false)
+                        }
                     case .cancelled:
                         continuation.resume(returning: false)
                     case .failed(let error):
@@ -59,11 +80,20 @@ class FacebookService: ObservableObject {
         }
     }
     
+    private func firebaseAuth(_ accessToken: String, handler: @escaping (Error?) -> Void) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+        
+        Auth.auth().signIn(with: credential) { _, errorAuth in
+            handler(errorAuth)
+        }
+    }
+    
     private func loadProfile() async throws -> FacebookLoginModel {
         return try await withCheckedThrowingContinuation { continuation in
             GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, picture.type(square)"]).start { connection, result, error in
                 if let err = error as? NSError {
                     continuation.resume(throwing: err)
+                    return
                 }
                 
                 continuation.resume(returning: FacebookLoginModel(result as? [String: Any]))
@@ -72,12 +102,26 @@ class FacebookService: ObservableObject {
     }
     
     @MainActor func logOut() async {
-        facebookLoginManager.logOut()
-        
-        AccessToken.current = nil
-        Profile.current = nil
-        AppData.facebookLoginModel = nil
-        self.isAuth = false
-        self.facebookLoginModel = nil
+        do {
+            isAuthProcess = true
+            
+            facebookLoginManager.logOut()
+            try Auth.auth().signOut()
+            
+            AccessToken.current = nil
+            Profile.current = nil
+            AppData.facebookLoginModel = nil
+            self.isAuth = false
+            self.facebookLoginModel = nil
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.isAuthProcess = false
+            }
+        } catch let error {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.isAuthProcess = false
+            }
+            self.error = error.localizedDescription
+        }
     }
 }

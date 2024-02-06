@@ -47,6 +47,7 @@ struct LeadersView: View {
                                         useBlackOpacity: true))
             .ignoresSafeArea()
         }
+        .alertError(errorMessage: $facebookService.error)
         .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .navigationDestination(isPresented: isPushToView, destination: {
             switch leadersViewModel.leadersEvent {

@@ -32,6 +32,7 @@ struct LoginView: View {
             .modifier(NavBarModifiers())
             .ignoresSafeArea()
         }
+        .showProgress(isLoading: facebookService.isAuthProcess)
     }
     
     @ViewBuilder

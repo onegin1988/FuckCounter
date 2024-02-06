@@ -42,6 +42,7 @@
 		1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2762B2122BE00FE2918 /* BoldTextView.swift */; };
 		1F62CBB92B6AFB4800E2512C /* FacebookLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
+		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
 		1F9933F92B385247005C223F /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F82B385247005C223F /* DailyModel.swift */; };
 		1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933FA2B3870A9005C223F /* DailyService.swift */; };
@@ -116,6 +117,7 @@
 		1F62A2762B2122BE00FE2918 /* BoldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextView.swift; sourceTree = "<group>"; };
 		1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginModel.swift; sourceTree = "<group>"; };
 		1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModifiers.swift; sourceTree = "<group>"; };
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		1F9933F82B385247005C223F /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		1F9933FA2B3870A9005C223F /* DailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyService.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1F21877D2B0A8E430020C4AB /* FirstAppear.swift */,
 				1F62A25C2B210A5800FE2918 /* NavBarModifiers.swift */,
 				1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */,
+				1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				1FBE446E2B26517000513401 /* AppsModel.swift in Sources */,
 				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
+				1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */,
 				1FBE447A2B27582600513401 /* CongratsView.swift in Sources */,
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,

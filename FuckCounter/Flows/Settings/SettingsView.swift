@@ -60,6 +60,8 @@ struct SettingsView: View {
                                         useBlackOpacity: true))
             .ignoresSafeArea()
         }
+        .showProgress(isLoading: facebookService.isAuthProcess)
+        .alertError(errorMessage: $facebookService.error)
         .navigationDestination(isPresented: isPushToView, destination: {
             switch settingsViewModel.settingsEvent {
             case .login:
