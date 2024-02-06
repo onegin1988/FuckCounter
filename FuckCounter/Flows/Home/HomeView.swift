@@ -61,7 +61,7 @@ struct HomeView: View {
                     }
                 } content: {
                     if isOpenCongrats {
-                        CongratsView(title: "Congrats, Your Result is:", subTitle: "\(homeViewModel.counter) bad words")
+                        CongratsView(title: "\(homeViewModel.counter)", subTitle: "Bad words today!")
                     }
                 }
             }

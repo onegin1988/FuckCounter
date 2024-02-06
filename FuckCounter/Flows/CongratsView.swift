@@ -63,18 +63,19 @@ struct CongratsView: View {
         VStack(alignment: .center, spacing: 16) {
             MediumTextView(
                 style: .sfPro,
-                title: title,//"Congrat’s, you’re King of\nBad Words today!",
-                size: 21,
-                color: Color(red: 0.949, green: 0.949, blue: 0.949)
+                title: title,//"14,254",
+                size: 48,
+                color: .white
             )
             .multilineTextAlignment(.center)
             
             BoldTextView(
                 style: .sfPro,
-                title: subTitle,//"14,254",
+                title: subTitle,//"Congrat’s, you’re King of\nBad Words today!",
                 size: 19,
-                color: Color(red: 0.704, green: 0.704, blue: 0.704)
+                color: Colors._F2F2F2
             )
+            .multilineTextAlignment(.center)
         }
     }
 }
