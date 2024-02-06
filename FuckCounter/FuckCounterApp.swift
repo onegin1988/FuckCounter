@@ -76,6 +76,10 @@ struct FuckCounterApp: App {
             if newPhase == .active {
                 requestSpeechAuthorization()
                 dailyService.calculateDates()
+                
+                Task {
+                    await facebookService.checkIsNeedRefreshToken()
+                }
             } else if newPhase == .inactive {
                 dailyService.updateTimeInterval()
             }

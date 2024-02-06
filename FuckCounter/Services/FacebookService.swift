@@ -23,8 +23,23 @@ class FacebookService: ObservableObject {
         
         if self.isAuth {
             self.facebookLoginModel = AppData.facebookLoginModel
-        } else {
-            AppData.facebookLoginModel = nil
+        }
+    }
+    
+    @MainActor func checkIsNeedRefreshToken() async {
+        if let isExpired = AccessToken.current?.isExpired, isExpired {
+            do {
+                
+                try await AccessToken.refreshCurrentAccessToken()
+                self.isAuth = AccessToken.isCurrentAccessTokenActive
+                
+                facebookLoginModel = try await loadProfile()
+                AppData.facebookLoginModel = facebookLoginModel
+            } catch let error {
+                self.error = error.localizedDescription
+                self.isAuth = false
+                AppData.facebookLoginModel = nil
+            }
         }
     }
     
