@@ -11,6 +11,8 @@ struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var facebookService: FacebookService
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -60,7 +62,16 @@ struct LoginView: View {
     @ViewBuilder
     private func setupFacebookButton() -> some View {
         Button {
-            
+            if !facebookService.isAuth {
+                Task {
+                    await facebookService.logIn()
+                    dismiss()
+                }
+            } else {
+                Task {
+                    await facebookService.logOut()
+                }
+            }
         } label: {
             ZStack {
                 HStack(spacing: 8) {
@@ -87,4 +98,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(FacebookService())
 }

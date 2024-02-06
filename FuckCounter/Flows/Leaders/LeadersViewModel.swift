@@ -11,14 +11,12 @@ class LeadersViewModel: ObservableObject {
     
     @Published var leadersTimeType: LeadersTimeType
     @Published var users: [UserModel]
-    @Published var isAuthenticated: Bool
     @Published var leadersEvent: LeadersEvent?
     @Published var showAddUserSheet: Bool
     
     init() {
         self.leadersTimeType = .daily
         self.users = []
-        self.isAuthenticated = AppData.isAuthenticated
         self.showAddUserSheet = false
         
 //        var items = [

@@ -15,13 +15,11 @@ class SettingsViewModel: ObservableObject {
     @Published private(set) var settingsItems: [SettingsItem]
     
     @Published var settingsEvent: SettingsEvent?
-    @Published var isAuthenticated: Bool
     
     init() {
         self.isNotify = true
         self.showSheet = false
         self.settingsItems = []
-        self.isAuthenticated = AppData.isAuthenticated
         
 //        self.apps = [
 ////            AppsModel(name: "Sleeplover", description: "Reduse stress and fall asleep fast", imageName: "sleeploverIcon", url: "itms-apps://itunes.apple.com/app/id6466431666"),
@@ -30,7 +28,7 @@ class SettingsViewModel: ObservableObject {
 //        ]
     }
     
-    func updateSettingsItems() {
+    func updateSettingsItems(_ isAuthenticated: Bool) {
         if isAuthenticated {
             settingsItems = SettingsItem.allCases
         } else {

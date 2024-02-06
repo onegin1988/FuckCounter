@@ -11,6 +11,8 @@ struct LeadersView: View {
     
     @StateObject var leadersViewModel = LeadersViewModel()
     
+    @EnvironmentObject var facebookService: FacebookService
+    
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
     private let navTitle: String?
@@ -27,7 +29,7 @@ struct LeadersView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                if leadersViewModel.isAuthenticated {
+                if facebookService.isAuth {
                     if leadersViewModel.users.isEmpty {
                         makeAddFriendsPlaceholderView()
                             .frame(width: 220)

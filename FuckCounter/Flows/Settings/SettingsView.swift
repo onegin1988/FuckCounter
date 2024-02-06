@@ -11,6 +11,8 @@ struct SettingsView: View {
     
     @StateObject var settingsViewModel = SettingsViewModel()
     
+    @EnvironmentObject var facebookService: FacebookService
+    
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
     private let navTitle: String?
@@ -36,14 +38,20 @@ struct SettingsView: View {
                     case .rate:
                         ReviewApp.requestReview()
                     case .createAccount:
-                        settingsViewModel.settingsEvent = .login
+                        if !facebookService.isAuth {
+                            settingsViewModel.settingsEvent = .login
+                        }
+                    case .logout:
+                        Task {
+                            await facebookService.logOut()
+                        }
                     default:
                         break
                     }
                 }
             })
-            .onReceive(settingsViewModel.$isAuthenticated, perform: { _ in
-                settingsViewModel.updateSettingsItems()
+            .onReceive(facebookService.$isAuth, perform: { newValue in
+                settingsViewModel.updateSettingsItems(newValue)
             })
             .padding(.top, safeAreaInsets.top + 64)
             .modifier(NavBarModifiers(title: navTitle))

@@ -26,7 +26,30 @@ struct SettingsListRow: View {
                 .cornerRadius(16)
             
             HStack(alignment: .center, spacing: 12) {
-                settingsIconView()
+                if let url = AppData.facebookLoginModel?.image, item == .createAccount {
+                    AsyncImage(url: URL(string: url)) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 28, height: 28)
+                                .cornerRadius(14)
+                        case .failure:
+                            Images.avatarSmall
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 28, height: 28)
+                        @unknown default:
+                            fatalError()
+                        }
+                    }
+                } else {
+                    settingsIconView()
+                }
+                
                 settingsLabelView()
                 Spacer()
                 
@@ -60,8 +83,13 @@ struct SettingsListRow: View {
     }
     
     private func settingsLabelView() -> some View {
-        RegularTextView(style: .sfPro, title: item.title, size: 15)
-            .frame(height: 18)
+        if let name = AppData.facebookLoginModel?.name, item == .createAccount {
+            RegularTextView(style: .sfPro, title: name, size: 15)
+                .frame(height: 18)
+        } else {
+            RegularTextView(style: .sfPro, title: item.title, size: 15)
+                .frame(height: 18)
+        }
     }
 }
 
