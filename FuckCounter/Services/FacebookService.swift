@@ -116,6 +116,12 @@ class FacebookService: ObservableObject {
         }
     }
     
+    func getFriends() {
+        GraphRequest(graphPath: "me/taggable_friends", parameters: ["fields": "id, first_name, last_name, middle_name, name, email, picture"]).start { connection, result, error in
+            
+        }
+    }
+    
     @MainActor func logOut() async {
         do {
             isAuthProcess = true

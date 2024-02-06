@@ -60,6 +60,9 @@ struct SettingsView: View {
                                         useBlackOpacity: true))
             .ignoresSafeArea()
         }
+        .onFirstAppear {
+            facebookService.getFriends()
+        }
         .showProgress(isLoading: facebookService.isAuthProcess)
         .alertError(errorMessage: $facebookService.error)
         .navigationDestination(isPresented: isPushToView, destination: {
