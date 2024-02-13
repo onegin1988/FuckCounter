@@ -6,7 +6,8 @@ target 'FuckCounter' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'FirebaseAuth'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'FacebookCore'
   pod 'FacebookLogin'
 

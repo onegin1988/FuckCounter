@@ -16,6 +16,8 @@
 		1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */; };
 		1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */; };
 		1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */; };
+		1F35E3682B7C148B00F0D7C8 /* Double+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35E3672B7C148B00F0D7C8 /* Double+String.swift */; };
+		1F35E36A2B7C14C900F0D7C8 /* Date+Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
@@ -74,6 +76,7 @@
 		1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44752B27033C00513401 /* SettingsListRow.swift */; };
 		1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44772B27378200513401 /* BottomSheetView.swift */; };
 		1FBE447A2B27582600513401 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44792B27582600513401 /* CongratsView.swift */; };
+		1FC6B89E2B7622D0009BF747 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -90,6 +93,8 @@
 		1F3304B82B6193E700F4D5B9 /* CustomWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordViewModel.swift; sourceTree = "<group>"; };
 		1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeymourOne-Regular.ttf"; sourceTree = "<group>"; };
+		1F35E3672B7C148B00F0D7C8 /* Double+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+String.swift"; sourceTree = "<group>"; };
+		1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formats.swift"; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		1FBE44752B27033C00513401 /* SettingsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListRow.swift; sourceTree = "<group>"; };
 		1FBE44772B27378200513401 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		1FBE44792B27582600513401 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
+		1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -222,6 +228,15 @@
 				1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */,
 			);
 			path = SeymourOne;
+			sourceTree = "<group>";
+		};
+		1F35E3662B7C143100F0D7C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F35E3672B7C148B00F0D7C8 /* Double+String.swift */,
+				1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1F39C08D2B5B1CC200A00420 /* Lato */ = {
@@ -376,6 +391,7 @@
 				1FBA82372B2CFD420032BEA9 /* SpeechService.swift */,
 				1F9933FA2B3870A9005C223F /* DailyService.swift */,
 				1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */,
+				1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -451,6 +467,7 @@
 		1FDA1A352B0A5691009E3EAC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1F35E3662B7C143100F0D7C8 /* Extensions */,
 				1F3304B52B606F5B00F4D5B9 /* Publishers */,
 				1FBE44642B23B41D00513401 /* Environment */,
 				1F2187742B0A70D90020C4AB /* ViewModifiers */,
@@ -628,6 +645,7 @@
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
+				1FC6B89E2B7622D0009BF747 /* FirebaseService.swift in Sources */,
 				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
@@ -660,7 +678,9 @@
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
 				1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
+				1F35E3682B7C148B00F0D7C8 /* Double+String.swift in Sources */,
 				1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */,
+				1F35E36A2B7C14C900F0D7C8 /* Date+Formats.swift in Sources */,
 				1FBE44562B220BAB00513401 /* MediumTextView.swift in Sources */,
 				1FBE44742B2656D200513401 /* AppsListRow.swift in Sources */,
 				1F39C0962B5C25BB00A00420 /* SectionHeaderView.swift in Sources */,

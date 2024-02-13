@@ -20,6 +20,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         ApplicationDelegate.shared.application(application, 
                                                didFinishLaunchingWithOptions: launchOptions)
         
+        
+        
+//        reference.child("qqq").observe(.value) { snapshot in
+//            for child in (snapshot.children.allObjects as? [DataSnapshot]) ?? [] {
+//                debugPrint(child)
+//            }
+//        }
+//        
+////        reference.child("qqq").child("1").setValue(["name": "Alex", "age": 33])
+        
         return true
     }
     
@@ -42,6 +52,7 @@ struct FuckCounterApp: App {
     @StateObject var speechService = SpeechService()
     @StateObject var dailyService = DailyService()
     @StateObject var facebookService = FacebookService()
+    @StateObject var firebaseService = FirebaseService()
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -54,6 +65,7 @@ struct FuckCounterApp: App {
                     .environmentObject(dailyService)
                     .environmentObject(speechService)
                     .environmentObject(facebookService)
+                    .environmentObject(firebaseService)
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(UIApplication.shared,
                                                                open: url,

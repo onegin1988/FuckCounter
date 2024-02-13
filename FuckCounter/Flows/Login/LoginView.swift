@@ -5,6 +5,7 @@
 //  Created by Alex on 25.01.2024.
 //
 
+import FirebaseAuth
 import SwiftUI
 
 struct LoginView: View {
@@ -12,6 +13,7 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var facebookService: FacebookService
+    @EnvironmentObject var firebaseService: FirebaseService
     
     var body: some View {
         NavigationStack {
@@ -32,6 +34,18 @@ struct LoginView: View {
             .modifier(NavBarModifiers())
             .ignoresSafeArea()
         }
+        .onReceive(facebookService.$facebookLoginModel, perform: { facebookLoginModel in
+            Task {
+                do {
+                    guard  let model = facebookLoginModel, let user = Auth.auth().currentUser else { return }
+                    try await firebaseService.appendUser(model, user)
+                    dismiss()
+                } catch let error {
+                    facebookService.error = error.localizedDescription
+                }
+            }
+        })
+        .alertError(errorMessage: $firebaseService.error)
         .showProgress(isLoading: facebookService.isAuthProcess)
     }
     
@@ -66,7 +80,8 @@ struct LoginView: View {
             if !facebookService.isAuth {
                 Task {
                     await facebookService.logIn()
-                    dismiss()
+                    
+//                    dismiss()
                 }
             } else {
                 Task {
