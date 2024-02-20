@@ -30,11 +30,13 @@ struct LeadersView: View {
         NavigationStack {
             ZStack {
                 if facebookService.isAuth {
-                    if leadersViewModel.users.isEmpty {
+                    if leadersViewModel.users.isEmpty && !leadersViewModel.isLoading {
                         makeAddFriendsPlaceholderView()
                             .frame(width: 220)
                     } else {
-                        makeLeadersListView()
+                        if !leadersViewModel.users.isEmpty {
+                            makeLeadersListView()
+                        }
                     }
                 } else {
                     makeLoginPlaceholderView()
@@ -47,6 +49,13 @@ struct LeadersView: View {
                                         useBlackOpacity: true))
             .ignoresSafeArea()
         }
+        .onFirstAppear {
+            Task {
+                await leadersViewModel.loadUsers()
+                await leadersViewModel.subscribeUpdateUsers()
+            }
+        }
+        .showProgress(isLoading: leadersViewModel.isLoading)
         .alertError(errorMessage: $facebookService.error)
         .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .navigationDestination(isPresented: isPushToView, destination: {
@@ -186,19 +195,19 @@ private extension LeadersView {
             ZStack {
                 HStack(alignment: .center, spacing: 6, content: {
                     BoldTextView(style: .lato, title: "\(index)", size: 13)
-                    
-                    Circle()
+                                        
+                    ImageView(url: userModel.image ?? "")
                         .frame(width: 40, height: 40)
                         .padding(.leading, 8)
                     
-                    RegularTextView(style: .lato, title: userModel.name, size: 17)
+                    RegularTextView(style: .lato, title: userModel.name ?? "", size: 17)
                         .padding(.leading, 2)
                     
                     Spacer()
                     
-                    BoldTextView(style: .lato, title: "\(userModel.winCount)", size: 15)
+                    BoldTextView(style: .lato, title: "\(userModel.wins)", size: 15)
                     
-                    BoldTextView(style: .lato, title: "\(userModel.points)", size: 15)
+                    BoldTextView(style: .lato, title: userModel.points.withCommas(), size: 15)
                         .frame(width: 70, alignment: .trailing)
                 })
             }

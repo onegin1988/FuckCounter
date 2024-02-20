@@ -27,25 +27,8 @@ struct SettingsListRow: View {
             
             HStack(alignment: .center, spacing: 12) {
                 if let url = AppData.facebookLoginModel?.image, item == .createAccount {
-                    AsyncImage(url: URL(string: url)) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 28, height: 28)
-                                .cornerRadius(14)
-                        case .failure:
-                            Images.avatarSmall
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 28, height: 28)
-                        @unknown default:
-                            fatalError()
-                        }
-                    }
+                    ImageView(url: url)
+                        .frame(width: 28, height: 28)
                 } else {
                     settingsIconView()
                 }

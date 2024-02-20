@@ -5,7 +5,9 @@
 //  Created by Alex on 10.12.2023.
 //
 
+import SwiftUI
 import Foundation
+import FirebaseDatabase
 
 class LeadersViewModel: ObservableObject {
     
@@ -13,20 +15,46 @@ class LeadersViewModel: ObservableObject {
     @Published var users: [UserModel]
     @Published var leadersEvent: LeadersEvent?
     @Published var showAddUserSheet: Bool
+    @Published var isLoading: Bool
+    
+    private let reference = Database.database().reference()
     
     init() {
         self.leadersTimeType = .daily
         self.users = []
         self.showAddUserSheet = false
+        self.isLoading = true
+    }
         
-//        var items = [
-//            UserModel(id: 1, name: "Vicky Lanira Austen", winCount: 2, points: 2.09),
-//            UserModel(id: 2, name: "Vicky Lanira Austen", winCount: 6, points: 3.08),
-//            UserModel(id: 3, name: "Vicky Lanira Austen", winCount: 12, points: 7.08),
-//            UserModel(id: 4, name: "Vicky Lanira Austen", winCount: 4, points: 2.89)
-//        ]
-//        
-//        items.sort(by: {$0.winCount > $1.winCount})
-//        self.users = items
+    func subscribeUpdateUsers() async {
+        reference.child("users").observe(.childChanged) { [weak self] dataSnapshot in
+            guard let dict = dataSnapshot.value as? [String: Any] else { return }
+            self?.updateUser(dict)
+        }
+    }
+    
+    @MainActor
+    func loadUsers() async {
+        do {
+            let snapshot = try await reference.child("users").getData()
+            self.users = ((snapshot.value as? [String: [String: Any]])?.values)?
+                .compactMap({UserModel($0)}) ?? []
+            
+            users.sort(by: { $0.wins > $1.wins })
+            self.isLoading = false
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    func updateUser(_ dict: [String: Any]) {
+        let user = UserModel(dict)
+        if let index = users.firstIndex(where: {$0.id == user.id}) {
+            self.users[index] = user
+        } else {
+            self.users.append(user)
+        }
+        
+        self.users.sort(by: { $0.wins > $1.wins })
     }
 }

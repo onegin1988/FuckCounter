@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F07380F2B8554FB00A19918 /* Int+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07380E2B8554FB00A19918 /* Int+Formatter.swift */; };
 		1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187722B0A6C9B0020C4AB /* Images.swift */; };
 		1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187752B0A70EF0020C4AB /* GradientModifiers.swift */; };
 		1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */; };
@@ -18,6 +19,7 @@
 		1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */; };
 		1F35E3682B7C148B00F0D7C8 /* Double+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35E3672B7C148B00F0D7C8 /* Double+String.swift */; };
 		1F35E36A2B7C14C900F0D7C8 /* Date+Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */; };
+		1F35E36C2B7E607A00F0D7C8 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35E36B2B7E607900F0D7C8 /* ImageView.swift */; };
 		1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */; };
 		1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */; };
 		1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0932B5C1AA100A00420 /* LanguagesView.swift */; };
@@ -48,6 +50,8 @@
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
 		1F9933F92B385247005C223F /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F82B385247005C223F /* DailyModel.swift */; };
 		1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933FA2B3870A9005C223F /* DailyService.swift */; };
+		1F9C3E3C2B7FC5790062455F /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */; };
+		1F9C3E3E2B7FE6210062455F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3E3D2B7FE6210062455F /* LoginViewModel.swift */; };
 		1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65972B0A46470011F18B /* FuckCounterApp.swift */; };
 		1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D65992B0A46470011F18B /* HomeView.swift */; };
 		1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9D659B2B0A46490011F18B /* Assets.xcassets */; };
@@ -76,7 +80,6 @@
 		1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44752B27033C00513401 /* SettingsListRow.swift */; };
 		1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44772B27378200513401 /* BottomSheetView.swift */; };
 		1FBE447A2B27582600513401 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44792B27582600513401 /* CongratsView.swift */; };
-		1FC6B89E2B7622D0009BF747 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -84,6 +87,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F07380E2B8554FB00A19918 /* Int+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatter.swift"; sourceTree = "<group>"; };
 		1F2187722B0A6C9B0020C4AB /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		1F2187752B0A70EF0020C4AB /* GradientModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientModifiers.swift; sourceTree = "<group>"; };
 		1F2187782B0A73490020C4AB /* HomeToolbarItemsModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbarItemsModifiers.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		1F3304BE2B61CBC300F4D5B9 /* SeymourOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeymourOne-Regular.ttf"; sourceTree = "<group>"; };
 		1F35E3672B7C148B00F0D7C8 /* Double+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+String.swift"; sourceTree = "<group>"; };
 		1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formats.swift"; sourceTree = "<group>"; };
+		1F35E36B2B7E607900F0D7C8 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		1F39C08E2B5B1CD500A00420 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1F39C0902B5B1D7B00A00420 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F39C0932B5C1AA100A00420 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
@@ -126,6 +131,8 @@
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		1F9933F82B385247005C223F /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		1F9933FA2B3870A9005C223F /* DailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyService.swift; sourceTree = "<group>"; };
+		1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
+		1F9C3E3D2B7FE6210062455F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1F9D65942B0A46470011F18B /* FuckCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9D65972B0A46470011F18B /* FuckCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuckCounterApp.swift; sourceTree = "<group>"; };
 		1F9D65992B0A46470011F18B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -155,7 +162,6 @@
 		1FBE44752B27033C00513401 /* SettingsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListRow.swift; sourceTree = "<group>"; };
 		1FBE44772B27378200513401 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		1FBE44792B27582600513401 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
-		1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				1F3304BB2B61C0C000F4D5B9 /* LoginView.swift */,
+				1F9C3E3D2B7FE6210062455F /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -235,6 +242,8 @@
 			children = (
 				1F35E3672B7C148B00F0D7C8 /* Double+String.swift */,
 				1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */,
+				1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */,
+				1F07380E2B8554FB00A19918 /* Int+Formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +318,7 @@
 				1F39C0952B5C25BB00A00420 /* SectionHeaderView.swift */,
 				1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */,
 				1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */,
+				1F35E36B2B7E607900F0D7C8 /* ImageView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -391,7 +401,6 @@
 				1FBA82372B2CFD420032BEA9 /* SpeechService.swift */,
 				1F9933FA2B3870A9005C223F /* DailyService.swift */,
 				1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */,
-				1FC6B89D2B7622D0009BF747 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -635,6 +644,7 @@
 				1FBE44592B2276F300513401 /* HomeViewModel.swift in Sources */,
 				1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */,
 				1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */,
+				1F07380F2B8554FB00A19918 /* Int+Formatter.swift in Sources */,
 				1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */,
 				1FBE446E2B26517000513401 /* AppsModel.swift in Sources */,
 				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
@@ -645,7 +655,6 @@
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
-				1FC6B89E2B7622D0009BF747 /* FirebaseService.swift in Sources */,
 				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
@@ -672,12 +681,15 @@
 				1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */,
 				1F9933F92B385247005C223F /* DailyModel.swift in Sources */,
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
+				1F9C3E3E2B7FE6210062455F /* LoginViewModel.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,
 				1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */,
 				1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
 				1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */,
+				1F35E36C2B7E607A00F0D7C8 /* ImageView.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
+				1F9C3E3C2B7FC5790062455F /* Sequence+Extension.swift in Sources */,
 				1F35E3682B7C148B00F0D7C8 /* Double+String.swift in Sources */,
 				1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */,
 				1F35E36A2B7C14C900F0D7C8 /* Date+Formats.swift in Sources */,

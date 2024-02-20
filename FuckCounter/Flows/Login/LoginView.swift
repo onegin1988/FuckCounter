@@ -13,7 +13,7 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var facebookService: FacebookService
-    @EnvironmentObject var firebaseService: FirebaseService
+    @EnvironmentObject var loginViewModel: LoginViewModel
     
     var body: some View {
         NavigationStack {
@@ -36,16 +36,12 @@ struct LoginView: View {
         }
         .onReceive(facebookService.$facebookLoginModel, perform: { facebookLoginModel in
             Task {
-                do {
-                    guard  let model = facebookLoginModel, let user = Auth.auth().currentUser else { return }
-                    try await firebaseService.appendUser(model, user)
-                    dismiss()
-                } catch let error {
-                    facebookService.error = error.localizedDescription
-                }
+                guard  let model = facebookLoginModel, let user = Auth.auth().currentUser else { return }
+                await loginViewModel.appendUser(model, user)
+                dismiss()
             }
         })
-        .alertError(errorMessage: $firebaseService.error)
+        .alertError(errorMessage: $loginViewModel.error)
         .showProgress(isLoading: facebookService.isAuthProcess)
     }
     
