@@ -26,10 +26,15 @@ class LeadersViewModel: ObservableObject {
         self.isLoading = true
     }
         
-    func subscribeUpdateUsers() async {
+    func subscribeObserveUsers() async {
         reference.child("users").observe(.childChanged) { [weak self] dataSnapshot in
             guard let dict = dataSnapshot.value as? [String: Any] else { return }
             self?.updateUser(dict)
+        }
+        reference.child("users").observe(.childRemoved) { _ in
+            Task {
+                await self.loadUsers()
+            }
         }
     }
     

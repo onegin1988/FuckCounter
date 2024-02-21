@@ -15,6 +15,9 @@ struct SettingsView: View {
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
+    @State private var showDeleteAccountAlert = false
+    @State private var isAuthProcess = false
+    
     private let navTitle: String?
     
     var isPushToView: Binding<Bool> {
@@ -41,6 +44,8 @@ struct SettingsView: View {
                         if !facebookService.isAuth {
                             settingsViewModel.settingsEvent = .login
                         }
+                    case .deleteAccount:
+                        showDeleteAccountAlert.toggle()
                     case .logout:
                         Task {
                             await facebookService.logOut()
@@ -63,8 +68,29 @@ struct SettingsView: View {
         .onFirstAppear {
             facebookService.getFriends()
         }
-        .showProgress(isLoading: facebookService.isAuthProcess)
-        .alertError(errorMessage: $facebookService.error)
+        .alert("You want to delete account", isPresented: $showDeleteAccountAlert, actions: {
+            Button("Cancel", role: .cancel, action: {})
+            Button("Yes, delete", role: .destructive) {
+                Task {
+                    isAuthProcess = true
+                    
+                    await settingsViewModel.deleteAccount()
+                    await facebookService.logOut()
+                    
+                    isAuthProcess = false
+                }
+            }
+        }, message: {
+            Text("Are you sure? All your data will be deleted forever.")
+        })
+        .onReceive(facebookService.$error, perform: { error in
+            settingsViewModel.error = error
+        })
+        .onReceive(facebookService.$isAuthProcess, perform: { isAuthProcess in
+            self.isAuthProcess = isAuthProcess
+        })
+        .showProgress(isLoading: isAuthProcess)
+        .alertError(errorMessage: $settingsViewModel.error)
         .navigationDestination(isPresented: isPushToView, destination: {
             switch settingsViewModel.settingsEvent {
             case .login:

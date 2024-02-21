@@ -52,7 +52,7 @@ struct LeadersView: View {
         .onFirstAppear {
             Task {
                 await leadersViewModel.loadUsers()
-                await leadersViewModel.subscribeUpdateUsers()
+                await leadersViewModel.subscribeObserveUsers()
             }
         }
         .showProgress(isLoading: leadersViewModel.isLoading)

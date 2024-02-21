@@ -3,4 +3,54 @@
    uuid = "863E7C9C-3CAE-4FC1-9436-67ECF2D4C531"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FuckCounter/Flows/Leaders/LeadersViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "subscribeUpdateUsers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c01674066245c70f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in FuckCounter.LeadersViewModel.subscribeUpdateUsers() async -&gt; ()"
+                  moduleName = "FuckCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Leaders/LeadersViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c6f5269c62ffdebe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in FuckCounter.LeadersViewModel.subscribeObserveUsers() async -&gt; ()"
+                  moduleName = "FuckCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Leaders/LeadersViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

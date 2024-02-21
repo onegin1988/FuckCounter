@@ -82,7 +82,7 @@ enum LeadersTimeType: Int {
 }
 
 enum SettingsItem: Int, CaseIterable, Hashable {
-    case createAccount = 0, notifications, invite, rate, terms, logout
+    case createAccount = 0, notifications, invite, rate, terms, deleteAccount, logout
     
     var title: String {
         switch self {
@@ -91,6 +91,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
         case .terms: return "Terms of Conditions"
         case .invite: return "Invite Friends"
         case .rate: return "Rate App"
+        case .deleteAccount: return "Delete account"
         case .logout: return "Log out"
         }
     }
@@ -102,13 +103,14 @@ enum SettingsItem: Int, CaseIterable, Hashable {
         case .terms: return Images.support
         case .invite: return Images.invite
         case .rate: return Images.rate
+        case .deleteAccount: return Images.deleteAccount
         case .logout: return Images.logout
         }
     }
     
     var useChevron: Bool {
         switch self {
-        case .createAccount, .logout: return false
+        case .createAccount, .logout, .deleteAccount: return false
         default: return true
         }
     }

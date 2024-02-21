@@ -38,4 +38,5 @@ struct Images {
     static let facebookWhite = Image("facebookWhite")
     static let cupBig = Image("cupBig")
     static let avatarSmall = Image("avatarSmall")
+    static let deleteAccount = Image("deleteAccount")
 }

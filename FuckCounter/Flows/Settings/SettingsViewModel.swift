@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseDatabase
+import FirebaseAuth
 
 class SettingsViewModel: ObservableObject {
     
@@ -13,8 +15,10 @@ class SettingsViewModel: ObservableObject {
     @Published var isNotify: Bool
     @Published var showSheet: Bool
     @Published private(set) var settingsItems: [SettingsItem]
-    
+    @Published var error: String?
     @Published var settingsEvent: SettingsEvent?
+    
+    private let reference = Database.database().reference()
     
     init() {
         self.isNotify = true
@@ -32,7 +36,18 @@ class SettingsViewModel: ObservableObject {
         if isAuthenticated {
             settingsItems = SettingsItem.allCases
         } else {
-            settingsItems = SettingsItem.allCases.filter({ $0 != .logout })
+            settingsItems = SettingsItem.allCases.filter({ $0 != .deleteAccount && $0 != .logout })
+        }
+    }
+    
+    @MainActor
+    func deleteAccount() async {
+        do {
+            guard let user = Auth.auth().currentUser else { return }
+            try await reference.child("users").child(user.uid).removeValue()
+            try await user.delete()
+        } catch let error {
+            self.error = error.localizedDescription
         }
     }
 }
