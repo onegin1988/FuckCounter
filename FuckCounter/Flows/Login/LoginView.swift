@@ -20,10 +20,12 @@ struct LoginView: View {
             ZStack {
                 VStack {
                     setupLogoImageView()
+                    
                     setupTitleView()
                         .padding(EdgeInsets(top: 8, leading: 0, bottom: 12, trailing: 0))
                     setupDescriptionView()
-                    setupFacebookButton()
+                    
+                    setupSocialButtons()
                         .padding(.top, 56)
                 }
                 .offset(y: 56)
@@ -71,30 +73,42 @@ struct LoginView: View {
     }
     
     @ViewBuilder
-    private func setupFacebookButton() -> some View {
-        Button {
-            if !facebookService.isAuth {
-                Task {
-                    await facebookService.logIn()
-                    
-//                    dismiss()
-                }
-            } else {
-                Task {
-                    await facebookService.logOut()
-                }
+    private func setupSocialButtons() -> some View {
+        VStack(spacing: 16) {
+            setupSocailButton(icon: Images.apple, title: "apple", bgColor: Colors._141414) {
+                
             }
+            setupSocailButton(icon: Images.google, title: "google", bgColor: Colors._4484E9) {
+                
+            }
+//            setupSocailButton(icon: Images.facebookWhite, title: "facebook", bgColor: Colors._0766FF) {
+//                if !facebookService.isAuth {
+//                    Task {
+//                        await facebookService.logIn()
+//                    }
+//                } else {
+//                    Task {
+//                        await facebookService.logOut()
+//                    }
+//                }
+//            }
+        }
+    }
+    
+    private func setupSocailButton(icon: Image, title: String, bgColor: Color, action: @escaping (() -> Void)) -> some View {
+        Button {
+            action()
         } label: {
             ZStack {
                 HStack(spacing: 8) {
-                    Images.facebookWhite
+                    icon
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
                     
-                    MediumTextView(style: .sfPro,
-                                   title: "Sign In with facebook".uppercased(),
-                                   size: 13)
+                    MediumTextView(style: .lato,
+                                   title: "login with \(title)".uppercased(),
+                                   size: 14)
                     .kerning(1)
                 }
                 .padding(.horizontal, 32)
@@ -102,7 +116,7 @@ struct LoginView: View {
             .frame(width: 312, height: 56)
             .background {
                 Capsule()
-                    .fill(Colors._0766FF)
+                    .fill(bgColor)
             }
         }
     }
