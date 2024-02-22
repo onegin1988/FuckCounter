@@ -27,37 +27,35 @@ struct LanguagesView: View {
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
-
+    
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView {
-                    makeLanguagesListView()
-                }
-                
-                ButtonView(title: "Save changes", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
-                    filtersViewModel.languageModel = languagesViewModel.languageModel
-                    dismiss()
-                }
-                .frame(height: LanguagesConstants.buttonHeight)
-                .padding(
-                    EdgeInsets(
-                        top: LanguagesConstants.padding,
-                        leading: LanguagesConstants.padding,
-                        bottom: 37,
-                        trailing: LanguagesConstants.padding)
-                )
+        VStack {
+            ScrollView {
+                makeLanguagesListView()
             }
-            .onFirstAppear {
-                languagesViewModel.languageModel = filtersViewModel.languageModel
+            
+            ButtonView(title: "Save changes", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
+                filtersViewModel.languageModel = languagesViewModel.languageModel
+                dismiss()
             }
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .modifier(GradientModifiers(style: .red,
-                                        useBlackOpacity: true))
-            .modifier(NavBarModifiers(title: navTitle))
-            .ignoresSafeArea()
+            .frame(height: LanguagesConstants.buttonHeight)
+            .padding(
+                EdgeInsets(
+                    top: LanguagesConstants.padding,
+                    leading: LanguagesConstants.padding,
+                    bottom: 37,
+                    trailing: LanguagesConstants.padding)
+            )
         }
+        .onFirstAppear {
+            languagesViewModel.languageModel = filtersViewModel.languageModel
+        }
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(NavBarModifiers(title: navTitle))
+        .modifier(GradientModifiers(style: .red,
+                                    useBlackOpacity: true))
+        .ignoresSafeArea()
     }
     
     private func makeLanguagesListView() -> some View {
@@ -69,7 +67,7 @@ struct LanguagesView: View {
                                           isChecked: element.id == languagesViewModel.languageModel.id)
                         .frame(height: LanguagesConstants.listItemHeight)
                         .padding(.top, index == 0 ? 10 : 0)
-                        .onTapGesture {
+                        .itemTap {
                             languagesViewModel.languageModel = element
                         }
                     }

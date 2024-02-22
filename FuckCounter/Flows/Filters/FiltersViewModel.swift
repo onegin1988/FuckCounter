@@ -13,7 +13,7 @@ class FiltersViewModel: ObservableObject {
     @Published var languageModel: LanguageModel
     @Published var list: [WordsModel]
     @Published var customWord: String
-    @Published var filtersEvent: FiltersEvent?
+    var filtersEvent: FiltersEvent?
     
     init() {
         self.wordsModel = AppData.selectedWordsModel

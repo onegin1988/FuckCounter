@@ -37,11 +37,10 @@ class SpeechService: ObservableObject {
     var recognitionTask: SFSpeechRecognitionTask?
     @Published var isRecording: Bool
     @Published var error: Error?
-    @Published var isSameWord: Bool
+    @Published var fullText: String?
     
     init() {
         self.isRecording = false
-        self.isSameWord = false
     }
     
     func updateSpeechLocale() {
@@ -87,9 +86,15 @@ class SpeechService: ObservableObject {
         }
 
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+            
             if let error = error {
                 self.error = error
                 self.isRecording = false
+                return
+            }
+            
+            if result?.isFinal == true {
+                self.cancelRecording()
                 return
             }
             
@@ -100,22 +105,24 @@ class SpeechService: ObservableObject {
             guard let result = result else { return }
             
             let bestString = result.bestTranscription.formattedString
+            debugPrint(bestString)
+            self.fullText = bestString
             
-            let clean = bestString.filter{ $0.isLetter || $0.isWhitespace }
-            
-            if let lastIndex = clean.lastIndex(of: " "), 
-                let index = clean.index(lastIndex, offsetBy: 1, limitedBy: clean.index(before: clean.endIndex)) {
-                let lastWord = clean[index...]
-                
-                debugPrint(lastWord)
-                if lastWord.lowercased() == AppData.selectedWordsModel.name.lowercased() {
-                    self.isSameWord = true
-                }
-            } else {
-                if bestString.lowercased() == AppData.selectedWordsModel.name.lowercased() {
-                    self.isSameWord = true
-                }
-            }
+//            let clean = bestString.filter{ $0.isLetter || $0.isWhitespace }
+//
+//            if let lastIndex = clean.lastIndex(of: " "), 
+//                let index = clean.index(lastIndex, offsetBy: 1, limitedBy: clean.index(before: clean.endIndex)) {
+//                let lastWord = clean[index...]
+//                
+//                debugPrint(lastWord)
+//                if lastWord.lowercased() == AppData.selectedWordsModel.name.lowercased() {
+//                    self.isSameWord = true
+//                }
+//            } else {
+//                if bestString.lowercased() == AppData.selectedWordsModel.name.lowercased() {
+//                    self.isSameWord = true
+//                }
+//            }
         })
     }
     
@@ -127,6 +134,6 @@ class SpeechService: ObservableObject {
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
         isRecording = false
-        isSameWord = false
+        fullText = nil
     }
 }

@@ -84,11 +84,15 @@ struct HomeView: View {
             .onReceive(speechService.$isRecording, perform: { isRecording in
                 homeViewModel.isPlay = speechService.isRecording
             })
-            .onReceive(speechService.$isSameWord, perform: { isSameWord in
-                if isSameWord {
-                    homeViewModel.counter += 1
+            .onReceive(speechService.$fullText, perform: { fullText in
+                if let fullText = fullText {
+                    homeViewModel.counter = fullText.lowercased().ranges(of: AppData.selectedWordsModel.name.lowercased()).count
                     homeViewModel.checkLevel()
                 }
+//                if isSameWord {
+//                    homeViewModel.counter += 1
+//                    homeViewModel.checkLevel()
+//                }
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))

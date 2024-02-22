@@ -27,7 +27,7 @@ struct LeadersView: View {
     }
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 if facebookService.isAuth {
                     if leadersViewModel.users.isEmpty && !leadersViewModel.isLoading {
@@ -43,12 +43,12 @@ struct LeadersView: View {
                         .frame(width: 220)
                 }
             }
-            .modifier(NavBarModifiers(title: navTitle))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: .red,
                                         useBlackOpacity: true))
+            .modifier(NavBarModifiers(title: navTitle))
             .ignoresSafeArea()
-        }
+//        }
         .onFirstAppear {
             Task {
                 await leadersViewModel.loadUsers()

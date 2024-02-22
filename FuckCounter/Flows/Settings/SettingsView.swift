@@ -30,7 +30,7 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView(content: {
 //                AppsListView(apps: settingsViewModel.apps)
                 SettingsListView(settingsItems: settingsViewModel.settingsItems,
@@ -64,7 +64,7 @@ struct SettingsView: View {
             .modifier(GradientModifiers(style: .red,
                                         useBlackOpacity: true))
             .ignoresSafeArea()
-        }
+//        }
         .onFirstAppear {
             facebookService.getFriends()
         }

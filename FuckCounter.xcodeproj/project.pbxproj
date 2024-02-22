@@ -29,6 +29,8 @@
 		1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */; };
 		1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */; };
 		1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0A02B6067C500A00420 /* CustomWordView.swift */; };
+		1F4728E12B87415A001742E2 /* String+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728E02B87415A001742E2 /* String+Range.swift */; };
+		1F4728E32B8787B0001742E2 /* ItemTapModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -109,6 +111,8 @@
 		1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCheckView.swift; sourceTree = "<group>"; };
 		1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemArrowView.swift; sourceTree = "<group>"; };
 		1F39C0A02B6067C500A00420 /* CustomWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordView.swift; sourceTree = "<group>"; };
+		1F4728E02B87415A001742E2 /* String+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Range.swift"; sourceTree = "<group>"; };
+		1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapModifiers.swift; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				1F62A25C2B210A5800FE2918 /* NavBarModifiers.swift */,
 				1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */,
 				1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */,
+				1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				1F35E3692B7C14C900F0D7C8 /* Date+Formats.swift */,
 				1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */,
 				1F07380E2B8554FB00A19918 /* Int+Formatter.swift */,
+				1F4728E02B87415A001742E2 /* String+Range.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */,
+				1F4728E32B8787B0001742E2 /* ItemTapModifiers.swift in Sources */,
 				1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */,
 				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
@@ -660,6 +667,7 @@
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
 				1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */,
+				1F4728E12B87415A001742E2 /* String+Range.swift in Sources */,
 				1FBE44692B25DFA900513401 /* LeadersViewModel.swift in Sources */,
 				1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */,
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
@@ -828,7 +836,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
@@ -914,7 +922,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "FuckCounter Dist";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -930,7 +938,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
@@ -1016,7 +1024,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "FuckCounter Dist";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

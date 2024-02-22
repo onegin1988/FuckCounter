@@ -17,33 +17,33 @@ struct CustomWordView: View {
     
     @EnvironmentObject var filtersViewModel: FiltersViewModel
     
-    @ObservedObject private var customWordViewModel: CustomWordViewModel
+    @StateObject private var customWordViewModel = CustomWordViewModel()
     
     @Environment(\.dismiss) var dismiss
         
     private let navTitle: String?
+    private let wordText: String
     
     init(wordText: String, navTitle: String? = nil) {
-        self.customWordViewModel = CustomWordViewModel()
+        self.wordText = wordText
         self.navTitle = navTitle
-        self.customWordViewModel.textInput = wordText
     }
     
     var body: some View {
         GeometryReader(content: { geometry in
-            NavigationStack {
-                ZStack(alignment: .bottom) {
-                    
-                    setupCustomWordTextField()
-                    setupCustomWordApplyButton(geometry)
-                }
-                .padding(.horizontal, CustomWordConstants.padding)
-                .toolbarBackground(.hidden, for: .navigationBar)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .modifier(GradientModifiers(style: .red,
-                                            useBlackOpacity: true))
-                .modifier(NavBarModifiers(title: navTitle))
-                .ignoresSafeArea()
+            ZStack(alignment: .bottom) {
+                setupCustomWordTextField()
+                setupCustomWordApplyButton(geometry)
+            }
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal, CustomWordConstants.padding)
+            .modifier(NavBarModifiers(title: navTitle))
+            .modifier(GradientModifiers(style: .red,
+                                        useBlackOpacity: true))
+            .ignoresSafeArea()
+            .onFirstAppear {
+                self.customWordViewModel.textInput = wordText
             }
             .onReceive(Publishers.keyboardHeight, perform: { value in
                 withAnimation {

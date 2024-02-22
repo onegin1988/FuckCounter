@@ -25,51 +25,46 @@ struct FiltersView: View {
     
     private let navTitle: String?
     
-    private var isPushToView: Binding<Bool> {
-        Binding(get: { filtersViewModel.filtersEvent != nil },
-                set: { _ in filtersViewModel.filtersEvent = nil } )
-    }
+    @State private var isShow = false
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView {
-                    listView()
-                }
+        VStack {
+            ScrollView {
+                listView()
+            }
+            
+            ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
+                AppData.selectedWordsModel = filtersViewModel.wordsModel
+                AppData.selectedLanguageModel = filtersViewModel.languageModel
+                AppData.customWord = filtersViewModel.customWord
                 
-                ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
-                    AppData.selectedWordsModel = filtersViewModel.wordsModel
-                    AppData.selectedLanguageModel = filtersViewModel.languageModel
-                    AppData.customWord = filtersViewModel.customWord
-                    
-                    speechService.updateSpeechLocale()
-                    
-                    dismiss()
-                }
-                .frame(height: FiltersConstants.buttonHeight)
-                .padding(
-                    EdgeInsets(
-                        top: FiltersConstants.padding,
-                        leading: FiltersConstants.padding,
-                        bottom: 37,
-                        trailing: FiltersConstants.padding)
-                )
+                speechService.updateSpeechLocale()
+                
+                dismiss()
             }
-            .onAppear {
-                filtersViewModel.updateBadWordsList()
-            }
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .modifier(GradientModifiers(style: .red,
-                                        useBlackOpacity: true))
-            .modifier(NavBarModifiers(title: navTitle))
-            .ignoresSafeArea()
+            .frame(height: FiltersConstants.buttonHeight)
+            .padding(
+                EdgeInsets(
+                    top: FiltersConstants.padding,
+                    leading: FiltersConstants.padding,
+                    bottom: 37,
+                    trailing: FiltersConstants.padding)
+            )
         }
-        .navigationDestination(isPresented: isPushToView, destination: {
+        .onAppear {
+            filtersViewModel.updateBadWordsList()
+        }
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(NavBarModifiers(title: navTitle))
+        .modifier(GradientModifiers(style: .red,
+                                    useBlackOpacity: true))
+        .ignoresSafeArea()
+        .navigationDestination(isPresented: $isShow, destination: {
             switch filtersViewModel.filtersEvent {
             case .languages:
                 LanguagesView(navTitle: filtersViewModel.filtersEvent?.title)
@@ -77,7 +72,7 @@ struct FiltersView: View {
             case .customWord:
                 CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
-            case nil:
+            default:
                 EmptyView()
             }
         })
@@ -100,17 +95,18 @@ struct FiltersView: View {
                     if element.isCustom {
                         ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
                             .frame(height: FiltersConstants.listItemHeight)
-                            .onTapGesture {
+                            .itemTap {
                                 filtersViewModel.filtersEvent = .customWord
+                                isShow.toggle()
                             }
                     } else {
                         ListItemCheckView(title: element.name,
                                           isChecked: element.id == filtersViewModel.wordsModel.id)
                         .frame(height: FiltersConstants.listItemHeight)
-                        .padding(.top, index == 0 ? 10 : 0)
-                        .onTapGesture {
+                        .itemTap {
                             filtersViewModel.wordsModel = element
                         }
+                        .padding(.top, index == 0 ? 10 : 0)
                     }
                 }
             }
@@ -122,19 +118,18 @@ struct FiltersView: View {
             setupHeaderView("Bad words")
         }
     }
-        
+    
     private func setupLanguageSectionView() -> some View {
         Section {
             ListItemArrowView(title: filtersViewModel.languageModel.name)
                 .frame(height: FiltersConstants.listItemHeight)
                 .padding(.top, 5)
-                .background(
-                    Color.black.opacity(0.2)
-                )
-                .cornerRadius(FiltersConstants.sectionRadius)
-                .onTapGesture {
+                .background(Color.black.opacity(0.2))
+                .itemTap {
                     filtersViewModel.filtersEvent = .languages
+                    isShow.toggle()
                 }
+                .cornerRadius(FiltersConstants.sectionRadius)
         } header: {
             setupHeaderView("Language")
         }

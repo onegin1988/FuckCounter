@@ -52,7 +52,9 @@ struct FuckCounterApp: App {
     @StateObject var speechService = SpeechService()
     @StateObject var dailyService = DailyService()
     @StateObject var facebookService = FacebookService()
+    
     @StateObject var loginViewModel = LoginViewModel()
+//    @StateObject var customWordViewModel = CustomWordViewModel()
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -66,6 +68,7 @@ struct FuckCounterApp: App {
                     .environmentObject(speechService)
                     .environmentObject(facebookService)
                     .environmentObject(loginViewModel)
+//                    .environmentObject(customWordViewModel)
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(UIApplication.shared,
                                                                open: url,
