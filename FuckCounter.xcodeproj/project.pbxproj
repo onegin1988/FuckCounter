@@ -31,6 +31,8 @@
 		1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39C0A02B6067C500A00420 /* CustomWordView.swift */; };
 		1F4728E12B87415A001742E2 /* String+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728E02B87415A001742E2 /* String+Range.swift */; };
 		1F4728E32B8787B0001742E2 /* ItemTapModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */; };
+		1F4728ED2B87BAFB001742E2 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728EC2B87BAFB001742E2 /* LottieView.swift */; };
+		1F4728F32B87BFBF001742E2 /* Сonfetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F4728F22B87BFBF001742E2 /* Сonfetti.json */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -113,6 +115,8 @@
 		1F39C0A02B6067C500A00420 /* CustomWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordView.swift; sourceTree = "<group>"; };
 		1F4728E02B87415A001742E2 /* String+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Range.swift"; sourceTree = "<group>"; };
 		1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapModifiers.swift; sourceTree = "<group>"; };
+		1F4728EC2B87BAFB001742E2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		1F4728F22B87BFBF001742E2 /* Сonfetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Сonfetti.json"; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F4728F22B87BFBF001742E2 /* Сonfetti.json */,
 				1F62A25F2B211C9F00FE2918 /* Fonts */,
 			);
 			path = Resources;
@@ -325,6 +330,7 @@
 				1F39C09B2B5C565500A00420 /* ListItemCheckView.swift */,
 				1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */,
 				1F35E36B2B7E607900F0D7C8 /* ImageView.swift */,
+				1F4728EC2B87BAFB001742E2 /* LottieView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */,
 				1F62A2712B211FB500FE2918 /* Gilroy-SemiBold.ttf in Resources */,
 				1F9D659F2B0A46490011F18B /* Preview Assets.xcassets in Resources */,
+				1F4728F32B87BFBF001742E2 /* Сonfetti.json in Resources */,
 				1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */,
 				1F62A26B2B211F9200FE2918 /* Gilroy-Bold.ttf in Resources */,
 				1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */,
@@ -697,6 +704,7 @@
 				1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */,
 				1F35E36C2B7E607A00F0D7C8 /* ImageView.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
+				1F4728ED2B87BAFB001742E2 /* LottieView.swift in Sources */,
 				1F9C3E3C2B7FC5790062455F /* Sequence+Extension.swift in Sources */,
 				1F35E3682B7C148B00F0D7C8 /* Double+String.swift in Sources */,
 				1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */,

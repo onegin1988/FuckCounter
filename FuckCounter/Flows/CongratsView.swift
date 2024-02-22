@@ -35,10 +35,7 @@ struct CongratsView: View {
     }
     
     private func imageBGView() -> some View {
-        Images.congratsBG
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        
+        LottieView(animationName: "Сonfetti")
     }
     
     private func profileImageView() -> some View {

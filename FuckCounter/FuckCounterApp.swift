@@ -19,17 +19,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         ApplicationDelegate.shared.application(application, 
                                                didFinishLaunchingWithOptions: launchOptions)
-        
-        
-        
-//        reference.child("qqq").observe(.value) { snapshot in
-//            for child in (snapshot.children.allObjects as? [DataSnapshot]) ?? [] {
-//                debugPrint(child)
-//            }
-//        }
-//        
-////        reference.child("qqq").child("1").setValue(["name": "Alex", "age": 33])
-        
         return true
     }
     
@@ -54,7 +43,6 @@ struct FuckCounterApp: App {
     @StateObject var facebookService = FacebookService()
     
     @StateObject var loginViewModel = LoginViewModel()
-//    @StateObject var customWordViewModel = CustomWordViewModel()
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -68,7 +56,6 @@ struct FuckCounterApp: App {
                     .environmentObject(speechService)
                     .environmentObject(facebookService)
                     .environmentObject(loginViewModel)
-//                    .environmentObject(customWordViewModel)
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(UIApplication.shared,
                                                                open: url,
@@ -82,7 +69,6 @@ struct FuckCounterApp: App {
                     }))
                     .onFirstAppear {
                         setupSettings()
-                        debugPrint(Locale.preferredLanguages[0])
                     }
                     .environmentObject(speechService)
             }

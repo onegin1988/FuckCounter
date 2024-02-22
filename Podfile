@@ -10,7 +10,7 @@ target 'FuckCounter' do
   pod 'Firebase/Database'
   pod 'FacebookCore'
   pod 'FacebookLogin'
-
+  pod 'lottie-ios'
 end
 
 post_install do |installer|
