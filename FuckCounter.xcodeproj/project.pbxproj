@@ -52,6 +52,8 @@
 		1F62CBB92B6AFB4800E2512C /* FacebookLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
 		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
+		1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */; };
+		1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9555882B8B60E80002A060 /* GoogleService.swift */; };
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
 		1F9933F92B385247005C223F /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F82B385247005C223F /* DailyModel.swift */; };
 		1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933FA2B3870A9005C223F /* DailyService.swift */; };
@@ -64,7 +66,6 @@
 		1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */; };
 		1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6E5232B323A070009DB9D /* AppHardPushView.swift */; };
 		1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD635F2B64FB9100DDBE13 /* LeadersPlaceholderView.swift */; };
-		1FAD63622B65178E00DDBE13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */; };
 		1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA822E2B2A508D0032BEA9 /* ShareView.swift */; };
 		1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */; };
 		1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82322B2B12EF0032BEA9 /* Storage.swift */; };
@@ -139,6 +140,8 @@
 		1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginModel.swift; sourceTree = "<group>"; };
 		1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModifiers.swift; sourceTree = "<group>"; };
+		1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F9555882B8B60E80002A060 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		1F9933F82B385247005C223F /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		1F9933FA2B3870A9005C223F /* DailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyService.swift; sourceTree = "<group>"; };
@@ -152,7 +155,6 @@
 		1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrorModifiers.swift; sourceTree = "<group>"; };
 		1FA6E5232B323A070009DB9D /* AppHardPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHardPushView.swift; sourceTree = "<group>"; };
 		1FAD635F2B64FB9100DDBE13 /* LeadersPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersPlaceholderView.swift; sourceTree = "<group>"; };
-		1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FBA822E2B2A508D0032BEA9 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApp.swift; sourceTree = "<group>"; };
 		1FBA82322B2B12EF0032BEA9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -372,7 +374,7 @@
 			children = (
 				1F4728F62B87CD55001742E2 /* FuckCounter.entitlements */,
 				1F62A2672B211EAC00FE2918 /* Info.plist */,
-				1FAD63612B65178E00DDBE13 /* GoogleService-Info.plist */,
+				1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */,
 				1FBE445C2B23523B00513401 /* Models */,
 				1F62A25E2B211C9700FE2918 /* Resources */,
 				1FBA82362B2CFD2A0032BEA9 /* Services */,
@@ -418,6 +420,7 @@
 				1F9933FA2B3870A9005C223F /* DailyService.swift */,
 				1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */,
 				1F4728F42B87CD2F001742E2 /* AppleService.swift */,
+				1F9555882B8B60E80002A060 /* GoogleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -588,7 +591,6 @@
 			files = (
 				1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */,
 				1F62A26F2B211FA800FE2918 /* Gilroy-Regular.ttf in Resources */,
-				1FAD63622B65178E00DDBE13 /* GoogleService-Info.plist in Resources */,
 				1F62A26D2B211F9F00FE2918 /* Gilroy-Medium.ttf in Resources */,
 				1F3304BF2B61CBC400F4D5B9 /* SeymourOne-Regular.ttf in Resources */,
 				1F62A2712B211FB500FE2918 /* Gilroy-SemiBold.ttf in Resources */,
@@ -596,6 +598,7 @@
 				1F4728F32B87BFBF001742E2 /* Сonfetti.json in Resources */,
 				1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */,
 				1F62A26B2B211F9200FE2918 /* Gilroy-Bold.ttf in Resources */,
+				1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */,
 				1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */,
 				1F62A2662B211E3700FE2918 /* SFProDisplay-Regular.ttf in Resources */,
 				1F62A2622B211DED00FE2918 /* SFProDisplay-Bold.ttf in Resources */,
@@ -686,6 +689,7 @@
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
 				1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */,
+				1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */,
 				1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */,
 				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
 				1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */,

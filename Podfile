@@ -11,6 +11,7 @@ target 'FuckCounter' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'lottie-ios'
+  pod 'GoogleSignIn'
 end
 
 post_install do |installer|
