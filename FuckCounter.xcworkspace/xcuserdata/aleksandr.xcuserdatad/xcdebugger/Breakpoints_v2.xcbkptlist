@@ -14,28 +14,13 @@
             filePath = "FuckCounter/Flows/Leaders/LeadersViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "subscribeUpdateUsers()"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "subscribeObserveUsers()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c01674066245c70f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in FuckCounter.LeadersViewModel.subscribeUpdateUsers() async -&gt; ()"
-                  moduleName = "FuckCounter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Leaders/LeadersViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c6f5269c62ffdebe"
+                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c6f5269c62ffde9f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,8 +30,23 @@
                   urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Leaders/LeadersViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "388">
+               </Location>
+               <Location
+                  uuid = "628FE2D3-59C8-4D01-ACA2-DF83E0B08D02 - c6f5269c62ffde9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in FuckCounter.LeadersViewModel.subscribeObserveUsers() async -&gt; ()"
+                  moduleName = "FuckCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Leaders/LeadersViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>

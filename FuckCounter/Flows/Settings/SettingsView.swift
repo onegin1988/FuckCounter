@@ -12,6 +12,7 @@ struct SettingsView: View {
     @StateObject var settingsViewModel = SettingsViewModel()
     
     @EnvironmentObject var facebookService: FacebookService
+    @EnvironmentObject var googleService: GoogleService
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
@@ -41,14 +42,18 @@ struct SettingsView: View {
                     case .rate:
                         ReviewApp.requestReview()
                     case .createAccount:
-                        if !facebookService.isAuth {
+                        if AppData.userLoginModel == nil {
                             settingsViewModel.settingsEvent = .login
                         }
                     case .deleteAccount:
                         showDeleteAccountAlert.toggle()
                     case .logout:
                         Task {
-                            await facebookService.logOut()
+                            if AppData.userLoginModel?.providerId == "google.com" {
+                                await googleService.googleSignOut()
+                            } else {
+                                await facebookService.logOut()
+                            }
                         }
                     default:
                         break
@@ -56,6 +61,9 @@ struct SettingsView: View {
                 }
             })
             .onReceive(facebookService.$isAuth, perform: { newValue in
+                settingsViewModel.updateSettingsItems(newValue)
+            })
+            .onReceive(googleService.$isAuth, perform: { newValue in
                 settingsViewModel.updateSettingsItems(newValue)
             })
             .padding(.top, safeAreaInsets.top + 64)
@@ -75,7 +83,12 @@ struct SettingsView: View {
                     isAuthProcess = true
                     
                     await settingsViewModel.deleteAccount()
-                    await facebookService.logOut()
+                    
+                    if AppData.userLoginModel?.providerId == "google.com" {
+                        await googleService.googleSignOut()
+                    } else {
+                        await facebookService.logOut()
+                    }
                     
                     isAuthProcess = false
                 }
@@ -83,12 +96,8 @@ struct SettingsView: View {
         }, message: {
             Text("Are you sure? All your data will be deleted forever.")
         })
-        .onReceive(facebookService.$error, perform: { error in
-            settingsViewModel.error = error
-        })
-        .onReceive(facebookService.$isAuthProcess, perform: { isAuthProcess in
-            self.isAuthProcess = isAuthProcess
-        })
+        .errorSocialServices($settingsViewModel.error)
+        .authProcess($isAuthProcess)
         .showProgress(isLoading: isAuthProcess)
         .alertError(errorMessage: $settingsViewModel.error)
         .navigationDestination(isPresented: isPushToView, destination: {

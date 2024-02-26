@@ -15,15 +15,16 @@ class LoginViewModel: ObservableObject {
     
     @Published var error: String?
     
-    func appendUser(_ facebookLoginModel: FacebookLoginModel, _ user: User) async {
+    func appendUser(_ userLoginModel: UserLoginModel, _ user: User) async {
         do {
             var childValues: [String: Any] = [
                 "uid": user.uid,
-                "facebookId": facebookLoginModel.id ?? "",
-                "fistName": facebookLoginModel.fistName ?? "",
-                "lastName": facebookLoginModel.lastName ?? "",
-                "name": facebookLoginModel.name ?? "",
-                "image": facebookLoginModel.image ?? ""
+                "id": userLoginModel.id ?? "",
+                "fistName": userLoginModel.fistName ?? "",
+                "lastName": userLoginModel.lastName ?? "",
+                "name": userLoginModel.name ?? "",
+                "image": userLoginModel.image ?? "",
+                "providerID": user.providerData.first?.providerID ?? ""
             ]
             
             let dataSnapshot = try await myCurrentUser(user)

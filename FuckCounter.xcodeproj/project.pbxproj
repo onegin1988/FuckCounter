@@ -49,7 +49,7 @@
 		1F62A2732B211FCA00FE2918 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F62A2722B211FCA00FE2918 /* SFProDisplay-Semibold.ttf */; };
 		1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2742B2120BB00FE2918 /* FontStyle.swift */; };
 		1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2762B2122BE00FE2918 /* BoldTextView.swift */; };
-		1F62CBB92B6AFB4800E2512C /* FacebookLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */; };
+		1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
 		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
 		1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */; };
@@ -89,6 +89,9 @@
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
+		1FFA71A82B8D304800BA126A /* ErrorSocialServicesModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */; };
+		1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */; };
+		1FFA71AC2B8D34AA00BA126A /* UserSocialModelModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */; };
 		329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,7 +140,7 @@
 		1F62A2722B211FCA00FE2918 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		1F62A2742B2120BB00FE2918 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		1F62A2762B2122BE00FE2918 /* BoldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextView.swift; sourceTree = "<group>"; };
-		1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginModel.swift; sourceTree = "<group>"; };
+		1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModifiers.swift; sourceTree = "<group>"; };
 		1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -178,6 +181,9 @@
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
+		1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSocialServicesModifiers.swift; sourceTree = "<group>"; };
+		1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProcessModifiers.swift; sourceTree = "<group>"; };
+		1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSocialModelModifiers.swift; sourceTree = "<group>"; };
 		64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.release.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.release.xcconfig"; sourceTree = "<group>"; };
 		6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.debug.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +211,9 @@
 				1FA6E5202B30A4800009DB9D /* AlertErrorModifiers.swift */,
 				1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */,
 				1F4728E22B8787B0001742E2 /* ItemTapModifiers.swift */,
+				1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */,
+				1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */,
+				1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -442,7 +451,7 @@
 				1FBE446D2B26517000513401 /* AppsModel.swift */,
 				1F9933F82B385247005C223F /* DailyModel.swift */,
 				1F39C0972B5C419500A00420 /* LanguageModel.swift */,
-				1F62CBB82B6AFB4800E2512C /* FacebookLoginModel.swift */,
+				1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -657,9 +666,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFA71A82B8D304800BA126A /* ErrorSocialServicesModifiers.swift in Sources */,
 				1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */,
 				1F4728E32B8787B0001742E2 /* ItemTapModifiers.swift in Sources */,
 				1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */,
+				1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */,
 				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
 				1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */,
@@ -693,7 +704,7 @@
 				1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */,
 				1FBE446B2B25F5A900513401 /* UserModel.swift in Sources */,
 				1F9933FB2B3870A9005C223F /* DailyService.swift in Sources */,
-				1F62CBB92B6AFB4800E2512C /* FacebookLoginModel.swift in Sources */,
+				1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
 				1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
@@ -712,6 +723,7 @@
 				1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,
 				1FAD63602B64FB9100DDBE13 /* LeadersPlaceholderView.swift in Sources */,
+				1FFA71AC2B8D34AA00BA126A /* UserSocialModelModifiers.swift in Sources */,
 				1F35E36C2B7E607A00F0D7C8 /* ImageView.swift in Sources */,
 				1FBE445E2B23525400513401 /* WordsModel.swift in Sources */,
 				1F4728ED2B87BAFB001742E2 /* LottieView.swift in Sources */,

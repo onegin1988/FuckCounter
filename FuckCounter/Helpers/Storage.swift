@@ -49,8 +49,8 @@ struct AppData {
     @Storage(key: "customWord", defaultValue: "")
     static var customWord: String
         
-    @Storage(key: "facebookLoginModel", defaultValue: nil)
-    static var facebookLoginModel: FacebookLoginModel?
+    @Storage(key: "userLoginModel", defaultValue: nil)
+    static var userLoginModel: UserLoginModel?
     
     @Storage(key: "selectedLanguageModel", defaultValue: checkLanguage())
     static var selectedLanguageModel: LanguageModel

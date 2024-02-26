@@ -26,7 +26,7 @@ struct SettingsListRow: View {
                 .cornerRadius(16)
             
             HStack(alignment: .center, spacing: 12) {
-                if let url = AppData.facebookLoginModel?.image, item == .createAccount {
+                if let url = AppData.userLoginModel?.image, item == .createAccount {
                     ImageView(url: url)
                         .frame(width: 28, height: 28)
                 } else {
@@ -66,7 +66,7 @@ struct SettingsListRow: View {
     }
     
     private func settingsLabelView() -> some View {
-        if let name = AppData.facebookLoginModel?.name, item == .createAccount {
+        if let name = AppData.userLoginModel?.name, item == .createAccount {
             RegularTextView(style: .sfPro, title: name, size: 15)
                 .frame(height: 18)
         } else {

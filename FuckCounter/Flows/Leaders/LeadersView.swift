@@ -12,6 +12,7 @@ struct LeadersView: View {
     @StateObject var leadersViewModel = LeadersViewModel()
     
     @EnvironmentObject var facebookService: FacebookService
+    @EnvironmentObject var googleService: GoogleService
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
@@ -29,7 +30,7 @@ struct LeadersView: View {
     var body: some View {
 //        NavigationStack {
             ZStack {
-                if facebookService.isAuth {
+                if isAuth {
                     if leadersViewModel.users.isEmpty && !leadersViewModel.isLoading {
                         makeAddFriendsPlaceholderView()
                             .frame(width: 220)
@@ -56,7 +57,7 @@ struct LeadersView: View {
             }
         }
         .showProgress(isLoading: leadersViewModel.isLoading)
-        .alertError(errorMessage: $facebookService.error)
+        .errorSocialServices($leadersViewModel.error)
         .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .navigationDestination(isPresented: isPushToView, destination: {
             switch leadersViewModel.leadersEvent {
@@ -66,6 +67,10 @@ struct LeadersView: View {
                 EmptyView()
             }
         })
+    }
+    
+    private var isAuth: Bool {
+        return facebookService.isAuth || googleService.isAuth
     }
     
     @ViewBuilder

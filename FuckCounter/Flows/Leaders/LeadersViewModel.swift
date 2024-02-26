@@ -16,6 +16,7 @@ class LeadersViewModel: ObservableObject {
     @Published var leadersEvent: LeadersEvent?
     @Published var showAddUserSheet: Bool
     @Published var isLoading: Bool
+    @Published var error: String?
     
     private let reference = Database.database().reference()
     

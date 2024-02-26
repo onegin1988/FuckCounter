@@ -13,7 +13,11 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var facebookService: FacebookService
+    @EnvironmentObject var appleService: AppleService
+    @EnvironmentObject var googleService: GoogleService
     @EnvironmentObject var loginViewModel: LoginViewModel
+    
+    @State private var isAuthProcess = false
     
     var body: some View {
         NavigationStack {
@@ -36,15 +40,21 @@ struct LoginView: View {
             .modifier(NavBarModifiers())
             .ignoresSafeArea()
         }
-        .onReceive(facebookService.$facebookLoginModel, perform: { facebookLoginModel in
+        .authProcess($isAuthProcess)
+        .errorSocialServices($loginViewModel.error)
+        .userSocialModelModifiers(modelHandler: { userLoginModel in
             Task {
-                guard  let model = facebookLoginModel, let user = Auth.auth().currentUser else { return }
-                await loginViewModel.appendUser(model, user)
-                dismiss()
+                await appendUser(userLoginModel)
             }
         })
         .alertError(errorMessage: $loginViewModel.error)
-        .showProgress(isLoading: facebookService.isAuthProcess)
+        .showProgress(isLoading: isAuthProcess)
+    }
+    
+    private func appendUser(_ loginModel: UserLoginModel?) async {
+        guard  let model = loginModel, let user = Auth.auth().currentUser else { return }
+        await loginViewModel.appendUser(model, user)
+        dismiss()
     }
     
     @ViewBuilder
@@ -79,7 +89,9 @@ struct LoginView: View {
                 
             }
             setupSocailButton(icon: Images.google, title: "google", bgColor: Colors._4484E9) {
-                
+                Task {
+                    await googleService.googleSignIn()
+                }
             }
 //            setupSocailButton(icon: Images.facebookWhite, title: "facebook", bgColor: Colors._0766FF) {
 //                if !facebookService.isAuth {

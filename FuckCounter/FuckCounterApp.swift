@@ -41,6 +41,8 @@ struct FuckCounterApp: App {
     @StateObject var speechService = SpeechService()
     @StateObject var dailyService = DailyService()
     @StateObject var facebookService = FacebookService()
+    @StateObject var appleService = AppleService()
+    @StateObject var googleService = GoogleService()
     
     @StateObject var loginViewModel = LoginViewModel()
     
@@ -55,6 +57,8 @@ struct FuckCounterApp: App {
                     .environmentObject(dailyService)
                     .environmentObject(speechService)
                     .environmentObject(facebookService)
+                    .environmentObject(appleService)
+                    .environmentObject(googleService)
                     .environmentObject(loginViewModel)
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(UIApplication.shared,
@@ -80,6 +84,7 @@ struct FuckCounterApp: App {
                 
                 Task {
                     await facebookService.checkIsNeedRefreshToken()
+                    await googleService.checkIsNeedRefreshToken()
                 }
             } else if newPhase == .inactive {
                 dailyService.updateTimeInterval()

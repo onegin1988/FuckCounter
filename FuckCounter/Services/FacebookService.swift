@@ -13,7 +13,7 @@ import FirebaseAuth
 class FacebookService: ObservableObject {
         
     let facebookLoginManager = LoginManager()
-    @Published var facebookLoginModel: FacebookLoginModel?
+    @Published var userLoginModel: UserLoginModel?
     @Published var isAuth = false
     @Published var isAuthProcess = false
     @Published var error: String?
@@ -22,7 +22,7 @@ class FacebookService: ObservableObject {
         self.isAuth = AccessToken.isCurrentAccessTokenActive
         
         if self.isAuth {
-            self.facebookLoginModel = AppData.facebookLoginModel
+            self.userLoginModel = AppData.userLoginModel
         }
     }
     
@@ -33,12 +33,13 @@ class FacebookService: ObservableObject {
                 try await AccessToken.refreshCurrentAccessToken()
                 self.isAuth = AccessToken.isCurrentAccessTokenActive
                 
-                facebookLoginModel = try await loadProfile()
-                AppData.facebookLoginModel = facebookLoginModel
+                userLoginModel = try await loadProfile()
+                userLoginModel?.providerId = Auth.auth().currentUser?.providerData.first?.providerID
+                AppData.userLoginModel = userLoginModel
             } catch let error {
                 self.error = error.localizedDescription
                 self.isAuth = false
-                AppData.facebookLoginModel = nil
+                AppData.userLoginModel = nil
             }
         }
     }
@@ -49,15 +50,17 @@ class FacebookService: ObservableObject {
                 isAuthProcess = true
                 
                 isAuth = try await authFb()
-                facebookLoginModel = try await loadProfile()
-                AppData.facebookLoginModel = facebookLoginModel
+                userLoginModel = try await loadProfile()
+                userLoginModel?.providerId = Auth.auth().currentUser?.providerData.first?.providerID
+                AppData.userLoginModel = userLoginModel
                 
                 isAuthProcess = false
             } else {
                 isAuthProcess = true
                 
-                facebookLoginModel = try await loadProfile()
-                AppData.facebookLoginModel = facebookLoginModel
+                userLoginModel = try await loadProfile()
+                userLoginModel?.providerId = Auth.auth().currentUser?.providerData.first?.providerID
+                AppData.userLoginModel = userLoginModel
                 
                 isAuthProcess = false
             }
@@ -103,7 +106,7 @@ class FacebookService: ObservableObject {
         }
     }
     
-    private func loadProfile() async throws -> FacebookLoginModel {
+    private func loadProfile() async throws -> UserLoginModel {
         return try await withCheckedThrowingContinuation { continuation in
             GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, picture.type(square)"]).start { connection, result, error in
                 if let err = error as? NSError {
@@ -111,7 +114,7 @@ class FacebookService: ObservableObject {
                     return
                 }
                 
-                continuation.resume(returning: FacebookLoginModel(result as? [String: Any]))
+                continuation.resume(returning: UserLoginModel(result as? [String: Any]))
             }
         }
     }
@@ -131,9 +134,9 @@ class FacebookService: ObservableObject {
             
             AccessToken.current = nil
             Profile.current = nil
-            AppData.facebookLoginModel = nil
+            AppData.userLoginModel = nil
             self.isAuth = false
-            self.facebookLoginModel = nil
+            self.userLoginModel = nil
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.isAuthProcess = false
