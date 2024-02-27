@@ -12,22 +12,35 @@ import Foundation
 
 class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegate {
     
-    @Published var signedIn: Bool = false
+    @Published var isAuth: Bool = false
     @Published var error: String?
-    
+    @Published var userLoginModel: UserLoginModel?
+    @Published var isAuthProcess = false
+
     // Unhashed nonce.
     var currentNonce: String?
-    
-    override init() {
-        super.init()
         
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.signedIn = true
-                print("Auth state changed, is signed in")
-            } else {
-                self.signedIn = false
-                print("Auth state changed, is signed out")
+    @MainActor func checkIsNeedRefresh() async {
+        if !AppData.appleUserId.isEmpty {
+            do {
+                self.isAuth = try await getCredentialState()
+                if isAuth {
+                    self.userLoginModel = AppData.userLoginModel
+                }
+            } catch let error {
+                self.error = error.localizedDescription
+            }
+        }
+    }
+    
+    private func getCredentialState() async throws -> Bool {
+        return try await withCheckedThrowingContinuation { continuation in
+            ASAuthorizationAppleIDProvider().getCredentialState(forUserID: AppData.appleUserId) { state, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                continuation.resume(returning: state == .authorized)
             }
         }
     }
@@ -73,8 +86,9 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
         return hashString
     }
     
-    func startSignInWithAppleFlow() {
+    @MainActor func startSignInWithAppleFlow() async {
         
+        isAuthProcess = true
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -87,38 +101,84 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
         authorizationController.performRequests()
     }
     
+    @MainActor func signOut() async {
+        do {
+            isAuthProcess = true
+            
+            try Auth.auth().signOut()
+            isAuth = false
+            AppData.appleUserId = ""
+            AppData.userLoginModel = nil
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.isAuthProcess = false
+            }
+        } catch let error {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.isAuthProcess = false
+            }
+            self.error = error.localizedDescription
+        }
+    }
+    
     // MARK: - ASAuthorizationControllerDelegate
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            guard let nonce = currentNonce else {
-                self.error = "Invalid state: A login callback was received, but no login request was sent."
+        
+        switch authorization.credential {
+        case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            firebaseLogin(credential: appleIdCredential)
+        default:
+            isAuthProcess = false
+        }
+    }
+    
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
+        if let fullName = credential.fullName, fullName.givenName != nil {
+            userLoginModel = UserLoginModel(id: credential.user,
+                                     fistName: fullName.givenName,
+                                     lastName: fullName.familyName,
+                                     name: "\(fullName.givenName ?? "") \(fullName.familyName ?? "")",
+                                     providerId: "apple.com")
+            AppData.userLoginModel = userLoginModel
+        } else {
+            userLoginModel = nil
+        }
+    }
+    
+    func firebaseLogin(credential: ASAuthorizationAppleIDCredential) {
+        guard let nonce = currentNonce else {
+            self.error = "Invalid state: A login callback was received, but no login request was sent."
+            isAuthProcess = false
+            return
+        }
+        guard let appleIDToken = credential.identityToken else {
+            self.error = "Unable to fetch identity token."
+            isAuthProcess = false
+            return
+        }
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            self.error = "Unable to serialize token string from data: \(appleIDToken.debugDescription)"
+            isAuthProcess = false
+            return
+        }
+        
+        let oauthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+        Auth.auth().signIn(with: oauthCredential) { (authResult, error) in
+            if let error = error {
+                self.error = error.localizedDescription
+                self.isAuthProcess = false
                 return
             }
-            guard let appleIDToken = appleIDCredential.identityToken else {
-                self.error = "Unable to fetch identity token."
-                return
-            }
-            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                self.error = "Unable to serialize token string from data: \(appleIDToken.debugDescription)"
-                return
-            }
-
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            Auth.auth().signIn(with: credential) { (authResult, error) in
-                if let error = error {
-                    self.error = error.localizedDescription
-                    return
-                }
-                
-                print("Apple sign in!")
-            }
+            
+            AppData.appleUserId = credential.user
+            self.registerNewAccount(credential: credential)
+            self.isAuthProcess = false
         }
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        
         self.error = error.localizedDescription
-        print("Sign in with Apple errored: \(error)")
+        isAuthProcess = false
     }
 }

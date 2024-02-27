@@ -11,6 +11,7 @@ struct AuthProcessModifiers: ViewModifier {
     
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
+    @EnvironmentObject var appleService: AppleService
     
     @Binding var isAuthProcess: Bool
     
@@ -20,6 +21,9 @@ struct AuthProcessModifiers: ViewModifier {
                 self.isAuthProcess = isAuthProcess
             })
             .onReceive(googleService.$isAuthProcess, perform: { isAuthProcess in
+                self.isAuthProcess = isAuthProcess
+            })
+            .onReceive(appleService.$isAuthProcess, perform: { isAuthProcess in
                 self.isAuthProcess = isAuthProcess
             })
     }

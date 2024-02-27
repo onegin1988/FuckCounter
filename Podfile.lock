@@ -72,6 +72,7 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 4.0, >= 1.5)
   - GTMSessionFetcher/Core (3.2.0)
+  - KeychainSwift (21.0.0)
   - leveldb-library (1.22.2)
   - lottie-ios (4.3.4)
   - PromisesObjC (2.3.1)
@@ -83,6 +84,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - GoogleSignIn
+  - KeychainSwift
   - lottie-ios
 
 SPEC REPOS:
@@ -103,6 +105,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - KeychainSwift
     - leveldb-library
     - lottie-ios
     - PromisesObjC
@@ -125,11 +128,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
   GTMSessionFetcher: 41b9ef0b4c08a6db4b7eb51a21ae5183ec99a2c8
+  KeychainSwift: 4a71a45c802fd9e73906457c2dcbdbdc06c9419d
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   lottie-ios: 3d98679b41fa6fd6aff2352b3953dbd3df8a397e
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: c2473caabe6d7db59746ab4bc2ca4f6b9304e024
+PODFILE CHECKSUM: 2fdd7d370ad1a4fd2891137071a0289101adad86
 
 COCOAPODS: 1.13.0

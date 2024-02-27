@@ -52,7 +52,15 @@ struct LoginView: View {
     }
     
     private func appendUser(_ loginModel: UserLoginModel?) async {
-        guard  let model = loginModel, let user = Auth.auth().currentUser else { return }
+        guard let user = Auth.auth().currentUser, let model = loginModel else {
+            if !AppData.appleUserId.isEmpty && isAuthProcess {
+                if let user = Auth.auth().currentUser {
+                    await loginViewModel.getAndAppendAppleUser(user)
+                }
+                dismiss()
+            }
+            return
+        }
         await loginViewModel.appendUser(model, user)
         dismiss()
     }
@@ -86,7 +94,9 @@ struct LoginView: View {
     private func setupSocialButtons() -> some View {
         VStack(spacing: 16) {
             setupSocailButton(icon: Images.apple, title: "apple", bgColor: Colors._141414) {
-                
+                Task {
+                    await appleService.startSignInWithAppleFlow()
+                }
             }
             setupSocailButton(icon: Images.google, title: "google", bgColor: Colors._4484E9) {
                 Task {

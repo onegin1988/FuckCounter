@@ -11,6 +11,7 @@ struct ErrorSocialServicesModifiers: ViewModifier {
     
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
+    @EnvironmentObject var appleService: AppleService
     
     @Binding var error: String?
     
@@ -20,6 +21,9 @@ struct ErrorSocialServicesModifiers: ViewModifier {
                 self.error = error
             })
             .onReceive(googleService.$error, perform: { error in
+                self.error = error
+            })
+            .onReceive(appleService.$error, perform: { error in
                 self.error = error
             })
     }

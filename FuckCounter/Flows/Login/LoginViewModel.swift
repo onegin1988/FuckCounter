@@ -42,6 +42,11 @@ class LoginViewModel: ObservableObject {
         }
     }
     
+    func getAndAppendAppleUser(_ user: User) async {
+        let value = try? await myCurrentUser(user).value as? [String: Any]
+        AppData.userLoginModel = UserLoginModel(dbDict: value)
+    }
+    
     private func myCurrentUser(_ user: User) async throws -> DataSnapshot {
         return try await reference.child("users").child(user.uid).getData()
     }

@@ -83,7 +83,8 @@ struct FuckCounterApp: App {
                 dailyService.calculateDates()
                 
                 Task {
-                    await facebookService.checkIsNeedRefreshToken()
+//                    await facebookService.checkIsNeedRefreshToken()
+                    await appleService.checkIsNeedRefresh()
                     await googleService.checkIsNeedRefreshToken()
                 }
             } else if newPhase == .inactive {

@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
+    @EnvironmentObject var appleService: AppleService
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
@@ -52,7 +53,7 @@ struct SettingsView: View {
                             if AppData.userLoginModel?.providerId == "google.com" {
                                 await googleService.googleSignOut()
                             } else {
-                                await facebookService.logOut()
+                                await appleService.signOut()
                             }
                         }
                     default:
@@ -60,10 +61,7 @@ struct SettingsView: View {
                     }
                 }
             })
-            .onReceive(facebookService.$isAuth, perform: { newValue in
-                settingsViewModel.updateSettingsItems(newValue)
-            })
-            .onReceive(googleService.$isAuth, perform: { newValue in
+            .authSocialModifiers(authHandler: { newValue in
                 settingsViewModel.updateSettingsItems(newValue)
             })
             .padding(.top, safeAreaInsets.top + 64)
@@ -87,7 +85,7 @@ struct SettingsView: View {
                     if AppData.userLoginModel?.providerId == "google.com" {
                         await googleService.googleSignOut()
                     } else {
-                        await facebookService.logOut()
+                        await appleService.signOut() // Only logout, because only first time you can receive user info
                     }
                     
                     isAuthProcess = false

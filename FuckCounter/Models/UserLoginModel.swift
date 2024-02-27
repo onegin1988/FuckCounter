@@ -30,7 +30,7 @@ struct UserLoginModel: Codable {
         self.providerId = providerId
     }
     
-    init(_ fbDict: [String: Any]?) {
+    init(fbDict: [String: Any]?) {
         self.id = fbDict?["id"] as? String ?? UUID().uuidString
         self.fistName = fbDict?["first_name"] as? String
         self.lastName = fbDict?["last_name"] as? String
@@ -40,5 +40,13 @@ struct UserLoginModel: Codable {
             let dictData = dictPicture["data"] as? [String: Any] {
             self.image = dictData["url"] as? String
         }
+    }
+    
+    init(dbDict: [String: Any]?) {
+        self.id = dbDict?["id"] as? String ?? UUID().uuidString
+        self.fistName = dbDict?["firstName"] as? String
+        self.lastName = dbDict?["lastName"] as? String
+        self.name = dbDict?["name"] as? String
+        self.image = dbDict?["image"] as? String
     }
 }

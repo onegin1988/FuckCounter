@@ -114,7 +114,7 @@ class FacebookService: ObservableObject {
                     return
                 }
                 
-                continuation.resume(returning: UserLoginModel(result as? [String: Any]))
+                continuation.resume(returning: UserLoginModel(fbDict: result as? [String: Any]))
             }
         }
     }

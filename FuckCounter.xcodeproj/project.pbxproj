@@ -92,6 +92,7 @@
 		1FFA71A82B8D304800BA126A /* ErrorSocialServicesModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */; };
 		1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */; };
 		1FFA71AC2B8D34AA00BA126A /* UserSocialModelModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */; };
+		1FFBD8D72B8E3AC000818F48 /* AuthSocialModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBD8D62B8E3AC000818F48 /* AuthSocialModifiers.swift */; };
 		329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +185,7 @@
 		1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSocialServicesModifiers.swift; sourceTree = "<group>"; };
 		1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProcessModifiers.swift; sourceTree = "<group>"; };
 		1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSocialModelModifiers.swift; sourceTree = "<group>"; };
+		1FFBD8D62B8E3AC000818F48 /* AuthSocialModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSocialModifiers.swift; sourceTree = "<group>"; };
 		64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.release.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.release.xcconfig"; sourceTree = "<group>"; };
 		6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.debug.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +216,7 @@
 				1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */,
 				1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */,
 				1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */,
+				1FFBD8D62B8E3AC000818F48 /* AuthSocialModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,
+				1FFBD8D72B8E3AC000818F48 /* AuthSocialModifiers.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
 				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,

@@ -13,6 +13,7 @@ struct LeadersView: View {
     
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
+    @EnvironmentObject var appleService: AppleService
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
@@ -70,7 +71,7 @@ struct LeadersView: View {
     }
     
     private var isAuth: Bool {
-        return facebookService.isAuth || googleService.isAuth
+        return facebookService.isAuth || googleService.isAuth || appleService.isAuth
     }
     
     @ViewBuilder

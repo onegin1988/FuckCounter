@@ -11,6 +11,7 @@ struct UserSocialModelModifiers: ViewModifier {
     
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
+    @EnvironmentObject var appleService: AppleService
     
     private let modelHandler: (UserLoginModel?) -> Void
     
@@ -25,6 +26,9 @@ struct UserSocialModelModifiers: ViewModifier {
             })
             .onReceive(googleService.$userLoginModel, perform: { googleLoginModel in
                 modelHandler(googleLoginModel)
+            })
+            .onReceive(appleService.$userLoginModel, perform: { appleLoginModel in
+                modelHandler(appleLoginModel)
             })
     }
 }
