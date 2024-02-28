@@ -17,7 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        ApplicationDelegate.shared.application(application, 
+        ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
         return true
     }
@@ -92,11 +92,12 @@ struct FuckCounterApp: App {
             }
         }
     }
-    
+
     private func setupSettings() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.record, mode: .spokenAudio, options: .duckOthers)
+            
+            try audioSession.setCategory(.playAndRecord, mode: .spokenAudio, options: .duckOthers)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch let error {
             errorMessage = error.localizedDescription

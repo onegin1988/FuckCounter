@@ -48,5 +48,9 @@
 		<string>SFProDisplay-Regular.ttf</string>
 		<string>SFProDisplay-Medium.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 </dict>
 </plist>
