@@ -43,8 +43,12 @@ class LoginViewModel: ObservableObject {
     }
     
     func getAndAppendAppleUser(_ user: User) async {
-        let value = try? await myCurrentUser(user).value as? [String: Any]
-        AppData.userLoginModel = UserLoginModel(dbDict: value)
+        do {
+            let value = try await myCurrentUser(user).value as? [String: Any]
+            AppData.userLoginModel = UserLoginModel(dbDict: value)
+        } catch let error {
+            self.error = error.localizedDescription
+        }
     }
     
     private func myCurrentUser(_ user: User) async throws -> DataSnapshot {

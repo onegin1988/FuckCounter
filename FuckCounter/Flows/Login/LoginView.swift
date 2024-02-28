@@ -44,7 +44,23 @@ struct LoginView: View {
         .errorSocialServices($loginViewModel.error)
         .userSocialModelModifiers(modelHandler: { userLoginModel in
             Task {
-                await appendUser(userLoginModel)
+                if !AppData.appleUserId.isEmpty {
+                    await appendUser(userLoginModel)
+                }
+            }
+        })
+        .onReceive(appleService.$isFinished, perform: { isFinished in
+            if isFinished {
+                Task {
+                    if let userLoginModel = appleService.userLoginModel {
+                        await appendUser(userLoginModel)
+                        dismiss()
+                    } else {
+                        guard let user = Auth.auth().currentUser else { return }
+                        await loginViewModel.getAndAppendAppleUser(user)
+                        dismiss()
+                    }
+                }
             }
         })
         .alertError(errorMessage: $loginViewModel.error)
@@ -52,15 +68,7 @@ struct LoginView: View {
     }
     
     private func appendUser(_ loginModel: UserLoginModel?) async {
-        guard let user = Auth.auth().currentUser, let model = loginModel else {
-            if !AppData.appleUserId.isEmpty && isAuthProcess {
-                if let user = Auth.auth().currentUser {
-                    await loginViewModel.getAndAppendAppleUser(user)
-                }
-                dismiss()
-            }
-            return
-        }
+        guard let user = Auth.auth().currentUser, let model = loginModel else { return }
         await loginViewModel.appendUser(model, user)
         dismiss()
     }

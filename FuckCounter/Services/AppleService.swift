@@ -16,7 +16,8 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
     @Published var error: String?
     @Published var userLoginModel: UserLoginModel?
     @Published var isAuthProcess = false
-
+    @Published var isFinished = false
+    
     // Unhashed nonce.
     var currentNonce: String?
         
@@ -107,6 +108,7 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
             
             try Auth.auth().signOut()
             isAuth = false
+            isFinished = false
             AppData.appleUserId = ""
             AppData.userLoginModel = nil
             
@@ -127,6 +129,7 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
         
         switch authorization.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            isFinished = false
             firebaseLogin(credential: appleIdCredential)
         default:
             isAuthProcess = false
@@ -163,6 +166,7 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
             return
         }
         
+        AppData.appleUserId = credential.user
         let oauthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
         Auth.auth().signIn(with: oauthCredential) { (authResult, error) in
             if let error = error {
@@ -171,9 +175,9 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
                 return
             }
             
-            AppData.appleUserId = credential.user
             self.registerNewAccount(credential: credential)
             self.isAuthProcess = false
+            self.isFinished = true
         }
     }
     
