@@ -70,6 +70,9 @@
 		1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */; };
 		1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82322B2B12EF0032BEA9 /* Storage.swift */; };
 		1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA82372B2CFD420032BEA9 /* SpeechService.swift */; };
+		1FBCBBEE2B9090DE00C23920 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBCBBED2B9090DD00C23920 /* WordModel.swift */; };
+		1FBCBBF02B90A80600C23920 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBCBBEF2B90A80600C23920 /* String+Date.swift */; };
+		1FBCBBF22B90DD4600C23920 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBCBBF12B90DD4600C23920 /* AppConstants.swift */; };
 		1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44512B220A3E00513401 /* SemiboldTextView.swift */; };
 		1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44532B220A9500513401 /* RegularTextView.swift */; };
 		1FBE44562B220BAB00513401 /* MediumTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44552B220BAB00513401 /* MediumTextView.swift */; };
@@ -163,6 +166,9 @@
 		1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApp.swift; sourceTree = "<group>"; };
 		1FBA82322B2B12EF0032BEA9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1FBA82372B2CFD420032BEA9 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		1FBCBBED2B9090DD00C23920 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
+		1FBCBBEF2B90A80600C23920 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		1FBCBBF12B90DD4600C23920 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1FBE44512B220A3E00513401 /* SemiboldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiboldTextView.swift; sourceTree = "<group>"; };
 		1FBE44532B220A9500513401 /* RegularTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTextView.swift; sourceTree = "<group>"; };
 		1FBE44552B220BAB00513401 /* MediumTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTextView.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 				1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */,
 				1F07380E2B8554FB00A19918 /* Int+Formatter.swift */,
 				1F4728E02B87415A001742E2 /* String+Range.swift */,
+				1FBCBBEF2B90A80600C23920 /* String+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,6 +462,7 @@
 				1F9933F82B385247005C223F /* DailyModel.swift */,
 				1F39C0972B5C419500A00420 /* LanguageModel.swift */,
 				1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */,
+				1FBCBBED2B9090DD00C23920 /* WordModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +528,7 @@
 				1FBE44622B23B3F300513401 /* UIApplication+Extensions.swift */,
 				1FBA82302B2A74FF0032BEA9 /* ReviewApp.swift */,
 				1FBA82322B2B12EF0032BEA9 /* Storage.swift */,
+				1FBCBBF12B90DD4600C23920 /* AppConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -721,8 +730,11 @@
 				1F39C09C2B5C565500A00420 /* ListItemCheckView.swift in Sources */,
 				1F9933F92B385247005C223F /* DailyModel.swift in Sources */,
 				1FA6E5242B323A070009DB9D /* AppHardPushView.swift in Sources */,
+				1FBCBBF02B90A80600C23920 /* String+Date.swift in Sources */,
 				1F9C3E3E2B7FE6210062455F /* LoginViewModel.swift in Sources */,
+				1FBCBBF22B90DD4600C23920 /* AppConstants.swift in Sources */,
 				1FBA82332B2B12EF0032BEA9 /* Storage.swift in Sources */,
+				1FBCBBEE2B9090DE00C23920 /* WordModel.swift in Sources */,
 				1F39C09A2B5C52EE00A00420 /* LanguagesViewModel.swift in Sources */,
 				1F3304B72B606F7900F4D5B9 /* KeyboardPublishers.swift in Sources */,
 				1F62A2752B2120BB00FE2918 /* FontStyle.swift in Sources */,

@@ -41,7 +41,10 @@ struct HomeView: View {
                         withAnimation {
                             if homeViewModel.isPlay {
                                 speechService.cancelRecording()
-                                isOpenCongrats = true
+                                Task {
+                                    await homeViewModel.uploadResults()
+                                    isOpenCongrats = true
+                                }
                             } else {
                                 speechService.recordAndRecognizeSpeech()
                             }
@@ -99,7 +102,7 @@ struct HomeView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                homeViewModel.updateCountForAppPush()
+//                homeViewModel.updateCountForAppPush()
             }
         }
         .overlay(content: {

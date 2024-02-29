@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct UserModel: Codable, Hashable {
+struct UserModel: Codable {
     
     let id: String?
     let name: String?
     let image: String?
     let wins: Int
-    let points: Int
+    var words: [WordModel]?
+    var points: Int
+    
+    var reducePoints: Int {
+        return (words ?? []).map({$0.countOfWords ?? 0}).reduce(0, { $0 + $1 })
+    }
     
     init(_ dict: [String: Any]) {
         self.id = dict["uid"] as? String
@@ -21,6 +26,11 @@ struct UserModel: Codable, Hashable {
         self.image = dict["image"] as? String
         self.wins = dict["wins"] as? Int ?? 0
         self.points = dict["points"] as? Int ?? 0
+        self.words = []
+        
+        if let wordsDict = dict["words"] as? [String: Any] {
+            self.words = wordsDict.values.compactMap({WordModel($0 as? [String: Any])})
+        }
     }
     
     init(id: String = UUID().uuidString, 
@@ -33,5 +43,6 @@ struct UserModel: Codable, Hashable {
         self.image = image
         self.wins = 0
         self.points = 0
+        self.words = []
     }
 }

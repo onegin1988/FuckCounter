@@ -35,7 +35,7 @@ class LoginViewModel: ObservableObject {
                 childValues["updatedDate"] = Date().toString()
                 childValues["wins"] = 0
             }
-            try await reference.child("users").child(user.uid).updateChildValues(childValues)
+            try await reference.child(AppConstants.cUsers).child(user.uid).updateChildValues(childValues)
             
         } catch let error {
             self.error = error.localizedDescription
@@ -52,7 +52,7 @@ class LoginViewModel: ObservableObject {
     }
     
     private func myCurrentUser(_ user: User) async throws -> DataSnapshot {
-        return try await reference.child("users").child(user.uid).getData()
+        return try await reference.child(AppConstants.cUsers).child(user.uid).getData()
     }
 
 }

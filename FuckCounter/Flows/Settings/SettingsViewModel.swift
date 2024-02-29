@@ -44,7 +44,7 @@ class SettingsViewModel: ObservableObject {
     func deleteAccount() async {
         do {
             guard let user = Auth.auth().currentUser else { return }
-            try await reference.child("users").child(user.uid).removeValue()
+            try await reference.child(AppConstants.cUsers).child(user.uid).removeValue()
             try await user.delete()
         } catch let error {
             self.error = error.localizedDescription

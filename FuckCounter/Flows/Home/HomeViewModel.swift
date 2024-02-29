@@ -5,6 +5,8 @@
 //  Created by Alex on 07.12.2023.
 //
 
+import FirebaseAuth
+import FirebaseDatabase
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
@@ -15,7 +17,9 @@ class HomeViewModel: ObservableObject {
     @Published var timeSlice: String
     @Published var isShowAppPush: Bool
     @Published var homeEvent: HomeEvent?
+    @Published var error: String?
     
+    private let reference = Database.database().reference()
     private var countForAppPush: Int
     
     init() {
@@ -58,6 +62,20 @@ class HomeViewModel: ObservableObject {
         countForAppPush = 0
         withAnimation {
             isShowAppPush = false
+        }
+    }
+    
+    func uploadResults() async {
+        do {
+            guard let user = Auth.auth().currentUser else { return }
+            let id = UUID().uuidString
+            try await reference.child(AppConstants.cUsers).child(user.uid).child(AppConstants.cWords).child(id).updateChildValues([
+                "createdDate": Date().toString(),
+                "countOfWords": counter,
+                "id": id
+            ])
+        } catch let error {
+            self.error = error.localizedDescription
         }
     }
     
