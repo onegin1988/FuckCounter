@@ -17,6 +17,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        if AppData.uuidDevice.isEmpty {
+            AppData.uuidDevice = UUID().uuidString
+        }
+        
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
         return true

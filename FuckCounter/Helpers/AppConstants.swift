@@ -9,6 +9,9 @@ import Foundation
 
 struct AppConstants {
     
+    // Group
+    static let group = "group.com.alex.fuckcounter.group"
+    
     // Date
     static let defaultDateFormat = "yyyy-MM-dd HH:mm:ss"
     

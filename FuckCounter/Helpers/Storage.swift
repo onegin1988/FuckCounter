@@ -5,7 +5,44 @@
 //  Created by Alex on 14.12.2023.
 //
 
+import KeychainSwift
 import Foundation
+
+// MARK: - Keychain
+@propertyWrapper
+struct KeychainStorage<T: Codable> {
+    
+    private let key: String
+    private let defaultValue: T
+    private let keychain: KeychainSwift
+    
+    init(key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+        
+        self.keychain = KeychainSwift()
+        self.keychain.accessGroup = AppConstants.group
+    }
+    
+    var wrappedValue: T {
+        get {
+            guard let data = keychain.getData(key) else {
+                return defaultValue
+            }
+            
+            let value = try? JSONDecoder().decode(T.self, from: data)
+            return value ?? defaultValue
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                keychain.set(data, forKey: key, withAccess: .accessibleWhenUnlocked)
+            } else {
+                keychain.set("", forKey: key, withAccess: .accessibleWhenUnlocked)
+            }
+        }
+    }
+
+}
 
 // MARK: - Storage
 @propertyWrapper
@@ -13,6 +50,7 @@ struct Storage<T: Codable> {
     
     private let key: String
     private let defaultValue: T
+    private let userDefaults = UserDefaults(suiteName: AppConstants.group)
     
     init(key: String, defaultValue: T) {
         self.key = key
@@ -21,7 +59,7 @@ struct Storage<T: Codable> {
     
     var wrappedValue: T {
         get {
-            guard let data = UserDefaults.standard.object(forKey: key) as? Data else {
+            guard let data = userDefaults?.object(forKey: key) as? Data else {
                 return defaultValue
             }
             
@@ -30,13 +68,19 @@ struct Storage<T: Codable> {
         }
         set {
             let data = try? JSONEncoder().encode(newValue)
-            UserDefaults.standard.set(data, forKey: key)
+            userDefaults?.set(data, forKey: key)
         }
     }
 }
 
 // MARK: - AppData
 struct AppData {
+    
+    // MARK: - @KeychainStorage
+    @KeychainStorage(key: "uuidDevice", defaultValue: "")
+    static var uuidDevice: String
+    
+    // MARK: - @Storage
     @Storage(key: "lastVersionPromptedForReviewKey", defaultValue: (Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String) ?? "")
     static var lastVersionPromptedForReviewKey: String
     

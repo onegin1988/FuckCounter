@@ -13,6 +13,7 @@ struct UserModel: Codable {
     let name: String?
     let image: String?
     let wins: Int
+    let uuidDevice: String?
     var words: [WordModel]?
     var points: Int
     
@@ -21,10 +22,11 @@ struct UserModel: Codable {
     }
     
     init(_ dict: [String: Any]) {
-        self.id = dict["uid"] as? String
+        self.id = dict["uid"] as? String ?? UUID().uuidString
         self.name = dict["name"] as? String
         self.image = dict["image"] as? String
         self.wins = dict["wins"] as? Int ?? 0
+        self.uuidDevice = dict["uuidDevice"] as? String ?? UUID().uuidString
         self.points = dict["points"] as? Int ?? 0
         self.words = []
         
@@ -37,11 +39,13 @@ struct UserModel: Codable {
          name: String? = nil,
          image: String? = nil,
          wins: Int = 0,
-         points: Int = 0) {
+         points: Int = 0,
+         uuidDevice: String = UUID().uuidString) {
         self.id = id
         self.name = name
         self.image = image
         self.wins = 0
+        self.uuidDevice = uuidDevice
         self.points = 0
         self.words = []
     }

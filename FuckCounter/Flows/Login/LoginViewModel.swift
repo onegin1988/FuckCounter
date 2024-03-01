@@ -24,7 +24,8 @@ class LoginViewModel: ObservableObject {
                 "lastName": userLoginModel.lastName ?? "",
                 "name": userLoginModel.name ?? "",
                 "image": userLoginModel.image ?? "",
-                "providerID": user.providerData.first?.providerID ?? ""
+                "providerID": user.providerData.first?.providerID ?? "",
+                "uuidDevice": AppData.uuidDevice
             ]
             
             let dataSnapshot = try await myCurrentUser(user)
