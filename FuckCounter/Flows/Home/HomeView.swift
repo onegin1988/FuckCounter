@@ -5,6 +5,7 @@
 //  Created by Alex on 19.11.2023.
 //
 
+import AudioToolbox
 import SwiftUI
 
 struct HomeView: View {
@@ -51,7 +52,7 @@ struct HomeView: View {
                 } content: {
                     if isOpenCongrats {
                         CongratsView(userModel: homeViewModel.userModel,
-                                     count: homeViewModel.totalCount,
+                                     count: AppData.userLoginModel == nil ? homeViewModel.counter : homeViewModel.totalCount,
                                      subTitle: homeViewModel.isChamp ? "Congrat’s, you’re King of Bad Words today!" : "Bad words today!")
                     }
                 }
@@ -120,6 +121,7 @@ struct HomeView: View {
         ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
             withAnimation {
                 if homeViewModel.isPlay {
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                     isProcessing = true
                     speechService.cancelRecording()
                     Task {

@@ -34,9 +34,9 @@ class SettingsViewModel: ObservableObject {
     
     func updateSettingsItems(_ isAuthenticated: Bool) {
         if isAuthenticated {
-            settingsItems = SettingsItem.allCases
+            settingsItems = SettingsItem.allCases.filter({ $0 != .notifications })
         } else {
-            settingsItems = SettingsItem.allCases.filter({ $0 != .deleteAccount && $0 != .logout })
+            settingsItems = SettingsItem.allCases.filter({ $0 != .deleteAccount && $0 != .logout && $0 != .notifications })
         }
     }
     

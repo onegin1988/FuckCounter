@@ -86,7 +86,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
     
     var title: String {
         switch self {
-        case .createAccount: return "Create account with Facebook"
+        case .createAccount: return "Create account"
         case .notifications: return "Enable notifications"
         case .terms: return "Terms of Conditions"
         case .invite: return "Invite Friends"
@@ -98,7 +98,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
     
     var icon: Image {
         switch self {
-        case .createAccount: return Images.facebookBlue
+        case .createAccount: return Images.createAccount
         case .notifications: return Images.notifications
         case .terms: return Images.support
         case .invite: return Images.invite

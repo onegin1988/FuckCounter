@@ -41,4 +41,5 @@ struct Images {
     static let deleteAccount = Image("deleteAccount")
     static let apple = Image("apple")
     static let google = Image("google")
+    static let createAccount = Image("createAccount")
 }
