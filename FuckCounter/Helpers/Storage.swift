@@ -102,6 +102,9 @@ struct AppData {
     @Storage(key: "appleUserId", defaultValue: "")
     static var appleUserId: String
     
+    @Storage(key: "lastDate", defaultValue: Date())
+    static var lastDate: Date
+    
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
         case "en": return LanguageModel(id: 1, name: "English", languageCode: "en")

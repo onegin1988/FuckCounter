@@ -32,7 +32,8 @@ class SettingsViewModel: ObservableObject {
 //        ]
     }
     
-    func updateSettingsItems(_ isAuthenticated: Bool) {
+    @MainActor
+    func updateSettingsItems(_ isAuthenticated: Bool) async {
         if isAuthenticated {
             settingsItems = SettingsItem.allCases.filter({ $0 != .notifications })
         } else {

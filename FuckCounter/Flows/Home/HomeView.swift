@@ -60,6 +60,7 @@ struct HomeView: View {
             .onFirstAppear {
                 Task {
                     await homeViewModel.subscribeHomeObservers()
+                    await homeViewModel.checkWinner()
                 }
             }
             .navigationDestination(isPresented: isPushToView, destination: {

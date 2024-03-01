@@ -15,14 +15,17 @@ struct UserLoginModel: Codable {
     var name: String?
     var image: String?
     var providerId: String?
+    var uid: String?
     
     init(id: String? = UUID().uuidString,
+         uid: String? = UUID().uuidString,
          fistName: String? = nil,
          lastName: String? = nil,
          name: String? = nil,
          image: String? = nil,
          providerId: String? = nil) {
         self.id = id
+        self.uid = uid
         self.fistName = fistName
         self.lastName = lastName
         self.name = name
@@ -44,9 +47,11 @@ struct UserLoginModel: Codable {
     
     init(dbDict: [String: Any]?) {
         self.id = dbDict?["id"] as? String ?? UUID().uuidString
-        self.fistName = dbDict?["firstName"] as? String
+        self.fistName = dbDict?["fistName"] as? String
         self.lastName = dbDict?["lastName"] as? String
         self.name = dbDict?["name"] as? String
         self.image = dbDict?["image"] as? String
+        self.uid = dbDict?["uid"] as? String
+        self.providerId = dbDict?["providerID"] as? String
     }
 }

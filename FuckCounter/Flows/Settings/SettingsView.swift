@@ -27,6 +27,10 @@ struct SettingsView: View {
                 set: { _ in settingsViewModel.settingsEvent = nil } )
     }
     
+    private var isAuthUser: Bool {
+        return facebookService.isAuth || googleService.isAuth || appleService.isAuth
+    }
+    
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
     }
@@ -61,8 +65,10 @@ struct SettingsView: View {
                     }
                 }
             })
-            .authSocialModifiers(authHandler: { newValue in
-                settingsViewModel.updateSettingsItems(newValue)
+            .authSocialModifiers(authHandler: { _ in
+                Task {
+                    await settingsViewModel.updateSettingsItems(isAuthUser)
+                }
             })
             .padding(.top, safeAreaInsets.top + 64)
             .modifier(NavBarModifiers(title: navTitle))

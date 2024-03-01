@@ -82,11 +82,46 @@ class HomeViewModel: ObservableObject {
     }
     
     @MainActor
+    func checkWinner() async {
+        if Calendar.current.isDateInYesterday(AppData.lastDate) {
+            AppData.lastDate = Date()
+            do {
+                let users = try await getUsers()
+                var filtered = users.filter { model in
+                    (model.words ?? []).contains(where: {
+                        ($0.createdDate?.toDate().get(.day).day ?? 0 - 1) == (Date().get(.day).day ?? 0 - 1)
+                    })
+                }
+                filtered.enumerated().forEach { model in
+                    let filteredWords = model.element.words?.filter({
+                        ($0.createdDate?.toDate().get(.day).day ?? 0 - 1) == (Date().get(.day).day ?? 0 - 1)
+                    })
+                    filtered[model.offset].words = filteredWords
+                    filtered[model.offset].points = filtered[model.offset].reducePoints
+                }
+                
+                filtered.sort(by: {$0.points > $1.points})
+                
+                if let user = filtered.first, let uid = user.uid {
+                    try await reference.child(AppConstants.cUsers).child(uid).updateChildValues(["wins": user.wins + 1])
+                }
+            } catch let error {
+                self.error = error.localizedDescription
+            }
+        }
+    }
+    
+    private func getUsers() async throws -> [UserModel] {
+        let snapshot = try await reference.child(AppConstants.cUsers).getData()
+        let users = ((snapshot.value as? [String: [String: Any]])?.values)?
+            .compactMap({UserModel($0)}) ?? []
+        return users
+    }
+    
+    @MainActor
     func loadUsers() async {
         do {
-            let snapshot = try await reference.child(AppConstants.cUsers).getData()
-            let users = ((snapshot.value as? [String: [String: Any]])?.values)?
-                .compactMap({UserModel($0)}) ?? []
+            let users = try await getUsers()
             
             var filtered = users.filter { model in
                 (model.words ?? []).contains(where: {

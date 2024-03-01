@@ -28,8 +28,8 @@ class LoginViewModel: ObservableObject {
                 "uuidDevice": AppData.uuidDevice
             ]
             
-            let dataSnapshot = try await myCurrentUser(user)
-            if dataSnapshot.exists() {
+            let currentUser = try await myCurrentUser(user)
+            if currentUser != nil {
                 childValues["updatedDate"] = Date().toString()
             } else {
                 childValues["createdDate"] = Date().toString()
@@ -45,15 +45,18 @@ class LoginViewModel: ObservableObject {
     
     func getAndAppendAppleUser(_ user: User) async {
         do {
-            let value = try await myCurrentUser(user).value as? [String: Any]
-            AppData.userLoginModel = UserLoginModel(dbDict: value)
+            let currentUser = try await myCurrentUser(user)
+            AppData.userLoginModel = currentUser
         } catch let error {
             self.error = error.localizedDescription
         }
     }
     
-    private func myCurrentUser(_ user: User) async throws -> DataSnapshot {
-        return try await reference.child(AppConstants.cUsers).child(user.uid).getData()
+    private func myCurrentUser(_ user: User) async throws -> UserLoginModel? {
+        let snapshot = try await reference.child(AppConstants.cUsers).getData()
+        let user = ((snapshot.value as? [String: [String: Any]])?.values)?
+            .compactMap({UserLoginModel(dbDict: $0)})
+            .first(where: { $0.uid == user.uid })
+        return user
     }
-
 }
