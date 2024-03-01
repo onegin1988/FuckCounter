@@ -9,11 +9,13 @@ import SwiftUI
 
 struct CongratsView: View {
     
-    private let title: String
+    private let userModel: UserModel?
+    private let count: Int
     private let subTitle: String
     
-    init(title: String, subTitle: String) {
-        self.title = title
+    init(userModel: UserModel?, count: Int = 0, subTitle: String) {
+        self.userModel = userModel
+        self.count = count
         self.subTitle = subTitle
     }
     
@@ -26,8 +28,8 @@ struct CongratsView: View {
             profileImageView()
                 .padding(.top, 78)
             
-            crownImageView()
-                .padding(.top, 54)
+//            crownImageView()
+//                .padding(.top, 54)
             
             labelsView()
                 .padding(.top, 200)
@@ -39,7 +41,7 @@ struct CongratsView: View {
     }
     
     private func profileImageView() -> some View {
-        Images.greenState
+        ImageView(url: userModel?.image ?? "")
             .frame(width: 96, height: 96)
             .background(
                 Circle()
@@ -51,16 +53,16 @@ struct CongratsView: View {
             )
     }
     
-    private func crownImageView() -> some View {
-        Images.crown_2
-            .frame(width: 40, height: 40)
-    }
+//    private func crownImageView() -> some View {
+//        Images.crown_2
+//            .frame(width: 40, height: 40)
+//    }
     
     private func labelsView() -> some View {
         VStack(alignment: .center, spacing: 16) {
             MediumTextView(
                 style: .sfPro,
-                title: title,//"14,254",
+                title: count.withCommas(),
                 size: 48,
                 color: .white
             )
@@ -78,5 +80,5 @@ struct CongratsView: View {
 }
 
 #Preview {
-    CongratsView(title: "", subTitle: "")
+    CongratsView(userModel: nil, count: 0, subTitle: "")
 }

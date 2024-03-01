@@ -22,7 +22,7 @@ struct UserModel: Codable {
     }
     
     init(_ dict: [String: Any]) {
-        self.id = dict["uid"] as? String ?? UUID().uuidString
+        self.id = dict["id"] as? String ?? UUID().uuidString
         self.name = dict["name"] as? String
         self.image = dict["image"] as? String
         self.wins = dict["wins"] as? Int ?? 0

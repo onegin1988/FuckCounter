@@ -19,6 +19,10 @@ class HomeViewModel: ObservableObject {
     @Published var homeEvent: HomeEvent?
     @Published var error: String?
     
+    private(set) var userModel: UserModel?
+    private(set) var isChamp: Bool
+    private(set) var totalCount: Int
+    
     private let reference = Database.database().reference()
     private var countForAppPush: Int
     
@@ -29,6 +33,8 @@ class HomeViewModel: ObservableObject {
         self.timeSlice = ""
         self.countForAppPush = 0
         self.isShowAppPush = false
+        self.isChamp = false
+        self.totalCount = 0
     }
     
     func checkLevel() {
@@ -46,6 +52,7 @@ class HomeViewModel: ObservableObject {
     
     func resetCounter() {
         counter = 0
+        totalCount = 0
         checkLevel()
     }
     
@@ -65,6 +72,49 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    @MainActor
+    func subscribeHomeObservers() async {
+        reference.child(AppConstants.cUsers).observe(.childChanged) { _ in
+            Task {
+                await self.loadUsers()
+            }
+        }
+    }
+    
+    @MainActor
+    func loadUsers() async {
+        do {
+            let snapshot = try await reference.child(AppConstants.cUsers).getData()
+            let users = ((snapshot.value as? [String: [String: Any]])?.values)?
+                .compactMap({UserModel($0)}) ?? []
+            
+            var filtered = users.filter { model in
+                (model.words ?? []).contains(where: {
+                    $0.createdDate?.toDate().get(.day).day == Date().get(.day).day
+                })
+            }
+            filtered.enumerated().forEach { model in
+                let filteredWords = model.element.words?.filter({
+                    $0.createdDate?.toDate().get(.day).day == Date().get(.day).day
+                })
+                filtered[model.offset].words = filteredWords
+                filtered[model.offset].points = filtered[model.offset].reducePoints
+            }
+            filtered.sort(by: {$0.points > $1.points})
+            
+            if let userModel = filtered.first {
+                self.userModel = userModel
+                totalCount = userModel.points
+                isChamp = userModel.id == AppData.userLoginModel?.id
+            } else {
+                userModel = nil
+            }
+        } catch let error {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    @MainActor
     func uploadResults() async {
         do {
             guard let user = Auth.auth().currentUser else { return }

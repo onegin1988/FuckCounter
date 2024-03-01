@@ -12,6 +12,7 @@ struct HomeView: View {
     @StateObject var homeViewModel = HomeViewModel()
     
     @State private var isOpenCongrats: Bool = false
+    @State private var isProcessing: Bool = false
     
     @EnvironmentObject var dailyService: DailyService
     @EnvironmentObject var speechService: SpeechService
@@ -36,23 +37,8 @@ struct HomeView: View {
                     Spacer()
                     
                     prepareProgressView()
-                                        
-                    ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
-                        withAnimation {
-                            if homeViewModel.isPlay {
-                                speechService.cancelRecording()
-                                Task {
-                                    await homeViewModel.uploadResults()
-                                    isOpenCongrats = true
-                                }
-                            } else {
-                                speechService.recordAndRecognizeSpeech()
-                            }
-                        }
-                    }
-                    .frame(width: homeViewModel.isPlayState.2, height: 56)
-                    .padding(.bottom, 52)
-                    .padding(.top, 20)
+                                   
+                    preparePlayButtonView()
                     
                     MediumTextView(style: .sfPro, title: homeViewModel.level.result)
                         .padding(.bottom, 95)
@@ -64,8 +50,15 @@ struct HomeView: View {
                     }
                 } content: {
                     if isOpenCongrats {
-                        CongratsView(title: "\(homeViewModel.counter)", subTitle: "Bad words today!")
+                        CongratsView(userModel: homeViewModel.userModel,
+                                     count: homeViewModel.totalCount,
+                                     subTitle: homeViewModel.isChamp ? "Congrat’s, you’re King of Bad Words today!" : "Bad words today!")
                     }
+                }
+            }
+            .onFirstAppear {
+                Task {
+                    await homeViewModel.subscribeHomeObservers()
                 }
             }
             .navigationDestination(isPresented: isPushToView, destination: {
@@ -86,6 +79,11 @@ struct HomeView: View {
             })
             .onReceive(speechService.$isRecording, perform: { isRecording in
                 homeViewModel.isPlay = speechService.isRecording
+                if isRecording {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.isProcessing = false
+                    }
+                }
             })
             .onReceive(speechService.$fullText, perform: { fullText in
                 if let fullText = fullText {
@@ -100,6 +98,7 @@ struct HomeView: View {
             }))
             .ignoresSafeArea()
         }
+        .showProgress(isLoading: isProcessing)
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
 //                homeViewModel.updateCountForAppPush()
@@ -115,6 +114,31 @@ struct HomeView: View {
                 }
             }
         })
+    }
+    
+    private func preparePlayButtonView() -> some View {
+        ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
+            withAnimation {
+                if homeViewModel.isPlay {
+                    isProcessing = true
+                    speechService.cancelRecording()
+                    Task {
+                        if AppData.userLoginModel != nil {
+                            await homeViewModel.uploadResults()
+                        }
+                        
+                        isOpenCongrats = true
+                        isProcessing = false
+                    }
+                } else {
+                    isProcessing = true
+                    speechService.recordAndRecognizeSpeech()
+                }
+            }
+        }
+        .frame(width: homeViewModel.isPlayState.2, height: 56)
+        .padding(.bottom, 52)
+        .padding(.top, 20)
     }
     
     private func prepareCounterWordsView() -> some View {

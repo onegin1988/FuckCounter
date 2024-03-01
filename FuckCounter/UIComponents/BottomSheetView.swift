@@ -65,7 +65,7 @@ struct BottomSheetView<Content: View>: View {
 
 #Preview {
     BottomSheetView(isOpen: .constant(false), maxHeight: 375) {
-        CongratsView(title: "", subTitle: "")
+        CongratsView(userModel: nil, count: 0, subTitle: "")
     }
     .ignoresSafeArea()
 }
