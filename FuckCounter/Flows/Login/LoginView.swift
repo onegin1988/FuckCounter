@@ -44,7 +44,7 @@ struct LoginView: View {
         .errorSocialServices($loginViewModel.error)
         .userSocialModelModifiers(modelHandler: { userLoginModel in
             Task {
-                if !AppData.appleUserId.isEmpty {
+                if AppData.appleUserId.isEmpty {
                     await appendUser(userLoginModel)
                 }
             }
