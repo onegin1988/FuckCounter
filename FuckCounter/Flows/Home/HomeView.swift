@@ -121,8 +121,8 @@ struct HomeView: View {
     private func preparePlayButtonView() -> some View {
         ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
             withAnimation {
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 if homeViewModel.isPlay {
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                     isProcessing = true
                     speechService.cancelRecording()
                     Task {
