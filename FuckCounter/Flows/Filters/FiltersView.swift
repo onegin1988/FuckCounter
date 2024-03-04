@@ -26,6 +26,7 @@ struct FiltersView: View {
     private let navTitle: String?
     
     @State private var isShow = false
+    @State private var isCustom = false
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
@@ -55,12 +56,27 @@ struct FiltersView: View {
                     trailing: FiltersConstants.padding)
             )
         }
+        .onFirstAppear {
+            isCustom = filtersViewModel.customWord == filtersViewModel.wordsModel.name
+        }
         .onAppear {
             filtersViewModel.updateBadWordsList()
         }
+        .onChange(of: isCustom, perform: { newValue in
+            if newValue {
+                if filtersViewModel.customWord.isEmpty {
+                    isCustom = false
+                    return
+                }
+                filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
+            }
+        })
         .toolbarBackground(.hidden, for: .navigationBar)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(NavBarModifiers(title: navTitle))
+        .modifier(NavBarModifiers(title: navTitle, rightTitle: (filtersViewModel.languageModel.languageCode, {
+            filtersViewModel.filtersEvent = .languages
+            isShow.toggle()
+        })))
         .modifier(GradientModifiers(style: .red,
                                     useBlackOpacity: true))
         .ignoresSafeArea()
@@ -92,22 +108,23 @@ struct FiltersView: View {
         Section {
             VStack {
                 ForEach(Array(filtersViewModel.list.enumerated()), id: \.offset) { index, element in
-                    if element.isCustom {
-                        ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
-                            .frame(height: FiltersConstants.listItemHeight)
-                            .itemTap {
-                                filtersViewModel.filtersEvent = .customWord
-                                isShow.toggle()
-                            }
-                    } else {
+//                    if element.isCustom {
+//                        ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
+//                            .frame(height: FiltersConstants.listItemHeight)
+//                            .itemTap {
+//                                filtersViewModel.filtersEvent = .customWord
+//                                isShow.toggle()
+//                            }
+//                    } else {
                         ListItemCheckView(title: element.name,
                                           isChecked: element.id == filtersViewModel.wordsModel.id)
                         .frame(height: FiltersConstants.listItemHeight)
                         .itemTap {
                             filtersViewModel.wordsModel = element
+                            isCustom = false
                         }
                         .padding(.top, index == 0 ? 10 : 0)
-                    }
+//                    }
                 }
             }
             .background(
@@ -121,17 +138,29 @@ struct FiltersView: View {
     
     private func setupLanguageSectionView() -> some View {
         Section {
-            ListItemArrowView(title: filtersViewModel.languageModel.name)
-                .frame(height: FiltersConstants.listItemHeight)
-                .padding(.top, 5)
-                .background(Color.black.opacity(0.2))
-                .itemTap {
-                    filtersViewModel.filtersEvent = .languages
-                    isShow.toggle()
-                }
-                .cornerRadius(FiltersConstants.sectionRadius)
+            ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord,
+                              useLeftCheckmark: true,
+                              selectCheckmark: $isCustom)
+            .frame(height: FiltersConstants.listItemHeight)
+            .padding(.top, 5)
+            .background(Color.black.opacity(0.2))
+            .onTapGesture {
+                filtersViewModel.filtersEvent = .customWord
+                isShow.toggle()
+            }
+            .cornerRadius(FiltersConstants.sectionRadius)
+
+//            ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord)
+//                .frame(height: FiltersConstants.listItemHeight)
+//                .padding(.top, 5)
+//                .background(Color.black.opacity(0.2))
+//                .onTapGesture {
+//                    filtersViewModel.filtersEvent = .customWord
+//                    isShow.toggle()
+//                }
+//                .cornerRadius(FiltersConstants.sectionRadius)
         } header: {
-            setupHeaderView("Language")
+            setupHeaderView("Custom word")
         }
     }
     

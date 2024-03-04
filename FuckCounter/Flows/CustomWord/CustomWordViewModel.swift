@@ -11,6 +11,7 @@ class CustomWordViewModel: ObservableObject {
     
     @Published var keyboardHeight: CGFloat
     @Published var textInput: String
+    @Published var error: String?
     
     init() {
         self.keyboardHeight = 0

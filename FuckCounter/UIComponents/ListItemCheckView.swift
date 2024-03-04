@@ -28,7 +28,7 @@ struct ListItemCheckView: View {
                     
                     Spacer()
                     
-                    checkmarkIconView(isChecked: isChecked)
+                    CheckMarkIconView(isChecked: isChecked)
                         .frame(width: 24, height: 24)
                 }
                 .padding(.all, 16)
@@ -36,14 +36,6 @@ struct ListItemCheckView: View {
                     .fill(Colors._6D6D7A.opacity(0.18))
                     .frame(height: 1)
             }
-        }
-    }
-    
-    @ViewBuilder private func checkmarkIconView(isChecked: Bool) -> some View {
-        if isChecked {
-            Images.checked
-        } else {
-            Images.unchecked
         }
     }
 }

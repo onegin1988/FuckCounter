@@ -50,6 +50,7 @@ struct CustomWordView: View {
                     customWordViewModel.keyboardHeight = value
                 }
             })
+            .alertError(errorMessage: $customWordViewModel.error)
         })
     }
     
@@ -76,6 +77,10 @@ struct CustomWordView: View {
                    useBG: true,
                    buttonBG: customWordViewModel.textInput.isEmpty ? Colors._FFDD64.opacity(0.4) : Colors._FFDD64,
                    textColor: .black) {
+            if customWordViewModel.textInput.isEmptyOrWhitespace() {
+                customWordViewModel.error = "Please Enter Your Word"
+                return
+            }
             filtersViewModel.customWord = customWordViewModel.textInput
             dismiss()
         }

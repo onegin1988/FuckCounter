@@ -96,7 +96,7 @@ struct AppData {
     @Storage(key: "userLoginModel", defaultValue: nil)
     static var userLoginModel: UserLoginModel?
     
-    @Storage(key: "selectedLanguageModel", defaultValue: checkLanguage())
+    @Storage(key: "selectedLanguageModel", defaultValue: LanguageModel(id: 1, name: "English", languageCode: "en"))
     static var selectedLanguageModel: LanguageModel
     
     @Storage(key: "appleUserId", defaultValue: "")

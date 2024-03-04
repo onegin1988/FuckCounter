@@ -34,6 +34,8 @@
 		1F4728ED2B87BAFB001742E2 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728EC2B87BAFB001742E2 /* LottieView.swift */; };
 		1F4728F32B87BFBF001742E2 /* Сonfetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F4728F22B87BFBF001742E2 /* Сonfetti.json */; };
 		1F4728F52B87CD2F001742E2 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728F42B87CD2F001742E2 /* AppleService.swift */; };
+		1F48148C2B9626BD009BFE57 /* CheckMarkIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */; };
+		1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148D2B963FBD009BFE57 /* String+Valid.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -128,6 +130,8 @@
 		1F4728F22B87BFBF001742E2 /* Сonfetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Сonfetti.json"; sourceTree = "<group>"; };
 		1F4728F42B87CD2F001742E2 /* AppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleService.swift; sourceTree = "<group>"; };
 		1F4728F62B87CD55001742E2 /* FuckCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckCounter.entitlements; sourceTree = "<group>"; };
+		1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkIconView.swift; sourceTree = "<group>"; };
+		1F48148D2B963FBD009BFE57 /* String+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Valid.swift"; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				1F07380E2B8554FB00A19918 /* Int+Formatter.swift */,
 				1F4728E02B87415A001742E2 /* String+Range.swift */,
 				1FBCBBEF2B90A80600C23920 /* String+Date.swift */,
+				1F48148D2B963FBD009BFE57 /* String+Valid.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				1F39C09D2B5D21DC00A00420 /* ListItemArrowView.swift */,
 				1F35E36B2B7E607900F0D7C8 /* ImageView.swift */,
 				1F4728EC2B87BAFB001742E2 /* LottieView.swift */,
+				1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -691,6 +697,7 @@
 				1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */,
 				1F07380F2B8554FB00A19918 /* Int+Formatter.swift in Sources */,
 				1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */,
+				1F48148C2B9626BD009BFE57 /* CheckMarkIconView.swift in Sources */,
 				1FBE446E2B26517000513401 /* AppsModel.swift in Sources */,
 				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
@@ -712,6 +719,7 @@
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
+				1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */,
 				1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */,
 				1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */,
 				1F3304BC2B61C0C000F4D5B9 /* LoginView.swift in Sources */,

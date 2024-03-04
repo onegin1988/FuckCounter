@@ -26,8 +26,7 @@ class FiltersViewModel: ObservableObject {
         self.list = [
             WordsModel(id: 1, name: "Fuck"),
             WordsModel(id: 2, name: "Bitch"),
-            WordsModel(id: 3, name: "Freak"),
-            WordsModel(id: 4, name: customWord.isEmpty ? "Custom" : customWord, isCustom: customWord.isEmpty)
+            WordsModel(id: 3, name: "Freak")
         ]
     }
 }
