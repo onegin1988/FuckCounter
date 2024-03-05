@@ -56,12 +56,10 @@ struct LeadersView: View {
                 await leadersViewModel.subscribeObserveUsers()
             }
         }
-//        .showProgress(isLoading: leadersViewModel.isLoading)
         .errorSocialServices($leadersViewModel.error)
         .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .onReceive(leadersViewModel.$leadersTimeType, perform: { _ in
             Task {
-//                leadersViewModel.isLoading = true
                 await leadersViewModel.loadUsers()
             }
         })

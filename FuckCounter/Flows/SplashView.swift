@@ -19,7 +19,7 @@ struct SplashView: View {
                 .aspectRatio(contentMode: .fill)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(GradientModifiers(style: .red))
+        .modifier(GradientModifiers(style: .green))
         .ignoresSafeArea(.all)
     }
 }
