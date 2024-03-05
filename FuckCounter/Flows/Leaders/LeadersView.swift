@@ -32,7 +32,7 @@ struct LeadersView: View {
 //        NavigationStack {
             ZStack {
                 if isAuth {
-                    if leadersViewModel.users.isEmpty && !leadersViewModel.isLoading {
+                    if leadersViewModel.users.isEmpty {
                         makeAddFriendsPlaceholderView()
                             .frame(width: 220)
                     } else {
@@ -56,12 +56,12 @@ struct LeadersView: View {
                 await leadersViewModel.subscribeObserveUsers()
             }
         }
-        .showProgress(isLoading: leadersViewModel.isLoading)
+//        .showProgress(isLoading: leadersViewModel.isLoading)
         .errorSocialServices($leadersViewModel.error)
         .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
         .onReceive(leadersViewModel.$leadersTimeType, perform: { _ in
             Task {
-                leadersViewModel.isLoading = true
+//                leadersViewModel.isLoading = true
                 await leadersViewModel.loadUsers()
             }
         })
@@ -130,12 +130,23 @@ struct LeadersView: View {
             LazyVStack(alignment: .leading, spacing: 0) {
                 ForEach(Array($leadersViewModel
                     .users.enumerated()), id: \.offset) { index, element in
-                    LeadersRow(index: index + 1, userModel: element.wrappedValue)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                }
+                        ZStack {
+                            Rectangle()
+                                .fill(myPositionColor(element.wrappedValue))
+                                .frame(height: 48)
+                            
+                            LeadersRow(index: index + 1, userModel: element.wrappedValue)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                        }
+                        .frame(height: 56)
+                    }
             }
         }
+    }
+    
+    private func myPositionColor(_ user: UserModel) -> Color {
+        return user.id == AppData.userLoginModel?.id ? Colors._D9D9D9.opacity(0.2) : .clear
     }
 }
 

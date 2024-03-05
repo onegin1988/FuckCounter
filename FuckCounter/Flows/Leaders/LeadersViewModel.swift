@@ -15,7 +15,6 @@ class LeadersViewModel: ObservableObject {
     @Published var users: [UserModel]
     @Published var leadersEvent: LeadersEvent?
     @Published var showAddUserSheet: Bool
-    @Published var isLoading: Bool
     @Published var error: String?
     
     private let reference = Database.database().reference()
@@ -24,7 +23,6 @@ class LeadersViewModel: ObservableObject {
         self.leadersTimeType = .daily
         self.users = []
         self.showAddUserSheet = false
-        self.isLoading = true
     }
         
     private var fromToDate: (Date, Date) {
@@ -37,13 +35,11 @@ class LeadersViewModel: ObservableObject {
         reference.child(AppConstants.cUsers).observe(.childChanged) { dataSnapshot in
             Task { @MainActor in
                 guard let dict = dataSnapshot.value as? [String: Any] else { return }
-                self.isLoading = true
                 await self.updateUser(dict)
             }
         }
         reference.child(AppConstants.cUsers).observe(.childRemoved) { _ in
             Task {
-                self.isLoading = true
                 await self.loadUsers()
             }
         }
@@ -61,10 +57,8 @@ class LeadersViewModel: ObservableObject {
             case .yearly:
                 try await filterYearlyLeaders()
             }
-            
-            self.isLoading = false
         } catch let error {
-            debugPrint(error.localizedDescription)
+            self.error = error.localizedDescription
         }
     }
     
@@ -85,8 +79,7 @@ class LeadersViewModel: ObservableObject {
             user.points = user.reducePoints
         case .weekly:
             let filterWords = user.words?.filter({
-                let createdDate = $0.createdDate?.toDate() ?? Date()
-                return fromToDate.0 <= createdDate && createdDate <= fromToDate.1
+                return ($0.createdDate?.toDate() ?? Date()).isBetween(fromToDate.0, and: fromToDate.1)
             })
             user.words = filterWords
             user.points = user.reducePoints
@@ -102,11 +95,7 @@ class LeadersViewModel: ObservableObject {
             users.append(user)
         }
         
-        users.sort(by: { $0.points >= $1.points && $0.wins >= $1.wins })
-        
-        DispatchQueue.main.async {
-            self.isLoading = false
-        }
+        users.sort(by: { $0.points >= $1.points })
     }
     
     @MainActor
@@ -118,7 +107,7 @@ class LeadersViewModel: ObservableObject {
             items[model.offset].points = items[model.offset].reducePoints
         }
         
-        items.sort(by: { $0.points >= $1.points && $0.wins >= $1.wins })
+        items.sort(by: { $0.points >= $1.points })
         self.users = items
     }
     
@@ -127,14 +116,13 @@ class LeadersViewModel: ObservableObject {
         var items = try await loadUsersFromServer()
         items.enumerated().forEach { model in
             let filterWords = model.element.words?.filter({
-                let createdDate = $0.createdDate?.toDate() ?? Date()
-                return fromToDate.0 <= createdDate && createdDate <= fromToDate.1
+                return ($0.createdDate?.toDate() ?? Date()).isBetween(fromToDate.0, and: fromToDate.1)
             })
             items[model.offset].words = filterWords
             items[model.offset].points = items[model.offset].reducePoints
         }
 
-        items.sort(by: { $0.points >= $1.points && $0.wins >= $1.wins })
+        items.sort(by: { $0.points >= $1.points })
         self.users = items
     }
     
@@ -147,7 +135,7 @@ class LeadersViewModel: ObservableObject {
             items[model.offset].points = items[model.offset].reducePoints
         }
         
-        items.sort(by: { $0.points >= $1.points && $0.wins >= $1.wins })
+        items.sort(by: { $0.points >= $1.points })
         self.users = items
     }
 }
