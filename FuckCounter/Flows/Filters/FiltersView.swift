@@ -39,7 +39,13 @@ struct FiltersView: View {
             }
             
             ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
-                AppData.selectedWordsModel = filtersViewModel.wordsModel
+                
+                if isCustom {
+                    AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
+                } else {
+                    AppData.selectedWordsModel = filtersViewModel.wordsModel
+                }
+                
                 AppData.selectedLanguageModel = filtersViewModel.languageModel
                 AppData.customWord = filtersViewModel.customWord
                 
