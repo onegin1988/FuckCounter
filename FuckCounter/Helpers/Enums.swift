@@ -115,3 +115,17 @@ enum SettingsItem: Int, CaseIterable, Hashable {
         }
     }
 }
+
+enum LanguageCode: String {
+    case en, de, fr, uk, ru
+    
+    var title: String {
+        switch self {
+        case .en: return "English"
+        case .de: return "Deutch"
+        case .fr: return "France"
+        case .uk: return "Ukrainian"
+        case .ru: return "Russian"
+        }
+    }
+}

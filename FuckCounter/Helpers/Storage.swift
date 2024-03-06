@@ -100,7 +100,9 @@ struct AppData {
     @Storage(key: "userLoginModel", defaultValue: nil)
     static var userLoginModel: UserLoginModel?
     
-    @Storage(key: "selectedLanguageModel", defaultValue: LanguageModel(id: 1, name: "English", languageCode: "en"))
+    @Storage(key: "selectedLanguageModel", defaultValue:
+                LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
+    )
     static var selectedLanguageModel: LanguageModel
     
     @Storage(key: "appleUserId", defaultValue: "")
@@ -111,12 +113,12 @@ struct AppData {
     
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
-        case "en": return LanguageModel(id: 1, name: "English", languageCode: "en")
-        case "de": return LanguageModel(id: 2, name: "Deutch", languageCode: "de")
-        case "fr": return LanguageModel(id: 3, name: "France", languageCode: "fr")
-        case "uk": return LanguageModel(id: 4, name: "Ukrainian", languageCode: "uk")
-        case "ru": return LanguageModel(id: 5, name: "Russian", languageCode: "ru")
-        default: return LanguageModel(id: 1, name: "English", languageCode: "en")
+        case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
+        case "de": return LanguageModel(id: 2, name: LanguageCode.de.title, languageCode: LanguageCode.de.rawValue)
+        case "fr": return LanguageModel(id: 3, name: LanguageCode.fr.title, languageCode: LanguageCode.fr.rawValue)
+        case "uk": return LanguageModel(id: 4, name: LanguageCode.uk.title, languageCode: LanguageCode.uk.rawValue)
+        case "ru": return LanguageModel(id: 5, name: LanguageCode.ru.title, languageCode: LanguageCode.ru.rawValue)
+        default: return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
         }
     }
 }

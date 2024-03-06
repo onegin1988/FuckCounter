@@ -77,12 +77,11 @@ struct CustomWordView: View {
                    useBG: true,
                    buttonBG: customWordViewModel.textInput.isEmpty ? Colors._FFDD64.opacity(0.4) : Colors._FFDD64,
                    textColor: .black) {
-            if customWordViewModel.textInput.isEmptyOrWhitespace() {
-                customWordViewModel.error = "Please Enter Your Word"
-                return
+            
+            if customWordViewModel.checkingCustomWord(filtersViewModel.languageModel.languageCode) {
+                filtersViewModel.customWord = customWordViewModel.textInput
+                dismiss()
             }
-            filtersViewModel.customWord = customWordViewModel.textInput
-            dismiss()
         }
         .frame(height: CustomWordConstants.buttonHeight)
         .offset(y: geo.size.height / 2 - CustomWordConstants.padding - customWordViewModel.keyboardHeight/2)

@@ -21,6 +21,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             AppData.uuidDevice = UUID().uuidString
         }
         
+        "fuck".detectedLanguage(AppData.selectedLanguageModel.languageCode)
+        
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
         return true

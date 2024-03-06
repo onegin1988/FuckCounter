@@ -17,4 +17,18 @@ class CustomWordViewModel: ObservableObject {
         self.keyboardHeight = 0
         self.textInput = ""
     }
+    
+    func checkingCustomWord(_ languageCode: String) -> Bool {
+        if textInput.isEmptyOrWhitespace() {
+            error = "Please Enter Your Word"
+            return false
+        }
+
+        if !textInput.detectedLanguage(languageCode) {
+            error = "Your custom word can not support the selected language."
+            return false
+        }
+        
+        return true
+    }
 }
