@@ -35,6 +35,12 @@ struct LanguagesView: View {
             }
             
             ButtonView(title: "Save changes", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
+                if filtersViewModel.languageModel.languageCode != languagesViewModel.languageModel.languageCode {
+                    filtersViewModel.customWord = ""
+                    if let model = filtersViewModel.list.first {
+                        filtersViewModel.wordsModel = model
+                    }
+                }
                 filtersViewModel.languageModel = languagesViewModel.languageModel
                 dismiss()
             }

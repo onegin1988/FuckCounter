@@ -13,6 +13,8 @@ class FiltersViewModel: ObservableObject {
     @Published var languageModel: LanguageModel
     @Published var list: [WordsModel]
     @Published var customWord: String
+    @Published var isCustom: Bool
+    
     var filtersEvent: FiltersEvent?
     
     init() {
@@ -20,6 +22,7 @@ class FiltersViewModel: ObservableObject {
         self.languageModel = AppData.selectedLanguageModel
         self.customWord = AppData.customWord
         self.list = []
+        self.isCustom = false
     }
     
     func updateBadWordsList() {

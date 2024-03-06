@@ -26,7 +26,6 @@ struct FiltersView: View {
     private let navTitle: String?
     
     @State private var isShow = false
-    @State private var isCustom = false
     
     init(navTitle: String? = nil) {
         self.navTitle = navTitle
@@ -40,7 +39,7 @@ struct FiltersView: View {
             
             ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
                 
-                if isCustom {
+                if filtersViewModel.isCustom {
                     AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
                 } else {
                     AppData.selectedWordsModel = filtersViewModel.wordsModel
@@ -63,15 +62,15 @@ struct FiltersView: View {
             )
         }
         .onFirstAppear {
-            isCustom = filtersViewModel.customWord == filtersViewModel.wordsModel.name
+            filtersViewModel.isCustom = filtersViewModel.customWord == filtersViewModel.wordsModel.name
         }
         .onAppear {
             filtersViewModel.updateBadWordsList()
         }
-        .onChange(of: isCustom, perform: { newValue in
+        .onChange(of: filtersViewModel.isCustom, perform: { newValue in
             if newValue {
                 if filtersViewModel.customWord.isEmpty {
-                    isCustom = false
+                    filtersViewModel.isCustom = false
                     return
                 }
                 filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
@@ -127,7 +126,7 @@ struct FiltersView: View {
                         .frame(height: FiltersConstants.listItemHeight)
                         .itemTap {
                             filtersViewModel.wordsModel = element
-                            isCustom = false
+                            filtersViewModel.isCustom = false
                         }
                         .padding(.top, index == 0 ? 10 : 0)
 //                    }
@@ -146,7 +145,7 @@ struct FiltersView: View {
         Section {
             ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord,
                               useLeftCheckmark: true,
-                              selectCheckmark: $isCustom)
+                              selectCheckmark: $filtersViewModel.isCustom)
             .frame(height: FiltersConstants.listItemHeight)
             .padding(.top, 5)
             .background(Color.black.opacity(0.2))
