@@ -36,7 +36,7 @@ class SpeechService: ObservableObject {
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     @Published var isRecording: Bool
-    @Published var error: Error?
+    @Published var error: String?
     @Published var fullText: String?
     
     init() {
@@ -69,18 +69,18 @@ class SpeechService: ObservableObject {
             try audioEngine.start()
             isRecording = true
         } catch {
-            self.error = SpeechServiceError.audioEngineError
+            self.error = SpeechServiceError.audioEngineError.errorDescription
             return
         }
 
         guard let myRecognizer = SFSpeechRecognizer() else {
-            self.error = SpeechServiceError.speechRecognitionError
+            self.error = SpeechServiceError.speechRecognitionError.errorDescription
             self.isRecording = false
             return
         }
 
         if !myRecognizer.isAvailable {
-            self.error = SpeechServiceError.speechAvailableError
+            self.error = SpeechServiceError.speechAvailableError.errorDescription
             self.isRecording = false
             return
         }
@@ -88,7 +88,7 @@ class SpeechService: ObservableObject {
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             
             if let error = error {
-                self.error = error
+                self.error = error.localizedDescription
                 self.isRecording = false
                 return
             }
@@ -135,5 +135,25 @@ class SpeechService: ObservableObject {
         audioEngine.inputNode.removeTap(onBus: 0)
         isRecording = false
         fullText = nil
+    }
+    
+    func pauseRecording() {
+        audioEngine.pause()
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        } catch let error {
+            self.error = error.localizedDescription
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    func resumeRecording() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            try audioEngine.start()
+        } catch let error {
+            self.error = error.localizedDescription
+            debugPrint(error.localizedDescription)
+        }
     }
 }

@@ -7,6 +7,7 @@
 
 import AudioToolbox
 import SwiftUI
+import AVFAudio
 
 struct HomeView: View {
     
@@ -93,6 +94,9 @@ struct HomeView: View {
                     homeViewModel.checkLevel()
                 }
             })
+            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
+                handleInterruption(notification: notification)
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
@@ -101,6 +105,7 @@ struct HomeView: View {
             .ignoresSafeArea()
         }
         .showProgress(isLoading: isProcessing)
+        .alertError(errorMessage: $speechService.error)
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
 //                homeViewModel.updateCountForAppPush()
@@ -165,6 +170,32 @@ struct HomeView: View {
 
             BoldTextView(style: .sfPro, title: homeViewModel.timeSlice, size: 15)
         })
+    }
+    
+    private func handleInterruption(notification: Notification) {
+        guard 
+            let value = (notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? NSNumber)?.uintValue,
+            let interruptionType =  AVAudioSession.InterruptionType(rawValue: value) 
+        else {
+            print("notification.userInfo?[AVAudioSessionInterruptionTypeKey]", notification.userInfo?[AVAudioSessionInterruptionTypeKey] as Any)
+            return
+        }
+        
+        switch interruptionType {
+        case .began:
+            guard speechService.isRecording else {
+                return
+            }
+            
+            speechService.pauseRecording()
+        default :
+            guard speechService.isRecording else {
+                return
+            }
+            if let optionValue = (notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? NSNumber)?.uintValue, AVAudioSession.InterruptionOptions(rawValue: optionValue) == .shouldResume {
+                speechService.resumeRecording()
+            }
+        }
     }
 }
 
