@@ -11,11 +11,11 @@ struct WordsModel: Codable {
     
     let id: Int
     let name: String
-    let isCustom: Bool
-        
-    init(id: Int, name: String, isCustom: Bool = false) {
+    let nameCorrect: String
+    
+    init(id: Int, name: String, nameCorrect: String) {
         self.id = id
         self.name = name
-        self.isCustom = isCustom
+        self.nameCorrect = nameCorrect
     }
 }

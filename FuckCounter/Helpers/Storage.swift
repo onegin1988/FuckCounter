@@ -87,7 +87,11 @@ struct AppData {
     @Storage(key: "dailyKey", defaultValue: nil)
     static var dailyKey: DailyModel?
     
-    @Storage(key: "selectedWordsModel", defaultValue: WordsModel(id: 1, name: "Fuck"))
+    @Storage(key: "selectedWordsModel", defaultValue: 
+                WordsModel(id: 1,
+                           name: "fuck".localize(AppData.selectedLanguageModel.languageCode),
+                    nameCorrect: "fuck_title".localize(AppData.selectedLanguageModel.languageCode))
+    )
     static var selectedWordsModel: WordsModel
     
     @Storage(key: "customWord", defaultValue: "")

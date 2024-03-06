@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  FuckCounter
+
+  Created by Alex on 06.03.2024.
+  
+*/
+
+"fuck" = "der Pimmel";
+"bitch" = "die Fotze";
+"freak" = "Scheiß drauf";
+"fuck_title" = "der P*mmel";
+"bitch_title" = "die F*tze";
+"freak_title" = "Sch*iß drauf";

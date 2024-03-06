@@ -36,6 +36,8 @@
 		1F4728F52B87CD2F001742E2 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728F42B87CD2F001742E2 /* AppleService.swift */; };
 		1F48148C2B9626BD009BFE57 /* CheckMarkIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */; };
 		1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148D2B963FBD009BFE57 /* String+Valid.swift */; };
+		1F5377BC2B98A28100FD9451 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F5377BE2B98A28100FD9451 /* Localizable.strings */; };
+		1F5377C42B98A91C00FD9451 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C32B98A91C00FD9451 /* String+Localization.swift */; };
 		1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2542B209A1400FE2918 /* FiltersView.swift */; };
 		1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2562B20AB4600FE2918 /* Enums.swift */; };
 		1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2582B20C51900FE2918 /* SettingsView.swift */; };
@@ -132,6 +134,12 @@
 		1F4728F62B87CD55001742E2 /* FuckCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckCounter.entitlements; sourceTree = "<group>"; };
 		1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkIconView.swift; sourceTree = "<group>"; };
 		1F48148D2B963FBD009BFE57 /* String+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Valid.swift"; sourceTree = "<group>"; };
+		1F5377BD2B98A28100FD9451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F5377BF2B98A2B800FD9451 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F5377C02B98A2EE00FD9451 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F5377C12B98A2F700FD9451 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F5377C22B98A2FF00FD9451 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F5377C32B98A91C00FD9451 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		1F62A2542B209A1400FE2918 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		1F62A2562B20AB4600FE2918 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1F62A2582B20C51900FE2918 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -283,6 +291,7 @@
 				1F4728E02B87415A001742E2 /* String+Range.swift */,
 				1FBCBBEF2B90A80600C23920 /* String+Date.swift */,
 				1F48148D2B963FBD009BFE57 /* String+Valid.swift */,
+				1F5377C32B98A91C00FD9451 /* String+Localization.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 			children = (
 				1F4728F22B87BFBF001742E2 /* Сonfetti.json */,
 				1F62A25F2B211C9F00FE2918 /* Fonts */,
+				1F5377BE2B98A28100FD9451 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -600,6 +610,10 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				de,
+				uk,
+				ru,
 			);
 			mainGroup = 1F9D658B2B0A46470011F18B;
 			productRefGroup = 1F9D65952B0A46470011F18B /* Products */;
@@ -616,6 +630,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F5377BC2B98A28100FD9451 /* Localizable.strings in Resources */,
 				1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */,
 				1F62A26F2B211FA800FE2918 /* Gilroy-Regular.ttf in Resources */,
 				1F62A26D2B211F9F00FE2918 /* Gilroy-Medium.ttf in Resources */,
@@ -759,10 +774,26 @@
 				1FBE44742B2656D200513401 /* AppsListRow.swift in Sources */,
 				1F39C0962B5C25BB00A00420 /* SectionHeaderView.swift in Sources */,
 				1FBE44702B2651EC00513401 /* SettingsViewModel.swift in Sources */,
+				1F5377C42B98A91C00FD9451 /* String+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F5377BE2B98A28100FD9451 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F5377BD2B98A28100FD9451 /* en */,
+				1F5377BF2B98A2B800FD9451 /* fr */,
+				1F5377C02B98A2EE00FD9451 /* de */,
+				1F5377C12B98A2F700FD9451 /* uk */,
+				1F5377C22B98A2FF00FD9451 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F9D65A02B0A46490011F18B /* Debug */ = {
@@ -770,6 +801,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -833,6 +865,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

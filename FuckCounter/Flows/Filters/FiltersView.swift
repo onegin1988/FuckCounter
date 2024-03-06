@@ -40,7 +40,7 @@ struct FiltersView: View {
             ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
                 
                 if filtersViewModel.isCustom {
-                    AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
+                    AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord)
                 } else {
                     AppData.selectedWordsModel = filtersViewModel.wordsModel
                 }
@@ -73,7 +73,7 @@ struct FiltersView: View {
                     filtersViewModel.isCustom = false
                     return
                 }
-                filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord)
+                filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord)
             }
         })
         .toolbarBackground(.hidden, for: .navigationBar)
@@ -113,23 +113,14 @@ struct FiltersView: View {
         Section {
             VStack {
                 ForEach(Array(filtersViewModel.list.enumerated()), id: \.offset) { index, element in
-//                    if element.isCustom {
-//                        ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? element.name : filtersViewModel.customWord)
-//                            .frame(height: FiltersConstants.listItemHeight)
-//                            .itemTap {
-//                                filtersViewModel.filtersEvent = .customWord
-//                                isShow.toggle()
-//                            }
-//                    } else {
-                        ListItemCheckView(title: element.name,
-                                          isChecked: element.id == filtersViewModel.wordsModel.id)
-                        .frame(height: FiltersConstants.listItemHeight)
-                        .itemTap {
-                            filtersViewModel.wordsModel = element
-                            filtersViewModel.isCustom = false
-                        }
-                        .padding(.top, index == 0 ? 10 : 0)
-//                    }
+                    ListItemCheckView(title: element.nameCorrect,
+                                      isChecked: element.id == filtersViewModel.wordsModel.id)
+                    .frame(height: FiltersConstants.listItemHeight)
+                    .itemTap {
+                        filtersViewModel.wordsModel = element
+                        filtersViewModel.isCustom = false
+                    }
+                    .padding(.top, index == 0 ? 10 : 0)
                 }
             }
             .background(

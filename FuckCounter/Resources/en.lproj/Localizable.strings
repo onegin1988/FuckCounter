@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  FuckCounter
+
+  Created by Alex on 06.03.2024.
+  
+*/
+
+"fuck" = "Fuck";
+"bitch" = "Bitch";
+"freak" = "Freak";
+"fuck_title" = "F*ck";
+"bitch_title" = "B*tch";
+"freak_title" = "Fr*ak";
