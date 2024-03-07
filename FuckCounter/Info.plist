@@ -25,6 +25,8 @@
 	<string>2476229235889570</string>
 	<key>FacebookDisplayName</key>
 	<string>FuckCounter</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
