@@ -78,10 +78,11 @@ struct FiltersView: View {
         })
         .toolbarBackground(.hidden, for: .navigationBar)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(NavBarModifiers(title: navTitle, rightTitle: (filtersViewModel.languageModel.languageCode, {
-            filtersViewModel.filtersEvent = .languages
-            isShow.toggle()
-        })))
+        .modifier(NavBarModifiers(title: navTitle))
+//        .modifier(NavBarModifiers(title: navTitle, rightTitle: (filtersViewModel.languageModel.languageCode, {
+//            filtersViewModel.filtersEvent = .languages
+//            isShow.toggle()
+//        })))
         .modifier(GradientModifiers(style: .red,
                                     useBlackOpacity: true))
         .ignoresSafeArea()

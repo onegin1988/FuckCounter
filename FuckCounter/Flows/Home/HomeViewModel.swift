@@ -139,10 +139,11 @@ class HomeViewModel: ObservableObject {
             }
             filtered.sort(by: {$0.points > $1.points})
             
-            if let userModel = filtered.first {
-                self.userModel = userModel
-                totalCount = userModel.points
-                isChamp = userModel.id == AppData.userLoginModel?.id
+            if let userWinModel = filtered.first {
+                let myUser = filtered.first(where: {$0.id == AppData.userLoginModel?.id})
+                self.userModel = myUser
+                totalCount = myUser?.points ?? 0
+                isChamp = myUser?.points ?? 0 > userWinModel.points || userWinModel.id == AppData.userLoginModel?.id
             } else {
                 userModel = nil
             }
