@@ -90,7 +90,10 @@ struct HomeView: View {
             })
             .onReceive(speechService.$fullText, perform: { fullText in
                 if let fullText = fullText {
-                    homeViewModel.counter = fullText.lowercased().ranges(of: AppData.selectedWordsModel.name.lowercased()).count
+                    homeViewModel.counter = fullText
+                        .lowercased()
+                        .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
+                        .count
                     homeViewModel.checkLevel()
                 }
             })

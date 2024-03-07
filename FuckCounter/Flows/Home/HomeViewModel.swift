@@ -38,15 +38,17 @@ class HomeViewModel: ObservableObject {
     }
     
     func checkLevel() {
-        switch self.counter {
-        case 0...5:
-            self.level = .green
-        case 6...15:
-            self.level = .orange
-        case 16...:
-            self.level = .red
-        default:
-            self.level = .green
+        withAnimation {
+            switch self.counter {
+            case 0...5:
+                self.level = .green
+            case 6...15:
+                self.level = .orange
+            case 16...:
+                self.level = .red
+            default:
+                self.level = .green
+            }
         }
     }
     

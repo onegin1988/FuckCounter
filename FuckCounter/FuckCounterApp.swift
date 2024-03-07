@@ -21,8 +21,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             AppData.uuidDevice = UUID().uuidString
         }
         
-        "fuck".detectedLanguage(AppData.selectedLanguageModel.languageCode)
-        
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
         return true
@@ -41,8 +39,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct FuckCounterApp: App {
     
-    @State private var isShowHome: Bool = false
+    @State private var isStartApp = (false, false) // (isShowHome, isOlder)
     @State private var errorMessage: String?
+    @State private var showAlert = false
     
     @StateObject var speechService = SpeechService()
     @StateObject var dailyService = DailyService()
@@ -58,7 +57,7 @@ struct FuckCounterApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isShowHome {
+            if isStartApp.0 && isStartApp.1 {
                 HomeView()
                     .environmentObject(dailyService)
                     .environmentObject(speechService)
@@ -78,8 +77,19 @@ struct FuckCounterApp: App {
                         showSettings()
                     }))
                     .onFirstAppear {
+                        isStartApp.1 = AppData.isOlder
                         setupSettings()
                     }
+                    .customAlert(showAlert: $showAlert,
+                                 title: "Are you older than > 18",
+                                 message: "To use app you need to be older than 18",
+                                 cancelButton: ("I'm younger", false, {
+                        isStartApp.1 = false
+                    }),
+                                 acceptButton: ("Yes, I am", false, {
+                        AppData.isOlder = true
+                        isStartApp.1 = AppData.isOlder
+                    }))
                     .environmentObject(speechService)
             }
         }
@@ -117,6 +127,12 @@ struct FuckCounterApp: App {
         }
     }
     
+    private func showOlderAlert() {
+        if !isStartApp.1 {
+            showAlert = true
+        }
+    }
+    
     private func requestSpeechAuthorization() {
         Task {
             let status = await speechService.requestSpeechAuthorization()
@@ -124,13 +140,15 @@ struct FuckCounterApp: App {
             await MainActor.run {
                 switch status {
                 case .notDetermined, .restricted:
-                    isShowHome = false
+                    isStartApp.0 = false
                 case .denied:
                     errorMessage = SpeechServiceError.speechDeniedError.errorDescription
-                    isShowHome = false
+                    isStartApp.0 = false
                 case .authorized:
+                    isStartApp.0 = true
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        isShowHome = true
+                        self.showOlderAlert()
                     }
                 @unknown default:
                     fatalError()

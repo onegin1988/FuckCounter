@@ -57,9 +57,14 @@ class SpeechService: ObservableObject {
     
     func recordAndRecognizeSpeech() {
         let node = audioEngine.inputNode
+        
+        node.removeTap(onBus: 0)
+        audioEngine.stop()
+        recognitionTask?.cancel()
+        
         let recordingFormat = node.outputFormat(forBus: 0)
         
-        node.installTap(onBus: 0, bufferSize: 2048, format: recordingFormat) { buffer, _ in
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
             self.request.append(buffer)
         }
         

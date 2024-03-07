@@ -80,26 +80,24 @@ struct SettingsView: View {
         .onFirstAppear {
             facebookService.getFriends()
         }
-        .alert("You want to delete account", isPresented: $showDeleteAccountAlert, actions: {
-            Button("Cancel", role: .cancel, action: {})
-            Button("Yes, delete", role: .destructive) {
-                Task {
-                    isAuthProcess = true
-                    
-                    await settingsViewModel.deleteAccount()
-                    
-                    if AppData.userLoginModel?.providerId == "google.com" {
-                        await googleService.googleSignOut()
-                    } else {
-                        await appleService.signOut() // Only logout, because only first time you can receive user info
-                    }
-                    
-                    isAuthProcess = false
+        .customAlert(showAlert: $showDeleteAccountAlert,
+                     title: "You want to delete account",
+                     message: "Are you sure? All your data will be deleted forever.", 
+                     acceptButton: ("Yes, delete", true, {
+            Task {
+                isAuthProcess = true
+                
+                await settingsViewModel.deleteAccount()
+                
+                if AppData.userLoginModel?.providerId == "google.com" {
+                    await googleService.googleSignOut()
+                } else {
+                    await appleService.signOut() // Only logout, because only first time you can receive user info
                 }
+                
+                isAuthProcess = false
             }
-        }, message: {
-            Text("Are you sure? All your data will be deleted forever.")
-        })
+        }))
         .errorSocialServices($settingsViewModel.error)
         .authProcess($isAuthProcess)
         .showProgress(isLoading: isAuthProcess)
