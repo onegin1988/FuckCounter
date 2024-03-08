@@ -30,28 +30,30 @@ struct CustomWordView: View {
     }
     
     var body: some View {
-        GeometryReader(content: { geometry in
-            ZStack(alignment: .bottom) {
-                setupCustomWordTextField()
-                setupCustomWordApplyButton(geometry)
-            }
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, CustomWordConstants.padding)
-            .modifier(NavBarModifiers(title: navTitle))
-            .modifier(GradientModifiers(style: .red,
-                                        useBlackOpacity: true))
-            .ignoresSafeArea()
-            .onFirstAppear {
-                self.customWordViewModel.textInput = wordText
-            }
-            .onReceive(Publishers.keyboardHeight, perform: { value in
-                withAnimation {
-                    customWordViewModel.keyboardHeight = value
+        NavigationStack {
+            GeometryReader(content: { geometry in
+                ZStack(alignment: .bottom) {
+                    setupCustomWordTextField()
+                    setupCustomWordApplyButton(geometry)
                 }
+                .toolbarBackground(.hidden, for: .navigationBar)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.horizontal, CustomWordConstants.padding)
+                .modifier(NavBarModifiers(isCancel: true, title: navTitle))
+                .modifier(GradientModifiers(style: .red,
+                                            useBlackOpacity: true))
+                .ignoresSafeArea()
+                .onFirstAppear {
+                    self.customWordViewModel.textInput = wordText
+                }
+                .onReceive(Publishers.keyboardHeight, perform: { value in
+                    withAnimation {
+                        customWordViewModel.keyboardHeight = value
+                    }
+                })
+                .alertError(errorMessage: $customWordViewModel.error)
             })
-            .alertError(errorMessage: $customWordViewModel.error)
-        })
+        }
     }
     
     @ViewBuilder

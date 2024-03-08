@@ -42,4 +42,5 @@ struct Images {
     static let apple = Image("apple")
     static let google = Image("google")
     static let createAccount = Image("createAccount")
+    static let cancelIcon = Image("cancelIcon")
 }

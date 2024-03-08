@@ -86,7 +86,7 @@ struct FiltersView: View {
         .modifier(GradientModifiers(style: .red,
                                     useBlackOpacity: true))
         .ignoresSafeArea()
-        .navigationDestination(isPresented: $isShow, destination: {
+        .fullScreenCover(isPresented: $isShow) {
             switch filtersViewModel.filtersEvent {
             case .languages:
                 LanguagesView(navTitle: filtersViewModel.filtersEvent?.title)
@@ -97,7 +97,7 @@ struct FiltersView: View {
             default:
                 EmptyView()
             }
-        })
+        }
     }
     
     private func listView() -> some View {

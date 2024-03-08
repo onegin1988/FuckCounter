@@ -9,11 +9,13 @@ import SwiftUI
 
 struct NavBarModifiers: ViewModifier {
     
+    let isCancel: Bool
     let title: String?
     let rightTitle: (String, () -> Void)?
     @Environment(\.dismiss) var dismiss
     
-    init(title: String? = nil, rightTitle: (String, () -> Void)? = nil) {
+    init(isCancel: Bool = false, title: String? = nil, rightTitle: (String, () -> Void)? = nil) {
+        self.isCancel = isCancel
         self.title = title
         self.rightTitle = rightTitle
     }
@@ -25,7 +27,7 @@ struct NavBarModifiers: ViewModifier {
                     Button(action: {
                         dismiss()
                     }, label: {
-                        Images.chevronLeft
+                        lectButtonIcon()
                             .frame(width: 22, height: 22)
                     })
                 }
@@ -47,5 +49,13 @@ struct NavBarModifiers: ViewModifier {
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func lectButtonIcon() -> some View {
+        if isCancel {
+            Images.cancelIcon
+        } else {
+            Images.chevronLeft
+        }
     }
 }
