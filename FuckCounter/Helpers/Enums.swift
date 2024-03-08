@@ -116,7 +116,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
     }
 }
 
-enum LanguageCode: String {
+enum LanguageCode: String, CaseIterable {
     case en, de, fr, uk, ru
     
     var title: String {
