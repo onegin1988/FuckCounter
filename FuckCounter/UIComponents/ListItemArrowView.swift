@@ -11,12 +11,17 @@ struct ListItemArrowView: View {
     
     private let title: String
     private let useLeftCheckmark: Bool
-    @Binding private var selectCheckmark: Bool
+    private let selectCheckmark: Bool
+    private let selectRowHandler: (() -> Void)?
     
-    init(title: String, useLeftCheckmark: Bool = false, selectCheckmark: Binding<Bool> = .constant(false)) {
+    init(title: String, 
+         useLeftCheckmark: Bool = false,
+         selectCheckmark: Bool = false,
+         selectRowHandler: (() -> Void)? = nil) {
         self.title = title
         self.useLeftCheckmark = useLeftCheckmark
-        self._selectCheckmark = selectCheckmark
+        self.selectCheckmark = selectCheckmark
+        self.selectRowHandler = selectRowHandler
     }
 
     var body: some View {
@@ -26,12 +31,6 @@ struct ListItemArrowView: View {
                     if useLeftCheckmark {
                         CheckMarkIconView(isChecked: selectCheckmark)
                             .frame(width: 24, height: 24)
-                            .itemTap {
-                                if selectCheckmark == true {
-                                    return
-                                }
-                                selectCheckmark.toggle()
-                            }
                     }
                     
                     MediumTextView(style: .gilroy,
@@ -43,7 +42,13 @@ struct ListItemArrowView: View {
                     Spacer()
                     
                     Images.chevronRight
-                        .frame(width: 24, height: 24)
+                        .frame(width: 32, height: 32)
+                        .itemTap {
+                            if selectCheckmark == true {
+                                return
+                            }
+                            selectRowHandler?()
+                        }
                 }
                 .padding(.all, 16)
                 Rectangle()

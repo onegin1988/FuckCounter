@@ -82,6 +82,7 @@ struct CustomWordView: View {
             
             if customWordViewModel.checkingCustomWord(filtersViewModel.languageModel.languageCode) {
                 filtersViewModel.customWord = customWordViewModel.textInput
+                filtersViewModel.isCustom = true
                 dismiss()
             }
         }
