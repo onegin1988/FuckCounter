@@ -24,8 +24,9 @@ struct ProgressModifiers: ViewModifier {
                             .ignoresSafeArea(.all)
                         
                         ProgressView()
-                            .controlSize(.large)
+                            .controlSize(.regular)
                             .tint(.white)
+                            .offset(y: 32)
                     }
                     .transition(AnyTransition.opacity.animation(.default))
                 }
