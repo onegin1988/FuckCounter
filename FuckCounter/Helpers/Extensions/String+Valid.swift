@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import NaturalLanguage
-import LanguageDetector
+//import NaturalLanguage
+//import LanguageDetector
 
 extension String {
     func isEmptyOrWhitespace() -> Bool {
@@ -19,13 +19,14 @@ extension String {
     }
     
     func detectedLanguage(_ currentCode: String) -> Bool {
-        do {
-            let detector = try LanguageDetector(languages: LanguageCode.allCases.map({$0.rawValue}))
-            let result = try detector.evaluate(text: self)
-            return result?.first?.0 ?? "" == currentCode
-        } catch let error {
-            debugPrint(error.localizedDescription)
-            return false
-        }
+        return true
+//        do {
+//            let detector = try LanguageDetector(languages: LanguageCode.allCases.map({$0.rawValue}))
+//            let result = try detector.evaluate(text: self)
+//            return result?.first?.0 ?? "" == currentCode
+//        } catch let error {
+//            debugPrint(error.localizedDescription)
+//            return false
+//        }
     }
 }

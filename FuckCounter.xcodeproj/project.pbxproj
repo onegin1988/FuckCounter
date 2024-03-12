@@ -56,7 +56,6 @@
 		1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2762B2122BE00FE2918 /* BoldTextView.swift */; };
 		1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
-		1F6F42EA2B9B059A0068BA7E /* LanguageDetector in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6F42E92B9B059A0068BA7E /* LanguageDetector */; };
 		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
 		1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */; };
 		1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9555882B8B60E80002A060 /* GoogleService.swift */; };
@@ -217,7 +216,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6F42EA2B9B059A0068BA7E /* LanguageDetector in Frameworks */,
 				329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +588,6 @@
 			);
 			name = FuckCounter;
 			packageProductDependencies = (
-				1F6F42E92B9B059A0068BA7E /* LanguageDetector */,
 			);
 			productName = FuckCounter;
 			productReference = 1F9D65942B0A46470011F18B /* FuckCounter.app */;
@@ -625,7 +622,6 @@
 			);
 			mainGroup = 1F9D658B2B0A46470011F18B;
 			packageReferences = (
-				1F6F42E82B9B059A0068BA7E /* XCRemoteSwiftPackageReference "LanguageDetector" */,
 			);
 			productRefGroup = 1F9D65952B0A46470011F18B /* Products */;
 			projectDirPath = "";
@@ -936,9 +932,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1022,7 +1018,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "FuckCounter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1039,9 +1035,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1125,7 +1121,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "FuckCounter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1157,25 +1153,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1F6F42E82B9B059A0068BA7E /* XCRemoteSwiftPackageReference "LanguageDetector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Al00X/LanguageDetector.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1F6F42E92B9B059A0068BA7E /* LanguageDetector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1F6F42E82B9B059A0068BA7E /* XCRemoteSwiftPackageReference "LanguageDetector" */;
-			productName = LanguageDetector;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1F9D658C2B0A46470011F18B /* Project object */;
 }
