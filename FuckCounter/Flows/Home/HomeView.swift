@@ -132,7 +132,7 @@ struct HomeView: View {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 if homeViewModel.isPlay {
                     isProcessing = true
-                    speechService.cancelRecording()
+                    speechService.stopRecording()
                     Task {
                         if AppData.userLoginModel != nil {
                             await homeViewModel.uploadResults()
@@ -143,7 +143,7 @@ struct HomeView: View {
                     }
                 } else {
                     isProcessing = true
-                    speechService.recordAndRecognizeSpeech()
+                    speechService.startRecording()
                 }
             }
         }

@@ -134,28 +134,22 @@ struct FuckCounterApp: App {
     }
     
     private func requestSpeechAuthorization() {
-        Task {
-            let status = await speechService.requestSpeechAuthorization()
-            
-            await MainActor.run {
-                switch status {
-                case .notDetermined, .restricted:
-                    isStartApp.0 = false
-                case .denied:
-                    errorMessage = SpeechServiceError.speechDeniedError.errorDescription
-                    isStartApp.0 = false
-                case .authorized:
-                    isStartApp.0 = true
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.showOlderAlert()
-                    }
-                @unknown default:
-                    fatalError()
+        speechService.requestSpeechAuthorization { status in
+            switch status {
+            case .notDetermined, .restricted:
+                isStartApp.0 = false
+            case .denied:
+                errorMessage = "You have disabled access to speech recognition."
+                isStartApp.0 = false
+            case .authorized:
+                isStartApp.0 = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.showOlderAlert()
                 }
+            @unknown default:
+                fatalError()
             }
         }
     }
-    
-    
 }
