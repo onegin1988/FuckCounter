@@ -5,4 +5,5 @@ public enum SpeechRecognitionStatus: Equatable {
     case recording
     case stopping
     case stopped
+    case waiting
 }

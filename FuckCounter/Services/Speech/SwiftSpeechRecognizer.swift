@@ -1,99 +1,76 @@
-#if os(macOS)
-#error("This library is not compatible with macOS")
-#endif
-
+import Combine
 import Speech
 
-public struct SwiftSpeechRecognizer {
-    /// Receive every change about the authorization status of the Speech Recognition including microphone usage
-    public var authorizationStatus: () -> AsyncStream<SFSpeechRecognizerAuthorizationStatus>
+public protocol SpeechRecognitionEngine {
+    /// Publish every change about the authorization status of the Speech Recognition including microphone usage
+    var authorizationStatusPublisher: AnyPublisher<SFSpeechRecognizerAuthorizationStatus?, Never> { get }
 
-    /// Receive every single time the Speech Recognition engine recognize something. Including duplicates or `nil`.
+    /// Publish every single time the Speech Recognition engine recognize something. Including duplicates or `nil`.
     /// If you want a shortcut that already do the filter for you, use `newUtterancePublisher`
-    public var recognizedUtterance: () -> AsyncStream<String?>
+    var recognizedUtterancePublisher: AnyPublisher<String?, Never> { get }
 
-    /// Receive every changes about the Recognition status. Useful when you want to notify the user of
+    /// Publish every changes about the Recognition status. Useful when you want to notify the user of
     /// the current Speech Recognition State
-    public var recognitionStatus: () -> AsyncStream<SpeechRecognitionStatus>
+    var recognitionStatusPublisher: AnyPublisher<SpeechRecognitionStatus, Never> { get }
 
-    /// Receive whenever the availability of Speech Recognition services changes, this value will change
+    /// Publish whenever the availability of Speech Recognition services changes, this value will change
     /// for instance if the internet connection is lost
-    public var isRecognitionAvailable: () -> AsyncStream<Bool>
+    var isRecognitionAvailablePublisher: AnyPublisher<Bool, Never> { get }
 
-    /// Shortcut to access with ease to the received new utterance (already filtered)
-    public var newUtterance: () -> AsyncStream<String>
+    /// Shortcut to access with ease to the published new utterance (already filtered)
+    var newUtterancePublisher: AnyPublisher<String, Never> { get }
 
     /// Ask user if you can use Microphone for Speech Recognition
     /// You'll need to subscribe to `authorizationStatusPublisher` to know the user choice
-    public var requestAuthorization: () -> Void
+    func requestAuthorization()
 
     /// Will trigger the Speech Recognition process. This method hide all the complexity of AVAudio interactions
     /// subscribe to `recognizedUtterancePublisher` or `newUtterancePublisher` depending on your needs
-    public var startRecording: () throws -> Void
+    func startRecording() throws
 
     /// Stop the Speech Recognition process manually
-    public var stopRecording: () -> Void
-
+    func stopRecording()
+    
     /// Pause the Speech Recognition process manually
-    public var pauseRecording: () throws -> Void
+    func pauseRecording() throws
     
     /// Resume the Speech Recognition process manually
-    public var resumeRecording: () throws -> Void
-    
-    public init(
-        authorizationStatus: @escaping () -> AsyncStream<SFSpeechRecognizerAuthorizationStatus>,
-        recognizedUtterance: @escaping () -> AsyncStream<String?>,
-        recognitionStatus: @escaping () -> AsyncStream<SpeechRecognitionStatus>,
-        isRecognitionAvailable: @escaping () -> AsyncStream<Bool>,
-        newUtterance: @escaping () -> AsyncStream<String>,
-        requestAuthorization: @escaping () -> Void,
-        startRecording: @escaping () throws -> Void,
-        stopRecording: @escaping () -> Void,
-        pauseRecording: @escaping () throws -> Void,
-        resumeRecording: @escaping () throws -> Void
-    ) {
-        self.authorizationStatus = authorizationStatus
-        self.recognizedUtterance = recognizedUtterance
-        self.recognitionStatus = recognitionStatus
-        self.isRecognitionAvailable = isRecognitionAvailable
-        self.newUtterance = newUtterance
-        self.requestAuthorization = requestAuthorization
-        self.startRecording = startRecording
-        self.stopRecording = stopRecording
-        self.pauseRecording = pauseRecording
-        self.resumeRecording = resumeRecording
-    }
+    func resumeRecording() throws
 }
 
 // See: https://developer.apple.com/documentation/speech/recognizing_speech_in_live_audio
-private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, SFSpeechRecognizerDelegate {
-    var authorizationStatus: (SFSpeechRecognizerAuthorizationStatus) -> Void = { _ in }
-    var recognizedUtterance: (String?) -> Void = { _ in }
-    var recognitionStatus: (SpeechRecognitionStatus) -> Void = { _ in }
+public final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, SFSpeechRecognizerDelegate, SpeechRecognitionEngine {
+    @Published var authorizationStatus: SFSpeechRecognizerAuthorizationStatus?
+    @Published var recognizedUtterance: String?
+    @Published var recognitionStatus: SpeechRecognitionStatus = .notStarted
 
     /// Whenever the availability of speech recognition services changes, this value will change
     /// For instance if the internet connection is lost, isRecognitionAvailable will change to `false`
-    var isRecognitionAvailable: (Bool) -> Void = { _ in }
+    @Published var isRecognitionAvailable: Bool = false
 
-    var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
     private let audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
 
-    func requestAuthorization() {
-        SFSpeechRecognizer.requestAuthorization { @MainActor [weak self] authorizationStatus in
-            self?.authorizationStatus(authorizationStatus)
+    public override init() { }
+
+    public func requestAuthorization() {
+        SFSpeechRecognizer.requestAuthorization { [weak self] authorizationStatus in
+            DispatchQueue.main.async { [weak self] in
+                self?.authorizationStatus = authorizationStatus
+            }
         }
     }
 
-    func startRecording() throws {
+    public func startRecording() throws {
         guard !audioEngine.isRunning
         else { return stopRecording() }
 
         // Cancel the previous task if it's running.
         recognitionTask?.cancel()
         recognitionTask = nil
-        recognizedUtterance(nil)
+        recognizedUtterance = nil
 
         // Configure the audio session for the app.
         let audioSession = AVAudioSession.sharedInstance()
@@ -104,7 +81,9 @@ private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, S
         // Create and configure the speech recognition request.
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest
-        else { throw SpeechRecognitionEngineError.speechAudioBufferRecognitionRequestInitFailed }
+        else {
+            throw SpeechRecognitionEngineError.speechAudioBufferRecognitionRequestInitFailed
+        }
         recognitionRequest.shouldReportPartialResults = true
         // Make some test, we could probably keep all speech recognition data on the devices
         // recognitionRequest.requiresOnDeviceRecognition = true
@@ -114,27 +93,32 @@ private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, S
 
         // Create a recognition task for the speech recognition session.
         // Keep a reference to the task so that it can be canceled.
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) {
-            @MainActor [weak self] result, error in
-            guard let self = self else { return }
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
 
-            var isFinal = false
+                var isFinal = false
 
-            if let result = result {
-                // Update the text view with the results
-                self.recognizedUtterance(result.bestTranscription.formattedString)
-                isFinal = result.isFinal
-            }
+                if let result = result {
+                    // Update the text view with the results
+                    self.recognizedUtterance = result.bestTranscription.formattedString
+                    isFinal = result.isFinal
+                }
 
-            if error != nil || isFinal {
-                // Stop recognizing speech if there is a problem.
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
+                if error != nil || isFinal {
+                    // Stop recognizing speech if there is a problem.
+                    self.audioEngine.stop()
+                    inputNode.removeTap(onBus: 0)
 
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
+                    self.recognitionRequest = nil
+                    self.recognitionTask = nil
 
-                self.recognitionStatus(.stopped)
+                    if self.recognitionStatus == .stopping {
+                        self.recognitionStatus = .stopped
+                    } else {
+                        self.recognitionStatus = .waiting
+                    }
+                }
             }
         }
 
@@ -146,20 +130,20 @@ private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, S
 
         audioEngine.prepare()
         try audioEngine.start()
-        recognitionStatus(.recording)
+        recognitionStatus = .recording
     }
 
-    func stopRecording() {
+    public func stopRecording() {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            recognitionStatus(.stopping)
+            recognitionStatus = .stopping
         } else {
-            recognitionStatus(.stopped)
+            recognitionStatus = .stopped
         }
     }
-
-    func pauseRecording() throws {
+    
+    public func pauseRecording() throws {
         audioEngine.pause()
         do {
             try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
@@ -169,7 +153,7 @@ private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, S
         }
     }
     
-    func resumeRecording() throws {
+    public func resumeRecording() throws {
         do {
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
             try audioEngine.start()
@@ -178,49 +162,37 @@ private final class SpeechRecognitionSpeechEngine: NSObject, ObservableObject, S
             throw error
         }
     }
-    
+}
+
+// MARK: - SFSpeechRecognizerDelegate
+public extension SpeechRecognitionSpeechEngine {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        isRecognitionAvailable(available)
+        isRecognitionAvailable = available
     }
 }
 
-public extension SwiftSpeechRecognizer {
-        
-    static var live: Self {
-        let engine = SpeechRecognitionSpeechEngine()
-        let authorizationStatus = AsyncStream { continuation in
-            engine.authorizationStatus = { continuation.yield($0) }
-        }
-        let recognizedUtterance = AsyncStream { continuation in
-            engine.recognizedUtterance = { continuation.yield($0) }
-        }
-        let recognitionStatus = AsyncStream { continuation in
-            engine.recognitionStatus = { continuation.yield($0) }
-        }
-        let isRecognitionAvailable = AsyncStream { continuation in
-            engine.isRecognitionAvailable = { continuation.yield($0) }
-        }
-        let newUtterance = AsyncStream { continuation in
-            Task {
-                var lastUtterance: String? = nil
-                for await utterance in recognizedUtterance.compactMap({ $0 }) where lastUtterance != utterance {
-                    continuation.yield(utterance)
-                    lastUtterance = utterance
-                }
-            }
-        }
+// MARK: - SpeechRecognitionEngine
+public extension SpeechRecognitionSpeechEngine {
+    var authorizationStatusPublisher: AnyPublisher<SFSpeechRecognizerAuthorizationStatus?, Never> {
+        $authorizationStatus.eraseToAnyPublisher()
+    }
 
-        return Self(
-            authorizationStatus: { authorizationStatus },
-            recognizedUtterance: { recognizedUtterance },
-            recognitionStatus: { recognitionStatus },
-            isRecognitionAvailable: { isRecognitionAvailable },
-            newUtterance: { newUtterance },
-            requestAuthorization: { engine.requestAuthorization() },
-            startRecording: { try engine.startRecording() },
-            stopRecording: { engine.stopRecording() },
-            pauseRecording: { try engine.pauseRecording() },
-            resumeRecording: { try engine.resumeRecording() }
-        )
+    var recognizedUtterancePublisher: AnyPublisher<String?, Never> {
+        $recognizedUtterance.eraseToAnyPublisher()
+    }
+
+    var recognitionStatusPublisher: AnyPublisher<SpeechRecognitionStatus, Never> {
+        $recognitionStatus.eraseToAnyPublisher()
+    }
+
+    var isRecognitionAvailablePublisher: AnyPublisher<Bool, Never> {
+        $isRecognitionAvailable.eraseToAnyPublisher()
+    }
+
+    var newUtterancePublisher: AnyPublisher<String, Never> {
+        $recognizedUtterance
+            .removeDuplicates()
+            .compactMap({ $0 })
+            .eraseToAnyPublisher()
     }
 }

@@ -8,84 +8,75 @@
 import Foundation
 import Speech
 import SwiftUI
-
-//enum SpeechServiceError: LocalizedError {
-//    case audioEngineError
-//    case speechRecognitionError
-//    case speechAvailableError
-//    case speechDeniedError
-//    
-//    var errorDescription: String? {
-//        switch self {
-//        case .audioEngineError:
-//            return "There has been an audio engine error."
-//        case .speechRecognitionError:
-//            return "Speech recognition is not supported for your current locale."
-//        case .speechAvailableError:
-//            return "Speech recognition is not currently available. Check back at a later time."
-//        case .speechDeniedError:
-//            return "You have disabled access to speech recognition."
-//        }
-//    }
-//}
+import Combine
 
 class SpeechService: ObservableObject {
     
-//    let audioEngine = AVAudioEngine()
-//    private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
-//    let request = SFSpeechAudioBufferRecognitionRequest()
-//    var recognitionTask: SFSpeechRecognitionTask?
-    @Published var isRecording: Bool
+    @Published var speechRecognitionStatus: SpeechRecognitionStatus
     @Published var error: String?
     @Published var fullText: String?
+    private var texts: [String]
     
-    var speechRecognizer = SwiftSpeechRecognizer.live
+    var engine: SpeechRecognitionEngine = SpeechRecognitionSpeechEngine()
+    var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.isRecording = false
+        self.speechRecognitionStatus = .notStarted
+        self.texts = []
     }
     
     func updateSpeechLocale() {
-        speechRecognizer = SwiftSpeechRecognizer.live
-//        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: AppData.selectedLanguageModel.languageCode))
+        engine = SpeechRecognitionSpeechEngine()
     }
     
     func requestSpeechAuthorization(handler: ((SFSpeechRecognizerAuthorizationStatus) -> Void)?) {
-        speechRecognizer.requestAuthorization()
+        engine.requestAuthorization()
         
-        Task {
-            for await authorizationStatus in speechRecognizer.authorizationStatus() {
-                handler?(authorizationStatus)
-            }
-        }
+        engine.authorizationStatusPublisher
+            .sink { status in
+                guard let status = status else { return }
+                handler?(status)
+            }.store(in: &cancellables)
     }
     
     func startRecording() {
+        
         do {
-            try speechRecognizer.startRecording()
+            try engine.startRecording()
             
-            Task {
-                for await recognitionStatus in speechRecognizer.recognitionStatus() {
-                    isRecording = recognitionStatus == .recording
+            engine.newUtterancePublisher
+                .sink { newUtterance in
+                    debugPrint(newUtterance)
+                    if self.texts.isEmpty {
+                        self.texts.append(newUtterance)
+                    } else {
+                        self.texts[self.texts.count - 1] = newUtterance
+                    }
+                    
+                    self.fullText = self.texts.joined(separator: ". ")
+                }.store(in: &cancellables)
+            
+            engine.recognitionStatusPublisher
+                .sink { recognitionStatus in
+                    self.speechRecognitionStatus = recognitionStatus
                     if recognitionStatus == .stopped {
-                        fullText = nil
+                        self.texts.removeAll()
+                        self.fullText = nil
+                    } else if recognitionStatus == .waiting {
+                        self.texts.append("")
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.startRecording()
+                        }
                     }
                 }
-            }
-            
-            Task {
-                for await newUtterance in speechRecognizer.newUtterance() {
-                    debugPrint(newUtterance)
-                    self.fullText = newUtterance
-                }
-            }
+                .store(in: &cancellables)
             
         } catch let error {
-            
             self.error = error.localizedDescription
-            self.isRecording = false
-            speechRecognizer.stopRecording()
+            engine.stopRecording()
         }
+        
 //            let clean = bestString.filter{ $0.isLetter || $0.isWhitespace }
 //
 //            if let lastIndex = clean.lastIndex(of: " "), 
@@ -104,37 +95,22 @@ class SpeechService: ObservableObject {
     }
     
     func stopRecording() {
-        speechRecognizer.stopRecording()
+        engine.stopRecording()
     }
     
     func pauseRecording() {
         do {
-            try speechRecognizer.pauseRecording()
+            try engine.pauseRecording()
         } catch let error {
             self.error = error.localizedDescription
         }
-//        audioEngine.pause()
-//        do {
-//            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-//        } catch let error {
-//            self.error = error.localizedDescription
-//            debugPrint(error.localizedDescription)
-//        }
     }
     
     func resumeRecording() {
         do {
-            try speechRecognizer.resumeRecording()
+            try engine.resumeRecording()
         } catch let error {
             self.error = error.localizedDescription
         }
-
-//        do {
-//            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-//            try audioEngine.start()
-//        } catch let error {
-//            self.error = error.localizedDescription
-//            debugPrint(error.localizedDescription)
-//        }
     }
 }

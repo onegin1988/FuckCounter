@@ -80,21 +80,32 @@ struct HomeView: View {
             .onReceive(dailyService.$timeSlice, perform: { _ in
                 homeViewModel.timeSlice = dailyService.timeSliceResult
             })
-            .onReceive(speechService.$isRecording, perform: { isRecording in
-                homeViewModel.isPlay = speechService.isRecording
-                if isRecording {
+            .onReceive(speechService.$speechRecognitionStatus, perform: { status in
+                switch status {
+                case .recording:
+                    homeViewModel.isPlay = true
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.isProcessing = false
                     }
+                case .stopped:
+                    homeViewModel.isPlay = false
+                default:
+                    break
                 }
             })
             .onReceive(speechService.$fullText, perform: { fullText in
                 if let fullText = fullText {
-                    homeViewModel.counter = fullText
-                        .lowercased()
-                        .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
-                        .count
-                    homeViewModel.checkLevel()
+                    DispatchQueue.global(qos: .userInteractive).async {
+                        let counter = fullText
+                            .lowercased()
+                            .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
+                            .count
+                        DispatchQueue.main.async {
+                            homeViewModel.counter = counter
+                            homeViewModel.checkLevel()
+                        }
+                    }
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
@@ -186,13 +197,13 @@ struct HomeView: View {
         
         switch interruptionType {
         case .began:
-            guard speechService.isRecording else {
+            guard homeViewModel.isPlay else {
                 return
             }
             
             speechService.pauseRecording()
         default :
-            guard speechService.isRecording else {
+            guard homeViewModel.isPlay else {
                 return
             }
             if let optionValue = (notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? NSNumber)?.uintValue, AVAudioSession.InterruptionOptions(rawValue: optionValue) == .shouldResume {
