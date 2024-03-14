@@ -148,20 +148,6 @@ struct FiltersView: View {
                                   filtersViewModel.isCustom = true
                               }
                               .cornerRadius(FiltersConstants.sectionRadius)
-
-//            ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord,
-//                              useLeftCheckmark: true,
-//                              selectCheckmark: filtersViewModel.isCustom)
-
-//            ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord)
-//                .frame(height: FiltersConstants.listItemHeight)
-//                .padding(.top, 5)
-//                .background(Color.black.opacity(0.2))
-//                .onTapGesture {
-//                    filtersViewModel.filtersEvent = .customWord
-//                    isShow.toggle()
-//                }
-//                .cornerRadius(FiltersConstants.sectionRadius)
         } header: {
             setupHeaderView("Custom word")
         }

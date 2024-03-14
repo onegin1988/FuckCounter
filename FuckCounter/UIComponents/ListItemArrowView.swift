@@ -44,9 +44,6 @@ struct ListItemArrowView: View {
                     Images.chevronRight
                         .frame(width: 32, height: 32)
                         .itemTap {
-                            if selectCheckmark == true {
-                                return
-                            }
                             selectRowHandler?()
                         }
                 }
