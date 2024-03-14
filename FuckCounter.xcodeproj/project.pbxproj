@@ -57,6 +57,9 @@
 		1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
 		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
+		1F8B22B52BA3AD0600F63759 /* FuckCounterConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */; };
+		1F8B22B72BA3AE1100F63759 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */; };
+		1F8B22B92BA3B2BB00F63759 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8B22B82BA3B2BB00F63759 /* StoreKit.framework */; };
 		1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */; };
 		1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9555882B8B60E80002A060 /* GoogleService.swift */; };
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
@@ -164,6 +167,9 @@
 		1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModifiers.swift; sourceTree = "<group>"; };
+		1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = FuckCounterConfiguration.storekit; sourceTree = "<group>"; };
+		1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		1F8B22B82BA3B2BB00F63759 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F9555882B8B60E80002A060 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */,
+				1F8B22B92BA3B2BB00F63759 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +345,7 @@
 				1F4728F22B87BFBF001742E2 /* Сonfetti.json */,
 				1F62A25F2B211C9F00FE2918 /* Fonts */,
 				1F5377BE2B98A28100FD9451 /* Localizable.strings */,
+				1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 				1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */,
 				1F4728F42B87CD2F001742E2 /* AppleService.swift */,
 				1F9555882B8B60E80002A060 /* GoogleService.swift */,
+				1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -581,6 +590,7 @@
 		F42A036701465CE3D84BB16D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F8B22B82BA3B2BB00F63759 /* StoreKit.framework */,
 				FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */,
 			);
 			name = Frameworks;
@@ -667,6 +677,7 @@
 				1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */,
 				1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */,
 				1F62A2662B211E3700FE2918 /* SFProDisplay-Regular.ttf in Resources */,
+				1F8B22B52BA3AD0600F63759 /* FuckCounterConfiguration.storekit in Resources */,
 				1F62A2622B211DED00FE2918 /* SFProDisplay-Bold.ttf in Resources */,
 				1F39C0912B5B1D7B00A00420 /* Lato-Regular.ttf in Resources */,
 				1F62A2642B211E0500FE2918 /* SFProDisplay-Medium.ttf in Resources */,
@@ -743,6 +754,7 @@
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
 				1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */,
 				1FBE447A2B27582600513401 /* CongratsView.swift in Sources */,
+				1F8B22B72BA3AE1100F63759 /* PurchaseService.swift in Sources */,
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
 				1F2187732B0A6C9B0020C4AB /* Images.swift in Sources */,
 				1FBE44662B23B42A00513401 /* SafeAreaInsetsKey.swift in Sources */,

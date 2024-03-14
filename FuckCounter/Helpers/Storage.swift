@@ -114,6 +114,9 @@ struct AppData {
     @Storage(key: "isOlder", defaultValue: false)
     static var isOlder: Bool
     
+    @Storage(key: "hasPremium", defaultValue: false)
+    static var hasPremium: Bool
+    
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
         case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)

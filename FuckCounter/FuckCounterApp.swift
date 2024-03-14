@@ -48,6 +48,7 @@ struct FuckCounterApp: App {
     @StateObject var facebookService = FacebookService()
     @StateObject var appleService = AppleService()
     @StateObject var googleService = GoogleService()
+    @StateObject var purchaseService = PurchaseService()
     
     @StateObject var loginViewModel = LoginViewModel()
     
@@ -65,6 +66,7 @@ struct FuckCounterApp: App {
                     .environmentObject(appleService)
                     .environmentObject(googleService)
                     .environmentObject(loginViewModel)
+                    .environmentObject(purchaseService)
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(UIApplication.shared,
                                                                open: url,
@@ -90,7 +92,11 @@ struct FuckCounterApp: App {
                         AppData.isOlder = true
                         isStartApp.1 = AppData.isOlder
                     }))
+                    .task {
+                        loadProducts()
+                    }
                     .environmentObject(speechService)
+                    .environmentObject(purchaseService)
             }
         }
         .onChange(of: scenePhase) { newPhase in
@@ -109,6 +115,19 @@ struct FuckCounterApp: App {
         }
     }
 
+    private func loadProducts() {
+        Task {
+            do {
+                try await purchaseService.loadProducts()
+                debugPrint(purchaseService.products)
+                
+                await purchaseService.updatePurchasedProducts()
+            } catch let error {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
     private func setupSettings() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
