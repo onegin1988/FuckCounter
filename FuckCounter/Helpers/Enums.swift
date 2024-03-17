@@ -129,3 +129,10 @@ enum LanguageCode: String, CaseIterable {
         }
     }
 }
+
+enum ProductType: String, CaseIterable {
+    case oneMonth = "premium.one.month"
+    case oneWeek = "premium.one.week"
+    case threeMonth = "premium.three.month"
+    case oneYear = "premium.one.year"
+}

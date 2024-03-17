@@ -11,10 +11,11 @@ import StoreKit
 @MainActor
 class PurchaseService: NSObject, ObservableObject {
     
-    private let productIds = ["premium.one.month", "premium.one.week", "premium.three.month", "premium.one.year"]
+    private let productIds = ProductType.allCases.map({$0.rawValue})// ["premium.one.month", "premium.one.week", "premium.three.month", "premium.one.year"]
     
     @Published private(set) var products: [Product] = []
     @Published private(set) var purchasedProductIDs = Set<String>()
+    @Published private(set) var productForSettings: Product?
     
     private var productsLoaded = false
     private var updates: Task<Void, Never>? = nil
@@ -50,12 +51,17 @@ class PurchaseService: NSObject, ObservableObject {
     
     // MARK: - Public
     
+    func getProduct(id: String) -> Product? {
+        return products.first(where: {$0.id == id})
+    }
+    
     func loadProducts() async throws {
         guard !self.productsLoaded else { 
             return
         }
         
         self.products = try await Product.products(for: productIds)
+        self.productForSettings = getProduct(id: ProductType.oneWeek.rawValue)
         self.productsLoaded = true
     }
     

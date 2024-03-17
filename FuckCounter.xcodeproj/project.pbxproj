@@ -36,6 +36,8 @@
 		1F4728F52B87CD2F001742E2 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4728F42B87CD2F001742E2 /* AppleService.swift */; };
 		1F48148C2B9626BD009BFE57 /* CheckMarkIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */; };
 		1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148D2B963FBD009BFE57 /* String+Valid.swift */; };
+		1F4B3B1B2BA71ED300BB78E4 /* SettingsPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1A2BA71ED200BB78E4 /* SettingsPremiumView.swift */; };
+		1F4B3B1D2BA722DA00BB78E4 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */; };
 		1F5377BC2B98A28100FD9451 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F5377BE2B98A28100FD9451 /* Localizable.strings */; };
 		1F5377C42B98A91C00FD9451 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C32B98A91C00FD9451 /* String+Localization.swift */; };
 		1F5377C62B99B3E800FD9451 /* AlertModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C52B99B3E800FD9451 /* AlertModifiers.swift */; };
@@ -141,6 +143,8 @@
 		1F4728F62B87CD55001742E2 /* FuckCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckCounter.entitlements; sourceTree = "<group>"; };
 		1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkIconView.swift; sourceTree = "<group>"; };
 		1F48148D2B963FBD009BFE57 /* String+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Valid.swift"; sourceTree = "<group>"; };
+		1F4B3B1A2BA71ED200BB78E4 /* SettingsPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumView.swift; sourceTree = "<group>"; };
+		1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
 		1F5377BD2B98A28100FD9451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377BF2B98A2B800FD9451 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377C02B98A2EE00FD9451 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				1F35E36B2B7E607900F0D7C8 /* ImageView.swift */,
 				1F4728EC2B87BAFB001742E2 /* LottieView.swift */,
 				1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */,
+				1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 			children = (
 				1FBE44732B2656D200513401 /* AppsListRow.swift */,
 				1FBE44752B27033C00513401 /* SettingsListRow.swift */,
+				1F4B3B1A2BA71ED200BB78E4 /* SettingsPremiumView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -753,6 +759,7 @@
 				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
 				1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */,
+				1F4B3B1D2BA722DA00BB78E4 /* BlackBgView.swift in Sources */,
 				1FBE447A2B27582600513401 /* CongratsView.swift in Sources */,
 				1F8B22B72BA3AE1100F63759 /* PurchaseService.swift in Sources */,
 				1F62A2552B209A1400FE2918 /* FiltersView.swift in Sources */,
@@ -781,6 +788,7 @@
 				1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */,
 				1FBE44522B220A3E00513401 /* SemiboldTextView.swift in Sources */,
 				1FA6E5212B30A4800009DB9D /* AlertErrorModifiers.swift in Sources */,
+				1F4B3B1B2BA71ED300BB78E4 /* SettingsPremiumView.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
 				1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */,

@@ -21,9 +21,7 @@ struct SettingsListRow: View {
     
     var body: some View {
         ZStack {
-            Color.black
-                .opacity(0.4)
-                .cornerRadius(16)
+            BlackBgView()
             
             HStack(alignment: .center, spacing: 12) {
                 if let url = AppData.userLoginModel?.image, item == .createAccount {

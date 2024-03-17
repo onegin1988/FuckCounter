@@ -14,6 +14,7 @@ struct SettingsView: View {
     @EnvironmentObject var facebookService: FacebookService
     @EnvironmentObject var googleService: GoogleService
     @EnvironmentObject var appleService: AppleService
+    @EnvironmentObject var purchaseService: PurchaseService
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
@@ -39,6 +40,12 @@ struct SettingsView: View {
 //        NavigationStack {
             ScrollView(content: {
 //                AppsListView(apps: settingsViewModel.apps)
+                SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
+                    
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 24)
+                
                 SettingsListView(settingsItems: settingsViewModel.settingsItems,
                                  isToggle: $settingsViewModel.isNotify) { settingsItem in
                     switch settingsItem {
