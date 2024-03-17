@@ -41,7 +41,7 @@ struct SettingsView: View {
             ScrollView(content: {
 //                AppsListView(apps: settingsViewModel.apps)
                 SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
-                    
+                    settingsViewModel.settingsEvent = .subscription
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 24)
@@ -113,6 +113,8 @@ struct SettingsView: View {
             switch settingsViewModel.settingsEvent {
             case .login:
                 LoginView()
+            case .subscription:
+                SubscriptionView()
             case .none:
                 EmptyView()
             }

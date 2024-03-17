@@ -32,7 +32,7 @@ enum FiltersEvent: String, Hashable {
 }
 
 enum SettingsEvent: String, Hashable {
-    case login
+    case login, subscription
 }
 
 enum LeadersEvent: String, Hashable {
@@ -135,4 +135,16 @@ enum ProductType: String, CaseIterable {
     case oneWeek = "premium.one.week"
     case threeMonth = "premium.three.month"
     case oneYear = "premium.one.year"
+}
+
+enum SubscriptionInfo: CaseIterable {
+    case firstInfo, secondInfo, thirdInfo
+    
+    var info: (String, String, Image) {
+        switch self {
+        case .firstInfo: return ("Use Custom Words", "Extended filters", Images.subscriptionInfoIcon_1)
+        case .secondInfo: return ("See Frends Statistic", "Full Access", Images.subscriptionInfoIcon_2)
+        case .thirdInfo: return ("Additional Languages", "Deutch, France, Ukrainian, Russian", Images.subscriptionInfoIcon_3)
+        }
+    }
 }

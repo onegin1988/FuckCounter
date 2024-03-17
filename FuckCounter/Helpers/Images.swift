@@ -43,4 +43,8 @@ struct Images {
     static let google = Image("google")
     static let createAccount = Image("createAccount")
     static let cancelIcon = Image("cancelIcon")
+    static let subscriptionBgIcon = Image("subscriptionBgIcon")
+    static let subscriptionInfoIcon_1 = Image("subscriptionInfoIcon_1")
+    static let subscriptionInfoIcon_2 = Image("subscriptionInfoIcon_2")
+    static let subscriptionInfoIcon_3 = Image("subscriptionInfoIcon_3")
 }

@@ -38,6 +38,9 @@
 		1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48148D2B963FBD009BFE57 /* String+Valid.swift */; };
 		1F4B3B1B2BA71ED300BB78E4 /* SettingsPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1A2BA71ED200BB78E4 /* SettingsPremiumView.swift */; };
 		1F4B3B1D2BA722DA00BB78E4 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */; };
+		1F4B3B202BA73A3D00BB78E4 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1F2BA73A3D00BB78E4 /* SubscriptionView.swift */; };
+		1F4B3B232BA73F2100BB78E4 /* SubscriptionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */; };
+		1F4B3B272BA74DBD00BB78E4 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */; };
 		1F5377BC2B98A28100FD9451 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F5377BE2B98A28100FD9451 /* Localizable.strings */; };
 		1F5377C42B98A91C00FD9451 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C32B98A91C00FD9451 /* String+Localization.swift */; };
 		1F5377C62B99B3E800FD9451 /* AlertModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C52B99B3E800FD9451 /* AlertModifiers.swift */; };
@@ -145,6 +148,9 @@
 		1F48148D2B963FBD009BFE57 /* String+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Valid.swift"; sourceTree = "<group>"; };
 		1F4B3B1A2BA71ED200BB78E4 /* SettingsPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumView.swift; sourceTree = "<group>"; };
 		1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
+		1F4B3B1F2BA73A3D00BB78E4 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfoView.swift; sourceTree = "<group>"; };
+		1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
 		1F5377BD2B98A28100FD9451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377BF2B98A2B800FD9451 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377C02B98A2EE00FD9451 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 		1F21877A2B0A7AD60020C4AB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1F4B3B1E2BA739BF00BB78E4 /* Subscription */,
 				1F3304BA2B61C09200F4D5B9 /* Login */,
 				1F39C09F2B6067B400A00420 /* CustomWord */,
 				1F39C0922B5C1A8800A00420 /* Languages */,
@@ -343,6 +350,23 @@
 			path = CustomWord;
 			sourceTree = "<group>";
 		};
+		1F4B3B1E2BA739BF00BB78E4 /* Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				1F4B3B212BA73EFF00BB78E4 /* Views */,
+				1F4B3B1F2BA73A3D00BB78E4 /* SubscriptionView.swift */,
+			);
+			path = Subscription;
+			sourceTree = "<group>";
+		};
+		1F4B3B212BA73EFF00BB78E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +417,7 @@
 				1F4728EC2B87BAFB001742E2 /* LottieView.swift */,
 				1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */,
 				1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */,
+				1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -740,11 +765,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4B3B272BA74DBD00BB78E4 /* CollectionViewWrapper.swift in Sources */,
 				1FBB3B9B2BA06A1F007BD3E3 /* SwiftSpeechRecognizer.swift in Sources */,
 				1FFA71A82B8D304800BA126A /* ErrorSocialServicesModifiers.swift in Sources */,
 				1F62A25D2B210A5800FE2918 /* NavBarModifiers.swift in Sources */,
 				1F4728E32B8787B0001742E2 /* ItemTapModifiers.swift in Sources */,
 				1F39C0A12B6067C500A00420 /* CustomWordView.swift in Sources */,
+				1F4B3B202BA73A3D00BB78E4 /* SubscriptionView.swift in Sources */,
 				1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */,
 				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
@@ -769,6 +796,7 @@
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
 				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
+				1F4B3B232BA73F2100BB78E4 /* SubscriptionInfoView.swift in Sources */,
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
 				1F21877E2B0A8E430020C4AB /* FirstAppear.swift in Sources */,
 				1F62A2592B20C51900FE2918 /* SettingsView.swift in Sources */,
