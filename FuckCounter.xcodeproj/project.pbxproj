@@ -105,6 +105,7 @@
 		1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44752B27033C00513401 /* SettingsListRow.swift */; };
 		1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44772B27378200513401 /* BottomSheetView.swift */; };
 		1FBE447A2B27582600513401 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE44792B27582600513401 /* CongratsView.swift */; };
+		1FBFBAFA2BA8C0440072A809 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFBAF92BA8C0440072A809 /* PageControlView.swift */; };
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
@@ -221,6 +222,7 @@
 		1FBE44752B27033C00513401 /* SettingsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListRow.swift; sourceTree = "<group>"; };
 		1FBE44772B27378200513401 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		1FBE44792B27582600513401 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
+		1FBFBAF92BA8C0440072A809 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				1F48148B2B9626BD009BFE57 /* CheckMarkIconView.swift */,
 				1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */,
 				1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */,
+				1FBFBAF92BA8C0440072A809 /* PageControlView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
+				1FBFBAFA2BA8C0440072A809 /* PageControlView.swift in Sources */,
 				1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */,
 				1F39C0942B5C1AA100A00420 /* LanguagesView.swift in Sources */,
 				1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */,

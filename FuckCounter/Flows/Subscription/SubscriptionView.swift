@@ -12,6 +12,7 @@ struct SubscriptionView: View {
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
     @State private var currentPage: Int = 0
+    @State private var minSide = 0.0
     
     var body: some View {
         NavigationStack {
@@ -19,8 +20,15 @@ struct SubscriptionView: View {
                 ZStack {
                     VStack {
                         setupScrollInfoView()
-                        Spacer()
+                        PageControlView(numberOfPages: SubscriptionInfo.allCases.count,
+                                        currentPage: $currentPage)
+                            .frame(height: 6)
+                            .padding(.top, 16)
+                        Rectangle()
                     }
+                }
+                .onAppear {
+                    minSide = min(geometryProxy.size.width, geometryProxy.size.height)
                 }
                 .padding(.top, safeAreaInsets.top + 64)
                 .toolbarBackground(.hidden, for: .navigationBar)
@@ -37,8 +45,7 @@ struct SubscriptionView: View {
         CollectionViewWrapper(items: SubscriptionInfo.allCases, currentPage: $currentPage) { info in
             SubscriptionInfoView(subscriptionInfo: info)
         }
-        .padding()
-
+        .frame(height: minSide * 0.33)
     }
 }
 
