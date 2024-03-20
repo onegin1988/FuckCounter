@@ -11,8 +11,11 @@ struct SubscriptionView: View {
     
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
+    @EnvironmentObject var purchaseService: PurchaseService
+    
     @State private var currentPage: Int = 0
     @State private var minSide = 0.0
+    @State private var product: ProductType = .oneMonth
     
     var body: some View {
         NavigationStack {
@@ -21,7 +24,8 @@ struct SubscriptionView: View {
                     VStack(spacing: 0) {
                         setupScrollInfoView()
                         setupPageControlView()
-                        Rectangle()
+                        setupProductTypeListView()
+                            .padding(EdgeInsets(top: 54, leading: 0, bottom: 32, trailing: 0))
                         setupContinueButtonView()
                         setupDescriptionView()
                     }
@@ -56,6 +60,30 @@ struct SubscriptionView: View {
     }
     
     @ViewBuilder
+    private func setupProductTypeListView() -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 8, pinnedViews: [], content: {
+                ForEach(ProductType.allCases, id: \.self) { productType in
+                    let product = purchaseService.products.first(where: {$0.id == productType.rawValue})
+                    SubscriptionTypeView(
+                        isSelected: self.product.rawValue == product?.id,
+                        title: "\(productType.qty)",
+                        weekDay: productType.weekDay,
+                        price: product?.displayPrice ?? "",
+                        percentage: productType.percentage)
+                    .onTapGesture {
+                        self.product = productType
+                    }
+                    .frame(width: minSide * 0.28, height: minSide * 0.49)
+                    .padding(.leading, productType == .oneMonth ? 16 : 0)
+                    .padding(.trailing, productType == .oneYear ? 16 : 0)
+                }
+            })
+            .frame(height: minSide * 0.5)
+        }
+    }
+    
+    @ViewBuilder
     private func setupContinueButtonView() -> some View {
         ButtonView(title: "CONTINUE", textColor: .black) {
             
@@ -66,7 +94,7 @@ struct SubscriptionView: View {
     
     @ViewBuilder
     private func setupDescriptionView() -> some View {
-        RegularTextView(style: .sfPro, title: "Tap to Continue, you approve that invoice will be placed on your iTunes account and subscription will be automtically renewal after selected period of package until you decline on iTunes Store settings (it should be declined minimum 24 hours before ending current subscription) by clicking Continue you accept our Terms and Conditions", size: 12)
+        RegularTextView(style: .sfPro, title: "Tap to Continue, you approve that invoice will be placed on your iTunes account and subscription will be automtically renewal after selected period of package until you decline on iTunes Store settings (it should be declined minimum 24 hours before ending current subscription) by clicking Continue you accept our Terms and Conditions", size: 13)
             .multilineTextAlignment(.center)
             .lineSpacing(3)
             .padding(EdgeInsets(top: 24, leading: 8, bottom: 30, trailing: 8))

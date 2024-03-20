@@ -135,6 +135,27 @@ enum ProductType: String, CaseIterable {
     case oneWeek = "premium.one.week"
     case threeMonth = "premium.three.month"
     case oneYear = "premium.one.year"
+    
+    var percentage: Int {
+        switch self {
+        case .oneMonth: return 0
+        case .oneWeek: return 49
+        case .threeMonth: return 19
+        case .oneYear: return 40
+        }
+    }
+    
+    var qty: Int {
+        return self == .threeMonth ? 3 : 1
+    }
+    
+    var weekDay: String {
+        switch self {
+        case .oneMonth, .threeMonth: return "month"
+        case .oneWeek: return "week"
+        case .oneYear: return "year"
+        }
+    }
 }
 
 enum SubscriptionInfo: CaseIterable {

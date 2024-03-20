@@ -61,6 +61,7 @@
 		1F62A2772B2122BE00FE2918 /* BoldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2762B2122BE00FE2918 /* BoldTextView.swift */; };
 		1F62CBB92B6AFB4800E2512C /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */; };
 		1F62CBBB2B6AFBCD00E2512C /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */; };
+		1F6C68632BAA31440014A124 /* SubscriptionTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C68622BAA31440014A124 /* SubscriptionTypeView.swift */; };
 		1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */; };
 		1F8B22B52BA3AD0600F63759 /* FuckCounterConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */; };
 		1F8B22B72BA3AE1100F63759 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */; };
@@ -177,6 +178,7 @@
 		1F62A2762B2122BE00FE2918 /* BoldTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextView.swift; sourceTree = "<group>"; };
 		1F62CBB82B6AFB4800E2512C /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		1F62CBBA2B6AFBCD00E2512C /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		1F6C68622BAA31440014A124 /* SubscriptionTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTypeView.swift; sourceTree = "<group>"; };
 		1F77125E2B7268EF00BF9906 /* ProgressModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModifiers.swift; sourceTree = "<group>"; };
 		1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = FuckCounterConfiguration.storekit; sourceTree = "<group>"; };
 		1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */,
+				1F6C68622BAA31440014A124 /* SubscriptionTypeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				1F4B3B1B2BA71ED300BB78E4 /* SettingsPremiumView.swift in Sources */,
 				1FBA822F2B2A508D0032BEA9 /* ShareView.swift in Sources */,
 				1FBE44632B23B3F400513401 /* UIApplication+Extensions.swift in Sources */,
+				1F6C68632BAA31440014A124 /* SubscriptionTypeView.swift in Sources */,
 				1F3304B92B6193E800F4D5B9 /* CustomWordViewModel.swift in Sources */,
 				1F39C0982B5C419500A00420 /* LanguageModel.swift in Sources */,
 				1F62A2572B20AB4600FE2918 /* Enums.swift in Sources */,
