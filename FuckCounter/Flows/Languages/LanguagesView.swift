@@ -29,39 +29,41 @@ struct LanguagesView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView {
-                makeLanguagesListView()
-            }
-            
-            ButtonView(title: "Save changes", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
-                if filtersViewModel.languageModel.languageCode != languagesViewModel.languageModel.languageCode {
-                    filtersViewModel.customWord = ""
-                    if let model = filtersViewModel.list.first {
-                        filtersViewModel.wordsModel = model
-                    }
+        NavigationStack {
+            VStack {
+                ScrollView {
+                    makeLanguagesListView()
                 }
-                filtersViewModel.languageModel = languagesViewModel.languageModel
-                dismiss()
+                
+                ButtonView(title: "Save changes", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
+                    if filtersViewModel.languageModel.languageCode != languagesViewModel.languageModel.languageCode {
+                        filtersViewModel.customWord = ""
+                        if let model = filtersViewModel.list.first {
+                            filtersViewModel.wordsModel = model
+                        }
+                    }
+                    filtersViewModel.languageModel = languagesViewModel.languageModel
+                    dismiss()
+                }
+                .frame(height: LanguagesConstants.buttonHeight)
+                .padding(
+                    EdgeInsets(
+                        top: LanguagesConstants.padding,
+                        leading: LanguagesConstants.padding,
+                        bottom: 37,
+                        trailing: LanguagesConstants.padding)
+                )
             }
-            .frame(height: LanguagesConstants.buttonHeight)
-            .padding(
-                EdgeInsets(
-                    top: LanguagesConstants.padding,
-                    leading: LanguagesConstants.padding,
-                    bottom: 37,
-                    trailing: LanguagesConstants.padding)
-            )
+            .onFirstAppear {
+                languagesViewModel.languageModel = filtersViewModel.languageModel
+            }
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .modifier(NavBarModifiers(isCancel: true, title: navTitle))
+            .modifier(GradientModifiers(style: .red,
+                                        useBlackOpacity: true))
+            .ignoresSafeArea()
         }
-        .onFirstAppear {
-            languagesViewModel.languageModel = filtersViewModel.languageModel
-        }
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(NavBarModifiers(title: navTitle))
-        .modifier(GradientModifiers(style: .red,
-                                    useBlackOpacity: true))
-        .ignoresSafeArea()
     }
     
     private func makeLanguagesListView() -> some View {

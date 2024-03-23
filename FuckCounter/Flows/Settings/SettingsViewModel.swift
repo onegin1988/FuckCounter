@@ -14,6 +14,7 @@ class SettingsViewModel: ObservableObject {
 //    @Published var apps: [AppsModel]
     @Published var isNotify: Bool
     @Published var showSheet: Bool
+    @Published var hasPremium: Bool
     @Published private(set) var settingsItems: [SettingsItem]
     @Published var error: String?
     @Published var settingsEvent: SettingsEvent?
@@ -21,6 +22,7 @@ class SettingsViewModel: ObservableObject {
     private let reference = Database.database().reference()
     
     init() {
+        self.hasPremium = AppData.hasPremium
         self.isNotify = true
         self.showSheet = false
         self.settingsItems = []

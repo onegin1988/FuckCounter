@@ -41,7 +41,7 @@ struct SettingsView: View {
             ScrollView(content: {
 //                AppsListView(apps: settingsViewModel.apps)
                 
-                if !AppData.hasPremium {
+                if !settingsViewModel.hasPremium {
                     SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
                         settingsViewModel.settingsEvent = .subscription
                     }
@@ -123,6 +123,9 @@ struct SettingsView: View {
             }
         })
         .sheetShare(showSheet: $settingsViewModel.showSheet, items: ["Wow, It’s my Fuck counter result"])
+        .onReceive(purchaseService.$purchasedProductIDs) { purchasedProductIDs in
+            settingsViewModel.hasPremium = !purchasedProductIDs.isEmpty
+        }
     }
 }
 

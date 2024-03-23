@@ -78,7 +78,7 @@ struct FiltersView: View {
         })
         .toolbarBackground(.hidden, for: .navigationBar)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(NavBarModifiers(title: navTitle))
+        .modifier(NavBarModifiers(title: navTitle, rightTitle: AppData.hasPremium ? rightNavItem : nil))
 //        .modifier(NavBarModifiers(title: navTitle, rightTitle: (filtersViewModel.languageModel.languageCode, {
 //            filtersViewModel.filtersEvent = .languages
 //            isShow.toggle()
@@ -100,11 +100,21 @@ struct FiltersView: View {
         }
     }
     
+    private var rightNavItem: (String, () -> Void)? {
+        return (filtersViewModel.languageModel.languageCode, {
+            filtersViewModel.filtersEvent = .languages
+            isShow.toggle()
+        })
+    }
+    
     private func listView() -> some View {
         LazyVStack(spacing: 0, content: {
             setupWordsSectionView()
             Spacer(minLength: 44)
-            setupLanguageSectionView()
+            
+            if AppData.hasPremium {
+                setupCustomWordSectionView()
+            }
         })
         .padding(.horizontal, 16)
         .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
@@ -133,7 +143,7 @@ struct FiltersView: View {
         }
     }
     
-    private func setupLanguageSectionView() -> some View {
+    private func setupCustomWordSectionView() -> some View {
         Section {
             ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord,
                               useLeftCheckmark: true,
