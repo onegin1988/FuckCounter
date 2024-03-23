@@ -9,13 +9,15 @@ import SwiftUI
 
 struct SubscriptionView: View {
     
+    @Environment(\.dismiss) var dismiss
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
     @EnvironmentObject var purchaseService: PurchaseService
     
     @State private var currentPage: Int = 0
     @State private var minSide = 0.0
-    @State private var product: ProductType = .oneMonth
+    @State private var productType: ProductType = .oneMonth
+    @State private var error: String?
     
     var body: some View {
         NavigationStack {
@@ -39,6 +41,7 @@ struct SubscriptionView: View {
                 .modifier(GradientModifiers(style: .green))
                 .modifier(NavBarModifiers())
                 .ignoresSafeArea()
+                .alertError(errorMessage: $error)
             }
         }
     }
@@ -66,13 +69,13 @@ struct SubscriptionView: View {
                 ForEach(ProductType.allCases, id: \.self) { productType in
                     let product = purchaseService.products.first(where: {$0.id == productType.rawValue})
                     SubscriptionTypeView(
-                        isSelected: self.product.rawValue == product?.id,
+                        isSelected: self.productType.rawValue == product?.id,
                         title: "\(productType.qty)",
                         weekDay: productType.weekDay,
                         price: product?.displayPrice ?? "",
                         percentage: productType.percentage)
                     .onTapGesture {
-                        self.product = productType
+                        self.productType = productType
                     }
                     .frame(width: minSide * 0.28, height: minSide * 0.49)
                     .padding(.leading, productType == .oneMonth ? 16 : 0)
@@ -86,7 +89,7 @@ struct SubscriptionView: View {
     @ViewBuilder
     private func setupContinueButtonView() -> some View {
         ButtonView(title: "CONTINUE", textColor: .black) {
-            
+            purchaseProduct()
         }
         .padding(.horizontal, 24)
         .frame(height: 56)
@@ -98,6 +101,20 @@ struct SubscriptionView: View {
             .multilineTextAlignment(.center)
             .lineSpacing(3)
             .padding(EdgeInsets(top: 24, leading: 8, bottom: 30, trailing: 8))
+    }
+    
+    @MainActor
+    private func purchaseProduct() {
+        Task {
+            do {
+                guard let product = purchaseService.products.first(where: {$0.id == productType.rawValue}) else { return }
+                try await purchaseService.purchase(product)
+                dismiss()
+            } catch let error {
+                debugPrint(error.localizedDescription)
+                self.error = error.localizedDescription
+            }
+        }
     }
 }
 

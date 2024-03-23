@@ -40,11 +40,14 @@ struct SettingsView: View {
 //        NavigationStack {
             ScrollView(content: {
 //                AppsListView(apps: settingsViewModel.apps)
-                SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
-                    settingsViewModel.settingsEvent = .subscription
+                
+                if !AppData.hasPremium {
+                    SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
+                        settingsViewModel.settingsEvent = .subscription
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 24)
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 24)
                 
                 SettingsListView(settingsItems: settingsViewModel.settingsItems,
                                  isToggle: $settingsViewModel.isNotify) { settingsItem in
