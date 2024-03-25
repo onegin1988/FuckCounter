@@ -8,13 +8,14 @@
 import SwiftUI
 
 enum HomeEvent: String, Hashable {
-    case settings, filters, leaders
+    case settings, filters, leaders, subscription
     
     var title: String {
         switch self {
         case .settings: return "Settings"
         case .filters: return "Filters"
         case .leaders: return "Leaders"
+        case .subscription: return ""
         }
     }
 }
@@ -22,11 +23,13 @@ enum HomeEvent: String, Hashable {
 enum FiltersEvent: String, Hashable {
     case languages
     case customWord
+    case subscription
     
     var title: String {
         switch self {
         case .languages: return "Languages"
         case .customWord: return "Custom Word"
+        case .subscription: return ""
         }
     }
 }

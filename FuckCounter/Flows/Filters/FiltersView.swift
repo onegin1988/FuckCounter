@@ -78,11 +78,7 @@ struct FiltersView: View {
         })
         .toolbarBackground(.hidden, for: .navigationBar)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(NavBarModifiers(title: navTitle, rightTitle: AppData.hasPremium ? rightNavItem : nil))
-//        .modifier(NavBarModifiers(title: navTitle, rightTitle: (filtersViewModel.languageModel.languageCode, {
-//            filtersViewModel.filtersEvent = .languages
-//            isShow.toggle()
-//        })))
+        .modifier(NavBarModifiers(title: navTitle, rightTitle: rightNavItem))
         .modifier(GradientModifiers(style: .red,
                                     useBlackOpacity: true))
         .ignoresSafeArea()
@@ -94,6 +90,8 @@ struct FiltersView: View {
             case .customWord:
                 CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
+            case .subscription:
+                SubscriptionView(isCancel: true)
             default:
                 EmptyView()
             }
@@ -102,7 +100,11 @@ struct FiltersView: View {
     
     private var rightNavItem: (String, () -> Void)? {
         return (filtersViewModel.languageModel.languageCode, {
-            filtersViewModel.filtersEvent = .languages
+            if AppData.hasPremium {
+                filtersViewModel.filtersEvent = .languages
+            } else {
+                filtersViewModel.filtersEvent = .subscription
+            }
             isShow.toggle()
         })
     }
@@ -112,9 +114,7 @@ struct FiltersView: View {
             setupWordsSectionView()
             Spacer(minLength: 44)
             
-            if AppData.hasPremium {
-                setupCustomWordSectionView()
-            }
+            setupCustomWordSectionView()
         })
         .padding(.horizontal, 16)
         .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
@@ -148,7 +148,11 @@ struct FiltersView: View {
             ListItemArrowView(title: filtersViewModel.customWord.isEmpty ? "Choose any you want" : filtersViewModel.customWord,
                               useLeftCheckmark: true,
                               selectCheckmark: filtersViewModel.isCustom) {
-                filtersViewModel.filtersEvent = .customWord
+                if AppData.hasPremium {
+                    filtersViewModel.filtersEvent = .customWord
+                } else {
+                    filtersViewModel.filtersEvent = .subscription
+                }
                 isShow.toggle()
             }
                               .frame(height: FiltersConstants.listItemHeight)

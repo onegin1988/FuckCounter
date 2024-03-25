@@ -19,30 +19,34 @@ struct SubscriptionView: View {
     @State private var productType: ProductType = .oneMonth
     @State private var error: String?
     
+    private let isCancel: Bool
+    
+    init(isCancel: Bool = false) {
+        self.isCancel = isCancel
+    }
+    
     var body: some View {
         NavigationStack {
-            GeometryReader { geometryProxy in
-                ZStack {
-                    VStack(spacing: 0) {
-                        setupScrollInfoView()
-                        setupPageControlView()
-                        setupProductTypeListView()
-                            .padding(EdgeInsets(top: 54, leading: 0, bottom: 32, trailing: 0))
-                        setupContinueButtonView()
-                        setupDescriptionView()
-                    }
+            ZStack {
+                VStack(spacing: 0) {
+                    setupScrollInfoView()
+                    setupPageControlView()
+                    setupProductTypeListView()
+                        .padding(EdgeInsets(top: 54, leading: 0, bottom: 32, trailing: 0))
+                    setupContinueButtonView()
+                    setupDescriptionView()
                 }
-                .onAppear {
-                    minSide = min(geometryProxy.size.width, geometryProxy.size.height)
-                }
-                .padding(.top, safeAreaInsets.top + 64)
-                .toolbarBackground(.hidden, for: .navigationBar)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .modifier(GradientModifiers(style: .green))
-                .modifier(NavBarModifiers())
-                .ignoresSafeArea()
-                .alertError(errorMessage: $error)
             }
+            .onAppear {
+                minSide = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+            }
+            .padding(.top, safeAreaInsets.top + 64)
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .modifier(GradientModifiers(style: .green))
+            .modifier(NavBarModifiers(isCancel: isCancel))
+            .ignoresSafeArea()
+            .alertError(errorMessage: $error)
         }
     }
     

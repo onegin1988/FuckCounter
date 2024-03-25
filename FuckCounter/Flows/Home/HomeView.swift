@@ -73,6 +73,8 @@ struct HomeView: View {
                         .environmentObject(speechService)
                 case .leaders:
                     LeadersView(navTitle: homeViewModel.homeEvent?.title)
+                case .subscription:
+                    SubscriptionView()
                 case nil:
                     EmptyView()
                 }
@@ -114,7 +116,11 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
-                self.homeViewModel.homeEvent = homeEvent
+                if homeEvent == .leaders && !AppData.hasPremium {
+                    self.homeViewModel.homeEvent = .subscription
+                } else {
+                    self.homeViewModel.homeEvent = homeEvent
+                }
             }))
             .ignoresSafeArea()
         }

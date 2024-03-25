@@ -37,15 +37,13 @@ struct HomeToolbarItemsModifiers: ViewModifier {
                     }
                 }
                 
-                if AppData.hasPremium {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {
-                            onHomeEvent?(.leaders)
-                        }, label: {
-                            Images.cup
-                                .frame(width: 22, height: 22)
-                        })
-                    }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        onHomeEvent?(.leaders)
+                    }, label: {
+                        Images.cup
+                            .frame(width: 22, height: 22)
+                    })
                 }
             })
     }
