@@ -31,12 +31,12 @@ struct SubscriptionTypeView: View {
     private func setupBgFrame() -> some View {
         ZStack(alignment: .top) {
             RoundedRectangle(cornerRadius: 8)
-                .fill(isSelected ? .black.opacity(0.4) : Colors._D9D9D9.opacity(0.1))
+                .fill(isSelected ? .black.opacity(0.4) : .black.opacity(0.2))
                 .overlay {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(lineWidth: isSelected ? 1.0 : 2.0)
-                            .fill(isSelected ? Colors._FFDD64 : Colors._B6BFDF.opacity(0.4))
+                            .fill(isSelected ? Colors._FFDD64 : .white.opacity(0.4))
                         
                         prepareContent(percent: percentage)
                     }
