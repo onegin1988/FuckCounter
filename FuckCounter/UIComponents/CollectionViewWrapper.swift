@@ -62,7 +62,8 @@ struct CollectionViewWrapper<Data, Content>: UIViewRepresentable where Data: Ran
             childView.view.frame = cell.contentView.bounds
             childView.view.backgroundColor = UIColor.clear
             childView.view.translatesAutoresizingMaskIntoConstraints = false
-            
+                        
+            cell.contentView.subviews.forEach({ $0.removeFromSuperview() })
             cell.contentView.addSubview(childView.view)
             
             NSLayoutConstraint.activate([
