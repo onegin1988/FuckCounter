@@ -10,15 +10,18 @@ import SwiftUI
 struct SubscriptionView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.scenePhase) var scenePhase
     @Environment(\.safeAreaInsets) var safeAreaInsets
     
     @EnvironmentObject var purchaseService: PurchaseService
     
     @State private var currentPage: Int = 0
+    @State private var isDraging: Bool = false
     @State private var minSide = 0.0
     @State private var productType: ProductType = .oneMonth
     @State private var error: String?
     
+    @State private var timer = Timer.publish(every: 10, on: .main, in: .common)
     private let isCancel: Bool
     
     init(isCancel: Bool = false) {
@@ -37,9 +40,32 @@ struct SubscriptionView: View {
                     setupDescriptionView()
                 }
             }
+            .onFirstAppear {
+                _ = timer.connect()
+            }
             .onAppear {
                 minSide = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
             }
+            .onDisappear {
+                timer.connect().cancel()
+            }
+            .onReceive(timer, perform: { _ in
+                if !isDraging {
+                    if currentPage != SubscriptionInfo.allCases.count - 1 {
+                        currentPage += 1
+                    } else {
+                        currentPage = 0
+                    }
+                }
+            })
+            .onChange(of: scenePhase, perform: { newValue in
+                if newValue == .active {
+                    timer = Timer.publish(every: 5, on: .main, in: .common)
+                    _ = timer.connect()
+                } else {
+                    timer.connect().cancel()
+                }
+            })
             .padding(.top, safeAreaInsets.top + 64)
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -52,7 +78,9 @@ struct SubscriptionView: View {
     
     @ViewBuilder
     private func setupScrollInfoView() -> some View {
-        CollectionViewWrapper(items: SubscriptionInfo.allCases, currentPage: $currentPage) { info in
+        CollectionViewWrapper(items: SubscriptionInfo.allCases,
+                              currentPage: $currentPage,
+                              isDraging: $isDraging) { info in
             SubscriptionInfoView(subscriptionInfo: info)
         }
         .frame(height: minSide * 0.33)

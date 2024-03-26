@@ -13,11 +13,13 @@ struct CollectionViewWrapper<Data, Content>: UIViewRepresentable where Data: Ran
     let items: Data
     let content: (Data.Element) -> Content
     var currentPage: Binding<Int>
+    var isDraging: Binding<Bool>
     
-    init(items: Data, currentPage: Binding<Int>, @ViewBuilder content: @escaping (Data.Element) -> Content) {
+    init(items: Data, currentPage: Binding<Int>, isDraging: Binding<Bool>, @ViewBuilder content: @escaping (Data.Element) -> Content) {
         self.items = items
         self.content = content
         self.currentPage = currentPage
+        self.isDraging = isDraging
     }
     
     func makeUIView(context: Context) -> UICollectionView {
@@ -37,6 +39,8 @@ struct CollectionViewWrapper<Data, Content>: UIViewRepresentable where Data: Ran
     
     func updateUIView(_ uiView: UICollectionView, context: Context) {
         uiView.reloadData()
+        
+        uiView.scrollToItem(at: IndexPath(item: currentPage.wrappedValue, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -82,9 +86,20 @@ struct CollectionViewWrapper<Data, Content>: UIViewRepresentable where Data: Ran
             collectionView.bounds.size
         }
         
+        func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            parent.isDraging.wrappedValue = true
+        }
+        
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             let pageIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width)
             parent.currentPage.wrappedValue = pageIndex
+            parent.isDraging.wrappedValue = false
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            if !decelerate {
+                parent.isDraging.wrappedValue = false
+            }
         }
     }
 }

@@ -84,5 +84,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82003BD5-1D72-4C4F-9792-78092159328E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FuckCounter/Flows/Subscription/SubscriptionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "82003BD5-1D72-4C4F-9792-78092159328E - 2c47cea13a465f20"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (SwiftUI.ScenePhase) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.alertError(errorMessage: SwiftUI.Binding&lt;Swift.Optional&lt;Swift.String&gt;&gt;, useButtons: Swift.Optional&lt;(Swift.String, Swift.Optional&lt;() -&gt; ()&gt;)&gt;) -&gt; some&gt;&gt;.0 in FuckCounter.SubscriptionView.body.getter : some"
+                  moduleName = "FuckCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Subscription/SubscriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1096">
+               </Location>
+               <Location
+                  uuid = "82003BD5-1D72-4C4F-9792-78092159328E - 3d80ebf10d4efd21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (SwiftUI.ScenePhase) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.alertError(errorMessage: SwiftUI.Binding&lt;Swift.Optional&lt;Swift.String&gt;&gt;, useButtons: Swift.Optional&lt;(Swift.String, Swift.Optional&lt;() -&gt; ()&gt;)&gt;) -&gt; some&gt;&gt;.0 in FuckCounter.SubscriptionView.body.getter : some"
+                  moduleName = "FuckCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Flows/Subscription/SubscriptionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
