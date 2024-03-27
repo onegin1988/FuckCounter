@@ -23,9 +23,11 @@ struct SubscriptionView: View {
     
     @State private var timer = Timer.publish(every: 10, on: .main, in: .common)
     private let isCancel: Bool
+    private let subscriptionInfo: SubscriptionInfo
     
-    init(isCancel: Bool = false) {
+    init(isCancel: Bool = false, subscriptionInfo: SubscriptionInfo = .firstInfo) {
         self.isCancel = isCancel
+        self.subscriptionInfo = subscriptionInfo
     }
     
     var body: some View {
@@ -42,6 +44,9 @@ struct SubscriptionView: View {
             }
             .onFirstAppear {
                 _ = timer.connect()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    currentPage = SubscriptionInfo.allCases.firstIndex(of: subscriptionInfo) ?? 0
+                }
             }
             .onAppear {
                 minSide = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)

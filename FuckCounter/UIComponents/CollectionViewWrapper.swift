@@ -40,7 +40,9 @@ struct CollectionViewWrapper<Data, Content>: UIViewRepresentable where Data: Ran
     func updateUIView(_ uiView: UICollectionView, context: Context) {
         uiView.reloadData()
         
-        uiView.scrollToItem(at: IndexPath(item: currentPage.wrappedValue, section: 0), at: .centeredHorizontally, animated: true)
+//        DispatchQueue.main.async {
+            uiView.scrollToItem(at: IndexPath(item: currentPage.wrappedValue, section: 0), at: .centeredHorizontally, animated: true)
+//        }
     }
     
     func makeCoordinator() -> Coordinator {

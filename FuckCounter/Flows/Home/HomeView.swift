@@ -74,7 +74,7 @@ struct HomeView: View {
                 case .leaders:
                     LeadersView(navTitle: homeViewModel.homeEvent?.title)
                 case .subscription:
-                    SubscriptionView()
+                    SubscriptionView(subscriptionInfo: .secondInfo)
                 case nil:
                     EmptyView()
                 }

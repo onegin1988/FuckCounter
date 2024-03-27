@@ -25,6 +25,7 @@ struct FiltersView: View {
     
     private let navTitle: String?
     
+    @State private var subscriptionInfo: SubscriptionInfo = .firstInfo
     @State private var isShow = false
     
     init(navTitle: String? = nil) {
@@ -91,7 +92,7 @@ struct FiltersView: View {
                 CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
             case .subscription:
-                SubscriptionView(isCancel: true)
+                SubscriptionView(isCancel: true, subscriptionInfo: subscriptionInfo)
             default:
                 EmptyView()
             }
@@ -103,6 +104,7 @@ struct FiltersView: View {
             if AppData.hasPremium {
                 filtersViewModel.filtersEvent = .languages
             } else {
+                subscriptionInfo = .thirdInfo
                 filtersViewModel.filtersEvent = .subscription
             }
             isShow.toggle()
@@ -151,6 +153,7 @@ struct FiltersView: View {
                 if AppData.hasPremium {
                     filtersViewModel.filtersEvent = .customWord
                 } else {
+                    subscriptionInfo = .firstInfo
                     filtersViewModel.filtersEvent = .subscription
                 }
                 isShow.toggle()
