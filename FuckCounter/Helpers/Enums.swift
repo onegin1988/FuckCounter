@@ -131,6 +131,16 @@ enum LanguageCode: String, CaseIterable {
         case .ru: return "Russian"
         }
     }
+    
+    var languageSymbol: String {
+        switch self {
+        case .en: return "en"
+        case .de: return "de"
+        case .fr: return "fr"
+        case .uk: return "ua"
+        case .ru: return "ru"
+        }
+    }
 }
 
 enum ProductType: String, CaseIterable {

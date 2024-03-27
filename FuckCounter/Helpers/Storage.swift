@@ -101,7 +101,7 @@ struct AppData {
     static var userLoginModel: UserLoginModel?
     
     @Storage(key: "selectedLanguageModel", defaultValue:
-                LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
+                LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue, languageSymbol: LanguageCode.en.languageSymbol)
     )
     static var selectedLanguageModel: LanguageModel
     
@@ -119,12 +119,12 @@ struct AppData {
     
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
-        case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
-        case "de": return LanguageModel(id: 2, name: LanguageCode.de.title, languageCode: LanguageCode.de.rawValue)
-        case "fr": return LanguageModel(id: 3, name: LanguageCode.fr.title, languageCode: LanguageCode.fr.rawValue)
-        case "uk": return LanguageModel(id: 4, name: LanguageCode.uk.title, languageCode: LanguageCode.uk.rawValue)
-        case "ru": return LanguageModel(id: 5, name: LanguageCode.ru.title, languageCode: LanguageCode.ru.rawValue)
-        default: return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue)
+        case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue, languageSymbol: LanguageCode.en.languageSymbol)
+        case "de": return LanguageModel(id: 2, name: LanguageCode.de.title, languageCode: LanguageCode.de.rawValue, languageSymbol: LanguageCode.de.languageSymbol)
+        case "fr": return LanguageModel(id: 3, name: LanguageCode.fr.title, languageCode: LanguageCode.fr.rawValue, languageSymbol: LanguageCode.fr.languageSymbol)
+        case "uk": return LanguageModel(id: 4, name: LanguageCode.uk.title, languageCode: LanguageCode.uk.rawValue, languageSymbol: LanguageCode.uk.languageSymbol)
+        case "ru": return LanguageModel(id: 5, name: LanguageCode.ru.title, languageCode: LanguageCode.ru.rawValue, languageSymbol: LanguageCode.ru.languageSymbol)
+        default: return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue, languageSymbol: LanguageCode.en.languageSymbol)
         }
     }
 }

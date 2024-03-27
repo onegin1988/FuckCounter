@@ -24,8 +24,6 @@ struct FiltersView: View {
     @StateObject var filtersViewModel = FiltersViewModel()
     
     private let navTitle: String?
-    
-    @State private var subscriptionInfo: SubscriptionInfo = .firstInfo
     @State private var isShow = false
     
     init(navTitle: String? = nil) {
@@ -65,9 +63,9 @@ struct FiltersView: View {
         .onFirstAppear {
             filtersViewModel.isCustom = filtersViewModel.customWord == filtersViewModel.wordsModel.name
         }
-        .onAppear {
+        .onReceive(filtersViewModel.$languageModel, perform: { _ in
             filtersViewModel.updateBadWordsList()
-        }
+        })
         .onChange(of: filtersViewModel.isCustom, perform: { newValue in
             if newValue {
                 if filtersViewModel.customWord.isEmpty {
@@ -92,7 +90,7 @@ struct FiltersView: View {
                 CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
             case .subscription:
-                SubscriptionView(isCancel: true, subscriptionInfo: subscriptionInfo)
+                SubscriptionView(isCancel: true, subscriptionInfo: filtersViewModel.subscriptionInfo)
             default:
                 EmptyView()
             }
@@ -100,11 +98,11 @@ struct FiltersView: View {
     }
     
     private var rightNavItem: (String, () -> Void)? {
-        return (filtersViewModel.languageModel.languageCode, {
+        return (filtersViewModel.languageModel.languageSymbol, {
             if AppData.hasPremium {
                 filtersViewModel.filtersEvent = .languages
             } else {
-                subscriptionInfo = .thirdInfo
+                filtersViewModel.subscriptionInfo = .thirdInfo
                 filtersViewModel.filtersEvent = .subscription
             }
             isShow.toggle()
@@ -153,7 +151,7 @@ struct FiltersView: View {
                 if AppData.hasPremium {
                     filtersViewModel.filtersEvent = .customWord
                 } else {
-                    subscriptionInfo = .firstInfo
+                    filtersViewModel.subscriptionInfo = .firstInfo
                     filtersViewModel.filtersEvent = .subscription
                 }
                 isShow.toggle()
@@ -162,7 +160,12 @@ struct FiltersView: View {
                               .padding(.top, 5)
                               .background(Color.black.opacity(0.2))
                               .onTapGesture {
-                                  filtersViewModel.isCustom = true
+                                  if AppData.hasPremium {
+                                      filtersViewModel.isCustom = true
+                                  } else {
+                                      filtersViewModel.subscriptionInfo = .firstInfo
+                                      filtersViewModel.filtersEvent = .subscription
+                                  }
                               }
                               .cornerRadius(FiltersConstants.sectionRadius)
         } header: {

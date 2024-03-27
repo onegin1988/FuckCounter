@@ -14,7 +14,8 @@ class FiltersViewModel: ObservableObject {
     @Published var list: [WordsModel]
     @Published var customWord: String
     @Published var isCustom: Bool
-    
+
+    var subscriptionInfo: SubscriptionInfo = .firstInfo
     var filtersEvent: FiltersEvent?
     
     init() {
