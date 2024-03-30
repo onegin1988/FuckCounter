@@ -117,7 +117,9 @@ struct FiltersView: View {
             setupWordsSectionView()
             Spacer(minLength: 44)
             
-            setupCustomWordSectionView()
+            if filtersViewModel.languageModel.languageCode == LanguageCode.en.rawValue {
+                setupCustomWordSectionView()
+            }
         })
         .padding(.horizontal, 16)
 //        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
