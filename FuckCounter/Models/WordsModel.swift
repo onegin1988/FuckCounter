@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct FullWordsModel: Codable {
+    
+    let localize: String?
+    let words: [WordsModel]?
+}
+
 struct WordsModel: Codable {
     
     let id: Int

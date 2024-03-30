@@ -43,6 +43,8 @@ struct LanguagesView: View {
                         }
                     }
                     filtersViewModel.languageModel = languagesViewModel.languageModel
+                    filtersViewModel.customWord = ""
+                    filtersViewModel.isCustom = false
                     dismiss()
                 }
                 .frame(height: LanguagesConstants.buttonHeight)

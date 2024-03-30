@@ -1,0 +1,162 @@
+[
+    {
+        "localize": "en",
+        "words": [
+            {
+                "id": 1,
+                "name": "Fuck",
+                "nameCorrect": "F*ck"
+            },
+            {
+                "id": 2,
+                "name": "Bitch",
+                "nameCorrect": "B*tch"
+            },
+            {
+                "id": 3,
+                "name": "Shit",
+                "nameCorrect": "Sh*t"
+            }
+        ]
+    },
+    {
+        "localize": "de",
+        "words": [
+            {
+                "id": 4,
+                "name": "der Pimmel",
+                "nameCorrect": "der P*mmel"
+            },
+            {
+                "id": 5,
+                "name": "die Fotze",
+                "nameCorrect": "die F*tze"
+            },
+            {
+                "id": 6,
+                "name": "Scheiß drauf",
+                "nameCorrect": "Sch*iß drauf"
+            },
+            {
+                "id": 7,
+                "name": "der Schwanz",
+                "nameCorrect": "der Schw*nz"
+            },
+            {
+                "id": 8,
+                "name": "Fick dich",
+                "nameCorrect": "Fick dich!"
+            }
+        ]
+    },
+    {
+        "localize": "fr",
+        "words": [
+            {
+                "id": 9,
+                "name": "Connard",
+                "nameCorrect": "C*nnard"
+            },
+            {
+                "id": 10,
+                "name": "Merde",
+                "nameCorrect": "M*rde"
+            },
+            {
+                "id": 11,
+                "name": "Putain",
+                "nameCorrect": "P*tain"
+            },
+            {
+                "id": 12,
+                "name": "Fils de pute",
+                "nameCorrect": "Fils de p*te"
+            },
+            {
+                "id": 13,
+                "name": "je m’en fous",
+                "nameCorrect": "je m’en f*us"
+            }
+        ]
+    },
+    {
+        "localize": "uk",
+        "words": [
+            {
+                "id": 14,
+                "name": "Бляха",
+                "nameCorrect": "Бл*ха"
+            },
+            {
+                "id": 15,
+                "name": "Пиздець",
+                "nameCorrect": "Пизд*ць"
+            },
+            {
+                "id": 16,
+                "name": "Короче",
+                "nameCorrect": "Короче"
+            },
+            {
+                "id": 17,
+                "name": "Йобана",
+                "nameCorrect": "Йоб*на"
+            },
+            {
+                "id": 18,
+                "name": "Блять",
+                "nameCorrect": "Бл*ть"
+            },
+            {
+                "id": 19,
+                "name": "Нічого собі",
+                "nameCorrect": "Нічого собі"
+            },
+            {
+                "id": 20,
+                "name": "Хуй",
+                "nameCorrect": "Х*й"
+            }
+        ]
+    },
+    {
+        "localize": "ru",
+        "words": [
+            {
+                "id": 21,
+                "name": "Блять",
+                "nameCorrect": "Бл*ть"
+            },
+            {
+                "id": 22,
+                "name": "Пиздец",
+                "nameCorrect": "Пизд*ц"
+            },
+            {
+                "id": 23,
+                "name": "Короче",
+                "nameCorrect": "Короче"
+            },
+            {
+                "id": 24,
+                "name": "Йобана",
+                "nameCorrect": "Йоб*на"
+            },
+            {
+                "id": 25,
+                "name": "Хуй",
+                "nameCorrect": "Х*й"
+            },
+            {
+                "id": 26,
+                "name": "Ничего себе",
+                "nameCorrect": "Ничего себе"
+            },
+            {
+                "id": 26,
+                "name": "Хрень",
+                "nameCorrect": "Хр*нь"
+            }
+        ]
+    }
+]

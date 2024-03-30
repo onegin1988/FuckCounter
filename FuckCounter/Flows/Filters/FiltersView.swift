@@ -62,6 +62,8 @@ struct FiltersView: View {
         }
         .onFirstAppear {
             filtersViewModel.isCustom = filtersViewModel.customWord == filtersViewModel.wordsModel.name
+            filtersViewModel.loadWordList()
+            filtersViewModel.updateBadWordsList()
         }
         .onReceive(filtersViewModel.$languageModel, perform: { _ in
             filtersViewModel.updateBadWordsList()
@@ -75,6 +77,7 @@ struct FiltersView: View {
                 filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord)
             }
         })
+        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
         .toolbarBackground(.hidden, for: .navigationBar)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .modifier(NavBarModifiers(title: navTitle, rightTitle: rightNavItem))
@@ -117,7 +120,7 @@ struct FiltersView: View {
             setupCustomWordSectionView()
         })
         .padding(.horizontal, 16)
-        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
+//        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
     }
     
     private func setupWordsSectionView() -> some View {

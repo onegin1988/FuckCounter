@@ -9,6 +9,7 @@ import SwiftUI
 
 class FiltersViewModel: ObservableObject {
     
+    private var fullList: [FullWordsModel]
     @Published var wordsModel: WordsModel
     @Published var languageModel: LanguageModel
     @Published var list: [WordsModel]
@@ -22,21 +23,44 @@ class FiltersViewModel: ObservableObject {
         self.wordsModel = AppData.selectedWordsModel
         self.languageModel = AppData.selectedLanguageModel
         self.customWord = AppData.customWord
+        self.fullList = []
         self.list = []
         self.isCustom = false
     }
     
+    func loadWordList() {
+        guard let url = Bundle.main.url(forResource: "Words", withExtension: "json") else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let jsonData = try decoder.decode([FullWordsModel].self, from: data)
+            self.fullList = jsonData
+        } catch let error {
+            debugPrint(error)
+        }
+    }
+    
     func updateBadWordsList() {
-        list = [
-            WordsModel(id: 1,
-                       name: "fuck".localize(languageModel.languageCode),
-                       nameCorrect: "fuck_title".localize(languageModel.languageCode)),
-            WordsModel(id: 2,
-                       name: "bitch".localize(languageModel.languageCode),
-                       nameCorrect: "bitch_title".localize(languageModel.languageCode)),
-            WordsModel(id: 3,
-                       name: "freak".localize(languageModel.languageCode),
-                       nameCorrect: "freak_title".localize(languageModel.languageCode))
-        ]
+        list = fullList.first(where: {$0.localize == languageModel.languageCode})?.words ?? []
+        if let model = list.first(where: {$0.id == wordsModel.id}) {
+            wordsModel = model
+        } else {
+            wordsModel = list.first ?? AppData.selectedWordsModel
+//            if !isCustom {
+//                
+//            }
+        }
+        
+//        list = [
+//            WordsModel(id: 1,
+//                       name: "fuck".localize(languageModel.languageCode),
+//                       nameCorrect: "fuck_title".localize(languageModel.languageCode)),
+//            WordsModel(id: 2,
+//                       name: "bitch".localize(languageModel.languageCode),
+//                       nameCorrect: "bitch_title".localize(languageModel.languageCode)),
+//            WordsModel(id: 3,
+//                       name: "freak".localize(languageModel.languageCode),
+//                       nameCorrect: "freak_title".localize(languageModel.languageCode))
+//        ]
     }
 }
