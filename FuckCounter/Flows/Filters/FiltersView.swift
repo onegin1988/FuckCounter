@@ -39,7 +39,7 @@ struct FiltersView: View {
             ButtonView(title: "Allow filters", useBG: true, buttonBG: Colors._FFDD64, textColor: .black) {
                 
                 if filtersViewModel.isCustom {
-                    AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord)
+                    AppData.selectedWordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord, answer: [filtersViewModel.customWord])
                 } else {
                     AppData.selectedWordsModel = filtersViewModel.wordsModel
                 }
@@ -74,7 +74,7 @@ struct FiltersView: View {
                     filtersViewModel.isCustom = false
                     return
                 }
-                filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord)
+                filtersViewModel.wordsModel = WordsModel(id: -1, name: filtersViewModel.customWord, nameCorrect: filtersViewModel.customWord, answer: [filtersViewModel.customWord])
             }
         })
         .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
@@ -122,7 +122,6 @@ struct FiltersView: View {
             }
         })
         .padding(.horizontal, 16)
-//        .padding(.top, safeAreaInsets.top + FiltersConstants.listItemHeight)
     }
     
     private func setupWordsSectionView() -> some View {

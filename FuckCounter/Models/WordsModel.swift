@@ -18,10 +18,12 @@ struct WordsModel: Codable {
     let id: Int
     let name: String
     let nameCorrect: String
+    let answer: [String]?
     
-    init(id: Int, name: String, nameCorrect: String) {
+    init(id: Int, name: String, nameCorrect: String, answer: [String]?) {
         self.id = id
         self.name = name
         self.nameCorrect = nameCorrect
+        self.answer = answer
     }
 }

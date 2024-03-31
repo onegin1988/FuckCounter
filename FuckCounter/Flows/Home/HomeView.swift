@@ -98,16 +98,17 @@ struct HomeView: View {
             })
             .onReceive(speechService.$fullText, perform: { fullText in
                 if let fullText = fullText {
-                    DispatchQueue.global(qos: .userInteractive).async {
-                        let counter = fullText
-                            .lowercased()
-                            .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
-                            .count
-                        DispatchQueue.main.async {
-                            homeViewModel.counter = counter
-                            homeViewModel.checkLevel()
-                        }
-                    }
+                    homeViewModel.calculateWordProcess(fullText: fullText)
+//                    DispatchQueue.global(qos: .userInteractive).async {
+//                        let counter = fullText
+//                            .lowercased()
+//                            .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
+//                            .count
+//                        DispatchQueue.main.async {
+//                            homeViewModel.counter = counter
+//                            homeViewModel.checkLevel()
+//                        }
+//                    }
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in

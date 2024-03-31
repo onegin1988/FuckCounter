@@ -5,17 +5,20 @@
             {
                 "id": 1,
                 "name": "Fuck",
-                "nameCorrect": "F*ck"
+                "nameCorrect": "F*ck",
+                "answer": ["Fuck"]
             },
             {
                 "id": 2,
                 "name": "Bitch",
-                "nameCorrect": "B*tch"
+                "nameCorrect": "B*tch",
+                "answer": ["Bitch"]
             },
             {
                 "id": 3,
                 "name": "Shit",
-                "nameCorrect": "Sh*t"
+                "nameCorrect": "Sh*t",
+                "answer": ["Shit"]
             }
         ]
     },
@@ -25,27 +28,32 @@
             {
                 "id": 4,
                 "name": "der Pimmel",
-                "nameCorrect": "der P*mmel"
+                "nameCorrect": "der P*mmel",
+                "answer": ["der Pimmel"]
             },
             {
                 "id": 5,
                 "name": "die Fotze",
-                "nameCorrect": "die F*tze"
+                "nameCorrect": "die F*tze",
+                "answer": ["die Fotze"]
             },
             {
                 "id": 6,
                 "name": "Scheiß drauf",
-                "nameCorrect": "Sch*iß drauf"
+                "nameCorrect": "Sch*iß drauf",
+                "answer": ["Scheiß drauf"]
             },
             {
                 "id": 7,
                 "name": "der Schwanz",
-                "nameCorrect": "der Schw*nz"
+                "nameCorrect": "der Schw*nz",
+                "answer": ["der Schwanz"]
             },
             {
                 "id": 8,
                 "name": "Fick dich",
-                "nameCorrect": "Fick dich!"
+                "nameCorrect": "Fick dich!",
+                "answer": ["Fick dich"]
             }
         ]
     },
@@ -55,27 +63,32 @@
             {
                 "id": 9,
                 "name": "Connard",
-                "nameCorrect": "C*nnard"
+                "nameCorrect": "C*nnard",
+                "answer": ["Connard"]
             },
             {
                 "id": 10,
                 "name": "Merde",
-                "nameCorrect": "M*rde"
+                "nameCorrect": "M*rde",
+                "answer": ["Merde"]
             },
             {
                 "id": 11,
                 "name": "Putain",
-                "nameCorrect": "P*tain"
+                "nameCorrect": "P*tain",
+                "answer": ["Putain"]
             },
             {
                 "id": 12,
                 "name": "Fils de pute",
-                "nameCorrect": "Fils de p*te"
+                "nameCorrect": "Fils de p*te",
+                "answer": ["Fils de pute"]
             },
             {
                 "id": 13,
                 "name": "je m’en fous",
-                "nameCorrect": "je m’en f*us"
+                "nameCorrect": "je m’en f*us",
+                "answer": ["je m’en fous"]
             }
         ]
     },
@@ -85,37 +98,44 @@
             {
                 "id": 14,
                 "name": "Бляха",
-                "nameCorrect": "Бл*ха"
+                "nameCorrect": "Бл*ха",
+                "answer": ["Бля ха"]
             },
             {
                 "id": 15,
                 "name": "Пиздець",
-                "nameCorrect": "Пизд*ць"
+                "nameCorrect": "Пизд*ць",
+                "answer": ["Пиздець", "Піздец", "Пиздец"]
             },
             {
                 "id": 16,
                 "name": "Короче",
-                "nameCorrect": "Короче"
+                "nameCorrect": "Короче",
+                "answer": ["Короче"]
             },
             {
                 "id": 17,
                 "name": "Йобана",
-                "nameCorrect": "Йоб*на"
+                "nameCorrect": "Йоб*на",
+                "answer": ["Його бана"]
             },
             {
                 "id": 18,
                 "name": "Блять",
-                "nameCorrect": "Бл*ть"
+                "nameCorrect": "Бл*ть",
+                "answer": ["Блять"]
             },
             {
                 "id": 19,
                 "name": "Нічого собі",
-                "nameCorrect": "Нічого собі"
+                "nameCorrect": "Нічого собі",
+                "answer": ["Нічого собі"]
             },
             {
                 "id": 20,
                 "name": "Хуй",
-                "nameCorrect": "Х*й"
+                "nameCorrect": "Х*й",
+                "answer": ["Хуй"]
             }
         ]
     },
@@ -125,37 +145,44 @@
             {
                 "id": 21,
                 "name": "Блять",
-                "nameCorrect": "Бл*ть"
+                "nameCorrect": "Бл*ть",
+                "answer": ["Блядь", "Блять"]
             },
             {
                 "id": 22,
                 "name": "Пиздец",
-                "nameCorrect": "Пизд*ц"
+                "nameCorrect": "Пизд*ц",
+                "answer": ["Пиздец"]
             },
             {
                 "id": 23,
                 "name": "Короче",
-                "nameCorrect": "Короче"
+                "nameCorrect": "Короче",
+                "answer": ["Короче"]
             },
             {
                 "id": 24,
                 "name": "Йобана",
-                "nameCorrect": "Йоб*на"
+                "nameCorrect": "Йоб*на",
+                "answer": ["Ёбана", "Ёбаный"]
             },
             {
                 "id": 25,
                 "name": "Хуй",
-                "nameCorrect": "Х*й"
+                "nameCorrect": "Х*й",
+                "answer": ["Хуй"]
             },
             {
                 "id": 26,
                 "name": "Ничего себе",
-                "nameCorrect": "Ничего себе"
+                "nameCorrect": "Ничего себе",
+                "answer": ["Ничего себе"]
             },
             {
-                "id": 26,
+                "id": 27,
                 "name": "Хрень",
-                "nameCorrect": "Хр*нь"
+                "nameCorrect": "Хр*нь",
+                "answer": ["Хрень"]
             }
         ]
     }

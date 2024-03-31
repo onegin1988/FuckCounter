@@ -46,21 +46,6 @@ class FiltersViewModel: ObservableObject {
             wordsModel = model
         } else {
             wordsModel = list.first ?? AppData.selectedWordsModel
-//            if !isCustom {
-//                
-//            }
         }
-        
-//        list = [
-//            WordsModel(id: 1,
-//                       name: "fuck".localize(languageModel.languageCode),
-//                       nameCorrect: "fuck_title".localize(languageModel.languageCode)),
-//            WordsModel(id: 2,
-//                       name: "bitch".localize(languageModel.languageCode),
-//                       nameCorrect: "bitch_title".localize(languageModel.languageCode)),
-//            WordsModel(id: 3,
-//                       name: "freak".localize(languageModel.languageCode),
-//                       nameCorrect: "freak_title".localize(languageModel.languageCode))
-//        ]
     }
 }

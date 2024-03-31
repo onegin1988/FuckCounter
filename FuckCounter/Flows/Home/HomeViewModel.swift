@@ -152,6 +152,28 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    func calculateWordProcess(fullText: String) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            var totalCounter = 0
+            for answer in AppData.selectedWordsModel.answer ?? [] {
+                let counter = fullText
+                    .lowercased()
+                    .ranges(of: answer.lowercased())
+                    .count
+                totalCounter += counter
+            }
+            
+//            let counter = fullText
+//                .lowercased()
+//                .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
+//                .count
+            DispatchQueue.main.async {
+                self.counter = totalCounter
+                self.checkLevel()
+            }
+        }
+    }
+    
     @MainActor
     func uploadResults() async {
         do {

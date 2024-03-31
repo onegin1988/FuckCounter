@@ -90,7 +90,9 @@ struct AppData {
     @Storage(key: "selectedWordsModel", defaultValue: 
                 WordsModel(id: 1,
                            name: "fuck".localize(AppData.selectedLanguageModel.languageCode),
-                    nameCorrect: "fuck_title".localize(AppData.selectedLanguageModel.languageCode))
+                           nameCorrect: "fuck_title".localize(AppData.selectedLanguageModel.languageCode), answer: [
+                            "Fuck"
+                           ])
     )
     static var selectedWordsModel: WordsModel
     
