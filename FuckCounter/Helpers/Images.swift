@@ -47,4 +47,5 @@ struct Images {
     static let subscriptionInfoIcon_1 = Image("subscriptionInfoIcon_1")
     static let subscriptionInfoIcon_2 = Image("subscriptionInfoIcon_2")
     static let subscriptionInfoIcon_3 = Image("subscriptionInfoIcon_3")
+    static let shareIcon = Image("shareIcon")
 }

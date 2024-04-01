@@ -141,9 +141,12 @@ class HomeViewModel: ObservableObject {
             
             if let userWinModel = filtered.first {
                 let myUser = filtered.first(where: {$0.id == AppData.userLoginModel?.id})
+                let rate = filtered.firstIndex(where: {$0.id == AppData.userLoginModel?.id}) ?? 0
                 self.userModel = myUser
                 totalCount = myUser?.points ?? 0
-                isChamp = myUser?.points ?? 0 > userWinModel.points || userWinModel.id == AppData.userLoginModel?.id
+                
+                isChamp = rate == 1 && AppData.lastRate != rate && AppData.lastRate != 0
+                AppData.lastRate = rate
             } else {
                 userModel = nil
             }
@@ -165,6 +168,7 @@ class HomeViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.counter = totalCounter
                 self.checkLevel()
+                AppData.lastCount = totalCounter
             }
         }
     }

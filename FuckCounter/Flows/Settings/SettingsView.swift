@@ -53,7 +53,8 @@ struct SettingsView: View {
                                  isToggle: $settingsViewModel.isNotify) { settingsItem in
                     switch settingsItem {
                     case .invite:
-                        settingsViewModel.showSheet = true
+                        break
+//                        settingsViewModel.showSheet = true
                     case .rate:
                         ReviewApp.requestReview()
                     case .createAccount:
@@ -122,7 +123,6 @@ struct SettingsView: View {
                 EmptyView()
             }
         })
-        .sheetShare(showSheet: $settingsViewModel.showSheet, items: ["Wow, It’s my Fuck counter result"])
         .onReceive(purchaseService.$purchasedProductIDs) { purchasedProductIDs in
             settingsViewModel.hasPremium = !purchasedProductIDs.isEmpty
         }
