@@ -70,7 +70,7 @@ struct CongratsView: View {
             
             BoldTextView(
                 style: .sfPro,
-                title: subTitle,//"Congrat’s, you’re King of\nBad Words today!",
+                title: subTitle,//"Congrat’s, you’re King of\nBad words for today",
                 size: 19,
                 color: Colors._F2F2F2
             )

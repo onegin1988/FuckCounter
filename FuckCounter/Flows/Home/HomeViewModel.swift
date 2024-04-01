@@ -162,11 +162,6 @@ class HomeViewModel: ObservableObject {
                     .count
                 totalCounter += counter
             }
-            
-//            let counter = fullText
-//                .lowercased()
-//                .ranges(of: AppData.selectedWordsModel.name.lowercased().localize(AppData.selectedLanguageModel.languageCode).lowercased())
-//                .count
             DispatchQueue.main.async {
                 self.counter = totalCounter
                 self.checkLevel()

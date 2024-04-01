@@ -54,7 +54,7 @@ struct HomeView: View {
                     if isOpenCongrats {
                         CongratsView(userModel: homeViewModel.userModel,
                                      count: AppData.userLoginModel == nil ? homeViewModel.counter : homeViewModel.totalCount,
-                                     subTitle: homeViewModel.isChamp ? "Congrat’s, you’re King of Bad Words today!" : "Bad words today!")
+                                     subTitle: homeViewModel.isChamp ? "New Total Words Record, you’re King of Bad Words!" : "Bad words for today")
                     }
                 }
             }
@@ -173,7 +173,7 @@ struct HomeView: View {
     private func prepareCounterWordsView() -> some View {
         VStack(alignment: .center, spacing: -10) {
             BoldTextView(style: .sfPro, title: "\($homeViewModel.counter.wrappedValue)", size: 108)
-            MediumTextView(style: .sfPro, title: "Bad words today", size: 17)
+            MediumTextView(style: .sfPro, title: "Bad words for today", size: 17)
         }
     }
     
