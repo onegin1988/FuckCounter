@@ -45,6 +45,9 @@ struct SettingsView: View {
                     SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
                         settingsViewModel.settingsEvent = .subscription
                     }
+                    .onTapGesture {
+                        settingsViewModel.settingsEvent = .subscription
+                    }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 24)
                 }
