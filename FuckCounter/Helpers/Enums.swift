@@ -65,7 +65,7 @@ enum Level: String {
     
     var result: String {
         switch self {
-        case .green: return "Bad words today"
+        case .green: return "Exellent, you’re Rock!"
         case .orange: return "Not bad, but you can better 👑"
         case .red: return "Maybe it’s time to read 🎩 Sheakspear?"
         }
