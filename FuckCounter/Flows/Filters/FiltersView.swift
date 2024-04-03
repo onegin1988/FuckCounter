@@ -169,6 +169,7 @@ struct FiltersView: View {
                                   } else {
                                       filtersViewModel.subscriptionInfo = .firstInfo
                                       filtersViewModel.filtersEvent = .subscription
+                                      isShow.toggle()
                                   }
                               }
                               .cornerRadius(FiltersConstants.sectionRadius)
