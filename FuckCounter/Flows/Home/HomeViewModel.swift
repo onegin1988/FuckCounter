@@ -143,9 +143,9 @@ class HomeViewModel: ObservableObject {
                 let myUser = filtered.first(where: {$0.id == AppData.userLoginModel?.id})
                 let rate = filtered.firstIndex(where: {$0.id == AppData.userLoginModel?.id}) ?? 0
                 self.userModel = myUser
-                totalCount = myUser?.points ?? 0
                 
                 isChamp = rate == 1 && AppData.lastRate != rate && AppData.lastRate != 0
+                totalCount = isChamp ? myUser?.points ?? 0 : counter
                 AppData.lastRate = rate
             } else {
                 userModel = nil
