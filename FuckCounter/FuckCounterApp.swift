@@ -110,7 +110,7 @@ struct FuckCounterApp: App {
                     await googleService.checkIsNeedRefreshToken()
                 }
             } else if newPhase == .inactive {
-                dailyService.updateTimeInterval()
+//                dailyService.updateTimeInterval()
             }
         }
     }

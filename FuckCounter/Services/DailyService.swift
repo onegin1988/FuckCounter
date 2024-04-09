@@ -7,32 +7,53 @@
 
 import SwiftUI
 
+enum DailyServiceState {
+    case waiting
+    case start
+    case play
+    case stop
+}
+
 class DailyService: ObservableObject {
     
     @Published var timeSlice: Int
+    @Published var state: DailyServiceState
     
     init() {
+        state = .waiting
+        
         if AppData.dailyKey == nil {
             AppData.dailyKey = DailyModel()
         }
+        
         self.timeSlice = 0
     }
     
     func calculateDates() {
-        if Date() > (AppData.dailyKey?.endDate ?? Date()) {
-            AppData.dailyKey = DailyModel()
+        switch state {
+        case .waiting:
+            if Date() > (AppData.dailyKey?.endDate ?? Date()) {
+                AppData.dailyKey = DailyModel()
+            }
+            
+            updateTimeInterval()
+            calculateTimeIntervals()
+        case .start:
+            appendTimeInterval()
+            self.state = .play
+        case .play:
+            calculateTimeIntervals()
+        case .stop:
+            updateTimeInterval()
+            self.state = .waiting
         }
-        
-        appendTimeInterval()
-        
-        calculateTimeIntervals()
     }
     
-    func appendTimeInterval() {
+    private func appendTimeInterval() {
         AppData.dailyKey?.times.append(TimeModel())
     }
     
-    func updateTimeInterval() {
+    private func updateTimeInterval() {
         guard let lastTime = AppData.dailyKey?.times.last,
               let index = AppData.dailyKey?.times.firstIndex(where: {$0.id == lastTime.id}) else { return }
         
@@ -42,12 +63,18 @@ class DailyService: ObservableObject {
         }
     }
     
-    func calculateTimeIntervals() {
+    private func calculateTimeIntervals() {
         guard let times = AppData.dailyKey?.times else { return }
         var count = 0
         
-        for time in times where time.isUpdate == true {
-            count += Int(time.endDate.timeIntervalSince(time.startDate))
+        if state == .waiting {
+            for time in times where time.isUpdate == true {
+                count += Int(time.endDate.timeIntervalSince(time.startDate))
+            }
+        } else {
+            for time in times where time.isUpdate == false {
+                count += Int(Date().timeIntervalSince(time.startDate))
+            }
         }
         
         timeSlice = count

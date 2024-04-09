@@ -86,15 +86,21 @@ struct HomeView: View {
                 switch status {
                 case .recording:
                     homeViewModel.isPlay = true
+                    dailyService.state = .start
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.isProcessing = false
                     }
                 case .stopped:
                     homeViewModel.isPlay = false
+                    dailyService.state = .stop
+                    
                 default:
                     break
                 }
+            })
+            .onReceive(dailyService.$state, perform: { _ in
+                dailyService.calculateDates()
             })
             .onReceive(speechService.$fullText, perform: { fullText in
                 if let fullText = fullText {
