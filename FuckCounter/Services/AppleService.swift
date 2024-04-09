@@ -182,7 +182,9 @@ class AppleService: NSObject, ObservableObject, ASAuthorizationControllerDelegat
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.error = error.localizedDescription
+        if (error as? NSError)?.code != 1001 {
+            self.error = error.localizedDescription
+        }
         isAuthProcess = false
     }
 }
