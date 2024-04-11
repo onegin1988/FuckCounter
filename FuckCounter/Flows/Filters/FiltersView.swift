@@ -93,7 +93,7 @@ struct FiltersView: View {
                 CustomWordView(wordText: filtersViewModel.customWord, navTitle: filtersViewModel.filtersEvent?.title)
                     .environmentObject(filtersViewModel)
             case .subscription:
-                SubscriptionView(isCancel: true, subscriptionInfo: filtersViewModel.subscriptionInfo)
+                SubscriptionView(subscriptionInfo: filtersViewModel.subscriptionInfo)
             default:
                 EmptyView()
             }

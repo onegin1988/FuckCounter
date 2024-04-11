@@ -20,13 +20,12 @@ struct SubscriptionView: View {
     @State private var minSide = 0.0
     @State private var productType: ProductType = .oneMonth
     @State private var error: String?
+    @State private var isSubscriptionProcess = false
     
     @State private var timer = Timer.publish(every: 10, on: .main, in: .common)
-    private let isCancel: Bool
     private let subscriptionInfo: SubscriptionInfo
     
-    init(isCancel: Bool = false, subscriptionInfo: SubscriptionInfo = .firstInfo) {
-        self.isCancel = isCancel
+    init(subscriptionInfo: SubscriptionInfo = .firstInfo) {
         self.subscriptionInfo = subscriptionInfo
     }
     
@@ -71,14 +70,20 @@ struct SubscriptionView: View {
                     timer.connect().cancel()
                 }
             })
+            .onReceive(purchaseService.$isProcess, perform: { isProcess in
+                self.isSubscriptionProcess = isProcess
+            })
             .padding(.top, safeAreaInsets.top + 64)
             .toolbarBackground(.hidden, for: .navigationBar)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: .green))
-            .modifier(NavBarModifiers(isCancel: isCancel))
+            .modifier(NavBarModifiers(isCancel: true))
             .ignoresSafeArea()
             .alertError(errorMessage: $error)
+            .showProgress(isLoading: isSubscriptionProcess)
         }
+        .allowsHitTesting(!isSubscriptionProcess)
+        
     }
     
     @ViewBuilder
@@ -146,7 +151,10 @@ struct SubscriptionView: View {
             do {
                 guard let product = purchaseService.products.first(where: {$0.id == productType.rawValue}) else { return }
                 try await purchaseService.purchase(product)
-                dismiss()
+                
+                if !purchaseService.purchasedProductIDs.isEmpty {
+                    dismiss()
+                }
             } catch let error {
                 debugPrint(error.localizedDescription)
                 self.error = error.localizedDescription

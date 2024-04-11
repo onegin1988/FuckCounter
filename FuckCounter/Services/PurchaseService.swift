@@ -16,6 +16,7 @@ class PurchaseService: NSObject, ObservableObject {
     @Published private(set) var products: [Product] = []
     @Published private(set) var purchasedProductIDs = Set<String>()
     @Published private(set) var productForSettings: Product?
+    @Published private(set) var isProcess: Bool = false
     
     private var productsLoaded = false
     private var updates: Task<Void, Never>? = nil
@@ -65,24 +66,24 @@ class PurchaseService: NSObject, ObservableObject {
         self.productsLoaded = true
     }
     
+    @MainActor
     func purchase(_ product: Product) async throws {
+        isProcess = true
         let result = try await product.purchase()
         
         switch result {
         case let .success(.verified(transaction)):
             await transaction.finish()
             await self.updatePurchasedProducts()
+            
+            isProcess = false
         case let .success(.unverified(_, error)):
-            // Successful purchase but transaction/receipt can't be verified
-            // Could be a jailbroken phone
-            break
+            debugPrint(error.localizedDescription)
+            isProcess = false
         case .pending:
-            // Transaction waiting on SCA (Strong Customer Authentication) or
-            // approval from Ask to Buy
-            break
+            isProcess = false
         case .userCancelled:
-            // ^^^
-            break
+            isProcess = false
         @unknown default:
             break
         }

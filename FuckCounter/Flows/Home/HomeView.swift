@@ -15,13 +15,14 @@ struct HomeView: View {
     
     @State private var isOpenCongrats: Bool = false
     @State private var isProcessing: Bool = false
+    @State private var isShow = false
     
     @EnvironmentObject var dailyService: DailyService
     @EnvironmentObject var speechService: SpeechService
     @Environment(\.scenePhase) var scenePhase
     
     private var isPushToView: Binding<Bool> {
-        Binding(get: { homeViewModel.homeEvent != nil },
+        Binding(get: { homeViewModel.homeEvent != nil && homeViewModel.homeEvent != .subscription },
                 set: { _ in homeViewModel.homeEvent = nil } )
     }
     
@@ -73,12 +74,13 @@ struct HomeView: View {
                         .environmentObject(speechService)
                 case .leaders:
                     LeadersView(navTitle: homeViewModel.homeEvent?.title)
-                case .subscription:
-                    SubscriptionView(subscriptionInfo: .secondInfo)
-                case nil:
+                default:
                     EmptyView()
                 }
             })
+            .fullScreenCover(isPresented: $isShow) {
+                SubscriptionView(subscriptionInfo: .secondInfo)
+            }
             .onReceive(dailyService.$timeSlice, perform: { _ in
                 homeViewModel.timeSlice = dailyService.timeSliceResult
             })
@@ -115,6 +117,7 @@ struct HomeView: View {
             .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
                 if homeEvent == .leaders && !AppData.hasPremium {
                     self.homeViewModel.homeEvent = .subscription
+                    isShow = true
                 } else {
                     self.homeViewModel.homeEvent = homeEvent
                 }

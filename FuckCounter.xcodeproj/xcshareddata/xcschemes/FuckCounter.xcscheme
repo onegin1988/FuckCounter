@@ -49,9 +49,6 @@
             ReferencedContainer = "container:FuckCounter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <StoreKitConfigurationFileReference
-         identifier = "../FuckCounter/Resources/FuckCounterConfiguration.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

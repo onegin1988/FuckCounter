@@ -20,11 +20,12 @@ struct SettingsView: View {
     
     @State private var showDeleteAccountAlert = false
     @State private var isAuthProcess = false
+    @State private var isShow = false
     
     private let navTitle: String?
     
     var isPushToView: Binding<Bool> {
-        Binding(get: { settingsViewModel.settingsEvent != nil },
+        Binding(get: { settingsViewModel.settingsEvent != nil && settingsViewModel.settingsEvent != .subscription },
                 set: { _ in settingsViewModel.settingsEvent = nil } )
     }
     
@@ -44,9 +45,11 @@ struct SettingsView: View {
                 if !settingsViewModel.hasPremium {
                     SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
                         settingsViewModel.settingsEvent = .subscription
+                        isShow = true
                     }
                     .onTapGesture {
                         settingsViewModel.settingsEvent = .subscription
+                        isShow = true
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 24)
@@ -120,12 +123,13 @@ struct SettingsView: View {
             switch settingsViewModel.settingsEvent {
             case .login:
                 LoginView()
-            case .subscription:
-                SubscriptionView()
-            case .none:
+            default:
                 EmptyView()
             }
         })
+        .fullScreenCover(isPresented: $isShow) {
+            SubscriptionView()
+        }
         .onReceive(purchaseService.$purchasedProductIDs) { purchasedProductIDs in
             settingsViewModel.hasPremium = !purchasedProductIDs.isEmpty
         }
