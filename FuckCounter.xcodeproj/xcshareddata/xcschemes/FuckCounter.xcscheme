@@ -49,9 +49,10 @@
             ReferencedContainer = "container:FuckCounter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <StoreKitConfigurationFileReference
-         identifier = "../FuckCounter/Resources/FuckCounterConfiguration.storekit">
-      </StoreKitConfigurationFileReference>
+      <LocationScenarioReference
+         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+         referenceType = "1">
+      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

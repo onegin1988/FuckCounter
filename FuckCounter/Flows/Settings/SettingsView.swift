@@ -43,13 +43,13 @@ struct SettingsView: View {
 //                AppsListView(apps: settingsViewModel.apps)
                 
                 if !settingsViewModel.hasPremium {
-                    SettingsPremiumView(price: purchaseService.productForSettings?.localizedPrice ?? "") {
+                    SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
                         settingsViewModel.settingsEvent = .subscription
                         isShow = true
                     }
                     .onTapGesture {
                         settingsViewModel.settingsEvent = .subscription
-                        isShow = true
+                        isShow   = true
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 24)

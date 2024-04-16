@@ -114,7 +114,7 @@ struct SubscriptionView: View {
                         isSelected: self.productType.rawValue == product?.id,
                         title: "\(productType.qty)",
                         weekDay: productType.weekDay,
-                        price: product?.localizedPrice ?? "",
+                        price: product?.displayPrice ?? "",
                         percentage: productType.percentage)
                     .onTapGesture {
                         self.productType = productType
