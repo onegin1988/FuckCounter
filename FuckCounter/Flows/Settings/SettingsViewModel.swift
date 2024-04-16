@@ -19,7 +19,11 @@ class SettingsViewModel: ObservableObject {
     @Published var error: String?
     @Published var settingsEvent: SettingsEvent?
     
-    private let reference = Database.database().reference()
+#if DEBUG
+    private let reference = Database.database().reference().child("dev")
+#else
+    private let reference = Database.database().reference().child("prod")
+#endif
     
     init() {
         self.hasPremium = AppData.hasPremium

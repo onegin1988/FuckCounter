@@ -17,7 +17,11 @@ class LeadersViewModel: ObservableObject {
     @Published var showAddUserSheet: Bool
     @Published var error: String?
     
-    private let reference = Database.database().reference()
+#if DEBUG
+    private let reference = Database.database().reference().child("dev")
+#else
+    private let reference = Database.database().reference().child("prod")
+#endif
     
     init() {
         self.leadersTimeType = .daily

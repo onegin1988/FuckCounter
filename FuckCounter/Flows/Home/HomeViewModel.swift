@@ -23,7 +23,12 @@ class HomeViewModel: ObservableObject {
     private(set) var isChamp: Bool
     private(set) var totalCount: Int
     
-    private let reference = Database.database().reference()
+#if DEBUG
+    private let reference = Database.database().reference().child("dev")
+#else
+    private let reference = Database.database().reference().child("prod")
+#endif
+    
     private var countForAppPush: Int
     
     init() {

@@ -11,7 +11,11 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    private let reference = Database.database().reference()
+#if DEBUG
+    private let reference = Database.database().reference().child("dev")
+#else
+    private let reference = Database.database().reference().child("prod")
+#endif
     
     @Published var error: String?
     
