@@ -121,3 +121,32 @@ extension PurchaseService: SKPaymentTransactionObserver {
         return true
     }
 }
+
+// MARK: - SKProduct
+
+extension SKProduct {
+    
+    var localizedPrice: String? {
+        return priceFormatter(locale: priceLocale).string(from: price)
+    }
+    
+    private func priceFormatter(locale: Locale) -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = .currency
+        return formatter
+    }
+}
+
+extension Product {
+    var localizedPrice: String? {
+        return priceFormatter(locale: Locale(identifier: "en_US_POSIX")).string(from: price as NSNumber)
+    }
+
+    private func priceFormatter(locale: Locale) -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = .currency
+        return formatter
+    }
+}

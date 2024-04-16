@@ -43,7 +43,7 @@ struct SettingsView: View {
 //                AppsListView(apps: settingsViewModel.apps)
                 
                 if !settingsViewModel.hasPremium {
-                    SettingsPremiumView(price: purchaseService.productForSettings?.displayPrice ?? "") {
+                    SettingsPremiumView(price: purchaseService.productForSettings?.localizedPrice ?? "") {
                         settingsViewModel.settingsEvent = .subscription
                         isShow = true
                     }
