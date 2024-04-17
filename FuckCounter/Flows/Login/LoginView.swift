@@ -83,7 +83,7 @@ struct LoginView: View {
     
     @ViewBuilder
     private func setupTitleView() -> some View {
-        Text("Fuck Counter")
+        Text("Swear Counter")
             .font(Font.custom("SeymourOne", size: 27))
             .fontWeight(.regular)
             .foregroundColor(.white)

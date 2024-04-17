@@ -57,7 +57,7 @@ struct LeadersView: View {
             }
         }
         .errorSocialServices($leadersViewModel.error)
-        .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Fuck Counter"])
+        .sheetShare(showSheet: $leadersViewModel.showAddUserSheet, items: ["Now your language level. Connect to Swear Counter"])
         .onReceive(leadersViewModel.$leadersTimeType, perform: { _ in
             Task {
                 await leadersViewModel.loadUsers()
