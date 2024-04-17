@@ -1,6 +1,6 @@
 //
-//  FuckCounterApp.swift
-//  FuckCounter
+//  SwearCounterApp.swift
+//  SwearCounter
 //
 //  Created by Alex on 19.11.2023.
 //

@@ -1,6 +1,6 @@
 //
 //  GoogleService.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 25.02.2024.
 //

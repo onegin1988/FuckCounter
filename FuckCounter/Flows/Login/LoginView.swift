@@ -1,6 +1,6 @@
 //
 //  LoginView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 25.01.2024.
 //

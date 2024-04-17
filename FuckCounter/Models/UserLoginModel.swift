@@ -1,6 +1,6 @@
 //
 //  FacebookLoginModel.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 01.02.2024.
 //

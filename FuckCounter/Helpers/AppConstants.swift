@@ -1,6 +1,6 @@
 //
 //  AppConstants.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 29.02.2024.
 //

@@ -1,6 +1,6 @@
 //
 //  LanguagesView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 20.01.2024.
 //

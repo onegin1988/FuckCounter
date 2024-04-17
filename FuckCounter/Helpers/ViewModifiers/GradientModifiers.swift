@@ -1,6 +1,6 @@
 //
 //  GradientModifiers.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 19.11.2023.
 //

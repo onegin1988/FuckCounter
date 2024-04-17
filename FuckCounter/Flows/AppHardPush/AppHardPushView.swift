@@ -1,6 +1,6 @@
 //
 //  AppHardPushView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 19.12.2023.
 //

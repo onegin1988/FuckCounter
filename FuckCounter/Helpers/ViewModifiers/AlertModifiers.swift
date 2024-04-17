@@ -1,6 +1,6 @@
 //
 //  AlertModifiers.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 07.03.2024.
 //

@@ -1,6 +1,6 @@
 //
 //  ProgressModifiers.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 06.02.2024.
 //

@@ -1,6 +1,6 @@
 //
 //  AuthSocialModifiers.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 27.02.2024.
 //

@@ -1,6 +1,6 @@
 //
 //  SemiboldTextView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 07.12.2023.
 //

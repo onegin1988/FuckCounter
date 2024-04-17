@@ -1,6 +1,6 @@
 //
 //  FiltersViewModel.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 08.12.2023.
 //

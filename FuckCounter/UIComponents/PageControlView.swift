@@ -1,6 +1,6 @@
 //
 //  PageControlView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 18.03.2024.
 //

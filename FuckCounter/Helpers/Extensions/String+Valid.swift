@@ -1,6 +1,6 @@
 //
 //  String+Valid.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 04.03.2024.
 //

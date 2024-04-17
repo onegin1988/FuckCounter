@@ -1,6 +1,6 @@
 //
 //  ShareView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 13.12.2023.
 //

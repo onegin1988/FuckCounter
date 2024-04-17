@@ -1,6 +1,6 @@
 //
 //  DailyModel.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 24.12.2023.
 //

@@ -1,6 +1,6 @@
 //
 //  BottomSheetView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 11.12.2023.
 //

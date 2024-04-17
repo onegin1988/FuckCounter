@@ -1,6 +1,6 @@
 //
 //  SpeechService.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 15.12.2023.
 //

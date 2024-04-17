@@ -1,6 +1,6 @@
 //
 //  ListItemArrowView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 21.01.2024.
 //

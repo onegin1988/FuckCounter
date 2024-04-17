@@ -1,6 +1,6 @@
 //
 //  String+Localization.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 06.03.2024.
 //

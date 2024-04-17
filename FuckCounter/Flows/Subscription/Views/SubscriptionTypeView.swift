@@ -1,6 +1,6 @@
 //
 //  SubscriptionTypeView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 19.03.2024.
 //

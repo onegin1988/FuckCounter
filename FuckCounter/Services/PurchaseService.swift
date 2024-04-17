@@ -1,6 +1,6 @@
 //
 //  PurchaseService.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 15.03.2024.
 //

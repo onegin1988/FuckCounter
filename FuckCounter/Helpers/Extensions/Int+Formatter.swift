@@ -1,6 +1,6 @@
 //
 //  Int+Formatter.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 20.02.2024.
 //

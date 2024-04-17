@@ -1,6 +1,6 @@
 //
 //  ButtonView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 23.12.2023.
 //

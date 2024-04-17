@@ -1,6 +1,6 @@
 //
 //  Date+Extensions.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 13.02.2024.
 //

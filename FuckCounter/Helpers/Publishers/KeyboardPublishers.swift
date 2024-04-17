@@ -1,6 +1,6 @@
 //
 //  KeyboardPublishers.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 24.01.2024.
 //

@@ -1,6 +1,6 @@
 //
 //  SettingsPremiumView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 17.03.2024.
 //

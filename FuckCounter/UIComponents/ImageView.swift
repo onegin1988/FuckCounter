@@ -1,6 +1,6 @@
 //
 //  ImageView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 15.02.2024.
 //

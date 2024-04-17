@@ -1,6 +1,6 @@
 //
 //  ReviewApp.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 14.12.2023.
 //

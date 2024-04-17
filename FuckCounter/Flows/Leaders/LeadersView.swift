@@ -1,6 +1,6 @@
 //
 //  LeadersView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 06.12.2023.
 //

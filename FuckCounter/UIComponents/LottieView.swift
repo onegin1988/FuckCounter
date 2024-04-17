@@ -1,6 +1,6 @@
 //
 //  LottieView.swift
-//  FuckCounter
+//  SwearCounter
 //
 //  Created by Alex on 22.02.2024.
 //
