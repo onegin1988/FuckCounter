@@ -26,7 +26,7 @@ struct SettingsListRow: View {
             if item == .invite {
                 ShareLink(item: URL(string: "https://itunes.apple.com/app/id6474148666")!,
                           message: Text(shareMessage),
-                          preview: SharePreview("Swear Counter", icon: Images.shareIcon)) {
+                          preview: SharePreview("SwearCounter", icon: Images.shareIcon)) {
                     HStack(alignment: .center, spacing: 12) {
                         settingsIconView()
                         
@@ -93,9 +93,9 @@ struct SettingsListRow: View {
     
     private var shareMessage: String {
         if AppData.lastCount != 0 {
-            return "\nWow, I have \(AppData.lastCount) Bad words for today.\nInstall Swear Counter and track any word you want."
+            return "\nWow, I have \(AppData.lastCount) Bad words for today.\nInstall SwearCounter and track any word you want."
         }
-        return "\nInstall Swear Counter and track any word you want."
+        return "\nInstall SwearCounter and track any word you want."
     }
 }
 
