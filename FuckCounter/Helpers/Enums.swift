@@ -35,7 +35,7 @@ enum FiltersEvent: String, Hashable {
 }
 
 enum SettingsEvent: String, Hashable {
-    case login, subscription
+    case login, subscription, terms
 }
 
 enum LeadersEvent: String, Hashable {

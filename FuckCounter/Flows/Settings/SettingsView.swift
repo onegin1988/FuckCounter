@@ -67,6 +67,8 @@ struct SettingsView: View {
                         if AppData.userLoginModel == nil {
                             settingsViewModel.settingsEvent = .login
                         }
+                    case .terms:
+                        settingsViewModel.settingsEvent = .terms
                     case .deleteAccount:
                         showDeleteAccountAlert.toggle()
                     case .logout:
@@ -123,6 +125,8 @@ struct SettingsView: View {
             switch settingsViewModel.settingsEvent {
             case .login:
                 LoginView()
+            case .terms:
+                TermsConditionsView()
             default:
                 EmptyView()
             }
