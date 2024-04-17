@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:520015374570:ios:81f4b4f7643e4c72a08f93</string>
+	<string>1:520015374570:ios:f823477927fa80b8a08f93</string>
 	<key>DATABASE_URL</key>
 	<string>https://fuckcounter-default-rtdb.firebaseio.com</string>
 </dict>

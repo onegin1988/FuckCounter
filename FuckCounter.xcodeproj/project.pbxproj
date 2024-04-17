@@ -66,7 +66,6 @@
 		1F8B22B52BA3AD0600F63759 /* FuckCounterConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */; };
 		1F8B22B72BA3AE1100F63759 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */; };
 		1F8B22B92BA3B2BB00F63759 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8B22B82BA3B2BB00F63759 /* StoreKit.framework */; };
-		1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */; };
 		1F9555892B8B60E80002A060 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9555882B8B60E80002A060 /* GoogleService.swift */; };
 		1F9933F72B370BC8005C223F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F62B370BC8005C223F /* ButtonView.swift */; };
 		1F9933F92B385247005C223F /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9933F82B385247005C223F /* DailyModel.swift */; };
@@ -116,6 +115,7 @@
 		1FFA71AC2B8D34AA00BA126A /* UserSocialModelModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */; };
 		1FFBD8D72B8E3AC000818F48 /* AuthSocialModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBD8D62B8E3AC000818F48 /* AuthSocialModifiers.swift */; };
 		1FFDF4342BD04BEC00D62CD7 /* TermsConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDF4332BD04BEC00D62CD7 /* TermsConditionsView.swift */; };
+		1FFDF4362BD0639000D62CD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FFDF4352BD0639000D62CD7 /* GoogleService-Info.plist */; };
 		329B25098E59416C1D8E94FF /* Pods_FuckCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */; };
 /* End PBXBuildFile section */
 
@@ -185,14 +185,13 @@
 		1F8B22B42BA3AD0600F63759 /* FuckCounterConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = FuckCounterConfiguration.storekit; sourceTree = "<group>"; };
 		1F8B22B62BA3AE1100F63759 /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		1F8B22B82BA3B2BB00F63759 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F9555882B8B60E80002A060 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
 		1F9933F62B370BC8005C223F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		1F9933F82B385247005C223F /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		1F9933FA2B3870A9005C223F /* DailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyService.swift; sourceTree = "<group>"; };
 		1F9C3E3B2B7FC5790062455F /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		1F9C3E3D2B7FE6210062455F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1F9D65942B0A46470011F18B /* FuckCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9D65942B0A46470011F18B /* SwearCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwearCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9D65972B0A46470011F18B /* FuckCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuckCounterApp.swift; sourceTree = "<group>"; };
 		1F9D65992B0A46470011F18B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F9D659B2B0A46490011F18B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,6 +235,7 @@
 		1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSocialModelModifiers.swift; sourceTree = "<group>"; };
 		1FFBD8D62B8E3AC000818F48 /* AuthSocialModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSocialModifiers.swift; sourceTree = "<group>"; };
 		1FFDF4332BD04BEC00D62CD7 /* TermsConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsView.swift; sourceTree = "<group>"; };
+		1FFDF4352BD0639000D62CD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64F4050FBD207CD4126A44E6 /* Pods-FuckCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.release.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.release.xcconfig"; sourceTree = "<group>"; };
 		6745A2BB2A18731DBC464FD4 /* Pods-FuckCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckCounter.debug.xcconfig"; path = "Target Support Files/Pods-FuckCounter/Pods-FuckCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		FCB145BBFE7AC87FACEFBEBF /* Pods_FuckCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,7 +458,7 @@
 		1F9D65952B0A46470011F18B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F9D65942B0A46470011F18B /* FuckCounter.app */,
+				1F9D65942B0A46470011F18B /* SwearCounter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 			children = (
 				1F4728F62B87CD55001742E2 /* FuckCounter.entitlements */,
 				1F62A2672B211EAC00FE2918 /* Info.plist */,
-				1F9555862B8B5DBD0002A060 /* GoogleService-Info.plist */,
+				1FFDF4352BD0639000D62CD7 /* GoogleService-Info.plist */,
 				1FBE445C2B23523B00513401 /* Models */,
 				1F62A25E2B211C9700FE2918 /* Resources */,
 				1FBA82362B2CFD2A0032BEA9 /* Services */,
@@ -668,7 +668,7 @@
 			packageProductDependencies = (
 			);
 			productName = FuckCounter;
-			productReference = 1F9D65942B0A46470011F18B /* FuckCounter.app */;
+			productReference = 1F9D65942B0A46470011F18B /* SwearCounter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -726,7 +726,7 @@
 				1F9D659C2B0A46490011F18B /* Assets.xcassets in Resources */,
 				1F62A26B2B211F9200FE2918 /* Gilroy-Bold.ttf in Resources */,
 				1FC69E5C2BB89E3B001E2AA9 /* Words.json in Resources */,
-				1F9555872B8B5DBD0002A060 /* GoogleService-Info.plist in Resources */,
+				1FFDF4362BD0639000D62CD7 /* GoogleService-Info.plist in Resources */,
 				1F39C08F2B5B1CD500A00420 /* Lato-Bold.ttf in Resources */,
 				1F62A2662B211E3700FE2918 /* SFProDisplay-Regular.ttf in Resources */,
 				1F8B22B52BA3AD0600F63759 /* FuckCounterConfiguration.storekit in Resources */,
@@ -1109,7 +1109,7 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwearCounter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1213,7 +1213,7 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwearCounter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
