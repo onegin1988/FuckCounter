@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F9D65932B0A46470011F18B"
-               BuildableName = "FuckCounter.app"
+               BuildableName = "SwearCounter.app"
                BlueprintName = "FuckCounter"
                ReferencedContainer = "container:FuckCounter.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F9D65932B0A46470011F18B"
-            BuildableName = "FuckCounter.app"
+            BuildableName = "SwearCounter.app"
             BlueprintName = "FuckCounter"
             ReferencedContainer = "container:FuckCounter.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F9D65932B0A46470011F18B"
-            BuildableName = "FuckCounter.app"
+            BuildableName = "SwearCounter.app"
             BlueprintName = "FuckCounter"
             ReferencedContainer = "container:FuckCounter.xcodeproj">
          </BuildableReference>

@@ -52,9 +52,11 @@ class GoogleService: ObservableObject {
             isAuthProcess = true
             
             isAuth = try await authGoogle()
-            userLoginModel = await loadProfile()
-            userLoginModel?.providerId = Auth.auth().currentUser?.providerData.first?.providerID
-            AppData.userLoginModel = userLoginModel
+            if isAuth {
+                userLoginModel = await loadProfile()
+                userLoginModel?.providerId = Auth.auth().currentUser?.providerData.first?.providerID
+                AppData.userLoginModel = userLoginModel
+            }
             
             isAuthProcess = false
         } catch let error {
