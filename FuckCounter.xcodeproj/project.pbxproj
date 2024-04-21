@@ -41,6 +41,9 @@
 		1F4B3B202BA73A3D00BB78E4 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B1F2BA73A3D00BB78E4 /* SubscriptionView.swift */; };
 		1F4B3B232BA73F2100BB78E4 /* SubscriptionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */; };
 		1F4B3B272BA74DBD00BB78E4 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */; };
+		1F4D4B272BD4E1A600EE04BF /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D4B262BD4E1A600EE04BF /* ContentViewController.swift */; };
+		1F4D4B292BD4E25100EE04BF /* AlwaysPopoverModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D4B282BD4E25100EE04BF /* AlwaysPopoverModifier.swift */; };
+		1F4D4B2B2BD4E3E000EE04BF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D4B2A2BD4E3E000EE04BF /* UIView+Extension.swift */; };
 		1F5377BC2B98A28100FD9451 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F5377BE2B98A28100FD9451 /* Localizable.strings */; };
 		1F5377C42B98A91C00FD9451 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C32B98A91C00FD9451 /* String+Localization.swift */; };
 		1F5377C62B99B3E800FD9451 /* AlertModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5377C52B99B3E800FD9451 /* AlertModifiers.swift */; };
@@ -155,6 +158,9 @@
 		1F4B3B1F2BA73A3D00BB78E4 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		1F4B3B222BA73F2100BB78E4 /* SubscriptionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfoView.swift; sourceTree = "<group>"; };
 		1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
+		1F4D4B262BD4E1A600EE04BF /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		1F4D4B282BD4E25100EE04BF /* AlwaysPopoverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysPopoverModifier.swift; sourceTree = "<group>"; };
+		1F4D4B2A2BD4E3E000EE04BF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1F5377BD2B98A28100FD9451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377BF2B98A2B800FD9451 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F5377C02B98A2EE00FD9451 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -328,6 +334,7 @@
 				1FBCBBEF2B90A80600C23920 /* String+Date.swift */,
 				1F48148D2B963FBD009BFE57 /* String+Valid.swift */,
 				1F5377C32B98A91C00FD9451 /* String+Localization.swift */,
+				1F4D4B2A2BD4E3E000EE04BF /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +384,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1F4D4B252BD4E19000EE04BF /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D4B262BD4E1A600EE04BF /* ContentViewController.swift */,
+				1F4D4B282BD4E25100EE04BF /* AlwaysPopoverModifier.swift */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
 		1F62A25E2B211C9700FE2918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +430,7 @@
 		1F62A2682B211EFF00FE2918 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D4B252BD4E19000EE04BF /* Popover */,
 				1F62A2762B2122BE00FE2918 /* BoldTextView.swift */,
 				1FBE44512B220A3E00513401 /* SemiboldTextView.swift */,
 				1FBE44532B220A9500513401 /* RegularTextView.swift */,
@@ -796,6 +813,7 @@
 				1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */,
 				1F62A25B2B20C55300FE2918 /* LeadersView.swift in Sources */,
 				1F9D659A2B0A46470011F18B /* HomeView.swift in Sources */,
+				1F4D4B2B2BD4E3E000EE04BF /* UIView+Extension.swift in Sources */,
 				1FBA82312B2A74FF0032BEA9 /* ReviewApp.swift in Sources */,
 				1FBE44592B2276F300513401 /* HomeViewModel.swift in Sources */,
 				1F21877C2B0A7AE80020C4AB /* SplashView.swift in Sources */,
@@ -804,6 +822,7 @@
 				1F2187792B0A73490020C4AB /* HomeToolbarItemsModifiers.swift in Sources */,
 				1F48148C2B9626BD009BFE57 /* CheckMarkIconView.swift in Sources */,
 				1FBE446E2B26517000513401 /* AppsModel.swift in Sources */,
+				1F4D4B292BD4E25100EE04BF /* AlwaysPopoverModifier.swift in Sources */,
 				1FBE44782B27378300513401 /* BottomSheetView.swift in Sources */,
 				1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */,
 				1F77125F2B7268EF00BF9906 /* ProgressModifiers.swift in Sources */,
@@ -826,6 +845,7 @@
 				1FBE44542B220A9500513401 /* RegularTextView.swift in Sources */,
 				1FBE44612B23540500513401 /* FiltersViewModel.swift in Sources */,
 				1F9D65982B0A46470011F18B /* FuckCounterApp.swift in Sources */,
+				1F4D4B272BD4E1A600EE04BF /* ContentViewController.swift in Sources */,
 				1FBA82382B2CFD420032BEA9 /* SpeechService.swift in Sources */,
 				1FBFBAFA2BA8C0440072A809 /* PageControlView.swift in Sources */,
 				1F48148E2B963FBD009BFE57 /* String+Valid.swift in Sources */,
@@ -1024,9 +1044,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1111,7 +1131,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = SwearCounter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1128,9 +1148,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1215,7 +1235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.fuckcounter;
 				PRODUCT_NAME = SwearCounter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Fuck Counter Prod";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -176,6 +176,21 @@
                   endingLineNumber = "77"
                   offsetFromSymbolStart = "176">
                </Location>
+               <Location
+                  uuid = "B6923EF3-05E1-4EBA-8765-D29592E22A67 - 9ef3d4352c78da98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Bool, Swift.Error&gt;) -&gt; () in SwearCounter.GoogleService.authGoogle() async throws -&gt; Swift.Bool"
+                  moduleName = "SwearCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Services/GoogleService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "156">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
