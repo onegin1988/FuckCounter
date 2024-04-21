@@ -50,6 +50,13 @@ struct HomeView: View {
                 BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) { isOpen in
                     if !isOpen {
                         homeViewModel.resetCounter()
+                        if homeViewModel.updateCountForSubscriptionAndShow() && !AppData.hasPremium {
+                            withAnimation {
+                                homeViewModel.subscriptionInfo = .firstInfo
+                                homeViewModel.homeEvent = .subscription
+                                isShow = true
+                            }
+                        }
                     }
                 } content: {
                     if isOpenCongrats {
@@ -79,7 +86,7 @@ struct HomeView: View {
                 }
             })
             .fullScreenCover(isPresented: $isShow) {
-                SubscriptionView(subscriptionInfo: .secondInfo)
+                SubscriptionView(subscriptionInfo: homeViewModel.subscriptionInfo)
             }
             .onReceive(dailyService.$timeSlice, perform: { _ in
                 homeViewModel.timeSlice = dailyService.timeSliceResult
@@ -116,6 +123,7 @@ struct HomeView: View {
             .modifier(GradientModifiers(style: homeViewModel.level.background))
             .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
                 if homeEvent == .leaders && !AppData.hasPremium {
+                    self.homeViewModel.subscriptionInfo = .secondInfo
                     self.homeViewModel.homeEvent = .subscription
                     isShow = true
                 } else {
@@ -157,8 +165,6 @@ struct HomeView: View {
                         
                         isOpenCongrats = true
                         isProcessing = false
-                        
-                        homeViewModel.updateCountForSubscription()
                     }
                 } else {
                     isProcessing = true

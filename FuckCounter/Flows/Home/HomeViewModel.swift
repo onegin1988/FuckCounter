@@ -22,6 +22,7 @@ class HomeViewModel: ObservableObject {
     private(set) var userModel: UserModel?
     private(set) var isChamp: Bool
     private(set) var totalCount: Int
+    var subscriptionInfo: SubscriptionInfo
     
 #if DEBUG
     private let reference = Database.database().reference().child("dev")
@@ -42,6 +43,7 @@ class HomeViewModel: ObservableObject {
         self.isShowAppPush = false
         self.isChamp = false
         self.totalCount = 0
+        self.subscriptionInfo = .firstInfo
     }
     
     func checkLevel() {
@@ -65,14 +67,13 @@ class HomeViewModel: ObservableObject {
         checkLevel()
     }
     
-    func updateCountForSubscription() {
+    func updateCountForSubscriptionAndShow() -> Bool {
         countForSubscription += 1
         if countForSubscription >= 5 {
-            withAnimation {
-                homeEvent = .subscription
-                countForSubscription = 0
-            }
+            self.countForSubscription = 0
+            return true
         }
+        return false
     }
     
     func updateCountForAppPush() {
