@@ -30,6 +30,7 @@ class HomeViewModel: ObservableObject {
 #endif
     
     private var countForAppPush: Int
+    private var countForSubscription: Int
     
     init() {
         self.level = .green
@@ -37,6 +38,7 @@ class HomeViewModel: ObservableObject {
         self.isPlay = false
         self.timeSlice = ""
         self.countForAppPush = 0
+        self.countForSubscription = 0
         self.isShowAppPush = false
         self.isChamp = false
         self.totalCount = 0
@@ -61,6 +63,16 @@ class HomeViewModel: ObservableObject {
         counter = 0
         totalCount = 0
         checkLevel()
+    }
+    
+    func updateCountForSubscription() {
+        countForSubscription += 1
+        if countForSubscription >= 5 {
+            withAnimation {
+                homeEvent = .subscription
+                countForSubscription = 0
+            }
+        }
     }
     
     func updateCountForAppPush() {
@@ -144,7 +156,7 @@ class HomeViewModel: ObservableObject {
             }
             filtered.sort(by: {$0.points > $1.points})
             
-            if let userWinModel = filtered.first {
+            if let _ = filtered.first {
                 let myUser = filtered.first(where: {$0.id == AppData.userLoginModel?.id})
                 let rate = filtered.firstIndex(where: {$0.id == AppData.userLoginModel?.id}) ?? 0
                 self.userModel = myUser

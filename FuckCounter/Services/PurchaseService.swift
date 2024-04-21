@@ -79,6 +79,7 @@ class PurchaseService: NSObject, ObservableObject {
             isProcess = false
         case let .success(.unverified(_, error)):
             debugPrint(error.localizedDescription)
+            throw error
         case .userCancelled:
             isProcess = false
         @unknown default:

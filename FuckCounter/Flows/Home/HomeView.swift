@@ -157,6 +157,8 @@ struct HomeView: View {
                         
                         isOpenCongrats = true
                         isProcessing = false
+                        
+                        homeViewModel.updateCountForSubscription()
                     }
                 } else {
                     isProcessing = true

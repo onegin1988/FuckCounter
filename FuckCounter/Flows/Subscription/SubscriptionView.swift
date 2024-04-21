@@ -106,25 +106,27 @@ struct SubscriptionView: View {
     
     @ViewBuilder
     private func setupProductTypeListView() -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 8, pinnedViews: [], content: {
-                ForEach(ProductType.allCases, id: \.self) { productType in
-                    let product = purchaseService.products.first(where: {$0.id == productType.rawValue})
-                    SubscriptionTypeView(
-                        isSelected: self.productType.rawValue == product?.id,
-                        title: "\(productType.qty)",
-                        weekDay: productType.weekDay,
-                        price: product?.displayPrice ?? "",
-                        percentage: productType.percentage)
-                    .onTapGesture {
-                        self.productType = productType
+        if !purchaseService.products.isEmpty {
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 8, pinnedViews: [], content: {
+                    ForEach(ProductType.allCases, id: \.self) { productType in
+                        let product = purchaseService.products.first(where: {$0.id == productType.rawValue})
+                        SubscriptionTypeView(
+                            isSelected: self.productType.rawValue == product?.id,
+                            title: "\(productType.qty)",
+                            weekDay: productType.weekDay,
+                            price: product?.displayPrice ?? "",
+                            percentage: productType.percentage)
+                        .onTapGesture {
+                            self.productType = productType
+                        }
+                        .frame(width: minSide * 0.28, height: minSide * 0.49)
+                        .padding(.leading, productType == .oneMonth ? 16 : 0)
+                        .padding(.trailing, productType == .oneYear ? 16 : 0)
                     }
-                    .frame(width: minSide * 0.28, height: minSide * 0.49)
-                    .padding(.leading, productType == .oneMonth ? 16 : 0)
-                    .padding(.trailing, productType == .oneYear ? 16 : 0)
-                }
-            })
-            .frame(height: minSide * 0.5)
+                })
+                .frame(height: minSide * 0.5)
+            }
         }
     }
     
