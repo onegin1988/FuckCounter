@@ -1046,7 +1046,7 @@
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1055,8 +1055,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuckCounter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SwearCounter;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To use commands, we need to access the microphone.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Would you like to use voice commands?";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access, to use an app, share your results and know your level.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech data will be used for counting bad words that you want to track during conversation.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1150,7 +1150,7 @@
 				CODE_SIGN_ENTITLEMENTS = FuckCounter/FuckCounter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"FuckCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8P262JQWTL;
@@ -1159,8 +1159,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuckCounter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SwearCounter;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To use commands, we need to access the microphone.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Would you like to use voice commands?";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access, to use an app, share your results and know your level.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech data will be used for counting bad words that you want to track during conversation.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
