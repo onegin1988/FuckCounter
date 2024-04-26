@@ -38,6 +38,7 @@ struct SubscriptionView: View {
                     setupProductTypeListView()
                         .padding(EdgeInsets(top: 54, leading: 0, bottom: 32, trailing: 0))
                     setupContinueButtonView()
+                    setupRestoreButtonView()
                     setupDescriptionView()
                 }
             }
@@ -140,11 +141,39 @@ struct SubscriptionView: View {
     }
     
     @ViewBuilder
+    private func setupRestoreButtonView() -> some View {
+        ButtonView(title: "RESTORE PURCHASE", useBG: false, textColor: .white) {
+            Task {
+                do {
+                    try await purchaseService.restore()
+                } catch let error {
+                    self.error = error.localizedDescription
+                }
+            }
+        }
+        .padding(.horizontal, 24)
+        .frame(height: 36)
+    }
+    
+    @ViewBuilder
     private func setupDescriptionView() -> some View {
-        RegularTextView(style: .sfPro, title: "Tap to Continue, you approve that invoice will be placed on your iTunes account and subscription will be automtically renewal after selected period of package until you decline on iTunes Store settings (it should be declined minimum 24 hours before ending current subscription) by clicking Continue you accept our Terms and Conditions", size: 13)
+        Text(subscriptionText)
             .multilineTextAlignment(.center)
             .lineSpacing(3)
             .padding(EdgeInsets(top: 24, leading: 8, bottom: 30, trailing: 8))
+    }
+    
+    private var subscriptionText: AttributedString {
+        var attriString = AttributedString("Tap to Continue, you approve that invoice will be placed on your iTunes account and subscription will be automtically renewal after selected period of package until you decline on iTunes Store settings (it should be declined minimum 24 hours before ending current subscription) by clicking Continue you accept our Terms and Conditions")
+        attriString.foregroundColor = .white
+        attriString.font = .custom("SFProDisplay-Regular", size: 12)
+        
+        if let aboutadsRange = attriString.range(of: "Terms and Conditions") {
+            attriString[aboutadsRange].link = URL(string: "https://www.aboutads.info/choices")
+            attriString[aboutadsRange].underlineStyle = .single
+        }
+        
+        return attriString
     }
     
     @MainActor
