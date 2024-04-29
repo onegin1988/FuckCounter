@@ -36,10 +36,12 @@ struct SubscriptionView: View {
                     setupScrollInfoView()
                     setupPageControlView()
                     setupProductTypeListView()
-                        .padding(EdgeInsets(top: 54, leading: 0, bottom: 32, trailing: 0))
-                    setupContinueButtonView()
-                    setupRestoreButtonView()
+                        .padding(EdgeInsets(top: 54, leading: 0, bottom: 14, trailing: 0))
                     setupDescriptionView()
+                    setupRestoreButtonView()
+                        .padding(.bottom, 16)
+                    setupContinueButtonView()
+                    Spacer()
                 }
             }
             .onFirstAppear {
@@ -133,7 +135,8 @@ struct SubscriptionView: View {
     
     @ViewBuilder
     private func setupContinueButtonView() -> some View {
-        ButtonView(title: "CONTINUE", textColor: .black) {
+        let product = purchaseService.products.first(where: {$0.id == productType.rawValue})        
+        ButtonView(title: "CONTINUE - \(product?.displayPrice ?? "") TOTAL", textColor: .black) {
             purchaseProduct()
         }
         .padding(.horizontal, 24)
@@ -160,17 +163,22 @@ struct SubscriptionView: View {
         Text(subscriptionText)
             .multilineTextAlignment(.center)
             .lineSpacing(3)
-            .padding(EdgeInsets(top: 24, leading: 8, bottom: 30, trailing: 8))
+            .padding(EdgeInsets(top: 24, leading: 8, bottom: 14, trailing: 8))
     }
     
     private var subscriptionText: AttributedString {
-        var attriString = AttributedString("Tap to Continue, you approve that invoice will be placed on your iTunes account and subscription will be automtically renewal after selected period of package until you decline on iTunes Store settings (it should be declined minimum 24 hours before ending current subscription) by clicking Continue you accept our Terms and Conditions")
+        var attriString = AttributedString("Recurring billing. Cancel anytime. Payment will be charged to your iTunes account at confirmation of purchase. Your subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period. You can manage your subscription and switch off auto-renewal by accessing your iTunes & App Store Account Settings after purchase. More details can be found here:\nTerms and Conditions, Privacy policy")
         attriString.foregroundColor = .white
         attriString.font = .custom("SFProDisplay-Regular", size: 12)
         
-        if let aboutadsRange = attriString.range(of: "Terms and Conditions") {
-            attriString[aboutadsRange].link = URL(string: "https://www.aboutads.info/choices")
-            attriString[aboutadsRange].underlineStyle = .single
+        if let termsRange = attriString.range(of: "Terms and Conditions") {
+            attriString[termsRange].link = URL(string: "https://swear-counter.my.canva.site")
+            attriString[termsRange].underlineStyle = .single
+        }
+        
+        if let policyRange = attriString.range(of: "Privacy policy") {
+            attriString[policyRange].link = URL(string: "https://swear-counter.my.canva.site")
+            attriString[policyRange].underlineStyle = .single
         }
         
         return attriString
