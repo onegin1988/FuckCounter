@@ -18,7 +18,6 @@ class PurchaseService: NSObject, ObservableObject {
     @Published private(set) var productForSettings: Product?
     @Published private(set) var isProcess: Bool = false
     
-    private var productsLoaded = false
     private var updates: Task<Void, Never>? = nil
     
     var hasUnlockedPro: Bool {
@@ -57,13 +56,9 @@ class PurchaseService: NSObject, ObservableObject {
     }
     
     func loadProducts() async throws {
-        guard !self.productsLoaded else { 
-            return
-        }
-        
         self.products = try await Product.products(for: productIds)
         self.productForSettings = getProduct(id: ProductType.oneWeek.rawValue)
-        self.productsLoaded = true
+        await updatePurchasedProducts()
     }
     
     @MainActor

@@ -45,6 +45,7 @@ struct SubscriptionView: View {
                 }
             }
             .onFirstAppear {
+                loadProducts()
                 _ = timer.connect()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     currentPage = SubscriptionInfo.allCases.firstIndex(of: subscriptionInfo) ?? 0
@@ -87,6 +88,17 @@ struct SubscriptionView: View {
         }
         .allowsHitTesting(!isSubscriptionProcess)
         
+    }
+    
+    @MainActor
+    private func loadProducts() {
+        Task {
+            do {
+                try await purchaseService.loadProducts()
+            } catch let error {
+                self.error = error.localizedDescription
+            }
+        }
     }
     
     @ViewBuilder

@@ -53,9 +53,6 @@
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">
       </LocationScenarioReference>
-      <StoreKitConfigurationFileReference
-         identifier = "../FuckCounter/Resources/FuckCounterConfiguration.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

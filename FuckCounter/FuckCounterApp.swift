@@ -92,9 +92,6 @@ struct FuckCounterApp: App {
                         AppData.isOlder = true
                         isStartApp.1 = AppData.isOlder
                     }))
-                    .task {
-                        loadProducts()
-                    }
                     .environmentObject(speechService)
                     .environmentObject(purchaseService)
             }
@@ -103,6 +100,7 @@ struct FuckCounterApp: App {
             if newPhase == .active {
                 requestSpeechAuthorization()
                 dailyService.calculateDates()
+                loadProducts()
                 
                 Task {
 //                    await facebookService.checkIsNeedRefreshToken()
@@ -115,13 +113,11 @@ struct FuckCounterApp: App {
         }
     }
 
+    @MainActor
     private func loadProducts() {
         Task {
             do {
                 try await purchaseService.loadProducts()
-                debugPrint(purchaseService.products)
-                
-                await purchaseService.updatePurchasedProducts()
             } catch let error {
                 self.errorMessage = error.localizedDescription
             }
