@@ -144,10 +144,10 @@ enum LanguageCode: String, CaseIterable {
 }
 
 enum ProductType: String, CaseIterable {
-    case oneMonth = "premium.one_new.month"
-    case oneWeek = "premium.one.week"
-    case threeMonth = "premium.three.month"
-    case oneYear = "premium.one.year"
+    case oneMonth = "premium.one_month"
+    case oneWeek = "premium.one_week"
+    case threeMonth = "premium.three_month"
+    case oneYear = "premium.one_year"
     
     var percentage: Int {
         switch self {

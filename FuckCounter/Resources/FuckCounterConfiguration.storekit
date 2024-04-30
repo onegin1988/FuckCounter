@@ -10,7 +10,7 @@
     "_applicationInternalID" : "6474148666",
     "_developerTeamID" : "8P262JQWTL",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 735841698.34279001,
+    "_lastSynchronizedDate" : 736190891.32014799,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -79,39 +79,9 @@
           "displayPrice" : "1.99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "6499444806",
+          "internalID" : "6501949770",
           "introductoryOffer" : null,
           "localizations" : [
-            {
-              "description" : "Розблокувати функції",
-              "displayName" : "1 місяць",
-              "locale" : "uk"
-            },
-            {
-              "description" : "Разблокировать функции",
-              "displayName" : "1 месяц",
-              "locale" : "ru"
-            },
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 month",
-              "locale" : "en_GB"
-            },
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 month",
-              "locale" : "en_AU"
-            },
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 month",
-              "locale" : "en_CA"
-            },
-            {
-              "description" : "Déverrouiller les fonctionnalités",
-              "displayName" : "1 mois",
-              "locale" : "fr"
-            },
             {
               "description" : "Funktionen freischalten",
               "displayName" : "1 Monat",
@@ -119,13 +89,43 @@
             },
             {
               "description" : "Unlock features",
-              "displayName" : "1 month",
+              "displayName" : "1 Month",
+              "locale" : "en_GB"
+            },
+            {
+              "description" : "Розблокування функцій",
+              "displayName" : "1 Місяць",
+              "locale" : "uk"
+            },
+            {
+              "description" : "Разблокировать функции",
+              "displayName" : "1 Месяц",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Déverrouiller les fonctionnalités",
+              "displayName" : "1 Mois",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Month",
               "locale" : "en_US"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Month",
+              "locale" : "en_AU"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Month",
+              "locale" : "en_CA"
             }
           ],
-          "productID" : "premium.one_new.month",
+          "productID" : "premium.one_month",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "1 month",
+          "referenceName" : "1 Month",
           "subscriptionGroupID" : "21464559",
           "type" : "RecurringSubscription"
         },
@@ -139,53 +139,53 @@
           "displayPrice" : "0.99",
           "familyShareable" : false,
           "groupNumber" : 2,
-          "internalID" : "6479458327",
+          "internalID" : "6501953971",
           "introductoryOffer" : null,
           "localizations" : [
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 week",
-              "locale" : "en_GB"
-            },
-            {
-              "description" : "Разблокировать функции",
-              "displayName" : "1 неделя",
-              "locale" : "ru"
-            },
-            {
-              "description" : "Déverrouiller les fonctionnalités",
-              "displayName" : "1 semaine",
-              "locale" : "fr"
-            },
             {
               "description" : "Funktionen freischalten",
               "displayName" : "1 Woche",
               "locale" : "de"
             },
             {
-              "description" : "Unlock features",
-              "displayName" : "1 week",
-              "locale" : "en_US"
+              "description" : "Розблокування функцій",
+              "displayName" : "1 Неділя",
+              "locale" : "uk"
             },
             {
               "description" : "Unlock features",
-              "displayName" : "1 week",
+              "displayName" : "1 Week",
               "locale" : "en_CA"
             },
             {
               "description" : "Unlock features",
-              "displayName" : "1 week",
+              "displayName" : "1 Week",
+              "locale" : "en_GB"
+            },
+            {
+              "description" : "Разблокировать функции",
+              "displayName" : "1 Неделя",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Week",
               "locale" : "en_AU"
             },
             {
-              "description" : "Розблокувати функції",
-              "displayName" : "1 тиждень",
-              "locale" : "uk"
+              "description" : "Déverrouiller les fonctionnalités",
+              "displayName" : "1 Semaine",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Week",
+              "locale" : "en_US"
             }
           ],
-          "productID" : "premium.one.week",
+          "productID" : "premium.one_week",
           "recurringSubscriptionPeriod" : "P1W",
-          "referenceName" : "1 week",
+          "referenceName" : "1 Week",
           "subscriptionGroupID" : "21464559",
           "type" : "RecurringSubscription"
         },
@@ -199,9 +199,24 @@
           "displayPrice" : "9.99",
           "familyShareable" : false,
           "groupNumber" : 4,
-          "internalID" : "6479458541",
+          "internalID" : "6501954249",
           "introductoryOffer" : null,
           "localizations" : [
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Year",
+              "locale" : "en_CA"
+            },
+            {
+              "description" : "Unlock features",
+              "displayName" : "1 Year",
+              "locale" : "en_GB"
+            },
+            {
+              "description" : "Funktionen freischalten",
+              "displayName" : "1 Jahr",
+              "locale" : "de"
+            },
             {
               "description" : "Déverrouiller les fonctionnalités",
               "displayName" : "1 an",
@@ -209,43 +224,28 @@
             },
             {
               "description" : "Unlock features",
-              "displayName" : "1 year",
-              "locale" : "en_GB"
-            },
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 year",
-              "locale" : "en_CA"
-            },
-            {
-              "description" : "Unlock features",
-              "displayName" : "1 year",
+              "displayName" : "1 Year",
               "locale" : "en_US"
             },
             {
-              "description" : "Unlock features",
-              "displayName" : "1 year",
-              "locale" : "en_AU"
-            },
-            {
-              "description" : "Розблокувати функції",
-              "displayName" : "1 рік",
+              "description" : "Розблокування функцій",
+              "displayName" : "1 Рік",
               "locale" : "uk"
             },
             {
               "description" : "Разблокировать функции",
-              "displayName" : "1 год",
+              "displayName" : "1 Год",
               "locale" : "ru"
             },
             {
-              "description" : "Funktionen freischalten",
-              "displayName" : "1 Jahr",
-              "locale" : "de"
+              "description" : "Unlock features",
+              "displayName" : "1 Year",
+              "locale" : "en_AU"
             }
           ],
-          "productID" : "premium.one.year",
+          "productID" : "premium.one_year",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "1 year",
+          "referenceName" : "1 Year",
           "subscriptionGroupID" : "21464559",
           "type" : "RecurringSubscription"
         },
@@ -259,43 +259,43 @@
           "displayPrice" : "4.99",
           "familyShareable" : false,
           "groupNumber" : 3,
-          "internalID" : "6479458432",
+          "internalID" : "6501954648",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Unlock features",
-              "displayName" : "3 month",
-              "locale" : "en_GB"
+              "description" : "Déverrouiller les fonctionnalités",
+              "displayName" : "3 Mois",
+              "locale" : "fr"
             },
             {
               "description" : "Unlock features",
-              "displayName" : "3 month",
+              "displayName" : "3 Month",
               "locale" : "en_CA"
             },
             {
+              "description" : "Разблокировать функции",
+              "displayName" : "3 Месяца",
+              "locale" : "ru"
+            },
+            {
               "description" : "Unlock features",
-              "displayName" : "3 month",
+              "displayName" : "3 Month",
               "locale" : "en_US"
             },
             {
-              "description" : "Розблокувати функції",
-              "displayName" : "3 місяці",
+              "description" : "Розблокування функцій",
+              "displayName" : "3 Місяця",
               "locale" : "uk"
             },
             {
               "description" : "Unlock features",
-              "displayName" : "3 month",
+              "displayName" : "3 Month",
               "locale" : "en_AU"
             },
             {
-              "description" : "Déverrouiller les fonctionnalités",
-              "displayName" : "3 mois",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Разблокировать функции",
-              "displayName" : "3 месяца",
-              "locale" : "ru"
+              "description" : "Unlock features",
+              "displayName" : "3 Month",
+              "locale" : "en_GB"
             },
             {
               "description" : "Funktionen freischalten",
@@ -303,9 +303,9 @@
               "locale" : "de"
             }
           ],
-          "productID" : "premium.three.month",
+          "productID" : "premium.three_month",
           "recurringSubscriptionPeriod" : "P3M",
-          "referenceName" : "3 month",
+          "referenceName" : "3 Month",
           "subscriptionGroupID" : "21464559",
           "type" : "RecurringSubscription"
         }
