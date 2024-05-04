@@ -35,7 +35,7 @@ enum FiltersEvent: String, Hashable {
 }
 
 enum SettingsEvent: String, Hashable {
-    case login, subscription, terms
+    case login, subscription, terms, privacy
 }
 
 enum LeadersEvent: String, Hashable {
@@ -85,13 +85,14 @@ enum LeadersTimeType: Int {
 }
 
 enum SettingsItem: Int, CaseIterable, Hashable {
-    case createAccount = 0, notifications, invite, rate, terms, deleteAccount, logout
+    case createAccount = 0, notifications, invite, rate, terms, privacyPolicy, deleteAccount, logout
     
     var title: String {
         switch self {
         case .createAccount: return "Create account"
         case .notifications: return "Enable notifications"
         case .terms: return "Terms of Conditions"
+        case .privacyPolicy: return "Privacy Policy"
         case .invite: return "Invite Friends"
         case .rate: return "Rate App"
         case .deleteAccount: return "Delete account"
@@ -103,7 +104,7 @@ enum SettingsItem: Int, CaseIterable, Hashable {
         switch self {
         case .createAccount: return Images.createAccount
         case .notifications: return Images.notifications
-        case .terms: return Images.support
+        case .terms, .privacyPolicy: return Images.support
         case .invite: return Images.invite
         case .rate: return Images.rate
         case .deleteAccount: return Images.deleteAccount

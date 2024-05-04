@@ -25,7 +25,7 @@ struct SettingsView: View {
     private let navTitle: String?
     
     var isPushToView: Binding<Bool> {
-        Binding(get: { settingsViewModel.settingsEvent != nil && settingsViewModel.settingsEvent != .subscription },
+        Binding(get: { settingsViewModel.settingsEvent != nil && settingsViewModel.settingsEvent != .subscription && settingsViewModel.settingsEvent != .terms && settingsViewModel.settingsEvent != .privacy },
                 set: { _ in settingsViewModel.settingsEvent = nil } )
     }
     
@@ -69,6 +69,10 @@ struct SettingsView: View {
                         }
                     case .terms:
                         settingsViewModel.settingsEvent = .terms
+                        isShow = true
+                    case .privacyPolicy:
+                        settingsViewModel.settingsEvent = .privacy
+                        isShow = true
                     case .deleteAccount:
                         showDeleteAccountAlert.toggle()
                     case .logout:
@@ -125,14 +129,22 @@ struct SettingsView: View {
             switch settingsViewModel.settingsEvent {
             case .login:
                 LoginView()
-            case .terms:
-                TermsConditionsView()
             default:
                 EmptyView()
             }
         })
         .fullScreenCover(isPresented: $isShow) {
-            SubscriptionView()
+            switch settingsViewModel.settingsEvent {
+            case .terms, .privacy:
+                if let url = URL(string: "https://swear-counter.my.canva.site") {
+                    SafariWebView(url: url)
+                        .ignoresSafeArea()
+                }
+            case .subscription:
+                SubscriptionView()
+            default:
+                EmptyView()
+            }
         }
         .onReceive(purchaseService.$purchasedProductIDs) { purchasedProductIDs in
             settingsViewModel.hasPremium = !purchasedProductIDs.isEmpty

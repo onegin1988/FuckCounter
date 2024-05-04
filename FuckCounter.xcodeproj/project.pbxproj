@@ -113,6 +113,7 @@
 		1FDA1A342B0A55E4009E3EAC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */; };
 		1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A362B0A56A2009E3EAC /* Colors.swift */; };
 		1FDA1A392B0A5A6B009E3EAC /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */; };
+		1FE3C6C62BE66DBF00E04458 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3C6C52BE66DBF00E04458 /* SafariWebView.swift */; };
 		1FFA71A82B8D304800BA126A /* ErrorSocialServicesModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */; };
 		1FFA71AA2B8D31E700BA126A /* AuthProcessModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */; };
 		1FFA71AC2B8D34AA00BA126A /* UserSocialModelModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */; };
@@ -236,6 +237,7 @@
 		1FDA1A332B0A55E4009E3EAC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1FDA1A362B0A56A2009E3EAC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1FDA1A382B0A5A6A009E3EAC /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
+		1FE3C6C52BE66DBF00E04458 /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		1FFA71A72B8D304800BA126A /* ErrorSocialServicesModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSocialServicesModifiers.swift; sourceTree = "<group>"; };
 		1FFA71A92B8D31E700BA126A /* AuthProcessModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProcessModifiers.swift; sourceTree = "<group>"; };
 		1FFA71AB2B8D34AA00BA126A /* UserSocialModelModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSocialModelModifiers.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				1F4B3B1C2BA722DA00BB78E4 /* BlackBgView.swift */,
 				1F4B3B262BA74DBD00BB78E4 /* CollectionViewWrapper.swift */,
 				1FBFBAF92BA8C0440072A809 /* PageControlView.swift */,
+				1FE3C6C52BE66DBF00E04458 /* SafariWebView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				1FFBD8D72B8E3AC000818F48 /* AuthSocialModifiers.swift in Sources */,
 				1FDA1A372B0A56A2009E3EAC /* Colors.swift in Sources */,
 				1F39C09E2B5D21DC00A00420 /* ListItemArrowView.swift in Sources */,
+				1FE3C6C62BE66DBF00E04458 /* SafariWebView.swift in Sources */,
 				1F2187762B0A70EF0020C4AB /* GradientModifiers.swift in Sources */,
 				1F4B3B232BA73F2100BB78E4 /* SubscriptionInfoView.swift in Sources */,
 				1FBE44762B27033C00513401 /* SettingsListRow.swift in Sources */,
