@@ -15,6 +15,7 @@ struct HomeView: View {
     
     @State private var isOpenCongrats: Bool = false
     @State private var isProcessing: Bool = false
+    @State private var isShowPopover: Bool = false
     @State private var isShow = false
     
     @EnvironmentObject var dailyService: DailyService
@@ -72,6 +73,11 @@ struct HomeView: View {
                     await homeViewModel.checkWinner()
                 }
             }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isShowPopover = AppData.isShowTrackPopover
+                }
+            }
             .navigationDestination(isPresented: isPushToView, destination: {
                 switch homeViewModel.homeEvent {
                 case .settings:
@@ -120,9 +126,12 @@ struct HomeView: View {
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
                 handleInterruption(notification: notification)
             }
+            .onChange(of: isShowPopover, perform: { newValue in
+                AppData.isShowTrackPopover = newValue
+            })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .modifier(GradientModifiers(style: homeViewModel.level.background))
-            .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, onHomeEvent: { homeEvent in
+            .modifier(HomeToolbarItemsModifiers(isHideButtons: homeViewModel.isPlay, isShowPopover: $isShowPopover, onHomeEvent: { homeEvent in
                 if homeEvent == .leaders && !AppData.hasPremium {
                     self.homeViewModel.subscriptionInfo = .secondInfo
                     self.homeViewModel.homeEvent = .subscription
@@ -168,6 +177,7 @@ struct HomeView: View {
                         isProcessing = false
                     }
                 } else {
+                    isShowPopover = false
                     isProcessing = true
                     speechService.startRecording()
                 }
