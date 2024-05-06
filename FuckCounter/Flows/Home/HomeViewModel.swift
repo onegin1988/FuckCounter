@@ -206,6 +206,6 @@ class HomeViewModel: ObservableObject {
         if isPlay {
             return ("Stop", Images.stop, 120)
         }
-        return ("Start", Images.play, 256)
+        return ("Start Counting", Images.play, 256)
     }
 }
