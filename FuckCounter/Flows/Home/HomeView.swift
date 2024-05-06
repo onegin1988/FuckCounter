@@ -90,6 +90,7 @@ struct HomeView: View {
             }
             .onReceive(dailyService.$timeSlice, perform: { _ in
                 homeViewModel.timeSlice = dailyService.timeSliceResult
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             })
             .onReceive(speechService.$speechRecognitionStatus, perform: { status in
                 switch status {
