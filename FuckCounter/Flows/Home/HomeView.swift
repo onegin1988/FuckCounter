@@ -191,7 +191,7 @@ struct HomeView: View {
     private func prepareCounterWordsView() -> some View {
         VStack(alignment: .center, spacing: -10) {
             BoldTextView(style: .sfPro, title: "\($homeViewModel.counter.wrappedValue)", size: 108)
-            MediumTextView(style: .sfPro, title: "Bad words for today", size: 17)
+            MediumTextView(style: .sfPro, title: homeViewModel.isPlay ? "Words \(AppData.selectedWordsModel.nameCorrect)" : "Bad words for today", size: 17)
         }
     }
     
