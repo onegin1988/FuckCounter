@@ -44,8 +44,10 @@ struct HomeView: View {
                                    
                     preparePlayButtonView()
                     
-                    MediumTextView(style: .sfPro, title: homeViewModel.level.result)
+                    Text(resultText)
                         .padding(.bottom, 95)
+//                    MediumTextView(style: .sfPro, title: homeViewModel.isPlay ? homeViewModel.level.result : )
+                        
                 })
                 
                 BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) { isOpen in
@@ -161,6 +163,18 @@ struct HomeView: View {
         })
     }
     
+    private var resultText: AttributedString {
+        var attriString = AttributedString(homeViewModel.isPlay ? homeViewModel.level.result : "\(AppData.lastTrackingCount) free tracking for today")
+        attriString.font = .custom("SFProDisplay-Medium", size: 14)
+        attriString.foregroundColor = .white
+
+        if let freeRange = attriString.range(of: "\(AppData.lastTrackingCount) free") {
+            attriString[freeRange].font = .custom("SFProDisplay-Black", size: 14)
+        }
+        
+        return attriString
+    }
+    
     private func preparePlayButtonView() -> some View {
         ButtonView(title: homeViewModel.isPlayState.0, image: homeViewModel.isPlayState.1, useBG: true, buttonBG: .black, textColor: .white) {
             withAnimation {
@@ -177,6 +191,17 @@ struct HomeView: View {
                         isProcessing = false
                     }
                 } else {
+                    if !AppData.hasPremium {
+                        if AppData.lastTrackingCount <= 0 {
+                            withAnimation {
+                                homeViewModel.subscriptionInfo = .firstInfo
+                                homeViewModel.homeEvent = .subscription
+                                isShow = true
+                            }
+                            return
+                        }
+                        AppData.lastTrackingCount -= 1
+                    }
                     isShowPopover = false
                     isProcessing = true
                     speechService.startRecording()

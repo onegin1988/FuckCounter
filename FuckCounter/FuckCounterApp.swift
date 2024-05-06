@@ -15,6 +15,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        if Calendar.current.isDateInYesterday(AppData.lastTrackingDate) {
+            AppData.lastTrackingDate = Date.createCustomDate()
+            AppData.lastTrackingCount = 5
+        }
+        
         FirebaseApp.configure()
         
         if AppData.uuidDevice.isEmpty {

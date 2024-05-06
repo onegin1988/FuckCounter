@@ -128,6 +128,12 @@ struct AppData {
     @Storage(key: "isShowTrackPopover", defaultValue: true)
     static var isShowTrackPopover: Bool
     
+    @Storage(key: "lastTrackingDate", defaultValue: Date())
+    static var lastTrackingDate: Date
+    
+    @Storage(key: "lastTrackingCount", defaultValue: 5)
+    static var lastTrackingCount: Int
+    
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
         case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue, languageSymbol: LanguageCode.en.languageSymbol)

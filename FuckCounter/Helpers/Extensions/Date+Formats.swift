@@ -36,4 +36,20 @@ extension Date {
     func isBetween(_ date1: Date, and date2: Date) -> Bool {
         return (min(date1, date2) ... max(date1, date2)).contains(self)
     }
+    
+    static func createCustomDate() -> Date {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        var dateComponents = DateComponents()
+        dateComponents.timeZone = TimeZone(abbreviation: "GMT")
+        dateComponents.year = currentDate.get(.year).year
+        dateComponents.month = currentDate.get(.month).month
+        dateComponents.day = currentDate.get(.day).day
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+        dateComponents.second = 0
+        
+        return calendar.date(from: dateComponents) ?? Date()
+    }
 }
