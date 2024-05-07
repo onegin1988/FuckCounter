@@ -44,9 +44,8 @@ struct HomeView: View {
                                    
                     preparePlayButtonView()
                     
-                    Text(resultText)
+                    Text(AppData.hasPremium ? "" : resultText)
                         .padding(.bottom, 95)
-//                    MediumTextView(style: .sfPro, title: homeViewModel.isPlay ? homeViewModel.level.result : )
                         
                 })
                 
