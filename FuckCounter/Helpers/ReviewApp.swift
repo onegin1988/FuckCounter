@@ -11,11 +11,7 @@ import StoreKit
 class ReviewApp {
     
     static func requestReview() {
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            fatalError("Expected to find a bundle version in the info dictionary")
-        }
-        
+        let currentVersion = UIApplication.version//kCFBundleVersionKey as String
         if currentVersion != AppData.lastVersionPromptedForReviewKey {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
