@@ -18,6 +18,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         if Calendar.current.isDateInYesterday(AppData.lastTrackingDate) {
             AppData.lastTrackingDate = Date.createCustomDate()
             AppData.lastTrackingCount = 5
+            AppData.tempUserModel.words?.removeAll()
+            AppData.tempUserModel.points = 0
         }
         
         FirebaseApp.configure()

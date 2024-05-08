@@ -21,7 +21,7 @@ class HomeViewModel: ObservableObject {
     
     private(set) var userModel: UserModel?
     private(set) var isChamp: Bool
-    private(set) var totalCount: Int
+    @Published var totalCount: Int
     var subscriptionInfo: SubscriptionInfo
     
 #if DEBUG
@@ -169,6 +169,15 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    @MainActor
+    func loadLastTotal() async {
+        let filtered = AppData.tempUserModel.words?.filter({
+            $0.createdDate?.toDate().get(.day).day == Date().get(.day).day
+        })
+        AppData.tempUserModel.points = (filtered ?? []).map({$0.countOfWords ?? 0}).reduce(0, { $0 + $1 })
+        totalCount = AppData.tempUserModel.points
+    }
+    
     func calculateWordProcess(fullText: String) {
         DispatchQueue.global(qos: .userInteractive).async {
             var totalCounter = 0
@@ -190,10 +199,17 @@ class HomeViewModel: ObservableObject {
     @MainActor
     func uploadResults() async {
         do {
-            guard let user = Auth.auth().currentUser else { return }
             let id = UUID().uuidString
+            let date = Date().toString()
+            
+            AppData.tempUserModel.words?.append(WordModel(
+                id: id,
+                countOfWords: counter,
+                createdDate: date))
+
+            guard let user = Auth.auth().currentUser else { return }
             try await reference.child(AppConstants.cUsers).child(user.uid).child(AppConstants.cWords).child(id).updateChildValues([
-                "createdDate": Date().toString(),
+                "createdDate": date,
                 "countOfWords": counter,
                 "id": id
             ])

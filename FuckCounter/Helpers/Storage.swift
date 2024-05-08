@@ -134,6 +134,16 @@ struct AppData {
     @Storage(key: "lastTrackingCount", defaultValue: 5)
     static var lastTrackingCount: Int
     
+    @Storage(key: "tempUserModel", defaultValue: UserModel(
+        id: UUID().uuidString,
+        uid: UUID().uuidString,
+        name: nil,
+        image: nil,
+        wins: 0,
+        points: 0,
+        uuidDevice: UUID().uuidString))
+    static var tempUserModel: UserModel
+    
     static func checkLanguage() -> LanguageModel {
         switch Locale.preferredLanguages[0].prefix(2) {
         case "en": return LanguageModel(id: 1, name: LanguageCode.en.title, languageCode: LanguageCode.en.rawValue, languageSymbol: LanguageCode.en.languageSymbol)

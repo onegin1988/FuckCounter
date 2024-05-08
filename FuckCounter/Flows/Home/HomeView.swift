@@ -50,13 +50,16 @@ struct HomeView: View {
                 })
                 
                 BottomSheetView(isOpen: $isOpenCongrats, maxHeight: 375) { isOpen in
-                    if !isOpen {
-                        homeViewModel.resetCounter()
-                        if homeViewModel.updateCountForSubscriptionAndShow() && !AppData.hasPremium {
-                            withAnimation {
-                                homeViewModel.subscriptionInfo = .firstInfo
-                                homeViewModel.homeEvent = .subscription
-                                isShow = true
+                    Task {
+                        if !isOpen {
+                            homeViewModel.resetCounter()
+                            await homeViewModel.loadLastTotal()
+                            if homeViewModel.updateCountForSubscriptionAndShow() && !AppData.hasPremium {
+                                withAnimation {
+                                    homeViewModel.subscriptionInfo = .firstInfo
+                                    homeViewModel.homeEvent = .subscription
+                                    isShow = true
+                                }
                             }
                         }
                     }
@@ -72,6 +75,7 @@ struct HomeView: View {
                 Task {
                     await homeViewModel.subscribeHomeObservers()
                     await homeViewModel.checkWinner()
+                    await homeViewModel.loadLastTotal()
                 }
             }
             .onAppear {
@@ -181,10 +185,7 @@ struct HomeView: View {
                     isProcessing = true
                     speechService.stopRecording()
                     Task {
-                        if AppData.userLoginModel != nil {
-                            await homeViewModel.uploadResults()
-                        }
-                        
+                        await homeViewModel.uploadResults()
                         isOpenCongrats = true
                         isProcessing = false
                     }
@@ -213,9 +214,19 @@ struct HomeView: View {
     
     private func prepareCounterWordsView() -> some View {
         VStack(alignment: .center, spacing: -10) {
-            BoldTextView(style: .sfPro, title: "\($homeViewModel.counter.wrappedValue)", size: 108)
+            BoldTextView(style: .sfPro, title: counterText, size: 108)
             MediumTextView(style: .sfPro, title: homeViewModel.isPlay ? "Words \(AppData.selectedWordsModel.nameCorrect)" : "Bad words for today", size: 17)
         }
+    }
+    
+    private var counterText: String {
+        if isOpenCongrats {
+            if AppData.userLoginModel == nil {
+                return "\($homeViewModel.counter.wrappedValue)"
+            }
+            return "\(homeViewModel.totalCount)"
+        }
+        return homeViewModel.isPlay ? "\($homeViewModel.counter.wrappedValue)" : "\(homeViewModel.totalCount)"
     }
     
     private func prepareStatusImageView() -> some View {
