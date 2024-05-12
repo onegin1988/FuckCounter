@@ -67,7 +67,7 @@ struct HomeView: View {
                     if isOpenCongrats {
                         CongratsView(userModel: homeViewModel.userModel,
                                      count: AppData.userLoginModel == nil ? homeViewModel.counter : homeViewModel.totalCount,
-                                     subTitle: homeViewModel.isChamp ? "New Total Words Record, you’re King of Bad Words!" : "Bad words for today")
+                                     subTitle: homeViewModel.isChamp ? "New Total Words Record, you’re King of Bad Words!" : "")
                     }
                 }
             }
