@@ -21,7 +21,7 @@ extension Date {
     }
     
     func getWeekDays() -> (Date?, Date?) {
-        let dateInWeek = Date()
+        let dateInWeek = Date.createCustomDate()
 
         let calendar = Calendar.current
         let dayOfWeek = calendar.component(.weekday, from: dateInWeek) - 1
@@ -30,7 +30,7 @@ extension Date {
                 .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: dateInWeek) }
             return (days.first, days.last)
         }
-        return (dateInWeek, Date())
+        return (dateInWeek, Date.createCustomDate())
     }
     
     func isBetween(_ date1: Date, and date2: Date) -> Bool {

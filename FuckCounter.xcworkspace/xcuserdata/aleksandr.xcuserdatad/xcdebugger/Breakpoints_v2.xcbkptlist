@@ -23,64 +23,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B6923EF3-05E1-4EBA-8765-D29592E22A67"
+            uuid = "5981AD88-CEB1-4EE1-B7EE-F171E8989097"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FuckCounter/Services/GoogleService.swift"
+            filePath = "FuckCounter/Helpers/Extensions/Date+Formats.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "authGoogle()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "getWeekDays()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B6923EF3-05E1-4EBA-8765-D29592E22A67 - 9ef3d4352c78da98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Bool, Swift.Error&gt;) -&gt; () in SwearCounter.GoogleService.authGoogle() async throws -&gt; Swift.Bool"
-                  moduleName = "SwearCounter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Services/GoogleService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "568">
-               </Location>
-               <Location
-                  uuid = "B6923EF3-05E1-4EBA-8765-D29592E22A67 - 9ef3d4352c78da98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Bool, Swift.Error&gt;) -&gt; () in SwearCounter.GoogleService.authGoogle() async throws -&gt; Swift.Bool"
-                  moduleName = "SwearCounter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Services/GoogleService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "B6923EF3-05E1-4EBA-8765-D29592E22A67 - 9ef3d4352c78da98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Bool, Swift.Error&gt;) -&gt; () in SwearCounter.GoogleService.authGoogle() async throws -&gt; Swift.Bool"
-                  moduleName = "SwearCounter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Services/GoogleService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
