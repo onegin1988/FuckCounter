@@ -11,14 +11,9 @@ import StoreKit
 class ReviewApp {
     
     static func requestReview() {
-        let currentVersion = UIApplication.version//kCFBundleVersionKey as String
-        if currentVersion != AppData.lastVersionPromptedForReviewKey {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                    AppData.lastVersionPromptedForReviewKey = currentVersion
-                    SKStoreReviewController.requestReview(in: scene)
-                }
-            }
+        guard let writeReviewURL = URL(string: "https://itunes.apple.com/app/id6474148666?action=write-review") else { return }
+        if UIApplication.shared.canOpenURL(writeReviewURL) {
+            UIApplication.shared.open(writeReviewURL)
         }
     }
 }

@@ -34,6 +34,38 @@
             endingLineNumber = "33"
             landmarkName = "getWeekDays()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5981AD88-CEB1-4EE1-B7EE-F171E8989097 - e83caf09b91eb5f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.Date.getWeekDays() -&gt; (Swift.Optional&lt;Foundation.Date&gt;, Swift.Optional&lt;Foundation.Date&gt;)"
+                  moduleName = "SwearCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Helpers/Extensions/Date+Formats.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "1700">
+               </Location>
+               <Location
+                  uuid = "5981AD88-CEB1-4EE1-B7EE-F171E8989097 - e83caf09b91eb5f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.Date.getWeekDays() -&gt; (Swift.Optional&lt;Foundation.Date&gt;, Swift.Optional&lt;Foundation.Date&gt;)"
+                  moduleName = "SwearCounter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandr/Documents/Projects/FuckCounter/FuckCounter/Helpers/Extensions/Date+Formats.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "1924">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
