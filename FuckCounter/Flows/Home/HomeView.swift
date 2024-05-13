@@ -215,8 +215,15 @@ struct HomeView: View {
     private func prepareCounterWordsView() -> some View {
         VStack(alignment: .center, spacing: -10) {
             BoldTextView(style: .sfPro, title: counterText, size: 108)
-            MediumTextView(style: .sfPro, title: homeViewModel.isPlay ? "Words \(AppData.selectedWordsModel.nameCorrect)" : "Bad words for today", size: 17)
+            MediumTextView(style: .sfPro, title: isWordsShow ? "Words \(AppData.selectedWordsModel.nameCorrect)" : "Bad words for today", size: 17)
         }
+    }
+    
+    private var isWordsShow: Bool {
+        if homeViewModel.isPlay || (isProcessing && !homeViewModel.isPlay) || isOpenCongrats {
+            return true
+        }
+        return false
     }
     
     private var counterText: String {
