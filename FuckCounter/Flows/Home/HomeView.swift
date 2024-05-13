@@ -44,7 +44,7 @@ struct HomeView: View {
                                    
                     preparePlayButtonView()
                     
-                    Text(AppData.hasPremium ? "" : resultText)
+                    Text(resultText)
                         .padding(.bottom, 95)
                         
                 })
