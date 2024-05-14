@@ -13,6 +13,7 @@ target 'FuckCounter' do
   pod 'lottie-ios'
   pod 'GoogleSignIn'
   pod 'KeychainSwift'
+  pod 'Firebase/Crashlytics'
   
 end
 
