@@ -38,9 +38,9 @@ struct SubscriptionView: View {
                     setupProductTypeListView()
                         .padding(EdgeInsets(top: 54, leading: 0, bottom: 14, trailing: 0))
                     setupDescriptionView()
-                    setupRestoreButtonView()
-                        .padding(.bottom, 16)
                     setupContinueButtonView()
+                        .padding(.bottom, 16)
+                    setupRestoreButtonView()
                     Spacer()
                 }
             }
