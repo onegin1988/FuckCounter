@@ -166,7 +166,7 @@ struct HomeView: View {
     }
     
     private var resultText: AttributedString {
-        var attriString = AttributedString(homeViewModel.isPlay ? homeViewModel.level.result : "\(AppData.lastTrackingCount) free tracking for today")
+        var attriString = AttributedString(AppData.hasPremium ? "" : homeViewModel.isPlay ? homeViewModel.level.result : "\(AppData.lastTrackingCount) free tracking for today")
         attriString.font = .custom("SFProDisplay-Medium", size: 14)
         attriString.foregroundColor = .white
 
